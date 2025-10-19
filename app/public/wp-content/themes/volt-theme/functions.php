@@ -67,3 +67,34 @@ function mytheme_enqueue_store_assets() {
     );
 }
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_store_assets');
+
+
+// ===========================
+// 3. REGISTER 'RECIPE' CPT
+// ===========================
+function mytheme_register_recipe_cpt() {
+    $labels = array(
+        'name'               => 'Recipes',
+        'singular_name'      => 'Recipe',
+        'add_new_item'       => 'Add New Recipe',
+        'edit_item'          => 'Edit Recipe',
+        'new_item'           => 'New Recipe',
+        'view_item'          => 'View Recipe',
+        'all_items'          => 'All Recipes',
+        'search_items'       => 'Search Recipes',
+        'not_found'          => 'No recipes found',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'has_archive'        => false,
+        'show_in_rest'       => true, // Gutenberg + REST API support
+        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_position'      => 21,
+        'menu_icon'          => 'dashicons-carrot', // 🥕 icon
+    );
+
+    register_post_type('recipe', $args);
+}
+add_action('init', 'mytheme_register_recipe_cpt');
