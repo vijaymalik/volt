@@ -98,3 +98,34 @@ function mytheme_register_recipe_cpt() {
     register_post_type('recipe', $args);
 }
 add_action('init', 'mytheme_register_recipe_cpt');
+
+
+// ===========================
+// 4. REGISTER 'TOPBAR DETAILS' CPT
+// ===========================
+function mytheme_register_topbar_cpt() {
+    $labels = array(
+        'name'               => 'Topbar Details',
+        'singular_name'      => 'Topbar Detail',
+        'add_new_item'       => 'Add New Topbar Detail',
+        'edit_item'          => 'Edit Topbar Detail',
+        'new_item'           => 'New Topbar Detail',
+        'view_item'          => 'View Topbar Detail',
+        'all_items'          => 'All Topbar Details',
+        'search_items'       => 'Search Topbar Details',
+        'not_found'          => 'No topbar details found',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false, // not visible as a public page
+        'show_ui'            => true,  // visible in admin
+        'show_in_rest'       => true,  // Gutenberg + REST
+        'supports'           => array('title', 'editor'),
+        'menu_position'      => 22,
+        'menu_icon'          => 'dashicons-admin-generic',
+    );
+
+    register_post_type('topbar_detail', $args);
+}
+add_action('init', 'mytheme_register_topbar_cpt');
