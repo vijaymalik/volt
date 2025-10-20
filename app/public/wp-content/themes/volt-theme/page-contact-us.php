@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>VOLT</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
@@ -426,7 +426,7 @@
         }
 
         .nearby-store .nearby-container h6 {
-            width: 80%;
+            width: 100%;
             font-weight: 500;
             font-size: 52px;
             line-height: 130%;
@@ -452,12 +452,27 @@
             font-weight: 500;
             border: none;
             outline: none;
+            appearance: none;
+        }
+
+        .nearby-store .select {
+            width: 100px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nearby-store .select i {
+            font-size: 30px;
         }
 
         .swiper {
             width: 100%;
             height: 100%;
         }
+
+
 
 
 
@@ -535,8 +550,8 @@
         }
 
         .nearby-slider .nearby-slides .slider-overlay .nearbybottom {
-            width: 326px;
-            height: 145px;
+            width: 90%;
+            height: auto;
             position: absolute;
             top: 270px;
             left: 12px;
@@ -589,7 +604,7 @@
 
 
         .footer .first-row img {
-            width: 250px;
+            width: 336px;
             height: 190px;
 
         }
@@ -630,7 +645,7 @@
             color: #404040;
             text-decoration: none;
             font-weight: 400;
-            margin: 22px 0;
+            margin-bottom: 22px;
             display: block;
             font-size: 18px;
         }
@@ -650,7 +665,6 @@
 
 
         .copywrite a {
-
             font-weight: 500;
             font-style: Medium;
             font-size: 20px;
@@ -661,8 +675,14 @@
 
         }
 
+        .copywrite img {
+            width: 70px;
+            height: 20px;
+
+        }
+
         .bird {
-            margin-top: 12rem;
+            margin-top: 17rem;
             position: absolute;
             right: 0;
         }
@@ -676,9 +696,39 @@
             display: none !important;
         }
 
+        #mbl {
+            display: none;
+        }
+
+        .mbl-sec {
+            display: none;
+            font-family: Onest;
+            font-weight: 500;
+            font-style: Medium;
+            font-size: 28px;
+            line-height: 120%;
+            margin-top: 15px;
+            letter-spacing: 0%;
+            text-transform: capitalize;
+
+        }
+
+        .bird-sec {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column-reverse;
+            }
+
+            .hero .right-sec .form .input2 {
+                flex-direction: column;
+            }
+
+            .hero .right-sec .form .input2 .left,
+            .hero .right-sec .form .input2 .right {
+                width: 100%;
             }
 
             .hero .left-sec {
@@ -687,11 +737,40 @@
 
             .hero .right-sec {
                 width: 100%;
+                height: 1228px;
             }
 
             .hero .left-sec .overlay .overlay-container {
                 top: 0px;
                 left: 0;
+            }
+
+            .bird-sec {
+                position: absolute;
+                right: 0;
+                display: block;
+
+            }
+
+            .bird-sec img {
+                width: 120px !important;
+            }
+
+            .nearby-store .nearby-container select {
+                font-family: Onest;
+                font-weight: 500;
+                font-style: Medium;
+                font-size: 18px;
+
+                line-height: 130%;
+                letter-spacing: 0%;
+                text-transform: capitalize;
+
+
+            }
+
+            .nearby-store .select {
+                width: 65px;
             }
 
 
@@ -700,7 +779,8 @@
             }
 
             .hero .left-sec {
-                height: 700px;
+                height: 709px;
+                background-size: contain;
                 margin-top: 7rem;
             }
 
@@ -711,6 +791,78 @@
             .hero .left-sec .overlay .overlay-container h4,
             .hero .left-sec .overlay .overlay-container p {
                 color: #000;
+                font-size: 28px;
+            }
+
+            #dek {
+                display: none;
+            }
+
+            .mbl-sec {
+                display: block;
+            }
+
+            #mbl,
+            #mbl2 {
+                display: block;
+                font-weight: 400;
+                font-style: Regular;
+                font-size: 15px;
+                padding: 0 12px;
+                line-height: 100%;
+                letter-spacing: 0%;
+                z-index: 99;
+                text-align: center;
+                color: rgba(102, 102, 102, 1);
+            }
+
+            .map-sec span {
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .map-sec h6 {
+
+                font-family: Onest;
+                font-weight: 500;
+                font-style: Medium;
+                font-size: 30px;
+                padding: 0 20px;
+                line-height: 130%;
+                letter-spacing: 0%;
+                text-align: center;
+
+            }
+
+            .hero .left-sec .overlay::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                height: 100px;
+                width: 100%;
+                background: linear-gradient(179.39deg, #FBF5E0 20.45%, #FFFFFF 67.46%);
+
+            }
+
+            #mbl2 {
+                position: absolute;
+                bottom: 50px;
+                margin: 0;
+
+                font-size: 14px;
+                color: rgba(64, 54, 13, 1);
+                transform: translateX(50%);
+            }
+
+            .hero .left-sec .icons .icon {
+                border: 0.5px solid rgba(64, 54, 13, 1);
+                height: 32px;
+                width: 32px;
+            }
+
+            .hero .left-sec .icons .icon i {
+                color: rgba(64, 54, 13, 1);
+                font-size: 15px;
             }
 
             .hero .left-sec .overlay {
@@ -729,6 +881,8 @@
             .nearby-store .nearby-container {
                 flex-direction: column;
                 align-items: start;
+                padding-left: 15px;
+                position: relative;
             }
 
             .birds {
@@ -736,12 +890,12 @@
             }
 
             .nearby-store .nearby-container h6 {
-                font-size: 30px;
+                display: none;
             }
 
             .nearby-slider .nearby-slides {
 
-                transform: translateX(0%);
+                transform: translateX(5%);
 
             }
 
@@ -851,7 +1005,7 @@
 
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Products </a>
+                        <a class="nav-link active" aria-current="page" href="#">Products </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Recipes </a>
@@ -868,7 +1022,9 @@
             <div class="overlay">
                 <div class="overlay-container">
                     <h4>Customer Support</h4>
-                    <p>Have some doubt? Let’s clear it up together!</p>
+                    <p id="dek"> Have some doubt? Let’s clear it up together!</p>
+                    <p id="mbl">Our friendly team is ready to assist you with any VOLT Milk Drink Powder queries.
+                    </p>
                     <div class="icons">
                         <div class="icon">
                             <i class="ri-facebook-fill"></i>
@@ -881,7 +1037,11 @@
                             <i class="ri-linkedin-line"></i>
                         </div>
                     </div>
+
+
                 </div>
+                <p id="mbl2">Have some doubt? <br>
+                    Let’s clear it up together!</p>
             </div>
         </div>
         <div class="right-sec">
@@ -964,16 +1124,25 @@
 
 
     <div class="nearby-store pb-5">
-        <div class="container">
+        <div class="container ">
             <div class="nearby-container">
-                <div class="sm:d-flex gap-2">
+                <div class="d-sm-flex gap-2">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 111102.png" alt="">
-                    <h6>Grab yours at the Nearby Stores</h6>
+                    <h6>Grab yours at the <br>
+                        Nearby Stores</h6>
+                    <h5 class="mbl-sec">Buy Our Products in <br> Supermarket Near You</h5>
+
+                </div>
+                <div class="bird-sec">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird (2).png" alt="">
                 </div>
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/birds.png" class="birds" alt="">
-                <select name="" id="">
-                    <option value="">Fiji</option>
-                </select>
+                <div class="select">
+                    <select name="" id="">
+                        <option value="">Fiji</option>
+                    </select>
+                    <i class="ri-arrow-down-s-line"></i>
+                </div>
             </div>
         </div>
 
@@ -1058,9 +1227,8 @@
             </div>
         </div>
 
-
         <div class="navi">
-            <div class="arrow">
+            <div class="arrow ">
                 <i class="ri-arrow-left-s-line left"></i>
             </div>
             <div class="arrow">
@@ -1073,30 +1241,30 @@
     <div class="footer pt-5 ">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-5">
                     <div class="first-row">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png" alt="">
-                        <h6>Driving Fiji’s food industry forward with quality, innovation and trust...</h6>
+                        <h6>Driving Fiji’s food industry <br> forward with quality, innovation <br> and trust...</h6>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
                     <div class="second-row">
                         <h6>Product</h6>
                         <a href="">Milk Drink Powder</a>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
                     <div class="second-row">
                         <h6>Recipes</h6>
-                        <a href="">Rustic Bowl with Sunny-Side-Up</a>
-                        <a href="">Pomegranate Ice Cream Delight</a>
+                        <a href="">Rustic Bowl with <br> Sunny-Side-Up</a>
+                        <a href="">Pomegranate Ice <br> Cream Delight</a>
                         <a href="">Non Vegan Elegant Seafood</a>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
                     <div class="second-row">
                         <h6>Get In Touch</h6>
-                        <a href="">9876543210,
+                        <a href="">9876543210,<br>
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
@@ -1130,8 +1298,9 @@
         </div>
         <hr class="phone-hr">
 
-        <div class="text-center text-sm-start">
-            <a href="#">Carefully Crafted By 3minds</a>
+        <div class="text-center  text-sm-start">
+            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
+                    alt=""></a>
         </div>
     </div>
 
@@ -1169,8 +1338,6 @@
             },
         });
     </script>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
