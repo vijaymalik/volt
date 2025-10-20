@@ -1104,7 +1104,7 @@
             .swiper-slide {
                 width: auto !important;
                 flex-shrink: 0;
-                min-width: 160px;
+                max-width: 300px;
 
             }
 
