@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
     <style>
         * {
             margin: 0;
@@ -32,7 +31,7 @@
         }
 
         .navbar {
-            position: absolute !important;
+            position: fixed !important;
             top: 32px;
             left: 50%;
             transform: translateX(-50%);
@@ -313,6 +312,7 @@
 
         .hero .right-sec .form .submit-sec input {
             height: 24px;
+            opacity: 0.4;
             width: 24px;
             border-radius: 4px;
             border: 1px solid #D2D5DA;
@@ -395,7 +395,6 @@
             font-weight: 500;
             font-size: 38px;
             text-align: center;
-            width: 45%;
             line-height: 130%;
             letter-spacing: -2%;
         }
@@ -414,6 +413,12 @@
 
         /* nearby store */
 
+
+        .containers {
+            margin: 0 auto;
+            width: 90%;
+
+        }
 
         .nearby-store {
             background-color: #fff;
@@ -446,10 +451,15 @@
             margin-top: -5%;
         }
 
+        #mbl2 {
+            display: none;
+        }
+
         .nearby-store .nearby-container select {
             color: #916238;
             font-size: 32px;
             font-weight: 500;
+            background-color: transparent;
             border: none;
             outline: none;
             appearance: none;
@@ -663,6 +673,12 @@
 
         }
 
+        .nearby-slider .nearby-slides .slider-overlay .nearbytop button,
+        .nearby-slider .nearby-slides .slider-overlay .nearbybottom span i {
+            display: flex;
+            gap: 10px;
+        }
+
 
         .copywrite a {
             font-weight: 500;
@@ -696,6 +712,11 @@
             display: none !important;
         }
 
+        .mbl-footer {
+            display: none;
+        }
+
+
         #mbl {
             display: none;
         }
@@ -713,7 +734,17 @@
 
         }
 
+
+
         .bird-sec {
+            display: none;
+        }
+
+        .home-phn {
+            display: none;
+        }
+
+        .mbl-copy {
             display: none;
         }
 
@@ -737,7 +768,7 @@
 
             .hero .right-sec {
                 width: 100%;
-                height: 1228px;
+                height: 1080px;
             }
 
             .hero .left-sec .overlay .overlay-container {
@@ -802,6 +833,33 @@
                 display: block;
             }
 
+            .light-icon {
+                height: 20px !important;
+                width: 20px !important;
+            }
+
+            .nearby-slider .nearby-slides .slider-overlay .nearbytop h6 {
+                font-size: 16px;
+            }
+
+            .nearby-slider .nearby-slides .slider-overlay .nearbytop button,
+            .nearby-slider .nearby-slides .slider-overlay .nearbybottom span {
+                font-size: 10px;
+            }
+
+            .nearby-slider .nearby-slides .slider-overlay .nearbybottom p {
+                font-size: 12px;
+                line-height: 130%;
+            }
+
+            .nearby-slider .nearby-slides .slider-overlay .nearbybottom {
+                top: 290px;
+            }
+
+            .nearby-store .navi {
+                display: none;
+            }
+
             #mbl,
             #mbl2 {
                 display: block;
@@ -809,7 +867,7 @@
                 font-style: Regular;
                 font-size: 15px;
                 padding: 0 12px;
-                line-height: 100%;
+                line-height: 130%;
                 letter-spacing: 0%;
                 z-index: 99;
                 text-align: center;
@@ -842,6 +900,20 @@
                 width: 100%;
                 background: linear-gradient(179.39deg, #FBF5E0 20.45%, #FFFFFF 67.46%);
 
+            }
+
+            .mbl-footer .first-row h6 {
+                font-size: 18px;
+                font-weight: 400;
+            }
+
+            .mbl-footer .second-row h6 {
+                font-size: 18px;
+                margin-bottom: 17px;
+            }
+
+            .mbl-footer .second-row a {
+                margin-bottom: 18px;
             }
 
             #mbl2 {
@@ -902,7 +974,7 @@
             .copywrite a {
                 display: block;
                 padding: 10px 0;
-                border-bottom: 0.5px solid #e7e7e7;
+                /* border-bottom: 0.5px solid #e7e7e7; */
             }
 
             .hero .right-sec .form {
@@ -912,18 +984,151 @@
             }
 
             .navbar {
+                position: absolute !important;
                 flex-direction: row;
             }
 
+            .navbar .nav-container .talk-btn {
+                margin-right: -70px;
+            }
+
+            .menu-btn {
+
+                background: #f9f9f9;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: 0.3s ease;
+            }
+
+            .menu-btn span {
+                position: relative;
+                display: block;
+                width: 18px;
+                height: 1px;
+                left: -8px;
+                border-radius: 1px;
+                transition: 0.3s ease;
+            }
+
+            .navbar-toggler {
+                background: rgba(249, 249, 249, 1);
+                border: 0.69px solid rgba(240, 240, 240, 1);
+                height: 40px;
+                width: 40px;
+                border-radius: 10px !important;
+                border-width: 0.69px;
+                padding-top: 8.31px;
+                padding-right: 11.08px;
+                padding-bottom: 8.31px;
+                padding-left: 11.08px;
+                gap: 8.31px;
+
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: none !important;
+            }
+
+            .menu-btn span::before,
+            .menu-btn span::after {
+                content: "";
+                position: absolute;
+                width: 18px;
+                height: 2px;
+                background: #000;
+                border-radius: 2px;
+                transition: 0.3s ease;
+            }
+
+            .menu-btn span::before {
+                top: -6px;
+            }
+
+            .menu-btn span::after {
+                top: 6px;
+            }
+
+            /* When Active (Cross) */
+            .menu-btn.active span {
+                background: transparent;
+            }
+
+            .menu-btn.active span::before {
+                transform: rotate(45deg);
+                top: 0;
+            }
+
+            .menu-btn.active span::after {
+                transform: rotate(-45deg);
+                top: 0;
+            }
+
+
+            .nav-container {
+                padding: 0 10px !important;
+            }
+
             .phn-btn {
-                height: 46px !important;
-                width: 109px !important;
+                height: 43px !important;
+                width: 103px !important;
                 font-size: 14px !important;
                 font-weight: 500;
                 cursor: pointer;
                 display: flex !important;
+            }
 
+            .home-phn {
+                display: block;
+                width: 100% !important;
 
+                font-style: Regular;
+                font-size: 15px !important;
+                color: rgba(102, 102, 102, 1);
+                line-height: 100%;
+                letter-spacing: 0%;
+                text-align: center;
+
+            }
+
+            .desktop-footer {
+                display: none;
+            }
+
+            .mbl-footer {
+                display: block;
+            }
+
+            .swiper-slide {
+                width: auto !important;
+                flex-shrink: 0;
+                min-width: 160px;
+
+            }
+
+            .right-para {
+                display: none;
+            }
+
+            .hero .right-sec .form h2 {
+                font-size: 28px;
+                text-align: center;
+            }
+
+            .navbar {
+                height: 100px;
+            }
+
+            .hero .right-sec .form .submit-sec p {
+                font-size: 12px;
+                line-height: 18px;
+                font-weight: 400;
+            }
+
+            .hero .right-sec .form .submit-sec {
+                align-items: center;
             }
 
             .desktop-hr {
@@ -944,11 +1149,74 @@
             }
 
             .bird {
-                margin-top: 32rem;
+                margin-top: 47rem;
                 right: 0;
+                width: 115px;
+            }
+
+            .accordion-item {
+                border-bottom: 1px solid #ddd;
+                background: #fff9e5;
+                /* optional soft background like your image */
+            }
+
+            .accordion-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                padding: 5px 10px;
             }
 
 
+            .accordion-header h6 {
+                margin: 0;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .accordion-header .icon {
+                font-size: 22px;
+                transition: transform 0.3s ease;
+            }
+
+            .accordion-content {
+                display: none;
+                padding: 0 10px 10px;
+                flex-direction: column;
+            }
+
+            .accordion-content a {
+                display: block;
+                color: #000;
+                font-size: 15px;
+                text-decoration: none;
+                padding: 5px 0;
+                transition: 0.2s;
+            }
+
+            .accordion-content a:hover {
+                color: #bfa227;
+                /* gold accent */
+            }
+
+            /* When active */
+            .accordion-item.active .accordion-content {
+                display: block;
+            }
+
+            .accordion-item.active .icon {
+                transform: rotate(45deg);
+            }
+
+            .accordion-item {
+                background-color: transparent !important;
+                border: none !important;
+            }
+
+            .mbl-copy {
+                display: block !important;
+            }
 
         }
 
@@ -987,7 +1255,8 @@
 
 
 
-        <div class="container-fluid nav-container mt-2 px-4">
+
+        <div class="container-fluid nav-container mt-sm-2 px-sm-4">
             <a class="navbar-brand" href="#">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
                     alt="">
@@ -997,7 +1266,11 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedConten" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <div class="menu-btn" id="menu-btn">
+                    <span></span>
+
+                </div>
+
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -1023,7 +1296,8 @@
                 <div class="overlay-container">
                     <h4>Customer Support</h4>
                     <p id="dek"> Have some doubt? Let’s clear it up together!</p>
-                    <p id="mbl">Our friendly team is ready to assist you with any VOLT Milk Drink Powder queries.
+                    <p id="mbl">Our friendly team is ready to assist you with <br> any VOLT Milk Drink Powder
+                        queries.
                     </p>
                     <div class="icons">
                         <div class="icon">
@@ -1047,8 +1321,14 @@
         <div class="right-sec">
             <div class="form">
                 <h2>Get in Touch</h2>
-                <p>We’re ready to answer your questions and assist you promptly. Our friendly team is ready to assist
+                <p class="right-para">We’re ready to answer your questions and assist you promptly. Our friendly <br>
+                    team is ready to
+                    assist
                     you with any VOLT Milk Drink Powder queries.</p>
+
+
+                <p class="home-phn">We’re ready to answer your questions and <br> assist you promptly.</p>
+
 
                 <div class="input">
                     <label for="">Name</label>
@@ -1094,7 +1374,9 @@
 
                 <div class="submit-sec">
                     <input type="checkbox">
-                    <p>By submitting the above form, you consent to our <span>terms and conditions.</span></p>
+                    <p>By submitting the above form, you consent to our <span><a class="text-black"
+                                href="">terms and
+                                conditions.</a></span></p>
                 </div>
 
                 <div class="submit-button">
@@ -1107,9 +1389,15 @@
 
     <div class="map-sec">
         <span>OUR LOCATION</span>
-        <h6>Carpenters Fiji Pte Ltd / Morris Hedstrom Head Office, 34 Rodwell Road, Suva, Fiji</h6>
+        <h6 class="d-none d-sm-block">Carpenters Fiji Pte Ltd / Morris <br> Hedstrom Head Office, 34 Rodwell <br>Road,
+            Suva, Fiji</h6>
+
+        <h6 class="d-block d-sm-none">Carpenters Fiji Pte Ltd / <br> Morris Hedstrom Head <br> Office, 34 Rodwell
+            <br>Road, Suva, Fiji
+        </h6>
         <div class="d-flex  align-items-center justify-content-center">
-            <img height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/assets/images/light.png" alt="">
+            <img class="light-icon" height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/assets/images/light.png"
+                alt="">
         </div>
 
         <div class="map">
@@ -1124,7 +1412,7 @@
 
 
     <div class="nearby-store pb-5">
-        <div class="container ">
+        <div class="containers ">
             <div class="nearby-container">
                 <div class="d-sm-flex gap-2">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 111102.png" alt="">
@@ -1154,7 +1442,7 @@
             'posts_per_page' => -1
         ));
 
-        // Default values
+        // Default fallback values
         $default_image = get_template_directory_uri() . '/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png';
         $default_name = 'Extra Supermarket';
         $default_distance = '1.2Km';
@@ -1164,7 +1452,7 @@
 
         if ($stores->have_posts()):
             while ($stores->have_posts()): $stores->the_post();
-                // Get ACF image field as array
+                // ACF fields
                 $image_field = get_field('image');
                 $store_image = $image_field && isset($image_field['url']) ? $image_field['url'] : $default_image;
 
@@ -1182,11 +1470,13 @@
                                 <h6><?php echo wp_kses_post($store_name); ?></h6>
                                 <button><i class="ri-crosshair-2-line"></i>Directions</button>
                             </div>
+
                             <div class="nearbybottom">
                                 <span><?php echo esc_html($store_distance); ?></span>
                                 <p><?php echo esc_html($store_address); ?></p>
+
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span>
+                                    <span class="d-flex">
                                         <i class="ri-phone-line"></i>
                                         <?php echo esc_html($store_phone); ?>
                                     </span>
@@ -1206,16 +1496,18 @@
                         <img src="<?php echo esc_url($default_image); ?>" alt="Default Store">
                         <div class="slider-overlay">
                             <div class="nearbytop">
-                                <h6><?php echo $default_name; ?></h6>
+                                <h6><?php echo esc_html($default_name); ?></h6>
                                 <button><i class="ri-crosshair-2-line"></i>Directions</button>
                             </div>
+
                             <div class="nearbybottom">
-                                <span><?php echo $default_distance; ?></span>
-                                <p><?php echo $default_address; ?></p>
+                                <span><?php echo esc_html($default_distance); ?></span>
+                                <p><?php echo esc_html($default_address); ?></p>
+
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span>
+                                    <span class="d-flex">
                                         <i class="ri-phone-line"></i>
-                                        <?php echo $default_phone; ?>
+                                        <?php echo esc_html($default_phone); ?>
                                     </span>
                                     <p><?php echo wp_kses_post($default_hours); ?></p>
                                 </div>
@@ -1227,6 +1519,7 @@
             </div>
         </div>
 
+
         <div class="navi">
             <div class="arrow ">
                 <i class="ri-arrow-left-s-line left"></i>
@@ -1237,8 +1530,7 @@
         </div>
     </div>
 
-
-    <div class="footer pt-5 ">
+    <div class="footer desktop-footer pt-5 ">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
@@ -1289,8 +1581,101 @@
             </div>
         </div>
     </div>
+
+
+    <div class="footer mbl-footer pt-5 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-5">
+                    <div class="first-row">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png" alt="">
+                        <h6>Driving Fiji’s food industry forward with <br> quality, innovation and trust...</h6>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg">
+                    <div class="second-row">
+                        <h6>Get In Touch</h6>
+                        <a href="">9876543210,<br>
+                            Savusavu, Vanua Levu, Fiji</a>
+                        <div class="d-flex align-items-center gap-2 position-relative">
+                            <div class="icon">
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
+                            </div>
+                            <div class="icon">
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                    alt="instagram-new--v1" />
+
+                            </div>
+                            <div class="icon">
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
+                            </div>
+                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion mt-4">
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" style="padding: 0px 8px;">
+                            <h6>Recipes</h6>
+                            <span class="icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <a href="">Rustic Bowl with <br> Sunny-Side-Up</a>
+                            <a href="">Pomegranate Ice <br> Cream Delight</a>
+                            <a href="">Non Vegan Elegant Seafood</a>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" style="padding: 0px 8px;">
+                            <h6>Product</h6>
+                            <span class="icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <a href="">Milk Drink Powder</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h6>Privacy Policy</h6>
+
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h6>Terms & Conditions</h6>
+
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h6>FAQs</h6>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
     <hr class="desktop-hr">
-    <div class="copywrite mt-5 d-sm-flex align-items-center justify-content-between container">
+    <div class="copywrite mt-5 d-none  d-sm-flex align-items-center justify-content-between container">
         <div class="d-sm-flex align-items-center gap-4">
             <a href="">Privacy Policy</a>
             <a href="">Terms & Conditions</a>
@@ -1304,8 +1689,22 @@
         </div>
     </div>
 
-    <div class="end">
+    <div class="copywrite mbl-copy mt-5  align-items-center justify-content-between container">
+
+        <hr class="phone-hr">
+
+        <div class="text-center  text-sm-start">
+            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
+                    alt=""></a>
+        </div>
+    </div>
+
+    <div class="end d-none d-sm-flex">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 140915.png" alt="">
+    </div>
+
+    <div class="end  d-block d-sm-none">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mblf.png" alt="">
     </div>
 
     <!-- Swiper JS -->
@@ -1313,29 +1712,52 @@
 
     <!-- Initialize Swiper -->
     <script>
-        var swiper = new Swiper(".mySwiper", {
+        var swiper = new Swiper(".nearby-slider", {
             slidesPerView: 4,
             spaceBetween: 30,
-            loop: true, // <-- enables infinite loop
+            loop: true,
             navigation: {
                 nextEl: ".right",
                 prevEl: ".left",
             },
-            watchOverflow: true,
             breakpoints: {
+                // Extra small phones (up to 480px)
                 0: {
                     slidesPerView: 1,
                     spaceBetween: 10,
                 },
-                641: {
+                // Small phones to tablets (481px to 768px)
+                481: {
                     slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                // Tablets (769px to 1024px)
+                769: {
+                    slidesPerView: 3,
                     spaceBetween: 20,
                 },
+                // Desktop (above 1024px)
                 1025: {
                     slidesPerView: 4,
                     spaceBetween: 30,
                 },
             },
+        });
+
+        const accordions = document.querySelectorAll(".accordion-header");
+
+        accordions.forEach(header => {
+            header.addEventListener("click", () => {
+                const parent = header.parentElement;
+
+                // Close all other accordions (optional)
+                document.querySelectorAll(".accordion-item").forEach(item => {
+                    if (item !== parent) item.classList.remove("active");
+                });
+
+                // Toggle current accordion
+                parent.classList.toggle("active");
+            });
         });
     </script>
 
