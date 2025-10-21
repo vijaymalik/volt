@@ -56,11 +56,9 @@
 
 
 
-
         <div class="container-fluid nav-container mt-sm-2 px-sm-4">
-            <a class="navbar-brand" href="/">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
-                    alt="">
+            <a class="navbar-brand" href="#">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png" alt="">
             </a>
             <button class="talk-btn phn-btn">Let's Talk</button>
 
@@ -93,7 +91,7 @@
     </nav>
 
 
-    <?php
+<?php
 // Fetch the latest Topbar Detail post
 $topbar_query = new WP_Query(array(
     'post_type'      => 'topbar_detail',
@@ -406,8 +404,7 @@ else :
                             <p>Where you belong, grows stronger with <br> you. Join our community.</p>
                             <div class="d-none d-sm-block">
                                 <a href="">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png"
-                                        alt="">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png" alt="">
                                 </a>
                                 <a href="">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/insta.png" alt="">
@@ -490,19 +487,137 @@ else :
         </div>
     </div>
 
-
-    <div class="our-recipes-mbl">
+    <div class="our-recipes-mbl px-4 position-relative">
         <h2>Our Recipes</h2>
         <div class="swiper mySwiper our-recipe-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url('https://picsum.photos/id/1011/400/400')">
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h3>Vegan Cracker</h3>
-                        <p>Breakfast • 1.2 hrs</p>
-                        <a href="#" class="btn">Learn More</a>
+                <div class="swiper-slide">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+                    <div class="overlay">
+                        <div class="top d-flex justify-content-between">
+                            <h4>Vegan Cracker <br>
+                                Breakfast</h4>
+
+                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
+                        </div>
+                        <div class="top d-flex align-items-center justify-content-between ">
+                            <div>
+                                <div>
+                                <button>Vegan</button>
+                            </div>
+                            <div>
+                                <button>Gluten-Free</button>
+                            </div>
+                            </div>
+                            <div class="learn-more">
+                                <button>Learn More</button>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+                   <div class="swiper-slide">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+                    <div class="overlay">
+                        <div class="top d-flex justify-content-between">
+                            <h4>Vegan Cracker <br>
+                                Breakfast</h4>
+
+                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
+                        </div>
+                        <div class="top d-flex align-items-center justify-content-between ">
+                            <div>
+                                <div>
+                                <button>Vegan</button>
+                            </div>
+                            <div>
+                                <button>Gluten-Free</button>
+                            </div>
+                            </div>
+                            <div class="learn-more">
+                                <button>Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                   <div class="swiper-slide">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+                    <div class="overlay">
+                        <div class="top d-flex justify-content-between">
+                            <h4>Vegan Cracker <br>
+                                Breakfast</h4>
+
+                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
+                        </div>
+                        <div class="top d-flex align-items-center justify-content-between ">
+                            <div>
+                                <div>
+                                <button>Vegan</button>
+                            </div>
+                            <div>
+                                <button>Gluten-Free</button>
+                            </div>
+                            </div>
+                            <div class="learn-more">
+                                <button>Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                   <div class="swiper-slide">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+                    <div class="overlay">
+                        <div class="top d-flex justify-content-between">
+                            <h4>Vegan Cracker <br>
+                                Breakfast</h4>
+
+                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
+                        </div>
+                        <div class="top d-flex align-items-center justify-content-between ">
+                            <div>
+                                <div>
+                                <button>Vegan</button>
+                            </div>
+                            <div>
+                                <button>Gluten-Free</button>
+                            </div>
+                            </div>
+                            <div class="learn-more">
+                                <button>Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                   <div class="swiper-slide">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+                    <div class="overlay">
+                        <div class="top d-flex justify-content-between">
+                            <h4>Vegan Cracker <br>
+                                Breakfast</h4>
+
+                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
+                        </div>
+                        <div class="top d-flex align-items-center justify-content-between ">
+                            <div>
+                                <div>
+                                <button>Vegan</button>
+                            </div>
+                            <div>
+                                <button>Gluten-Free</button>
+                            </div>
+                            </div>
+                            <div class="learn-more">
+                                <button>Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                
 
             </div>
         </div>
@@ -510,7 +625,8 @@ else :
     </div>
 
     <div class="poll position-relative">
-        <img class="poll-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll.jpg" alt="">
+        <img class="poll-img d-none d-sm-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll.jpg" alt="">
+        <img class="h-100 w-100 object-fit-cover d-block d-sm-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll-mbl.jpg" alt="">
         <div class="poll-over">
             <div class="poll-container">
                 <div class="container">
@@ -518,7 +634,8 @@ else :
                         <div class="col-12 col-sm-8">
                             <div class="d-flex align-items-sm-start h-100 justify-content-center flex-column">
                                 <h2>Poll for Future <br> Volt Flavor</h2>
-                                <p>Vote for our next flavour and get <br> 5% off for sharing your pick!</p>
+                                <p class="d-none d-sm-block">Vote for our next flavour and get <br> 5% off for sharing your pick!</p>
+                                <p class="d-block d-sm-none">Vote for our next flavour and get  5% off <br> for sharing your pick!</p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
@@ -538,24 +655,18 @@ else :
                 <div class="marques mt-5 ">
                     <div class="marque-content text-white">
                         <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
 
                         <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                     </div>
                 </div>
 
@@ -564,7 +675,7 @@ else :
     </div>
 
 
-    <div class="nearby-store pb-5">
+ <div class="nearby-store pb-5">
         <div class="containers ">
             <div class="nearby-container">
                 <div class="d-sm-flex gap-2">
@@ -713,18 +824,17 @@ else :
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
+                                    alt="facebook-new" />
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
                                     alt="instagram-new--v1" />
 
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
+                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
+                                    alt="twitterx--v2" />
                             </div>
                             <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
 
@@ -752,18 +862,17 @@ else :
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
+                                    alt="facebook-new" />
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
                                     alt="instagram-new--v1" />
 
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
+                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
+                                    alt="twitterx--v2" />
                             </div>
                             <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
 
@@ -837,8 +946,7 @@ else :
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
-                    alt=""></a>
+            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
         </div>
     </div>
 
@@ -847,8 +955,7 @@ else :
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
-                    alt=""></a>
+            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
         </div>
     </div>
 
@@ -866,6 +973,9 @@ else :
 
     <!-- Initialize Swiper -->
     <script>
+
+
+
         var swiper = new Swiper(".nearby-slider", {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -916,7 +1026,7 @@ else :
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var swiper = new Swiper(".our-products-slider", {
                 slidesPerView: 1,
 
@@ -927,11 +1037,13 @@ else :
                 },
             });
         });
+
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-    </script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1123,7 +1123,7 @@ body {
     .swiper-slide {
         width: auto !important;
         flex-shrink: 0;
-        max-width: 300px;
+        max-width: 100%;
 
     }
 
@@ -1241,6 +1241,8 @@ body {
         width: 231px;
         height: 159px;
     }
+    
+    
 
 }
 

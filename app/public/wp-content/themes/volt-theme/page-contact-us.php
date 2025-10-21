@@ -491,32 +491,24 @@
     <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper(".nearby-slider", {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            navigation: {
-                nextEl: ".right",
-                prevEl: ".left",
-                disabledClass: "swiper-button-disabled", // default, can be customized
-            },
-            breakpoints: {
-                0: {
-                    slidesPerView: 1,
-                    spaceBetween: 10
-                },
-                481: {
-                    slidesPerView: 2,
-                    spaceBetween: 15
-                },
-                769: {
-                    slidesPerView: 3,
-                    spaceBetween: 20
-                },
-                1025: {
-                    slidesPerView: 4,
-                    spaceBetween: 30
-                },
-            },
-        });
+  slidesPerView: 4,
+  spaceBetween: 30,
+  watchOverflow: true,
+  roundLengths: true,
+  navigation: {
+    nextEl: ".right",
+    prevEl: ".left",
+    disabledClass: "swiper-button-disabled",
+  },
+  breakpoints: {
+    0:   { slidesPerView: 1, spaceBetween: 10 },
+    481: { slidesPerView: 2, spaceBetween: 15 },
+    769: { slidesPerView: 3, spaceBetween: 20 },
+    1025:{ slidesPerView: 4, spaceBetween: 30 },
+  },
+});
+
+
 
 
         // Arrow fade function
