@@ -131,7 +131,7 @@ body {
     background-size: cover;
     position: relative;
     overflow: hidden;
-    background-image: url('./assets/b0445bc11c223ec249a004bbb6af456bcc7eec51.png');
+background-image: url('../images/b0445bc11c223ec249a004bbb6af456bcc7eec51.png');
 }
 
 .hero .left-sec .overlay {

@@ -101,7 +101,7 @@
 .our-products-slider .product::after {
     content: "";
     position: absolute;
-    background: url('./assets/cloud.png');
+    background: url('../images/cloud.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -117,7 +117,7 @@
 .our-products-slider .product::before {
     content: "";
     position: absolute;
-    background: url('./assets/cloud.png');
+    background: url('../images/cloud.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -320,7 +320,7 @@
     right: 0;
     width: 500px;
     height: 500px;
-    background-image: url('./assets/cloud.png');
+    background-image: url('../images/cloud.png');
     background-position: center;
     background-repeat: no-repeat;
 }
