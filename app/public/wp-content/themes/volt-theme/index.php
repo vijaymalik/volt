@@ -20,25 +20,47 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="marques">
             <div class="marque-content">
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <!-- duplicate again -->
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
+                <?php
+                // Query the latest topbar_detail post
+                $topbar = new WP_Query([
+                    'post_type' => 'topbar_detail',
+                    'posts_per_page' => 1,
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                ]);
+                
+                // Default text
+                $default_text = '20% Off on Punjas Biscuits';
+                
+                if ($topbar->have_posts()):
+                    while ($topbar->have_posts()):
+                        $topbar->the_post();
+                        $marque_text = get_field('marque_text');
+                        $text_to_show = $marque_text ? $marque_text : $default_text;
+                
+                        // Repeat it 12 times
+                        for ($i = 0; $i < 12; $i++) {
+                            echo '<span>' . esc_html($text_to_show) . '</span>';
+                        }
+                    endwhile;
+                    wp_reset_postdata();
+                    // No posts found — show default message 12 times
+                else:
+                    for ($i = 0; $i < 12; $i++) {
+                        echo '<span>' . esc_html($default_text) . '</span>';
+                    }
+                endif;
+                ?>
             </div>
         </div>
 
 
 
+
         <div class="container-fluid nav-container mt-sm-2 px-sm-4">
-            <a class="navbar-brand" href="#">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png" alt="">
+            <a class="navbar-brand" href="/">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
+                    alt="">
             </a>
             <button class="talk-btn phn-btn">Let's Talk</button>
 
@@ -71,34 +93,127 @@
     </nav>
 
 
+    <?php
+// Fetch the latest Topbar Detail post
+$topbar_query = new WP_Query(array(
+    'post_type'      => 'topbar_detail',
+    'posts_per_page' => 1,
+));
+
+if ($topbar_query->have_posts()) :
+    while ($topbar_query->have_posts()) : $topbar_query->the_post();
+
+        // Get ACF fields
+        $banner_back_image    = get_field('banner_back_image');
+        $banner_product_image = get_field('banner_product_image');
+        $heading_html         = get_field('heading');
+
+        // Fallbacks
+        $default_back_image    = get_template_directory_uri() . '/assets/images/banner.jpg';
+        $default_product_image = get_template_directory_uri() . '/assets/images/banner-1.png';
+        $default_heading_html  = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
+        ?>
+
     <div class="home-banner">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/banner.jpg" alt="">
+        <img src="<?php echo esc_url($banner_back_image['url'] ?? $default_back_image); ?>" alt="">
         <div class="home-overlayer">
-            <h6>Quality you trust.</h6>
-            <h1>Taste You Love.</h1>
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/banner-1.png" alt="">
+            <?php
+            // Show custom or fallback heading
+            echo !empty($heading_html) ? $heading_html : $default_heading_html;
+            ?>
+            <img src="<?php echo esc_url($banner_product_image['url'] ?? $default_product_image); ?>" alt="">
             <div class="explore-button">
                 <button>Explore Product</button>
             </div>
         </div>
     </div>
-    <div class="marques mt-sm-5 pt-sm-5">
-        <div class="marque-content text-black">
-            <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-            <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-            <span class="text-black mx-5">LOW CALORIE</span>
-            <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-            <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-            <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
 
-            <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-            <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-            <span class="text-black mx-5">LOW CALORIE</span>
-            <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-            <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-            <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+    <?php
+    endwhile;
+    wp_reset_postdata();
+else :
+    // No Topbar Detail found → Show full default
+    ?>
+    <div class="home-banner">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner.jpg'); ?>" alt="">
+        <div class="home-overlayer">
+            <h6>Quality you trust.</h6>
+            <h1>Taste You Love.</h1>
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-1.png'); ?>" alt="">
+            <div class="explore-button">
+                <button>Explore Product</button>
+            </div>
         </div>
     </div>
+    <?php endif; ?>
+
+    <?php
+// Fetch latest Topbar Detail post
+$topbar_query = new WP_Query(array(
+    'post_type'      => 'topbar_detail',
+    'posts_per_page' => 1,
+));
+
+if ($topbar_query->have_posts()) :
+    while ($topbar_query->have_posts()) : $topbar_query->the_post();
+
+        // Get custom field
+        $marque_detail = get_field('marque_detail'); // ACF field name
+        ?>
+
+    <div class="marques mt-sm-5 pt-sm-5">
+        <div class="marque-content text-black">
+            <?php
+                if (!empty($marque_detail)) {
+                    // Loop 12 times
+                    for ($i = 0; $i < 12; $i++) {
+                        echo '<span class="marque-content text-black">' . esc_html($marque_detail) . '</span>';
+                    }
+                } else {
+                    // Default static content
+                    ?>
+            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
+            <span class="marque-content text-black">LOW CALORIE</span>
+            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
+            <span class="marque-content text-black">LOW CALORIE</span>
+            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
+            <span class="marque-content text-black">LOW CALORIE</span>
+            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
+            <span class="marque-content text-black">LOW CALORIE</span>
+            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+            <?php
+                }
+                ?>
+        </div>
+    </div>
+
+    <?php
+    endwhile;
+    wp_reset_postdata();
+else :
+    // If no topbar_detail post exists
+    ?>
+    <div class="marques mt-sm-5 pt-sm-5">
+        <div class="marque-content text-black">
+            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
+            <span class="marque-content text-black">LOW CALORIE</span>
+            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
+            <span class="marque-content text-black">LOW CALORIE</span>
+            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
+            <span class="marque-content text-black">LOW CALORIE</span>
+            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
+            <span class="marque-content text-black">LOW CALORIE</span>
+            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+        </div>
+    </div>
+    <?php endif; ?>
+
 
 
     <div class="our-products position-relative mt-5">
@@ -291,7 +406,8 @@
                             <p>Where you belong, grows stronger with <br> you. Join our community.</p>
                             <div class="d-none d-sm-block">
                                 <a href="">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png" alt="">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png"
+                                        alt="">
                                 </a>
                                 <a href="">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/insta.png" alt="">
@@ -313,11 +429,11 @@
 
     </div>
 
-<div class="our-recipes">
-    <h1>Our Recipes</h1>
-    <div class="swiper mySwiper nearby-slider mt-5">
-        <div class="swiper-wrapper">
-            <?php
+    <div class="our-recipes">
+        <h1>Our Recipes</h1>
+        <div class="swiper mySwiper nearby-slider mt-5">
+            <div class="swiper-wrapper">
+                <?php
             // WP Query for 5 latest recipes
             $recipes = new WP_Query(array(
                 'post_type' => 'recipe',
@@ -365,14 +481,14 @@
                         </div>
                     </div>
                 </div>
-            <?php
+                <?php
                 endwhile;
                 wp_reset_postdata();
             endif;
             ?>
+            </div>
         </div>
     </div>
-</div>
 
 
     <div class="our-recipes-mbl">
@@ -422,18 +538,24 @@
                 <div class="marques mt-5 ">
                     <div class="marque-content text-white">
                         <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-white mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
 
                         <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-white mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                     </div>
                 </div>
 
@@ -591,17 +713,18 @@
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
-                                    alt="facebook-new" />
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
                             </div>
                             <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
                                     alt="instagram-new--v1" />
 
                             </div>
                             <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
-                                    alt="twitterx--v2" />
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
                             </div>
                             <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
 
@@ -629,17 +752,18 @@
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
-                                    alt="facebook-new" />
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
                             </div>
                             <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
                                     alt="instagram-new--v1" />
 
                             </div>
                             <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
-                                    alt="twitterx--v2" />
+                                <img width="30" height="30"
+                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
                             </div>
                             <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
 
@@ -713,7 +837,8 @@
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
+            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
+                    alt=""></a>
         </div>
     </div>
 
@@ -722,7 +847,8 @@
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
+            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
+                    alt=""></a>
         </div>
     </div>
 
@@ -740,9 +866,6 @@
 
     <!-- Initialize Swiper -->
     <script>
-
-
-
         var swiper = new Swiper(".nearby-slider", {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -793,7 +916,7 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             var swiper = new Swiper(".our-products-slider", {
                 slidesPerView: 1,
 
@@ -804,13 +927,11 @@
                 },
             });
         });
-
-
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

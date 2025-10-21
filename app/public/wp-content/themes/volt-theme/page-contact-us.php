@@ -20,24 +20,44 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="marques">
             <div class="marque-content">
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <!-- duplicate again -->
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
+                <?php
+                // Query the latest topbar_detail post
+                $topbar = new WP_Query([
+                    'post_type' => 'topbar_detail',
+                    'posts_per_page' => 1,
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                ]);
+                
+                // Default text
+                $default_text = '20% Off on Punjas Biscuits';
+                
+                if ($topbar->have_posts()):
+                    while ($topbar->have_posts()):
+                        $topbar->the_post();
+                        $marque_text = get_field('marque_text');
+                        $text_to_show = $marque_text ? $marque_text : $default_text;
+                
+                        // Repeat it 12 times
+                        for ($i = 0; $i < 12; $i++) {
+                            echo '<span>' . esc_html($text_to_show) . '</span>';
+                        }
+                    endwhile;
+                    wp_reset_postdata();
+                    // No posts found — show default message 12 times
+                else:
+                    for ($i = 0; $i < 12; $i++) {
+                        echo '<span>' . esc_html($default_text) . '</span>';
+                    }
+                endif;
+                ?>
             </div>
         </div>
 
 
 
         <div class="container-fluid nav-container mt-sm-2 px-sm-4">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
                     alt="">
             </a>
@@ -99,80 +119,50 @@
                     Let’s clear it up together!</p>
             </div>
         </div>
-        <div class="right-sec">
-            <div class="form">
-                <h2>Get in Touch</h2>
-                <p class="right-para">We’re ready to answer your questions and assist you promptly. Our friendly <br>
-                    team is ready to
-                    assist
-                    you with any VOLT Milk Drink Powder queries.</p>
-
-
-                <p class="home-phn">We’re ready to answer your questions and <br> assist you promptly.</p>
-
-
-                <div class="input">
-                    <label for="">Name</label>
-                    <input type="text" name="" id="" placeholder="Eg: Jacob jones">
-                </div>
-
-                <div class="input2">
-                    <div class="left">
-                        <label for="">Email</label>
-                        <input type="email" placeholder="Eg: jjacob123@gmail.com">
-                    </div>
-
-                    <div class="right">
-                        <label for="">Phone Number</label>
-                        <input type="phone" placeholder="+679 | Eg: 9876543210">
-                    </div>
-                </div>
-
-                <div class="input2">
-                    <div class="left">
-                        <label for="">Your Location</label>
-                        <div class="select">
-                            <select name="cars" id="cars">
-                                <option value="volvo">Eg: Savusavu, Vanua Levu, Fiji</option>
-                            </select>
-                            <i class="ri-arrow-down-s-line"></i>
-                        </div>
-
-                    </div>
-
-
-                    <div class="right">
-                        <label for="">Query Type</label>
-                        <div class="select">
-                            <select name="cars" id="cars">
-                                <option value="volvo">Problem with the Product</option>
-                            </select>
-                            <i class="ri-arrow-down-s-line"></i>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="input textarea">
-                    <label for="">Query</label>
-                    <textarea name="" id="" placeholder="Eg: Your Query"></textarea>
-
-                </div>
-
-                <div class="submit-sec">
-                    <input type="checkbox">
-                    <p>By submitting the above form, you consent to our <span><a class="text-black"
-                                href="">terms and
-                                conditions.</a></span></p>
-                </div>
-
-                <div class="submit-button">
-                    <button>Submit</button>
-                </div>
-
+<div class="right-sec">
+    <div class="form">
+        <h2>Get in Touch</h2>
+        <form id="enquiryForm">
+            <div class="input">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Eg: Jacob Jones" required>
             </div>
-        </div>
+
+            <div class="input2">
+                <div class="left">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Eg: jjacob123@gmail.com" required>
+                </div>
+                <div class="right">
+                    <label>Phone Number</label>
+                    <input type="text" name="phone" placeholder="+679 | Eg: 9876543210" required>
+                </div>
+            </div>
+
+            <div class="input2">
+                <div class="left">
+                    <label>Your Location</label>
+                    <input type="text" name="location" placeholder="Eg: Savusavu, Vanua Levu, Fiji">
+                </div>
+
+                <div class="right">
+                    <label>Query Type</label>
+                    <input type="text" name="query_type" placeholder="Problem with the Product">
+                </div>
+            </div>
+
+            <div class="input textarea">
+                <label>Query</label>
+                <textarea name="message" placeholder="Eg: Your Query" required></textarea>
+            </div>
+
+            <div class="submit-button">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
     </div>
 
     <div class="map-sec">
@@ -563,6 +553,49 @@
             });
         });
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+jQuery(document).ready(function ($) {
+    $('#enquiryForm').on('submit', function (e) {
+        e.preventDefault();
+
+        // Get values from the form
+        var name       = $('input[name="name"]').val();
+        var email      = $('input[name="email"]').val();
+        var phone      = $('input[name="phone"]').val();
+        var location   = $('input[name="location"]').val();
+        var queryType  = $('input[name="query_type"]').val();
+        var message    = $('textarea[name="message"]').val();
+
+        // Send via AJAX
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            data: {
+                action: 'submit_enquiry',
+                name: name,
+                email: email,
+                phone: phone,
+                location: location,
+                query_type: queryType,
+                message: message
+            },
+            success: function(res) {
+                console.log('Form submitted!', res);
+                alert('Form submitted successfully!');
+                $('#enquiryForm')[0].reset(); // reset form
+            },
+            error: function(err) {
+                console.log('Error:', err);
+                alert('Something went wrong. Try again.');
+            }
+        });
+    });
+});
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">

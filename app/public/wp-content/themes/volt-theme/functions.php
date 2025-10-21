@@ -129,3 +129,133 @@ function mytheme_register_topbar_cpt() {
     register_post_type('topbar_detail', $args);
 }
 add_action('init', 'mytheme_register_topbar_cpt');
+
+// ===========================
+// 5. REGISTER 'ENQUIRIES' CPT
+// ===========================
+function mytheme_register_enquiries_cpt() {
+    $labels = array(
+        'name'               => 'Enquiries',
+        'singular_name'      => 'Enquiry',
+        'add_new_item'       => 'Add New Enquiry',
+        'edit_item'          => 'Edit Enquiry',
+        'new_item'           => 'New Enquiry',
+        'view_item'          => 'View Enquiry',
+        'all_items'          => 'All Enquiries',
+        'search_items'       => 'Search Enquiries',
+        'not_found'          => 'No enquiries found',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false, // Not visible on front-end
+        'show_ui'            => true,  // Visible in Admin
+        'supports'           => array('title', 'editor', 'custom-fields'),
+        'menu_position'      => 23,
+        'menu_icon'          => 'dashicons-email', // 📩 icon
+    );
+
+    register_post_type('enquiry', $args);
+}
+add_action('init', 'mytheme_register_enquiries_cpt');
+
+// ===========================
+// 6. HANDLE AJAX FORM SUBMISSION
+// ===========================
+function mytheme_handle_enquiry_submission() {
+    // Verify fields
+    $name       = sanitize_text_field($_POST['name'] ?? '');
+    $email      = sanitize_email($_POST['email'] ?? '');
+    $phone      = sanitize_text_field($_POST['phone'] ?? '');
+    $location   = sanitize_text_field($_POST['location'] ?? '');
+    $query_type = sanitize_text_field($_POST['query_type'] ?? '');
+    $message    = sanitize_textarea_field($_POST['message'] ?? '');
+
+    // Create new Enquiry post
+    $post_id = wp_insert_post(array(
+        'post_title'   => $name,
+        'post_content' => $message,
+        'post_type'    => 'enquiry',
+        'post_status'  => 'publish',
+        'meta_input'   => array(
+            'email'      => $email,
+            'phone'      => $phone,
+            'location'   => $location,
+            'query_type' => $query_type,
+        ),
+    ));
+
+    if ($post_id) {
+        wp_send_json_success('Thank you! Your enquiry has been submitted.');
+    } else {
+        wp_send_json_error('Something went wrong. Please try again.');
+    }
+}
+add_action('wp_ajax_submit_enquiry', 'mytheme_handle_enquiry_submission');
+add_action('wp_ajax_nopriv_submit_enquiry', 'mytheme_handle_enquiry_submission');
+
+
+// ===========================
+// 7. ENQUEUE ENQUIRY JS
+// ===========================
+function mytheme_enqueue_enquiry_js() {
+    wp_enqueue_script(
+        'mytheme-enquiry-js',
+        get_template_directory_uri() . '/assets/js/enquiry.js',
+        array('jquery'),
+        filemtime(get_template_directory() . '/assets/js/enquiry.js'),
+        true
+    );
+
+    wp_localize_script('mytheme-enquiry-js', 'mytheme_ajax', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+    ));
+}
+add_action('wp_enqueue_scripts', 'mytheme_enqueue_enquiry_js');
+
+
+
+add_action('wp_ajax_submit_contact', 'handle_contact_form');
+add_action('wp_ajax_nopriv_submit_contact', 'handle_contact_form');
+
+function handle_contact_form() {
+    // handle data here
+    wp_send_json_success('Form received!');
+}
+
+
+
+
+// Add custom columns for Enquiries CPT
+add_filter('manage_enquiry_posts_columns', 'mytheme_enquiry_columns');
+function mytheme_enquiry_columns($columns) {
+    $columns = array(
+        'cb'          => $columns['cb'],
+        'title'       => 'Name',
+        'email'       => 'Email',
+        'phone'       => 'Phone',
+        'location'    => 'Location',
+        'query_type'  => 'Query Type',
+        'date'        => $columns['date'],
+    );
+    return $columns;
+}
+
+// Populate custom columns
+add_action('manage_enquiry_posts_custom_column', 'mytheme_enquiry_custom_column', 10, 2);
+function mytheme_enquiry_custom_column($column, $post_id) {
+    switch ($column) {
+        case 'email':
+            echo esc_html(get_post_meta($post_id, 'email', true));
+            break;
+        case 'phone':
+            echo esc_html(get_post_meta($post_id, 'phone', true));
+            break;
+        case 'location':
+            echo esc_html(get_post_meta($post_id, 'location', true));
+            break;
+        case 'query_type':
+            echo esc_html(get_post_meta($post_id, 'query_type', true));
+            break;
+    }
+}
