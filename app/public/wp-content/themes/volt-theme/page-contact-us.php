@@ -13,6 +13,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- intl-tel-input CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.min.css" />
+
+    <!-- jQuery (if not already loaded) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- intl-tel-input JS (place before your init script) -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <!-- utils script (for validation & formatting) -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"></script>
+    <style>
+        /* intl-tel width */
+        .iti {
+            width: 100%;
+        }
+
+        #phone {
+            width: 100%;
+        }
+
+        /* form inputs */
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #d3d3d3;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        /* error text */
+        .error {
+            display: block;
+            color: #d9534f;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        /* highlight invalid fields */
+        .input input.invalid,
+        .input textarea.invalid,
+        .input2 input.invalid {
+            border-color: #d9534f !important;
+            box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.06);
+        }
+
+        /* submit button */
+        .submit-button button {
+            background: #bfa227;
+            color: #fff;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .submit-button button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,16 +90,16 @@
                     'orderby' => 'date',
                     'order' => 'DESC',
                 ]);
-                
+
                 // Default text
                 $default_text = '20% Off on Punjas Biscuits';
-                
+
                 if ($topbar->have_posts()):
                     while ($topbar->have_posts()):
                         $topbar->the_post();
                         $marque_text = get_field('marque_text');
                         $text_to_show = $marque_text ? $marque_text : $default_text;
-                
+
                         // Repeat it 12 times
                         for ($i = 0; $i < 12; $i++) {
                             echo '<span>' . esc_html($text_to_show) . '</span>';
@@ -119,49 +181,58 @@
                     Let’s clear it up together!</p>
             </div>
         </div>
-<div class="right-sec">
-    <div class="form">
-        <h2>Get in Touch</h2>
-        <form id="enquiryForm">
-            <div class="input">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Eg: Jacob Jones" required>
-            </div>
+        <div class="right-sec">
+            <div class="form">
+                <h2>Get in Touch</h2>
+                <form id="enquiryForm" novalidate>
+                    <div class="input">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="Eg: Jacob Jones" required>
+                        <small class="error"></small>
+                    </div>
 
-            <div class="input2">
-                <div class="left">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Eg: jjacob123@gmail.com" required>
-                </div>
-                <div class="right">
-                    <label>Phone Number</label>
-                    <input type="text" name="phone" placeholder="+679 | Eg: 9876543210" required>
-                </div>
-            </div>
+                    <div class="input2">
+                        <div class="left">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="Eg: jjacob123@gmail.com" required>
+                            <small class="error"></small>
+                        </div>
 
-            <div class="input2">
-                <div class="left">
-                    <label>Your Location</label>
-                    <input type="text" name="location" placeholder="Eg: Savusavu, Vanua Levu, Fiji">
-                </div>
+                        <div class="right">
+                            <label>Phone Number</label>
+                            <!-- intl-tel-input friendly input -->
+                            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                            <small class="error"></small>
+                        </div>
+                    </div>
 
-                <div class="right">
-                    <label>Query Type</label>
-                    <input type="text" name="query_type" placeholder="Problem with the Product">
-                </div>
-            </div>
+                    <div class="input2">
+                        <div class="left">
+                            <label>Your Location</label>
+                            <input type="text" name="location" placeholder="Eg: Savusavu, Vanua Levu, Fiji">
+                            <small class="error"></small>
+                        </div>
 
-            <div class="input textarea">
-                <label>Query</label>
-                <textarea name="message" placeholder="Eg: Your Query" required></textarea>
-            </div>
+                        <div class="right">
+                            <label>Query Type</label>
+                            <input type="text" name="query_type" placeholder="Problem with the Product">
+                            <small class="error"></small>
+                        </div>
+                    </div>
 
-            <div class="submit-button">
-                <button type="submit">Submit</button>
+                    <div class="input textarea">
+                        <label>Query</label>
+                        <textarea name="message" placeholder="Eg: Your Query" required></textarea>
+                        <small class="error"></small>
+                    </div>
+
+                    <div class="submit-button">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
+        </div>
+
 
     </div>
 
@@ -174,8 +245,8 @@
             <br>Road, Suva, Fiji
         </h6>
         <div class="d-flex  align-items-center justify-content-center">
-            <img class="light-icon" height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/assets/images/light.png"
-                alt="">
+            <img class="light-icon" height="32" width="32"
+                src="<?php echo get_template_directory_uri(); ?>/assets/images/light.png" alt="">
         </div>
 
         <div class="map">
@@ -193,7 +264,8 @@
         <div class="containers ">
             <div class="nearby-container">
                 <div class="d-sm-flex gap-2">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 111102.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 111102.png"
+                        alt="">
                     <h6>Grab yours at the <br>
                         Nearby Stores</h6>
                     <h5 class="mbl-sec">Buy Our Products in <br> Supermarket Near You</h5>
@@ -215,84 +287,85 @@
         <div class="swiper mySwiper nearby-slider mt-5">
             <div class="swiper-wrapper">
                 <?php
-        $stores = new WP_Query(array(
-            'post_type' => 'store',
-            'posts_per_page' => -1
-        ));
+                $stores = new WP_Query(array(
+                    'post_type' => 'store',
+                    'posts_per_page' => -1
+                ));
 
-        // Default fallback values
-        $default_image = get_template_directory_uri() . '/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png';
-        $default_name = 'Extra Supermarket';
-        $default_distance = '1.2Km';
-        $default_address = 'VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji';
-        $default_phone = '+679 338 7142';
-        $default_hours = 'Mon - Sun <br> (10:00 AM - 09:00 PM)';
+                // Default fallback values
+                $default_image = get_template_directory_uri() . '/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png';
+                $default_name = 'Extra Supermarket';
+                $default_distance = '1.2Km';
+                $default_address = 'VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji';
+                $default_phone = '+679 338 7142';
+                $default_hours = 'Mon - Sun <br> (10:00 AM - 09:00 PM)';
 
-        if ($stores->have_posts()):
-            while ($stores->have_posts()): $stores->the_post();
-                // ACF fields
-                $image_field = get_field('image');
-                $store_image = $image_field && isset($image_field['url']) ? $image_field['url'] : $default_image;
+                if ($stores->have_posts()):
+                    while ($stores->have_posts()):
+                        $stores->the_post();
+                        // ACF fields
+                        $image_field = get_field('image');
+                        $store_image = $image_field && isset($image_field['url']) ? $image_field['url'] : $default_image;
 
-                $store_name = get_the_title() ?: $default_name;
-                $store_distance = get_field('distance') ?: $default_distance;
-                $store_address = get_field('address') ?: $default_address;
-                $store_phone = get_field('phone') ?: $default_phone;
-                $store_hours = get_field('hours') ?: $default_hours;
-        ?>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo esc_url($store_image); ?>" alt="<?php echo esc_attr($store_name); ?>">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6><?php echo wp_kses_post($store_name); ?></h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
+                        $store_name = get_the_title() ?: $default_name;
+                        $store_distance = get_field('distance') ?: $default_distance;
+                        $store_address = get_field('address') ?: $default_address;
+                        $store_phone = get_field('phone') ?: $default_phone;
+                        $store_hours = get_field('hours') ?: $default_hours;
+                        ?>
+                        <div class="swiper-slide">
+                            <div class="nearby-slides">
+                                <img src="<?php echo esc_url($store_image); ?>" alt="<?php echo esc_attr($store_name); ?>">
+                                <div class="slider-overlay">
+                                    <div class="nearbytop">
+                                        <h6><?php echo wp_kses_post($store_name); ?></h6>
+                                        <button><i class="ri-crosshair-2-line"></i>Directions</button>
+                                    </div>
+
+                                    <div class="nearbybottom">
+                                        <span><?php echo esc_html($store_distance); ?></span>
+                                        <p><?php echo esc_html($store_address); ?></p>
+
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="d-flex">
+                                                <i class="ri-phone-line"></i>
+                                                <?php echo esc_html($store_phone); ?>
+                                            </span>
+                                            <p><?php echo wp_kses_post($store_hours); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else:
+                    ?>
+                    <div class="swiper-slide">
+                        <div class="nearby-slides">
+                            <img src="<?php echo esc_url($default_image); ?>" alt="Default Store">
+                            <div class="slider-overlay">
+                                <div class="nearbytop">
+                                    <h6><?php echo esc_html($default_name); ?></h6>
+                                    <button><i class="ri-crosshair-2-line"></i>Directions</button>
+                                </div>
 
-                            <div class="nearbybottom">
-                                <span><?php echo esc_html($store_distance); ?></span>
-                                <p><?php echo esc_html($store_address); ?></p>
+                                <div class="nearbybottom">
+                                    <span><?php echo esc_html($default_distance); ?></span>
+                                    <p><?php echo esc_html($default_address); ?></p>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        <?php echo esc_html($store_phone); ?>
-                                    </span>
-                                    <p><?php echo wp_kses_post($store_hours); ?></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="d-flex">
+                                            <i class="ri-phone-line"></i>
+                                            <?php echo esc_html($default_phone); ?>
+                                        </span>
+                                        <p><?php echo wp_kses_post($default_hours); ?></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <?php
-            endwhile;
-            wp_reset_postdata();
-        else:
-        ?>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo esc_url($default_image); ?>" alt="Default Store">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6><?php echo esc_html($default_name); ?></h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span><?php echo esc_html($default_distance); ?></span>
-                                <p><?php echo esc_html($default_address); ?></p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        <?php echo esc_html($default_phone); ?>
-                                    </span>
-                                    <p><?php echo wp_kses_post($default_hours); ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -313,7 +386,8 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
                     <div class="first-row">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
+                            alt="">
                         <h6>Driving Fiji’s food industry <br> forward with quality, innovation <br> and trust...</h6>
                     </div>
                 </div>
@@ -338,20 +412,20 @@
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
+                                    alt="facebook-new" />
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
                                     alt="instagram-new--v1" />
 
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
+                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
+                                    alt="twitterx--v2" />
                             </div>
-                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
+                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png"
+                                alt="">
 
                         </div>
                     </div>
@@ -366,7 +440,8 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
                     <div class="first-row">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
+                            alt="">
                         <h6>Driving Fiji’s food industry forward with <br> quality, innovation and trust...</h6>
                     </div>
                 </div>
@@ -377,20 +452,20 @@
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
+                                    alt="facebook-new" />
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
                                     alt="instagram-new--v1" />
 
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
+                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
+                                    alt="twitterx--v2" />
                             </div>
-                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
+                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png"
+                                alt="">
 
                         </div>
                     </div>
@@ -462,8 +537,8 @@
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
-                    alt=""></a>
+            <a href="#">Carefully Crafted By <img
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
         </div>
     </div>
 
@@ -472,8 +547,8 @@
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
-                    alt=""></a>
+            <a href="#">Carefully Crafted By <img
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
         </div>
     </div>
 
@@ -491,24 +566,33 @@
     <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper(".nearby-slider", {
-  slidesPerView: 4,
-  spaceBetween: 30,
-  watchOverflow: true,
-  roundLengths: true,
-  navigation: {
-    nextEl: ".right",
-    prevEl: ".left",
-    disabledClass: "swiper-button-disabled",
-  },
-  breakpoints: {
-    0:   { slidesPerView: 1, spaceBetween: 10 },
-    481: { slidesPerView: 2, spaceBetween: 15 },
-    769: { slidesPerView: 3, spaceBetween: 20 },
-    1025:{ slidesPerView: 4, spaceBetween: 30 },
-  },
-});
-
-
+            slidesPerView: 4,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: ".right",
+                prevEl: ".left",
+                disabledClass: "swiper-button-disabled", // default, can be customized
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 10
+                },
+                481: {
+                    slidesPerView: 2,
+                    spaceBetween: 15
+                },
+                769: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                },
+                1025: {
+                    slidesPerView: 4,
+                    spaceBetween: 30
+                },
+            },
+        });
 
 
         // Arrow fade function
@@ -548,50 +632,171 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
-jQuery(document).ready(function ($) {
-    $('#enquiryForm').on('submit', function (e) {
+    <script>
+        jQuery(function ($) {
+
+            $('#phone').on('keypress', function (e) {
+    const char = String.fromCharCode(e.which);
+    if (!/[0-9+\-\s()]/.test(char)) {
         e.preventDefault();
-
-        // Get values from the form
-        var name       = $('input[name="name"]').val();
-        var email      = $('input[name="email"]').val();
-        var phone      = $('input[name="phone"]').val();
-        var location   = $('input[name="location"]').val();
-        var queryType  = $('input[name="query_type"]').val();
-        var message    = $('textarea[name="message"]').val();
-
-        // Send via AJAX
-        $.ajax({
-            url: '/wp-admin/admin-ajax.php',
-            type: 'POST',
-            data: {
-                action: 'submit_enquiry',
-                name: name,
-                email: email,
-                phone: phone,
-                location: location,
-                query_type: queryType,
-                message: message
-            },
-            success: function(res) {
-                console.log('Form submitted!', res);
-                alert('Form submitted successfully!');
-                $('#enquiryForm')[0].reset(); // reset form
-            },
-            error: function(err) {
-                console.log('Error:', err);
-                alert('Something went wrong. Try again.');
-            }
-        });
-    });
+    }
 });
-</script>
+            // init intl-tel-input on the phone input
+            const phoneInput = document.querySelector("#phone");
+            const iti = window.intlTelInput(phoneInput, {
+                initialCountry: "auto",              // auto tries to detect; change to "in" if you prefer fixed default
+                geoIpLookup: function (callback) {    // optional: auto detect via ip (uses free ipinfo)
+                    fetch('https://ipinfo.io/json?token=<YOUR_TOKEN_IF_NEEDED>')
+                        .then(resp => resp.json())
+                        .then(data => callback(data.country))
+                        .catch(() => callback('us'));
+                },
+                preferredCountries: ["in", "us", "fj", "gb", "au"],
+                separateDialCode: true,
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+            });
+
+            // helper: show error under input element
+            function showError($field, msg) {
+                $field.addClass('invalid');
+                $field.closest('div').find('.error').text(msg);
+            }
+
+            function clearError($field) {
+                $field.removeClass('invalid');
+                $field.closest('div').find('.error').text('');
+            }
+
+            // validation function returns boolean
+            function validateForm() {
+                let valid = true;
+
+                // fields as jQuery objects
+                const $name = $('input[name="name"]');
+                const $email = $('input[name="email"]');
+                const $location = $('input[name="location"]');
+                const $queryType = $('input[name="query_type"]');
+                const $message = $('textarea[name="message"]');
+                const $phone = $('#phone');
+
+                // clear all previous errors
+                $('.error').text('');
+                $('input, textarea').removeClass('invalid');
+
+                const name = $name.val().trim();
+                const email = $email.val().trim();
+                const location = $location.val().trim();
+                const queryType = $queryType.val().trim();
+                const message = $message.val().trim();
+                const phoneVal = $phone.val().trim();
+
+                // Name: letters and spaces, min 2 chars
+                if (!/^[a-zA-Z\s]{2,50}$/.test(name)) {
+                    showError($name, "Enter a valid name (letters only, min 2 chars)");
+                    valid = false;
+                }
+
+                // Email: basic RFC style validation
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showError($email, "Enter a valid email address");
+                    valid = false;
+                }
+
+                // Phone: use intl-tel-input validation
+                if (!phoneVal) {
+                    showError($phone, "Phone number is required");
+                    valid = false;
+                } else if (!iti.isValidNumber()) {
+                    showError($phone, "Enter a valid phone number for the selected country");
+                    valid = false;
+                }
+
+                // Location (optional but if present, min 3 chars)
+                if (location && location.length < 3) {
+                    showError($location, "Location should be at least 3 characters");
+                    valid = false;
+                }
+
+                // Query type optional
+                if (queryType && queryType.length < 3) {
+                    showError($queryType, "Query type should be at least 3 characters");
+                    valid = false;
+                }
+
+                // Message required, min 10 chars
+                if (!message || message.length < 10) {
+                    showError($message, "Please enter at least 10 characters in the query");
+                    valid = false;
+                }
+
+                return valid;
+            }
+
+            // AJAX submit
+            $('#enquiryForm').on('submit', function (e) {
+                e.preventDefault();
+
+                // validate
+                if (!validateForm()) {
+                    return;
+                }
+
+                // prepare data
+                const fullPhone = iti.getNumber(); // E.164 format e.g. +679XXXXXXXXX
+                // optionally get country iso: iti.getSelectedCountryData().iso2
+
+                const data = {
+                    action: 'submit_enquiry',
+                    name: $('input[name="name"]').val().trim(),
+                    email: $('input[name="email"]').val().trim(),
+                    phone: fullPhone,
+                    location: $('input[name="location"]').val().trim(),
+                    query_type: $('input[name="query_type"]').val().trim(),
+                    message: $('textarea[name="message"]').val().trim()
+                };
+
+                // disable submit while request in progress
+                const $btn = $(this).find('button[type="submit"]');
+                $btn.prop('disabled', true).text('Sending...');
+
+                $.ajax({
+                    url: '/wp-admin/admin-ajax.php',
+                    type: 'POST',
+                    data: data,
+                    dataType: 'json',
+                    success: function (res) {
+                        // expected JSON { success: true, message: "..." } or adjust per backend
+                        if (res && res.success) {
+                            alert(res.message || 'Form submitted successfully!');
+                            $('#enquiryForm')[0].reset();
+                            iti.setCountry('us'); // reset to default country if you like
+                        } else {
+                            alert((res && res.message) ? res.message : 'Submission failed. Try again.');
+                        }
+                    },
+                    error: function (err) {
+                        console.error('Error:', err);
+                        alert('Something went wrong. Try again later.');
+                    },
+                    complete: function () {
+                        $btn.prop('disabled', false).text('Submit');
+                    }
+                });
+            });
+
+            // clear error on input
+            $('input, textarea').on('input', function () {
+                clearError($(this));
+            });
+
+        });
+    </script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-    </script>
+        </script>
 </body>
 
 </html>

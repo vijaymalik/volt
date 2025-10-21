@@ -979,6 +979,7 @@ else :
         var swiper = new Swiper(".nearby-slider", {
             slidesPerView: 4,
             spaceBetween: 30,
+            loop:true,
             navigation: {
                 nextEl: ".right",
                 prevEl: ".left",
@@ -986,7 +987,7 @@ else :
             breakpoints: {
                 // Mobile (up to 640px)
                 0: {
-                    slidesPerView: 1,
+                    slidesPerView: 1.5,
                     spaceBetween: 10,
                 },
                 // Tablet (641px to 1024px)
