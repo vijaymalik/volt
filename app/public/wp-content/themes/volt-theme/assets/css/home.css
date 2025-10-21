@@ -416,7 +416,7 @@
     margin: 3rem auto;
     height: 316px;
     border-radius: 12px;
-    background-image: url('./assets/4a11b3e2172301c07e8c34ff3797a3a90929944c\ \(1\).jpg');
+    background-image: url('../images/4a11b3e2172301c07e8c34ff3797a3a90929944c (1).jpg');
 }
 
 .ready-left {
@@ -630,6 +630,17 @@
     filter: invert(100%);
 }
 
+.mbl-about {
+    display: none;
+}
+
+.our-product-mbl {
+    display: none;
+}
+
+.our-recipes-mbl {
+    display: none;
+}
 
 @media (max-width: 768px) {
     .home-overlayer {
@@ -686,15 +697,15 @@
     }
 
     .volt-drink {
-        height: 968px;
+        height: 890px;
     }
 
     .ready {
-        height: 480px;
+        height: 420px;
     }
 
     .ready-left {
-        padding: 0;
+        padding: 2rem 0;
         align-items: center;
     }
 
@@ -762,4 +773,198 @@
         font-size: 12px;
         font-weight: 500;
     }
+
+    .mbl-about {
+        width: 100%;
+        padding: 4rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        flex-direction: column;
+
+    }
+
+    .img-section {
+        width: 155px;
+        height: 76px;
+        border-radius: 59.4px;
+        overflow: hidden;
+    }
+
+    .img-section img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .mbl-about p {
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: -1%;
+        color: rgba(67, 67, 67, 1);
+
+
+    }
+
+    .mbl-about h2 {
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 30px;
+        line-height: 130%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: rgba(45, 29, 15, 1);
+
+    }
+
+    .join-btn {
+        width: 130px;
+        height: 36px;
+        border-radius: 10px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 1);
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: -1%;
+        color: rgba(13, 18, 43, 1);
+        border: none;
+    }
+
+    .ready-right {
+        height: 210px;
+    }
+
+    .our-product-mbl {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 70px;
+    }
+
+    .our-product-mbl h2 {
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 28px;
+        line-height: 130%;
+        margin-bottom: 0;
+        letter-spacing: 0%;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+    .our-product-mbl p {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 130%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    .our-product-mid {
+        width: 326px;
+        height: 444px;
+        border-radius: 12px;
+        background: linear-gradient(165.47deg, #F5EECE 3.73%, #F0E6B7 85.42%);
+    }
+
+    .our-product-mid h2 {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: rgba(73, 42, 12, 1);
+        padding-top: 2rem;
+    }
+
+    .our-product-mid img {
+        height: 65%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .our-product-mid .bottom-sec {
+        width: 278px;
+        height: 89px;
+        border-radius: 140px;
+        padding-top: 12px;
+        padding-right: 40px;
+        padding-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-left: 40px;
+        background: rgba(230, 207, 142, 1);
+        margin: 0 auto;
+    }
+
+    .our-product-mid .bottom-sec h6 {
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 10px;
+        line-height: 140%;
+        letter-spacing: -2%;
+        text-align: center;
+        color: rgba(99, 85, 66, 1);
+
+    }
+
+    .our-product-mid .bottom-sec h1 {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 140%;
+        letter-spacing: -5%;
+        text-align: center;
+        text-transform: capitalize;
+        color: rgba(64, 40, 8, 1);
+        margin: 0;
+    }
+
+    .bottom-sec .line {
+        width: 65px;
+        height: 0px;
+        transform: rotate(-90deg);
+        border: 0.85px solid rgba(64, 40, 8, 0.1);
+
+    }
+
+    .our-recipes {
+        display: none;
+    }
+
+    .our-recipes-mbl {
+        padding-bottom: 2rem;
+        display: block;
+    }
+
+    .our-recipes-mbl .swiper {
+        width: 320px;
+        height: 440px;
+    }
+
+    .our-recipes-mbl .swiper-slide {
+        width: 100% !important;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .our-recipes-mbl h2 {
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 28px;
+        line-height: 130%;
+        letter-spacing: 0%;
+        padding: 2rem 0;
+        text-align: center;
+        text-transform: capitalize;
+        color: rgba(45, 29, 15, 1);
+    }
+
 }

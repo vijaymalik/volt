@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -34,7 +33,6 @@
                 <span>20% Off on Punjas Biscuits</span>
             </div>
         </div>
-
 
 
 
@@ -72,6 +70,7 @@
             </div>
         </div>
     </nav>
+
     <div class="hero">
         <div class="left-sec">
             <div class="overlay">
@@ -132,19 +131,26 @@
                 <div class="input2">
                     <div class="left">
                         <label for="">Your Location</label>
-                        <select name="cars" id="cars">
-                            <option value="volvo">Eg: Savusavu, Vanua Levu, Fiji</option>
-
-                        </select>
+                        <div class="select">
+                            <select name="cars" id="cars">
+                                <option value="volvo">Eg: Savusavu, Vanua Levu, Fiji</option>
+                            </select>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
 
                     </div>
 
+
                     <div class="right">
                         <label for="">Query Type</label>
-                        <select name="cars" id="cars">
-                            <option value="volvo">Problem with the Product</option>
+                        <div class="select">
+                            <select name="cars" id="cars">
+                                <option value="volvo">Problem with the Product</option>
+                            </select>
+                            <i class="ri-arrow-down-s-line"></i>
 
-                        </select>
+                        </div>
+
                     </div>
                 </div>
 
@@ -402,7 +408,7 @@
                 <div class="accordion mt-4">
 
                     <div class="accordion-item">
-                        <div class="accordion-header" style="padding: 0px 8px;">
+                        <div class="accordion-header">
                             <h6>Recipes</h6>
                             <span class="icon">+</span>
                         </div>
@@ -415,7 +421,7 @@
                     <hr>
 
                     <div class="accordion-item">
-                        <div class="accordion-header" style="padding: 0px 8px;">
+                        <div class="accordion-header">
                             <h6>Product</h6>
                             <span class="icon">+</span>
                         </div>
@@ -497,48 +503,63 @@
         var swiper = new Swiper(".nearby-slider", {
             slidesPerView: 4,
             spaceBetween: 30,
-            loop: true,
             navigation: {
                 nextEl: ".right",
                 prevEl: ".left",
+                disabledClass: "swiper-button-disabled", // default, can be customized
             },
             breakpoints: {
-                // Extra small phones (up to 480px)
                 0: {
                     slidesPerView: 1,
-                    spaceBetween: 10,
+                    spaceBetween: 10
                 },
-                // Small phones to tablets (481px to 768px)
                 481: {
                     slidesPerView: 2,
-                    spaceBetween: 15,
+                    spaceBetween: 15
                 },
-                // Tablets (769px to 1024px)
                 769: {
                     slidesPerView: 3,
-                    spaceBetween: 20,
+                    spaceBetween: 20
                 },
-                // Desktop (above 1024px)
                 1025: {
                     slidesPerView: 4,
-                    spaceBetween: 30,
+                    spaceBetween: 30
                 },
             },
         });
+
+
+        // Arrow fade function
+        function updateArrows(swiper) {
+            const prevArrow = document.querySelector(".left");
+            const nextArrow = document.querySelector(".right");
+
+            if (swiper.isBeginning) {
+                prevArrow.classList.add("disabled");
+            } else {
+                prevArrow.classList.remove("disabled");
+            }
+
+            if (swiper.isEnd) {
+                nextArrow.classList.add("disabled");
+            } else {
+                nextArrow.classList.remove("disabled");
+            }
+        }
+
+
 
         const accordions = document.querySelectorAll(".accordion-header");
 
         accordions.forEach(header => {
             header.addEventListener("click", () => {
                 const parent = header.parentElement;
+                parent.classList.toggle("active");
 
-                // Close all other accordions (optional)
+                // Close others
                 document.querySelectorAll(".accordion-item").forEach(item => {
                     if (item !== parent) item.classList.remove("active");
                 });
-
-                // Toggle current accordion
-                parent.classList.toggle("active");
             });
         });
     </script>

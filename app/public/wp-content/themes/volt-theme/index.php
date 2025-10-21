@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -39,8 +38,7 @@
 
         <div class="container-fluid nav-container mt-sm-2 px-sm-4">
             <a class="navbar-brand" href="#">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
-                    alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png" alt="">
             </a>
             <button class="talk-btn phn-btn">Let's Talk</button>
 
@@ -204,6 +202,28 @@
         </div>
     </div>
 
+    <div class="our-product-mbl">
+        <h2>Our Products</h2>
+        <p>Discover our flagship favorites trusted by <br> generations, loved by every Fijian home.</p>
+
+        <div class="our-product-mid">
+            <h2>Milk Drink Powder</h2>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product-sec.png" alt="">
+            <div class="bottom-sec">
+                <div>
+                    <h6>Vitamin A <br>
+                        up to</h6>
+                    <h1>180mcg</h1>
+                </div>
+                <div class="line"></div>
+                <div>
+                    <h6>Potassium <br>up to</h6>
+                    <h1>250mg</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="aboutus">
         <div class="container-fluid">
             <div class="row">
@@ -225,6 +245,16 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="mbl-about">
+        <div class="img-section">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mbl-about.png" alt="">
+        </div>
+        <p>ABOUT US</p>
+        <h2>Driving Fiji’s food <br> industry forward with <br> quality, innovation <br>
+            and trust.</h2>
+        <img height="20" width="20" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
     </div>
 
     <div class="volt-drink">
@@ -259,14 +289,16 @@
                         <div class="ready-left">
                             <h5>Ready to Join Us?</h5>
                             <p>Where you belong, grows stronger with <br> you. Join our community.</p>
-                            <div>
+                            <div class="d-none d-sm-block">
                                 <a href="">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png"
-                                        alt="">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png" alt="">
                                 </a>
                                 <a href="">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/insta.png" alt="">
                                 </a>
+                            </div>
+                            <div class="text-center d-block d-sm-none">
+                                <button class="join-btn">Join Community</button>
                             </div>
                         </div>
                     </div>
@@ -281,124 +313,84 @@
 
     </div>
 
-    <div class="our-recipes">
-        <h1>Our Recipes</h1>
-        <div class="swiper mySwiper nearby-slider mt-5">
-            <div class="swiper-wrapper">
+<div class="our-recipes">
+    <h1>Our Recipes</h1>
+    <div class="swiper mySwiper nearby-slider mt-5">
+        <div class="swiper-wrapper">
+            <?php
+            // WP Query for 5 latest recipes
+            $recipes = new WP_Query(array(
+                'post_type' => 'recipe',
+                'posts_per_page' => 5,
+            ));
+            if ($recipes->have_posts()) :
+                while ($recipes->have_posts()) : $recipes->the_post();
+
+                    // ACF fields
+                    $time = get_field('recipe_time') ?: '1.2Hrs';
+                    $category = get_field('recipe_category') ?: 'Vegan';
+                    $extra_info = get_field('recipe_extra_info') ?: 'Gluten Free';
+
+                    // ACF Image field
+                    $image_field = get_field('image'); // field name is 'image'
+                    $default_image = get_template_directory_uri() . '/assets/images/default-recipe.jpg';
+
+                    if ($image_field) {
+                        if (is_array($image_field) && isset($image_field['url'])) {
+                            $image_url = $image_field['sizes']['medium'] ?? $image_field['url'];
+                        } elseif (is_numeric($image_field)) {
+                            $image_url = wp_get_attachment_image_url($image_field, 'medium');
+                        } else {
+                            $image_url = $image_field; // assume URL
+                        }
+                    } else {
+                        $image_url = $default_image;
+                    }
+            ?>
                 <div class="swiper-slide">
                     <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
                         <div class="slider-overlay">
                             <div class="nearbytop">
-                                <h6>Savory <br>
-                                    Morning Delight</h6>
-                                <button><i class="ri-history-line"></i>1.2Hrs</button>
+                                <h6><?php the_title(); ?></h6>
+                                <button><i class="ri-history-line"></i><?php echo esc_html($time); ?></button>
                             </div>
-
                             <div class="nearbybottom bottom-div">
-                                <span>Vegan</span>
+                                <span><?php echo esc_html($category); ?></span>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span>
-                                        Gluten Free
-                                    </span>
+                                    <span><?php echo esc_html($extra_info); ?></span>
                                     <button class="learnmore">Learn More</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/shake.png" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Herb-Infused <br>
-                                    Breakfast Treat</h6>
-                                <button><i class="ri-history-line"></i>1.2Hrs</button>
-                            </div>
-
-                            <div class="nearbybottom bottom-div">
-                                <span>Vegan</span>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span>
-                                        Gluten Free
-                                    </span>
-                                    <button class="learnmore">Learn More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cake.png" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Crunchy Bites <br>
-                                    Breakfast </h6>
-                                <button><i class="ri-history-line"></i>1.2Hrs</button>
-                            </div>
-
-                            <div class="nearbybottom bottom-div">
-                                <span>Vegan</span>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span>
-                                        Gluten Free
-                                    </span>
-                                    <button class="learnmore">Learn More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roll.png" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Vegan <br>
-                                    Chocolate Roll</h6>
-                                <button><i class="ri-history-line"></i>1.2Hrs</button>
-                            </div>
-
-                            <div class="nearbybottom bottom-div">
-                                <span>Vegan</span>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span>
-                                        Gluten Free
-                                    </span>
-                                    <button class="learnmore">Learn More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Savory <br>
-                                    Morning Delight</h6>
-                                <button><i class="ri-history-line"></i>1.2Hrs</button>
-                            </div>
-
-                            <div class="nearbybottom bottom-div">
-                                <span>Vegan</span>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span>
-                                        Gluten Free
-                                    </span>
-                                    <button class="learnmore">Learn More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            endif;
+            ?>
         </div>
+    </div>
+</div>
+
+
+    <div class="our-recipes-mbl">
+        <h2>Our Recipes</h2>
+        <div class="swiper mySwiper our-recipe-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url('https://picsum.photos/id/1011/400/400')">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h3>Vegan Cracker</h3>
+                        <p>Breakfast • 1.2 hrs</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
     <div class="poll position-relative">
@@ -430,24 +422,18 @@
                 <div class="marques mt-5 ">
                     <div class="marque-content text-white">
                         <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
 
                         <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                     </div>
                 </div>
 
@@ -481,140 +467,89 @@
 
         <div class="swiper mySwiper nearby-slider mt-5">
             <div class="swiper-wrapper">
+                <?php
+        $stores = new WP_Query(array(
+            'post_type' => 'store',
+            'posts_per_page' => -1
+        ));
+
+        // Default fallback values
+        $default_image = get_template_directory_uri() . '/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png';
+        $default_name = 'Extra Supermarket';
+        $default_distance = '1.2Km';
+        $default_address = 'VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji';
+        $default_phone = '+679 338 7142';
+        $default_hours = 'Mon - Sun <br> (10:00 AM - 09:00 PM)';
+
+        if ($stores->have_posts()):
+            while ($stores->have_posts()): $stores->the_post();
+                // ACF fields
+                $image_field = get_field('image');
+                $store_image = $image_field && isset($image_field['url']) ? $image_field['url'] : $default_image;
+
+                $store_name = get_the_title() ?: $default_name;
+                $store_distance = get_field('distance') ?: $default_distance;
+                $store_address = get_field('address') ?: $default_address;
+                $store_phone = get_field('phone') ?: $default_phone;
+                $store_hours = get_field('hours') ?: $default_hours;
+        ?>
                 <div class="swiper-slide">
                     <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png"
-                            alt="">
+                        <img src="<?php echo esc_url($store_image); ?>" alt="<?php echo esc_attr($store_name); ?>">
                         <div class="slider-overlay">
                             <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
+                                <h6><?php echo wp_kses_post($store_name); ?></h6>
                                 <button><i class="ri-crosshair-2-line"></i>Directions</button>
                             </div>
 
                             <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
+                                <span><?php echo esc_html($store_distance); ?></span>
+                                <p><?php echo esc_html($store_address); ?></p>
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="d-flex">
                                         <i class="ri-phone-line"></i>
-                                        +679 338 7142
+                                        <?php echo esc_html($store_phone); ?>
                                     </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
+                                    <p><?php echo wp_kses_post($store_hours); ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php
+            endwhile;
+            wp_reset_postdata();
+        else:
+        ?>
                 <div class="swiper-slide">
                     <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png"
-                            alt="">
+                        <img src="<?php echo esc_url($default_image); ?>" alt="Default Store">
                         <div class="slider-overlay">
                             <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
+                                <h6><?php echo esc_html($default_name); ?></h6>
                                 <button><i class="ri-crosshair-2-line"></i>Directions</button>
                             </div>
 
                             <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
+                                <span><?php echo esc_html($default_distance); ?></span>
+                                <p><?php echo esc_html($default_address); ?></p>
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="d-flex">
                                         <i class="ri-phone-line"></i>
-                                        +679 338 7142
+                                        <?php echo esc_html($default_phone); ?>
                                     </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
+                                    <p><?php echo wp_kses_post($default_hours); ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png"
-                            alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        +679 338 7142
-                                    </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png"
-                            alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        +679 338 7142
-                                    </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png"
-                            alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        +679 338 7142
-                                    </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <?php endif; ?>
             </div>
-
         </div>
+
 
         <div class="navi">
             <div class="arrow ">
@@ -656,18 +591,17 @@
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
+                                    alt="facebook-new" />
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
                                     alt="instagram-new--v1" />
 
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
+                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
+                                    alt="twitterx--v2" />
                             </div>
                             <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
 
@@ -695,18 +629,17 @@
                             Savusavu, Vanua Levu, Fiji</a>
                         <div class="d-flex align-items-center gap-2 position-relative">
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
+                                    alt="facebook-new" />
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
                                     alt="instagram-new--v1" />
 
                             </div>
                             <div class="icon">
-                                <img width="30" height="30"
-                                    src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png" alt="twitterx--v2" />
+                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
+                                    alt="twitterx--v2" />
                             </div>
                             <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
 
@@ -780,8 +713,7 @@
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
-                    alt=""></a>
+            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
         </div>
     </div>
 
@@ -790,8 +722,7 @@
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png"
-                    alt=""></a>
+            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
         </div>
     </div>
 
@@ -806,8 +737,12 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+
     <!-- Initialize Swiper -->
     <script>
+
+
+
         var swiper = new Swiper(".nearby-slider", {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -835,6 +770,15 @@
         });
         const accordions = document.querySelectorAll(".accordion-header");
 
+
+        const swiper2 = new Swiper(".our-recipe-slider", {
+            slidesPerView: 1,
+            effect: "cards",
+            loop: true,
+            grabCursor: true,
+        });
+
+
         accordions.forEach(header => {
             header.addEventListener("click", () => {
                 const parent = header.parentElement;
@@ -849,7 +793,7 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var swiper = new Swiper(".our-products-slider", {
                 slidesPerView: 1,
 
@@ -860,11 +804,13 @@
                 },
             });
         });
+
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-    </script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
