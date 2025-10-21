@@ -42,7 +42,7 @@
             flex-direction: column;
             overflow: hidden;
             margin: 0 !important;
-            z-index: 99;
+            z-index: 999;
             border-radius: 24px;
         }
 
@@ -78,7 +78,6 @@
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
-            background: #fce4ec;
             /* optional background */
             padding: 10px 0;
         }
@@ -637,7 +636,7 @@
         .footer .first-row h6 {
             font-weight: 400;
             font-size: 24px;
-            line-height: 100%;
+            line-height: 125%;
             margin-top: 16px;
             color: #0A0A0A;
         }
@@ -920,10 +919,10 @@
                 position: absolute;
                 bottom: 50px;
                 margin: 0;
-
+                transform: translate(-50%, 0);
+                left: 50%;
                 font-size: 14px;
                 color: rgba(64, 54, 13, 1);
-                transform: translateX(50%);
             }
 
             .hero .left-sec .icons .icon {
