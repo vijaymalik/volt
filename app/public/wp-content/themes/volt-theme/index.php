@@ -28,16 +28,16 @@
                     'orderby' => 'date',
                     'order' => 'DESC',
                 ]);
-                
+
                 // Default text
                 $default_text = '20% Off on Punjas Biscuits';
-                
+
                 if ($topbar->have_posts()):
                     while ($topbar->have_posts()):
                         $topbar->the_post();
                         $marque_text = get_field('marque_text');
                         $text_to_show = $marque_text ? $marque_text : $default_text;
-                
+
                         // Repeat it 12 times
                         for ($i = 0; $i < 12; $i++) {
                             echo '<span>' . esc_html($text_to_show) . '</span>';
@@ -58,7 +58,8 @@
 
         <div class="container-fluid nav-container mt-sm-2 px-sm-4">
             <a class="navbar-brand" href="#">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
+                    alt="">
             </a>
             <button class="talk-btn phn-btn">Let's Talk</button>
 
@@ -91,125 +92,155 @@
     </nav>
 
 
-<?php
-// Fetch the latest Topbar Detail post
-$topbar_query = new WP_Query(array(
-    'post_type'      => 'topbar_detail',
-    'posts_per_page' => 1,
-));
-
-if ($topbar_query->have_posts()) :
-    while ($topbar_query->have_posts()) : $topbar_query->the_post();
-
-        // Get ACF fields
-        $banner_back_image    = get_field('banner_back_image');
-        $banner_product_image = get_field('banner_product_image');
-        $heading_html         = get_field('heading');
-
-        // Fallbacks
-        $default_back_image    = get_template_directory_uri() . '/assets/images/banner.jpg';
-        $default_product_image = get_template_directory_uri() . '/assets/images/banner-1.png';
-        $default_heading_html  = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
-        ?>
-
-    <div class="home-banner">
-        <img src="<?php echo esc_url($banner_back_image['url'] ?? $default_back_image); ?>" alt="">
-        <div class="home-overlayer">
-            <?php
-            // Show custom or fallback heading
-            echo !empty($heading_html) ? $heading_html : $default_heading_html;
-            ?>
-            <img src="<?php echo esc_url($banner_product_image['url'] ?? $default_product_image); ?>" alt="">
-            <div class="explore-button">
-                <button>Explore Product</button>
-            </div>
-        </div>
-    </div>
-
     <?php
-    endwhile;
-    wp_reset_postdata();
-else :
-    // No Topbar Detail found → Show full default
-    ?>
-    <div class="home-banner">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner.jpg'); ?>" alt="">
-        <div class="home-overlayer">
-            <h6>Quality you trust.</h6>
-            <h1>Taste You Love.</h1>
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-1.png'); ?>" alt="">
-            <div class="explore-button">
-                <button>Explore Product</button>
+    // Fetch the latest Topbar Detail post
+    $topbar_query = new WP_Query(array(
+        'post_type' => 'topbar_detail',
+        'posts_per_page' => 1,
+    ));
+
+    if ($topbar_query->have_posts()):
+        while ($topbar_query->have_posts()):
+            $topbar_query->the_post();
+
+            // Get ACF fields
+            $banner_back_image = get_field('banner_back_image');
+            $banner_product_image = get_field('banner_product_image');
+            $heading_html = get_field('heading');
+
+            // Fallbacks
+            $default_back_image = get_template_directory_uri() . '/assets/images/banner.jpg';
+            $default_product_image = get_template_directory_uri() . '/assets/images/banner-1.png';
+            $default_heading_html = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
+            ?>
+
+            <div class="home-banner">
+                <img src="<?php echo esc_url($banner_back_image['url'] ?? $default_back_image); ?>" alt="">
+                <div class="home-overlayer">
+                    <?php
+                    // Show custom or fallback heading
+                    echo !empty($heading_html) ? $heading_html : $default_heading_html;
+                    ?>
+                    <img src="<?php echo esc_url($banner_product_image['url'] ?? $default_product_image); ?>" alt="">
+                    <div class="explore-button">
+                        <button>Explore Product</button>
+                    </div>
+                </div>
+            </div>
+
+            <?php
+        endwhile;
+        wp_reset_postdata();
+    else:
+        // No Topbar Detail found → Show full default
+        ?>
+        <div class="home-banner">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner.jpg'); ?>" alt="">
+            <div class="home-overlayer">
+                <h6>Quality you trust.</h6>
+                <h1>Taste You Love.</h1>
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-1.png'); ?>" alt="">
+                <div class="explore-button">
+                    <button>Explore Product</button>
+                </div>
             </div>
         </div>
-    </div>
     <?php endif; ?>
 
     <?php
-// Fetch latest Topbar Detail post
-$topbar_query = new WP_Query(array(
-    'post_type'      => 'topbar_detail',
-    'posts_per_page' => 1,
-));
+    // Fetch latest Topbar Detail post
+    $topbar_query = new WP_Query(array(
+        'post_type' => 'topbar_detail',
+        'posts_per_page' => 1,
+    ));
 
-if ($topbar_query->have_posts()) :
-    while ($topbar_query->have_posts()) : $topbar_query->the_post();
+    if ($topbar_query->have_posts()):
+        while ($topbar_query->have_posts()):
+            $topbar_query->the_post();
 
-        // Get custom field
-        $marque_detail = get_field('marque_detail'); // ACF field name
-        ?>
+            // Get custom field
+            $marque_detail = get_field('marque_detail'); // ACF field name
+            ?>
 
-    <div class="marques mt-sm-5 pt-sm-5">
-        <div class="marque-content text-black">
-            <?php
-                if (!empty($marque_detail)) {
-                    // Loop 12 times
-                    for ($i = 0; $i < 12; $i++) {
-                        echo '<span class="marque-content text-black">' . esc_html($marque_detail) . '</span>';
+            <div class="marques mt-sm-5 pt-sm-5">
+                <div class="marque-content text-black">
+                    <?php
+                    if (!empty($marque_detail)) {
+                        // Loop 12 times
+                        for ($i = 0; $i < 12; $i++) {
+                            echo '<span class="marque-content text-black">' . esc_html($marque_detail) . '</span>';
+                        }
+                    } else {
+                        // Default static content
+                        ?>
+                        <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-black mx-5">LOW CALORIE</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+
+                        <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-black mx-5">LOW CALORIE</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">LOW CALORIE</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+
+                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">LOW CALORIE</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <?php
                     }
-                } else {
-                    // Default static content
                     ?>
-            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
-            <span class="marque-content text-black">LOW CALORIE</span>
-            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
-            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
-            <span class="marque-content text-black">LOW CALORIE</span>
-            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
-            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
-            <span class="marque-content text-black">LOW CALORIE</span>
-            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
-            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
-            <span class="marque-content text-black">LOW CALORIE</span>
-            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
-            <?php
-                }
-                ?>
-        </div>
-    </div>
+                </div>
+            </div>
 
-    <?php
-    endwhile;
-    wp_reset_postdata();
-else :
-    // If no topbar_detail post exists
-    ?>
-    <div class="marques mt-sm-5 pt-sm-5">
-        <div class="marque-content text-black">
-            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
-            <span class="marque-content text-black">LOW CALORIE</span>
-            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
-            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
-            <span class="marque-content text-black">LOW CALORIE</span>
-            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
-            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
-            <span class="marque-content text-black">LOW CALORIE</span>
-            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
-            <span class="marque-content text-black">NO ADDITIONAL PRESERVATIVES</span>
-            <span class="marque-content text-black">LOW CALORIE</span>
-            <span class="marque-content text-black">NATURAL INGREDIENTS</span>
+            <?php
+        endwhile;
+        wp_reset_postdata();
+    else:
+        // If no topbar_detail post exists
+        ?>
+        <div class="marques mt-sm-5 pt-sm-5">
+            <div class="marque-content text-black">
+                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">LOW CALORIE</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+
+                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">LOW CALORIE</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">LOW CALORIE</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+
+                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">LOW CALORIE</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+            </div>
         </div>
-    </div>
     <?php endif; ?>
 
 
@@ -367,7 +398,8 @@ else :
         <p>ABOUT US</p>
         <h2>Driving Fiji’s food <br> industry forward with <br> quality, innovation <br>
             and trust.</h2>
-        <img height="20" width="20" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+        <img height="20" width="20" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+            alt="">
     </div>
 
     <div class="volt-drink">
@@ -378,20 +410,32 @@ else :
 
         <div class="volt-marq">
             <div class="marquee-track">
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/1.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/2.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/3.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/4.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/5.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/6.jpg" alt=""></div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/1.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/2.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/3.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/4.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/5.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/6.jpg" alt="">
+                </div>
 
                 <!-- duplicate for smooth infinite loop -->
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/1.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/2.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/3.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/4.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/5.png" alt=""></div>
-                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/6.jpg" alt=""></div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/1.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/2.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/3.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/4.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/5.png" alt="">
+                </div>
+                <div class="box"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/6.jpg" alt="">
+                </div>
             </div>
 
         </div>
@@ -404,10 +448,12 @@ else :
                             <p>Where you belong, grows stronger with <br> you. Join our community.</p>
                             <div class="d-none d-sm-block">
                                 <a href="">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png" alt="">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png"
+                                        alt="">
                                 </a>
                                 <a href="">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/insta.png" alt="">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/insta.png"
+                                        alt="">
                                 </a>
                             </div>
                             <div class="text-center d-block d-sm-none">
@@ -417,7 +463,8 @@ else :
                     </div>
                     <div class="col-12 col-sm-5">
                         <div class="ready-right position-relative">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/a-removebg-preview.png" alt="">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/a-removebg-preview.png"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -428,61 +475,62 @@ else :
 
     <div class="our-recipes">
         <h1>Our Recipes</h1>
-        <div class="swiper mySwiper nearby-slider mt-5">
+        <div class="swiper mySwiper nearby-slider mt-5 recipie-slider">
             <div class="swiper-wrapper">
                 <?php
-            // WP Query for 5 latest recipes
-            $recipes = new WP_Query(array(
-                'post_type' => 'recipe',
-                'posts_per_page' => 5,
-            ));
-            if ($recipes->have_posts()) :
-                while ($recipes->have_posts()) : $recipes->the_post();
+                // WP Query for 5 latest recipes
+                $recipes = new WP_Query(array(
+                    'post_type' => 'recipe',
+                    'posts_per_page' => 5,
+                ));
+                if ($recipes->have_posts()):
+                    while ($recipes->have_posts()):
+                        $recipes->the_post();
 
-                    // ACF fields
-                    $time = get_field('recipe_time') ?: '1.2Hrs';
-                    $category = get_field('recipe_category') ?: 'Vegan';
-                    $extra_info = get_field('recipe_extra_info') ?: 'Gluten Free';
+                        // ACF fields
+                        $time = get_field('recipe_time') ?: '1.2Hrs';
+                        $category = get_field('recipe_category') ?: 'Vegan';
+                        $extra_info = get_field('recipe_extra_info') ?: 'Gluten Free';
 
-                    // ACF Image field
-                    $image_field = get_field('image'); // field name is 'image'
-                    $default_image = get_template_directory_uri() . '/assets/images/default-recipe.jpg';
+                        // ACF Image field
+                        $image_field = get_field('image'); // field name is 'image'
+                        $default_image = get_template_directory_uri() . '/assets/images/default-recipe.jpg';
 
-                    if ($image_field) {
-                        if (is_array($image_field) && isset($image_field['url'])) {
-                            $image_url = $image_field['sizes']['medium'] ?? $image_field['url'];
-                        } elseif (is_numeric($image_field)) {
-                            $image_url = wp_get_attachment_image_url($image_field, 'medium');
+                        if ($image_field) {
+                            if (is_array($image_field) && isset($image_field['url'])) {
+                                $image_url = $image_field['sizes']['medium'] ?? $image_field['url'];
+                            } elseif (is_numeric($image_field)) {
+                                $image_url = wp_get_attachment_image_url($image_field, 'medium');
+                            } else {
+                                $image_url = $image_field; // assume URL
+                            }
                         } else {
-                            $image_url = $image_field; // assume URL
+                            $image_url = $default_image;
                         }
-                    } else {
-                        $image_url = $default_image;
-                    }
-            ?>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6><?php the_title(); ?></h6>
-                                <button><i class="ri-history-line"></i><?php echo esc_html($time); ?></button>
-                            </div>
-                            <div class="nearbybottom bottom-div">
-                                <span><?php echo esc_html($category); ?></span>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span><?php echo esc_html($extra_info); ?></span>
-                                    <button class="learnmore">Learn More</button>
+                        ?>
+                        <div class="swiper-slide">
+                            <div class="nearby-slides">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
+                                <div class="slider-overlay">
+                                    <div class="nearbytop">
+                                        <h6><?php the_title(); ?></h6>
+                                        <button><i class="ri-history-line"></i><?php echo esc_html($time); ?></button>
+                                    </div>
+                                    <div class="nearbybottom bottom-div">
+                                        <span><?php echo esc_html($category); ?></span>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span><?php echo esc_html($extra_info); ?></span>
+                                            <button class="learnmore">Learn More</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php
-                endwhile;
-                wp_reset_postdata();
-            endif;
-            ?>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
             </div>
         </div>
     </div>
@@ -503,11 +551,11 @@ else :
                         <div class="top d-flex align-items-center justify-content-between ">
                             <div>
                                 <div>
-                                <button>Vegan</button>
-                            </div>
-                            <div>
-                                <button>Gluten-Free</button>
-                            </div>
+                                    <button>Vegan</button>
+                                </div>
+                                <div>
+                                    <button>Gluten-Free</button>
+                                </div>
                             </div>
                             <div class="learn-more">
                                 <button>Learn More</button>
@@ -516,7 +564,7 @@ else :
                     </div>
 
                 </div>
-                   <div class="swiper-slide">
+                <div class="swiper-slide">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
                     <div class="overlay">
                         <div class="top d-flex justify-content-between">
@@ -528,11 +576,11 @@ else :
                         <div class="top d-flex align-items-center justify-content-between ">
                             <div>
                                 <div>
-                                <button>Vegan</button>
-                            </div>
-                            <div>
-                                <button>Gluten-Free</button>
-                            </div>
+                                    <button>Vegan</button>
+                                </div>
+                                <div>
+                                    <button>Gluten-Free</button>
+                                </div>
                             </div>
                             <div class="learn-more">
                                 <button>Learn More</button>
@@ -541,7 +589,7 @@ else :
                     </div>
 
                 </div>
-                   <div class="swiper-slide">
+                <div class="swiper-slide">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
                     <div class="overlay">
                         <div class="top d-flex justify-content-between">
@@ -553,11 +601,11 @@ else :
                         <div class="top d-flex align-items-center justify-content-between ">
                             <div>
                                 <div>
-                                <button>Vegan</button>
-                            </div>
-                            <div>
-                                <button>Gluten-Free</button>
-                            </div>
+                                    <button>Vegan</button>
+                                </div>
+                                <div>
+                                    <button>Gluten-Free</button>
+                                </div>
                             </div>
                             <div class="learn-more">
                                 <button>Learn More</button>
@@ -566,7 +614,7 @@ else :
                     </div>
 
                 </div>
-                   <div class="swiper-slide">
+                <div class="swiper-slide">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
                     <div class="overlay">
                         <div class="top d-flex justify-content-between">
@@ -578,11 +626,11 @@ else :
                         <div class="top d-flex align-items-center justify-content-between ">
                             <div>
                                 <div>
-                                <button>Vegan</button>
-                            </div>
-                            <div>
-                                <button>Gluten-Free</button>
-                            </div>
+                                    <button>Vegan</button>
+                                </div>
+                                <div>
+                                    <button>Gluten-Free</button>
+                                </div>
                             </div>
                             <div class="learn-more">
                                 <button>Learn More</button>
@@ -591,7 +639,7 @@ else :
                     </div>
 
                 </div>
-                   <div class="swiper-slide">
+                <div class="swiper-slide">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
                     <div class="overlay">
                         <div class="top d-flex justify-content-between">
@@ -603,11 +651,11 @@ else :
                         <div class="top d-flex align-items-center justify-content-between ">
                             <div>
                                 <div>
-                                <button>Vegan</button>
-                            </div>
-                            <div>
-                                <button>Gluten-Free</button>
-                            </div>
+                                    <button>Vegan</button>
+                                </div>
+                                <div>
+                                    <button>Gluten-Free</button>
+                                </div>
                             </div>
                             <div class="learn-more">
                                 <button>Learn More</button>
@@ -617,7 +665,7 @@ else :
 
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -625,8 +673,10 @@ else :
     </div>
 
     <div class="poll position-relative">
-        <img class="poll-img d-none d-sm-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll.jpg" alt="">
-        <img class="h-100 w-100 object-fit-cover d-block d-sm-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll-mbl.jpg" alt="">
+        <img class="poll-img d-none d-sm-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll.jpg"
+            alt="">
+        <img class="h-100 w-100 object-fit-cover d-block d-sm-none"
+            src="<?php echo get_template_directory_uri(); ?>/assets/images/poll-mbl.jpg" alt="">
         <div class="poll-over">
             <div class="poll-container">
                 <div class="container">
@@ -634,8 +684,10 @@ else :
                         <div class="col-12 col-sm-8">
                             <div class="d-flex align-items-sm-start h-100 justify-content-center flex-column">
                                 <h2>Poll for Future <br> Volt Flavor</h2>
-                                <p class="d-none d-sm-block">Vote for our next flavour and get <br> 5% off for sharing your pick!</p>
-                                <p class="d-block d-sm-none">Vote for our next flavour and get  5% off <br> for sharing your pick!</p>
+                                <p class="d-none d-sm-block">Vote for our next flavour and get <br> 5% off for sharing
+                                    your pick!</p>
+                                <p class="d-block d-sm-none">Vote for our next flavour and get 5% off <br> for sharing
+                                    your pick!</p>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
@@ -655,18 +707,24 @@ else :
                 <div class="marques mt-5 ">
                     <div class="marque-content text-white">
                         <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
 
                         <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                     </div>
                 </div>
 
@@ -675,11 +733,12 @@ else :
     </div>
 
 
- <div class="nearby-store pb-5">
+    <div class="nearby-store pb-5">
         <div class="containers ">
             <div class="nearby-container">
                 <div class="d-sm-flex gap-2">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 111102.png" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 111102.png"
+                        alt="">
                     <h6>Grab yours at the <br>
                         Nearby Stores</h6>
                     <h5 class="mbl-sec">Buy Our Products in <br> Supermarket Near You</h5>
@@ -701,84 +760,85 @@ else :
         <div class="swiper mySwiper nearby-slider mt-5">
             <div class="swiper-wrapper">
                 <?php
-        $stores = new WP_Query(array(
-            'post_type' => 'store',
-            'posts_per_page' => -1
-        ));
+                $stores = new WP_Query(array(
+                    'post_type' => 'store',
+                    'posts_per_page' => -1
+                ));
 
-        // Default fallback values
-        $default_image = get_template_directory_uri() . '/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png';
-        $default_name = 'Extra Supermarket';
-        $default_distance = '1.2Km';
-        $default_address = 'VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji';
-        $default_phone = '+679 338 7142';
-        $default_hours = 'Mon - Sun <br> (10:00 AM - 09:00 PM)';
+                // Default fallback values
+                $default_image = get_template_directory_uri() . '/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png';
+                $default_name = 'Extra Supermarket';
+                $default_distance = '1.2Km';
+                $default_address = 'VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji';
+                $default_phone = '+679 338 7142';
+                $default_hours = 'Mon - Sun <br> (10:00 AM - 09:00 PM)';
 
-        if ($stores->have_posts()):
-            while ($stores->have_posts()): $stores->the_post();
-                // ACF fields
-                $image_field = get_field('image');
-                $store_image = $image_field && isset($image_field['url']) ? $image_field['url'] : $default_image;
+                if ($stores->have_posts()):
+                    while ($stores->have_posts()):
+                        $stores->the_post();
+                        // ACF fields
+                        $image_field = get_field('image');
+                        $store_image = $image_field && isset($image_field['url']) ? $image_field['url'] : $default_image;
 
-                $store_name = get_the_title() ?: $default_name;
-                $store_distance = get_field('distance') ?: $default_distance;
-                $store_address = get_field('address') ?: $default_address;
-                $store_phone = get_field('phone') ?: $default_phone;
-                $store_hours = get_field('hours') ?: $default_hours;
-        ?>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo esc_url($store_image); ?>" alt="<?php echo esc_attr($store_name); ?>">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6><?php echo wp_kses_post($store_name); ?></h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
+                        $store_name = get_the_title() ?: $default_name;
+                        $store_distance = get_field('distance') ?: $default_distance;
+                        $store_address = get_field('address') ?: $default_address;
+                        $store_phone = get_field('phone') ?: $default_phone;
+                        $store_hours = get_field('hours') ?: $default_hours;
+                        ?>
+                        <div class="swiper-slide">
+                            <div class="nearby-slides">
+                                <img src="<?php echo esc_url($store_image); ?>" alt="<?php echo esc_attr($store_name); ?>">
+                                <div class="slider-overlay">
+                                    <div class="nearbytop">
+                                        <h6><?php echo wp_kses_post($store_name); ?></h6>
+                                        <button><i class="ri-crosshair-2-line"></i>Directions</button>
+                                    </div>
+
+                                    <div class="nearbybottom">
+                                        <span><?php echo esc_html($store_distance); ?></span>
+                                        <p><?php echo esc_html($store_address); ?></p>
+
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="d-flex">
+                                                <i class="ri-phone-line"></i>
+                                                <?php echo esc_html($store_phone); ?>
+                                            </span>
+                                            <p><?php echo wp_kses_post($store_hours); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else:
+                    ?>
+                    <div class="swiper-slide">
+                        <div class="nearby-slides">
+                            <img src="<?php echo esc_url($default_image); ?>" alt="Default Store">
+                            <div class="slider-overlay">
+                                <div class="nearbytop">
+                                    <h6><?php echo esc_html($default_name); ?></h6>
+                                    <button><i class="ri-crosshair-2-line"></i>Directions</button>
+                                </div>
 
-                            <div class="nearbybottom">
-                                <span><?php echo esc_html($store_distance); ?></span>
-                                <p><?php echo esc_html($store_address); ?></p>
+                                <div class="nearbybottom">
+                                    <span><?php echo esc_html($default_distance); ?></span>
+                                    <p><?php echo esc_html($default_address); ?></p>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        <?php echo esc_html($store_phone); ?>
-                                    </span>
-                                    <p><?php echo wp_kses_post($store_hours); ?></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="d-flex">
+                                            <i class="ri-phone-line"></i>
+                                            <?php echo esc_html($default_phone); ?>
+                                        </span>
+                                        <p><?php echo wp_kses_post($default_hours); ?></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <?php
-            endwhile;
-            wp_reset_postdata();
-        else:
-        ?>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo esc_url($default_image); ?>" alt="Default Store">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6><?php echo esc_html($default_name); ?></h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span><?php echo esc_html($default_distance); ?></span>
-                                <p><?php echo esc_html($default_address); ?></p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        <?php echo esc_html($default_phone); ?>
-                                    </span>
-                                    <p><?php echo wp_kses_post($default_hours); ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -799,7 +859,8 @@ else :
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
                     <div class="first-row">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
+                            alt="">
                         <h6>Driving Fiji’s food industry <br> forward with quality, innovation <br> and trust...</h6>
                     </div>
                 </div>
@@ -836,7 +897,8 @@ else :
                                 <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
                                     alt="twitterx--v2" />
                             </div>
-                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
+                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png"
+                                alt="">
 
                         </div>
                     </div>
@@ -851,7 +913,8 @@ else :
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
                     <div class="first-row">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
+                            alt="">
                         <h6>Driving Fiji’s food industry forward with <br> quality, innovation and trust...</h6>
                     </div>
                 </div>
@@ -874,7 +937,8 @@ else :
                                 <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
                                     alt="twitterx--v2" />
                             </div>
-                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
+                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png"
+                                alt="">
 
                         </div>
                     </div>
@@ -946,7 +1010,8 @@ else :
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
+            <a href="#">Carefully Crafted By <img
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
         </div>
     </div>
 
@@ -955,7 +1020,8 @@ else :
         <hr class="phone-hr">
 
         <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
+            <a href="#">Carefully Crafted By <img
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
         </div>
     </div>
 
@@ -979,7 +1045,7 @@ else :
         var swiper = new Swiper(".nearby-slider", {
             slidesPerView: 4,
             spaceBetween: 30,
-            loop:true,
+            loop: true,
             navigation: {
                 nextEl: ".right",
                 prevEl: ".left",
@@ -1002,6 +1068,34 @@ else :
                 },
             },
         });
+
+                var swiper = new Swiper(".recipie-slider", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: ".right",
+                prevEl: ".left",
+            },
+            breakpoints: {
+                // Mobile (up to 640px)
+                0: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 10,
+                },
+                // Tablet (641px to 1024px)
+                641: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                // Desktop (above 1024px)
+                1025: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
         const accordions = document.querySelectorAll(".accordion-header");
 
 
