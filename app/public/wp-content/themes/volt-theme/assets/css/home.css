@@ -24,7 +24,7 @@
 
 .home-overlayer {
     position: absolute;
-    top: 120px;
+    top: 0px;
     left: 0;
     display: flex;
     align-items: center;
@@ -43,12 +43,25 @@
 
 }
 
+.home-img {
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+}
+
+.home-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
 .home-banner .home-overlayer h6 {
     font-weight: 600;
     font-size: 32px;
     line-height: 39px;
     color: rgba(255, 255, 255, 1);
     margin-bottom: 11px;
+    margin-top: 9rem;
 }
 
 .home-banner .home-overlayer h1 {
@@ -58,7 +71,6 @@
     letter-spacing: -2px;
     color: rgba(255, 255, 255, 1);
     text-align: center;
-    margin-bottom: -5rem;
 
 }
 
@@ -67,7 +79,6 @@
     color: #fff;
     height: 55px;
     display: flex;
-    margin-top: -7rem;
     align-items: center;
     justify-content: center;
     width: auto;
@@ -96,6 +107,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    height: 100%;
 }
 
 .our-products-slider .product::after {
@@ -132,7 +144,6 @@
     width: 672px;
     height: 720px;
 
-
 }
 
 .our-products-slider .product .overlayer {
@@ -162,7 +173,7 @@
     font-weight: 400;
     font-style: Regular;
     font-size: 18px;
-    line-height: 100%;
+    line-height: 125%;
     letter-spacing: 0%;
     color: rgba(102, 102, 102, 1);
 }
@@ -181,7 +192,7 @@
     width: 796px;
     height: 140px;
     border-radius: 196px;
-    top: 80%;
+    bottom: 0%;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -208,6 +219,10 @@
     text-align: center;
     color: rgba(99, 85, 66, 1);
 
+}
+
+.our-products-slider {
+    overflow-y: auto !important;
 }
 
 .our-products-slider .product .overlayer .bottom-sec .text-center h3 {
@@ -241,9 +256,6 @@
     align-items: center;
     justify-content: center;
     width: 36px;
-    position: absolute;
-    right: 250px;
-    bottom: 70px;
     border-radius: 3.6px;
     border: 1px solid #947E1E;
     z-index: 99;
@@ -257,29 +269,28 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    justify-content: center;
-    width: 36px;
+    justify-content: space-between;
+    width: 150px;
     position: absolute;
     right: 180px;
     bottom: 70px;
-    border-radius: 3.6px;
-    border: 1px solid #947E1E;
     z-index: 99;
 
 }
 
+.product-arrow-r p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
 
-.product-arrow:hover,
-.product-arrow-r:hover {
-    background-color: #947E1E;
-    scale: 1.1;
+.product-arrow-r span {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
 }
 
 
-.product-arrow:hover i,
-.product-arrow-r:hover i {
-    color: #fff;
-}
 
 .aboutus {
     height: 676px;
@@ -288,10 +299,11 @@
     width: 90% !important;
     margin: 0 auto;
     justify-content: center;
+    position: relative;
 }
 
 .aboutus .aboutleft {
-    width: 625px;
+    width: 100%;
     height: 503px;
     border-radius: 24px;
     overflow: hidden;
@@ -313,15 +325,16 @@
     position: relative;
 }
 
-.aboutright::before {
+.aboutus::before {
     content: "";
     position: absolute;
-    top: -10rem;
+    top: -9rem;
     right: 0;
     width: 500px;
     height: 500px;
     background-image: url('../images/cloud.png');
     background-position: center;
+    background-size: contain;
     background-repeat: no-repeat;
 }
 
@@ -399,6 +412,59 @@
 
 }
 
+.progress-bar {
+    width: 112px;
+    /* adjust width as needed */
+    height: 6px;
+    /* thickness of bar */
+    background-color: #d3d3d3;
+    /* light gray background */
+    border-radius: 50px;
+    /* rounded edges */
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    /* ensure fill stays inside rounded corners */
+}
+
+.progress-fill {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    width: 0;
+    /* set via inline style or JS */
+    background-color: #CCCCCC;
+    /* dark brown (like your sample) */
+    border-radius: 50px;
+    transition: width 0.4s ease;
+    /* smooth animation */
+}
+
+.progress-fill::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 50px;
+    background: #2D1D0F;
+}
+
+@keyframes fillProgress {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 45%;
+    }
+}
+
+.progress-fill {
+    animation: fillProgress 1s ease forwards;
+}
+
 
 
 @keyframes scroll {
@@ -444,7 +510,7 @@
     font-weight: 400;
     font-style: Regular;
     font-size: 24px;
-    line-height: 100%;
+    line-height: 115%;
     width: 100%;
     letter-spacing: 0%;
     vertical-align: middle;
@@ -470,25 +536,89 @@
     width: 100%;
     position: absolute;
     bottom: 0;
+    object-fit: con;
     left: 0;
 }
 
 .our-recipes {
     height: 748px;
     position: relative;
+    background: linear-gradient(181.24deg, rgba(248, 242, 220, 0) 22.68%, #FBF6E0 44.63%);
+ 
 }
 
+
+.our-recipes::after {
+    content: "";
+    position: absolute;
+    top: 36px;
+    left: 0;
+    transform: rotateY(180deg);
+    height: 300px;
+    width: 282px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../images/cloud.png');
+
+}
+
+
+.our-recipes::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 300px;
+    width: 360px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../images/cloud.png');
+
+}
+
+.navi {
+    position: relative;
+    z-index: 9;
+}
+
+.navi p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.navi span {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.home-near {
+    position: relative;
+}
+
+.home-near::after {
+    content: "";
+    background: linear-gradient(180deg, rgba(248, 242, 220, 0) -1.71%, #FBF6E0 18.69%);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 270px;
+}
 
 
 .our-recipes h1 {
     font-weight: 500;
     text-align: center;
-    padding-top: 65px;
+    padding-top: 66px;
     font-style: Medium;
     font-size: 52px;
     line-height: 100%;
     letter-spacing: -2%;
     color: rgba(45, 29, 15, 1);
+    margin-bottom: 5rem;
 }
 
 .learnmore {
@@ -525,14 +655,14 @@
 .poll::before {
     content: "";
     position: absolute;
-    height: 403px;
+    height: 99%;
     opacity: 1;
-    top: -128px;
+    top: -54%;
     left: 0;
     backdrop-filter: blur(0.7px);
     transform: rotate(-180deg);
     width: 100%;
-    background: linear-gradient(185.24deg, rgba(248, 242, 220, 0) 22.68%, #FBF6E0 44.63%);
+    background: linear-gradient(181.24deg, rgba(248, 242, 220, 0) 22.68%, #FBF6E0 44.63%);
 
 }
 
@@ -547,7 +677,7 @@
 
 .right-poll {
     width: 326px;
-    height: 294px;
+    height: 310px;
     border-radius: 16.8px;
     opacity: 1;
     background: var(--Colors-Neutral-100, rgba(255, 255, 255, 1));
@@ -555,6 +685,8 @@
     position: relative;
     overflow: hidden;
 }
+
+
 
 .right-poll h5 {
     font-weight: 500;
@@ -625,6 +757,10 @@
     width: 100%;
     height: 20%;
 }
+.polloverlayer .marque-content span{
+    margin: 0 5rem !important;
+}
+
 
 .polloverlayer img {
     filter: invert(100%);
@@ -746,7 +882,7 @@
     .right-poll {
         width: 81%;
         margin: 120px auto;
-        height: 251px;
+        height: 266px;
     }
 
     .polloverlayer {
@@ -866,6 +1002,7 @@
         font-weight: 400;
         font-size: 15px;
         line-height: 130%;
+        color: #666666;
         letter-spacing: 0%;
         text-align: center;
     }
@@ -1052,4 +1189,11 @@
         height: 83px;
     }
 
+}
+
+
+@media (max-width:1650px) {
+    .ready-right img {
+        object-fit: cover;
+    }
 }

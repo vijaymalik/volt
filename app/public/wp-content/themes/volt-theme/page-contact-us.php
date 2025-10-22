@@ -123,7 +123,7 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
                     alt="">
             </a>
-            <button class="talk-btn phn-btn">Let's Talk</button>
+            <a class="talk-btn phn-btn" href="/contact-us">Let's Talk</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedConten" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -143,12 +143,12 @@
                         <a class="nav-link active" aria-current="page" href="#">Products </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Recipes </a>
+                        <a class="nav-link" href="/recipie">Recipes </a>
                     </li>
 
                 </ul>
 
-                <button class="talk-btn">Let's Talk</button>
+                <a class="talk-btn" href="/contact-us">Let's Talk</a>
             </div>
         </div>
     </nav>
@@ -184,6 +184,10 @@
         <div class="right-sec">
             <div class="form">
                 <h2>Get in Touch</h2>
+                  <p class="right-para">We’re ready to answer your questions and assist you promptly. Our friendly <br>
+                    team is ready to
+                    assist
+                    you with any VOLT Milk Drink Powder queries.</p>
                 <form id="enquiryForm" novalidate>
                     <div class="input">
                         <label>Name</label>
@@ -225,6 +229,11 @@
                         <textarea name="message" placeholder="Eg: Your Query" required></textarea>
                         <small class="error"></small>
                     </div>
+                       <div class="submit-sec">
+                    <input type="checkbox">
+                    <p>By submitting the above form, you consent to our <span><a class="text-black" href="">terms and
+                                conditions.</a></span></p>
+                </div>
 
                     <div class="submit-button">
                         <button type="submit">Submit</button>
@@ -382,7 +391,7 @@
     </div>
 
     <div class="footer desktop-footer pt-5 ">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
                     <div class="first-row">

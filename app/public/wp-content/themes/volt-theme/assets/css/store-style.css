@@ -114,6 +114,7 @@ body {
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
+    text-decoration: none;
 }
 
 
@@ -538,7 +539,7 @@ body {
 
     font-weight: 500;
     font-style: Medium;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 130%;
     letter-spacing: 3%;
     vertical-align: middle;
@@ -743,7 +744,10 @@ body {
 
 }
 
-
+.desktop-footer {
+    width: 90%;
+    margin: 0 auto;
+}
 
 .bird-sec {
     display: none;
@@ -1000,6 +1004,7 @@ body {
 
     .navbar .nav-container .talk-btn {
         margin-right: -70px;
+        text-decoration: none;
     }
 
     .menu-btn {

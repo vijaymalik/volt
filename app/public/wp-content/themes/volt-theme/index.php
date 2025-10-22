@@ -57,11 +57,11 @@
 
 
         <div class="container-fluid nav-container mt-sm-2 px-sm-4">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
                     alt="">
             </a>
-            <button class="talk-btn phn-btn">Let's Talk</button>
+            <a class="talk-btn phn-btn" href="/contact-us">Let's Talk</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedConten" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -81,12 +81,12 @@
                         <a class="nav-link active" aria-current="page" href="#">Products </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Recipes </a>
+                        <a class="nav-link" href="recipie">Recipes </a>
                     </li>
 
                 </ul>
 
-                <button class="talk-btn">Let's Talk</button>
+                <a class="talk-btn" href="/contact-us">Let's Talk</a>
             </div>
         </div>
     </nav>
@@ -121,7 +121,9 @@
                     // Show custom or fallback heading
                     echo !empty($heading_html) ? $heading_html : $default_heading_html;
                     ?>
-                    <img src="<?php echo esc_url($banner_product_image['url'] ?? $default_product_image); ?>" alt="">
+                    <div class="home-img">
+                        <img src="<?php echo esc_url($banner_product_image['url'] ?? $default_product_image); ?>" alt="">
+                    </div>
                     <div class="explore-button">
                         <button>Explore Product</button>
                     </div>
@@ -139,7 +141,9 @@
             <div class="home-overlayer">
                 <h6>Quality you trust.</h6>
                 <h1>Taste You Love.</h1>
-                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-1.png'); ?>" alt="">
+                <div class="home-img">
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-1.png'); ?>" alt="">
+                </div>
                 <div class="explore-button">
                     <button>Explore Product</button>
                 </div>
@@ -174,31 +178,43 @@
                         // Default static content
                         ?>
                         <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-black mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
 
                         <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-black mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-                <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
+                        <span class="text-black mx-5">LOW CALORIE</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
+                        <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
 
-                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-                <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
+                        <span class="text-black mx-5">LOW CALORIE</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
+                        <span class="text-black mx-5">NATURAL INGREDIENTS</span>
+                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                            alt="">
                         <?php
                     }
                     ?>
@@ -214,31 +230,43 @@
         <div class="marques mt-sm-5 pt-sm-5">
             <div class="marque-content text-black">
                 <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
 
                 <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
 
                 <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
                 <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
+                    alt="">
             </div>
         </div>
     <?php endif; ?>
@@ -246,7 +274,7 @@
 
 
     <div class="our-products position-relative mt-5">
-        <div class="swiper our-products-slider">
+        <div class="swiper  our-products-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="product">
@@ -288,6 +316,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -300,7 +329,7 @@
                                 <div class="w-100">
                                     <h6>Milk Drink Powder</h6>
                                     <p>
-                                        Discover our flagship favorites trusted by generations, loved
+                                        Discover our flagship favorites <br> trusted by generations, loved <br>
                                         by every Fijian home.
                                     </p>
                                     <div class="explore-button">
@@ -338,11 +367,14 @@
         </div>
 
         <!-- ✅ Move arrows OUTSIDE swiper container -->
-        <div class="product-arrow">
-            <i class="ri-arrow-left-s-line left-arw"></i>
-        </div>
         <div class="product-arrow-r">
-            <i class="ri-arrow-right-s-line right-arw"></i>
+            <div class="product-arrow">
+                <i class="ri-arrow-left-s-line left-arw"></i>
+            </div>
+            <p>01 <span>02</span></p>
+            <div class="product-arrow">
+                <i class="ri-arrow-right-s-line right-arw"></i>
+            </div>
         </div>
     </div>
 
@@ -697,6 +729,10 @@
                                     <button class="mt-5">Sweet</button>
                                     <button>Savoury</button>
                                 </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -725,6 +761,44 @@
                         <span class="text-white mx-5">NATURAL INGREDIENTS</span>
                         <img height="25" width="25"
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">LOW CALORIE</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">NATURAL INGREDIENTS</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+
+                        <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">LOW CALORIE</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">NATURAL INGREDIENTS</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">LOW CALORIE</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">NATURAL INGREDIENTS</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+
+                        <span class="text-white mx-5">NO ADDITIONAL PRESERVATIVES</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">LOW CALORIE</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <span class="text-white mx-5">NATURAL INGREDIENTS</span>
+                        <img height="25" width="25"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
                     </div>
                 </div>
 
@@ -733,7 +807,7 @@
     </div>
 
 
-    <div class="nearby-store pb-5">
+    <div class="nearby-store home-near pb-5">
         <div class="containers ">
             <div class="nearby-container">
                 <div class="d-sm-flex gap-2">
@@ -844,10 +918,11 @@
         </div>
 
 
-        <div class="navi">
+        <div class="navi ">
             <div class="arrow ">
                 <i class="ri-arrow-left-s-line left"></i>
             </div>
+            <p>01/ <span>02</span> </p>
             <div class="arrow">
                 <i class="ri-arrow-right-s-line right"></i>
             </div>
@@ -855,7 +930,7 @@
     </div>
 
     <div class="footer desktop-footer pt-5 ">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
                     <div class="first-row">
@@ -1040,36 +1115,53 @@
     <!-- Initialize Swiper -->
     <script>
 
+        // Updated Swiper initialization
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiperWrapper = document.querySelector('.nearby-slider .swiper-wrapper');
+            const slideCount = swiperWrapper ? swiperWrapper.querySelectorAll('.swiper-slide').length : 0;
 
+            // Maximum slides per view (desktop)
+            const maxSlidesPerView = 4;
 
-        var swiper = new Swiper(".nearby-slider", {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            loop: true,
-            navigation: {
-                nextEl: ".right",
-                prevEl: ".left",
-            },
-            breakpoints: {
-                // Mobile (up to 640px)
-                0: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 10,
+            // Enable loop only if there are more slides than slidesPerView
+            const enableLoop = slideCount > maxSlidesPerView;
+
+            var swiper = new Swiper(".nearby-slider", {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                loop: enableLoop,
+                watchOverflow: true, // hides arrows if not enough slides
+                navigation: {
+                    nextEl: ".navi .right", // target inside .navi
+                    prevEl: ".navi .left",
                 },
-                // Tablet (641px to 1024px)
-                641: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
+                breakpoints: {
+                    // Mobile (up to 640px)
+                    0: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 10,
+                    },
+                    // Tablet (641px to 1024px)
+                    641: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    // Desktop (above 1024px)
+                    1025: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
                 },
-                // Desktop (above 1024px)
-                1025: {
-                    slidesPerView: 4,
-                    spaceBetween: 30,
-                },
-            },
+                on: {
+                    init: function () {
+                        console.log(`Swiper initialized with ${slideCount} slides. Loop: ${enableLoop}`);
+                    }
+                }
+            });
         });
 
-                var swiper = new Swiper(".recipie-slider", {
+
+        var swiper = new Swiper(".recipie-slider", {
             slidesPerView: 5,
             spaceBetween: 30,
             loop: true,
