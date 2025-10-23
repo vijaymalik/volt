@@ -38,7 +38,7 @@ body {
 }
 
 .navbar .marques {
-    height: 32px;
+    height: 37px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -706,6 +706,9 @@ body {
     height: 20px;
 
 }
+.mbl-progress {
+    display: none;
+}
 
 .bird {
     margin-top: 17rem;
@@ -791,7 +794,7 @@ body {
 
     .bird-sec {
         position: absolute;
-        right: 0;
+        right: -24px;
         display: block;
 
     }
@@ -967,7 +970,7 @@ body {
     .nearby-store .nearby-container {
         flex-direction: column;
         align-items: start;
-        padding-left: 15px;
+        padding-left: 0px;
         position: relative;
     }
 
@@ -1016,6 +1019,19 @@ body {
         justify-content: center;
         cursor: pointer;
         transition: 0.3s ease;
+    }
+
+    .mbl-progress{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .mbl-progress .progress-bar{
+        width: 180px !important;
+        margin-top: 20px;
     }
 
     .menu-btn span {

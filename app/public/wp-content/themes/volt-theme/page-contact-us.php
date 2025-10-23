@@ -184,7 +184,7 @@
         <div class="right-sec">
             <div class="form">
                 <h2>Get in Touch</h2>
-                  <p class="right-para">We’re ready to answer your questions and assist you promptly. Our friendly <br>
+                <p class="right-para">We’re ready to answer your questions and assist you promptly. Our friendly <br>
                     team is ready to
                     assist
                     you with any VOLT Milk Drink Powder queries.</p>
@@ -229,11 +229,12 @@
                         <textarea name="message" placeholder="Eg: Your Query" required></textarea>
                         <small class="error"></small>
                     </div>
-                       <div class="submit-sec">
-                    <input type="checkbox">
-                    <p>By submitting the above form, you consent to our <span><a class="text-black" href="">terms and
-                                conditions.</a></span></p>
-                </div>
+                    <div class="submit-sec">
+                        <input type="checkbox">
+                        <p>By submitting the above form, you consent to our <span><a class="text-black" href="">terms
+                                    and
+                                    conditions.</a></span></p>
+                    </div>
 
                     <div class="submit-button">
                         <button type="submit">Submit</button>
@@ -285,11 +286,12 @@
                 </div>
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/birds.png" class="birds" alt="">
                 <div class="select">
-                    <select name="" id="">
+                    <select name="" class="fiji-select" id="">
                         <option value="">Fiji</option>
                     </select>
-                    <i class="ri-arrow-down-s-line"></i>
+                    <i class="ri-arrow-down-s-line arrow-select"></i>
                 </div>
+
             </div>
         </div>
 
@@ -574,6 +576,7 @@
 
     <!-- Initialize Swiper -->
     <script>
+
         var swiper = new Swiper(".nearby-slider", {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -642,14 +645,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
+
+document.querySelector('.arrow-select').addEventListener('click', function() {
+    const select = document.querySelector('.fiji-select');
+    select.focus();
+    const e = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true });
+    select.dispatchEvent(e);
+});
+
+
         jQuery(function ($) {
 
             $('#phone').on('keypress', function (e) {
-    const char = String.fromCharCode(e.which);
-    if (!/[0-9+\-\s()]/.test(char)) {
-        e.preventDefault();
-    }
-});
+                const char = String.fromCharCode(e.which);
+                if (!/[0-9+\-\s()]/.test(char)) {
+                    e.preventDefault();
+                }
+            });
             // init intl-tel-input on the phone input
             const phoneInput = document.querySelector("#phone");
             const iti = window.intlTelInput(phoneInput, {

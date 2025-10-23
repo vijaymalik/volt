@@ -162,114 +162,90 @@
         while ($topbar_query->have_posts()):
             $topbar_query->the_post();
 
-            // Get custom field
+            // Get custom field (ACF) - can be string or array
             $marque_detail = get_field('marque_detail'); // ACF field name
-            ?>
+    
+            // Icon source (escaped)
+            $icon_src = trailingslashit(get_template_directory_uri()) . 'assets/images/light (2).png';
+            $icon_img = '<img height="25" width="25" src="' . esc_url($icon_src) . '" alt="">';
 
+            // Prepare items array:
+            $items = array();
+
+            if (!empty($marque_detail)) {
+                if (is_array($marque_detail)) {
+                    // ACF returned an array (checkboxes, repeater, select multiple)
+                    $items = array_map('trim', $marque_detail);
+                } else {
+                    // ACF returned a string — allow comma separated values
+                    $marque_detail = trim($marque_detail);
+                    if (strpos($marque_detail, ',') !== false) {
+                        $items = array_map('trim', explode(',', $marque_detail));
+                    } else {
+                        $items = array($marque_detail);
+                    }
+                }
+
+                // Remove empty items
+                $items = array_filter($items, function ($v) {
+                    return $v !== '';
+                });
+            }
+
+            // Default fallback items if ACF provided nothing usable
+            $default_items = array(
+                'NO ADDITIONAL PRESERVATIVES',
+                'LOW CALORIE',
+                'NATURAL INGREDIENTS',
+            );
+
+            if (empty($items)) {
+                $items = $default_items;
+            }
+            ?>
             <div class="marques mt-sm-5 pt-sm-5">
                 <div class="marque-content text-black">
                     <?php
-                    if (!empty($marque_detail)) {
-                        // Loop 12 times
-                        for ($i = 0; $i < 12; $i++) {
-                            echo '<span class="marque-content text-black">' . esc_html($marque_detail) . '</span>';
-                        }
-                    } else {
-                        // Default static content
-                        ?>
-                        <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
+                    // Repeat outputs (at least 12). Change $repeat to alter number.
+                    $repeat = 20;
+                    $count = count($items);
 
-                        <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-
-                        <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">LOW CALORIE</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                        <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                            alt="">
-                        <?php
+                    for ($i = 0; $i < $repeat; $i++) {
+                        $current = $items[$i % $count];
+                        echo '<span class="text-black mx-5">' . esc_html($current) . '</span>';
+                        echo $icon_img;
                     }
                     ?>
                 </div>
             </div>
-
             <?php
         endwhile;
         wp_reset_postdata();
     else:
-        // If no topbar_detail post exists
+        // If no topbar_detail post exists — show default repeating block
+        $icon_src = trailingslashit(get_template_directory_uri()) . 'assets/images/light (2).png';
+        $icon_img = '<img height="25" width="25" src="' . esc_url($icon_src) . '" alt="">';
+        $default_items = array(
+            'NO ADDITIONAL PRESERVATIVES',
+            'LOW CALORIE',
+            'NATURAL INGREDIENTS',
+        );
         ?>
         <div class="marques mt-sm-5 pt-sm-5">
             <div class="marque-content text-black">
-                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-
-                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-
-                <span class="text-black mx-5">NO ADDITIONAL PRESERVATIVES</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">LOW CALORIE</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
-                <span class="text-black mx-5">NATURAL INGREDIENTS</span>
-                <img height="25" width="25" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
-                    alt="">
+                <?php
+                $repeat = 12;
+                $count = count($default_items);
+                for ($i = 0; $i < $repeat; $i++) {
+                    $current = $default_items[$i % $count];
+                    echo '<span class="text-black mx-5">' . esc_html($current) . '</span>';
+                    echo $icon_img;
+                }
+                ?>
             </div>
         </div>
     <?php endif; ?>
+
 
 
 
@@ -371,11 +347,53 @@
             <div class="product-arrow">
                 <i class="ri-arrow-left-s-line left-arw"></i>
             </div>
-            <p>01 <span>02</span></p>
+            <p>01 / <span>02</span></p>
+
             <div class="product-arrow">
                 <i class="ri-arrow-right-s-line right-arw"></i>
             </div>
         </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const leftArrow = document.querySelector(".left-arw");
+                const rightArrow = document.querySelector(".right-arw");
+                const p = document.querySelector(".product-arrow-r p");
+
+                // true → showing 01, false → showing 02
+                let isFirstActive = false;
+
+                function toggleNumbers() {
+                    if (isFirstActive) {
+                        p.innerHTML = `01 / <span>02</span>`;
+                    } else {
+                        p.innerHTML = `<span>01</span> / 02`;
+                    }
+                    isFirstActive = !isFirstActive;
+                }
+
+                leftArrow.addEventListener("click", toggleNumbers);
+                rightArrow.addEventListener("click", toggleNumbers);
+            });
+        </script>
+
+        <style>
+            .product-arrow-r p {
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            .product-arrow-r p span {
+                /* color: #ff6600; */
+                font-weight: 700;
+            }
+
+            .product-arrow i {
+                cursor: pointer;
+                font-size: 24px;
+            }
+        </style>
+
     </div>
 
     <div class="our-product-mbl">
@@ -422,7 +440,11 @@
             </div>
         </div>
     </div>
-
+    <div class=" mbl-progress">
+        <div class="progress-bar ">
+            <div class="progress-fill" style="width: 45%;"></div>
+        </div>
+    </div>
     <div class="mbl-about">
         <div class="img-section">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mbl-about.png" alt="">
@@ -433,6 +455,8 @@
         <img height="20" width="20" src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png"
             alt="">
     </div>
+
+
 
     <div class="volt-drink">
         <h1>@voltdrinks</h1>
@@ -507,7 +531,7 @@
 
     <div class="our-recipes">
         <h1>Our Recipes</h1>
-        <div class="swiper mySwiper nearby-slider mt-5 recipie-slider">
+        <div class="swiper mySwiper nearby-slider  recipie-slider">
             <div class="swiper-wrapper">
                 <?php
                 // WP Query for 5 latest recipes
@@ -707,14 +731,14 @@
     <div class="poll position-relative">
         <img class="poll-img d-none d-sm-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll.jpg"
             alt="">
-        <img class="h-100 w-100 object-fit-cover d-block d-sm-none"
+        <img class=" pollmbl-img  d-block d-sm-none"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/poll-mbl.jpg" alt="">
         <div class="poll-over">
             <div class="poll-container">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-sm-8">
-                            <div class="d-flex align-items-sm-start h-100 justify-content-center flex-column">
+                        <div class="col-12 col-sm-8 ">
+                            <div class="d-flex pl-5 align-items-sm-start h-100 justify-content-center flex-column">
                                 <h2>Poll for Future <br> Volt Flavor</h2>
                                 <p class="d-none d-sm-block">Vote for our next flavour and get <br> 5% off for sharing
                                     your pick!</p>
@@ -726,7 +750,7 @@
                             <div class="right-poll">
                                 <h5>Let’s choose <br> between the two</h5>
                                 <div class="d-flex align-items-center justify-content-center gap-3  flex-column">
-                                    <button class="mt-5">Sweet</button>
+                                    <button class="mt-6 mt-sm-5">Sweet</button>
                                     <button>Savoury</button>
                                 </div>
                                 <div class="progress-bar">
@@ -831,7 +855,7 @@
             </div>
         </div>
 
-        <div class="swiper mySwiper nearby-slider mt-5">
+        <div class="swiper mySwiper nearby-slider mt-2">
             <div class="swiper-wrapper">
                 <?php
                 $stores = new WP_Query(array(
@@ -918,15 +942,52 @@
         </div>
 
 
-        <div class="navi ">
-            <div class="arrow ">
+        <div class="navi">
+            <div class="arrow left-arrows">
                 <i class="ri-arrow-left-s-line left"></i>
             </div>
-            <p>01/ <span>02</span> </p>
-            <div class="arrow">
+            <!-- <p><span>01</span> / 05</p> -->
+            <p>01 / <span>05</span></p>
+
+            <div class="arrow right-arrows">
                 <i class="ri-arrow-right-s-line right"></i>
             </div>
         </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const left = document.querySelector(".left-arrows");
+                const right = document.querySelector(".right-arrows");
+                const p = document.querySelector(".navi p");
+
+                let current = 1;
+                const total = 5;
+
+                function updateDisplay() {
+                    // Format numbers as 2 digits (01, 02, 03...)
+                    const formattedCurrent = current.toString().padStart(2, "0");
+                    const formattedTotal = total.toString().padStart(2, "0");
+
+                    p.innerHTML = `<span>${formattedCurrent}</span> / ${formattedTotal}`;
+                    p.innerHTML = `${formattedCurrent}<span> / ${formattedTotal}</span>`;
+                }
+
+                right.addEventListener("click", function () {
+                    current++;
+                    if (current > total) current = 1;
+                    updateDisplay();
+                });
+
+                left.addEventListener("click", function () {
+                    current--;
+                    if (current < 1) current = total;
+                    updateDisplay();
+                });
+
+                // Initialize display
+                updateDisplay();
+            });
+        </script>
+
     </div>
 
     <div class="footer desktop-footer pt-5 ">
@@ -936,6 +997,7 @@
                     <div class="first-row">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
                             alt="">
+
                         <h6>Driving Fiji’s food industry <br> forward with quality, innovation <br> and trust...</h6>
                     </div>
                 </div>
@@ -988,7 +1050,9 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
                     <div class="first-row">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
+                        <img class="d-none  d-sm-flex" src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
+                            alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer-logo.png"
                             alt="">
                         <h6>Driving Fiji’s food industry forward with <br> quality, innovation and trust...</h6>
                     </div>
@@ -1166,8 +1230,8 @@
             spaceBetween: 30,
             loop: true,
             navigation: {
-                nextEl: ".right",
-                prevEl: ".left",
+                nextEl: ".right-arrows",
+                prevEl: ".left-arrows",
             },
             breakpoints: {
                 // Mobile (up to 640px)

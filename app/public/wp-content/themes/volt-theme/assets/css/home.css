@@ -544,7 +544,7 @@
     height: 748px;
     position: relative;
     background: linear-gradient(181.24deg, rgba(248, 242, 220, 0) 22.68%, #FBF6E0 44.63%);
- 
+
 }
 
 
@@ -644,12 +644,17 @@
     overflow: hidden;
     width: 100%;
     position: relative;
+
 }
 
 .poll-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.pl-5 {
+    padding-left: 7rem;
 }
 
 .poll::before {
@@ -685,7 +690,6 @@
     position: relative;
     overflow: hidden;
 }
-
 
 
 .right-poll h5 {
@@ -757,7 +761,8 @@
     width: 100%;
     height: 20%;
 }
-.polloverlayer .marque-content span{
+
+.polloverlayer .marque-content span {
     margin: 0 5rem !important;
 }
 
@@ -779,6 +784,11 @@
 }
 
 @media (max-width: 768px) {
+
+    .pl-5 {
+        padding-left: 0;
+    }
+
     .home-overlayer {
         top: 80px;
         background-color: rgb(0 0 0 / 2%);
@@ -795,14 +805,33 @@
     }
 
     .home-overlayer img {
-        height: 510px;
-        margin-top: 97px;
+        height: 360px;
         width: 100%;
     }
 
     .home-banner .home-overlayer h1 {
         font-size: 46px;
     }
+
+    .progress-fill::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 20px;
+    background: #2D1D0F;
+}
+
+.volt-marq .box{
+    height: 72px;
+    width: 72px;
+    border-radius: 10px;
+}
+
+.marquee-track{
+    gap: 15px;
+}
 
     .home-banner .home-overlayer h1 {
         font-size: 45px;
@@ -811,6 +840,9 @@
     .home-banner::after {
         height: 250px;
         top: 750px;
+    }
+    .mbl-progress{
+        display: block;
     }
 
     .explore-button button {
@@ -835,7 +867,7 @@
     }
 
     .volt-drink {
-        height: 890px;
+        height: 771px;
     }
 
     .ready {
@@ -861,7 +893,9 @@
     }
 
 
-
+    .poll-img {
+        display: none;
+    }
 
     .poll-container h2 {
         position: relative;
@@ -880,9 +914,9 @@
     }
 
     .right-poll {
-        width: 81%;
+        width: 72%;
         margin: 120px auto;
-        height: 266px;
+        height: 250px;
     }
 
     .polloverlayer {
@@ -894,7 +928,16 @@
         top: 0;
         width: 100%;
         inset: 0;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.15) 0%,
+                /* top: very light black */
+                rgba(0, 0, 0, 0.05) 30%,
+                /* mid: almost gone */
+                rgba(0, 0, 0, 0) 100%
+                /* bottom: fully transparent */
+            );
+
+
         height: 100%;
     }
 
@@ -1008,7 +1051,7 @@
     }
 
     .our-product-mid {
-        width: 326px;
+        width: 87%;
         height: 444px;
         border-radius: 12px;
         background: linear-gradient(165.47deg, #F5EECE 3.73%, #F0E6B7 85.42%);
@@ -1174,6 +1217,15 @@
         background-color: rgba(255, 255, 255, 1);
     }
 
+    .pollmbl-img {
+        height: 1014px;
+        width: 100%;
+        object-position: -161px -80px;
+        /* object-fit: unset; */
+        object-fit: cover;
+    }
+
+
 
 
     .right-poll h5 {
@@ -1183,17 +1235,23 @@
     .right-poll button {
         font-size: 14px;
         height: 42px;
+        width: 223px;
     }
 
     .right-poll::before {
         height: 83px;
     }
 
+    .mt-6{
+        margin-top: 33px;
+    }
+
+
 }
 
 
 @media (max-width:1650px) {
     .ready-right img {
-        object-fit: cover;
+      object-position: 5px 25px;
     }
 }
