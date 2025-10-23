@@ -855,7 +855,7 @@
             </div>
         </div>
 
-        <div class="swiper mySwiper nearby-slider mt-2">
+        <div class="swiper mySwiper nearby-slider mt-2 mt-sm-5">
             <div class="swiper-wrapper">
                 <?php
                 $stores = new WP_Query(array(
