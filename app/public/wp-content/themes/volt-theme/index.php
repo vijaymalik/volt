@@ -1144,7 +1144,7 @@
         <div class="d-sm-flex align-items-center gap-4">
             <a href="">Privacy Policy</a>
             <a href="">Terms & Conditions</a>
-            <a href="">FAQs</a>
+            <a href="/faqs">FAQs</a>
         </div>
         <hr class="phone-hr">
 
