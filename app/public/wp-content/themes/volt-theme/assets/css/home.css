@@ -14,12 +14,12 @@
 .home-banner::after {
     content: "";
     position: absolute;
-    top: 600px;
+    top: 542px;
     left: 0;
     width: 100%;
     backdrop-filter: blur(2px);
     height: 470px;
-    background: linear-gradient(181.41deg, rgba(248, 242, 220, 0) 11.59%, #FBF6E0 43.92%);
+    background: linear-gradient(180deg, rgba(248, 242, 220, 0) 11.59%, #FBF6E0 43.92%);
 }
 
 .home-overlayer {
@@ -93,12 +93,15 @@
     cursor: pointer;
 }
 
+.our-products {
+    margin-top: 5rem;
+}
 
 .our-products-slider {
     border-radius: 12px;
     height: 720px;
     background: linear-gradient(159.88deg, #F5EECE 31.91%, #F0E6B7 98.37%);
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -296,8 +299,8 @@
     height: 676px;
     display: flex;
     align-items: center;
-    width: 90% !important;
-    margin: 0 auto;
+    width: 96% !important;
+    margin: 80px auto;
     justify-content: center;
     position: relative;
 }
@@ -321,6 +324,7 @@
     height: 100%;
     align-items: start;
     flex-direction: column;
+    padding-left: 2rem;
     justify-content: center;
     position: relative;
 }
@@ -328,7 +332,7 @@
 .aboutus::before {
     content: "";
     position: absolute;
-    top: -9rem;
+    top: -8rem;
     right: 0;
     width: 500px;
     height: 500px;
@@ -364,6 +368,7 @@
     font-weight: 500;
     font-style: Medium;
     font-size: 52px;
+    margin-right: 35px;
     line-height: 130%;
     letter-spacing: -2%;
     color: (45, 29, 15, 1);
@@ -406,7 +411,7 @@
 
 .marquee-track {
     display: flex;
-    animation: scroll 25s linear infinite;
+    animation: scroll 5s linear infinite;
     width: max-content;
     gap: 32px;
 
@@ -535,8 +540,8 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    bottom: 0;
-    object-fit: con;
+    bottom: -7px;
+    object-fit: cover;
     left: 0;
 }
 
@@ -759,7 +764,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 20%;
+    height: 16%;
 }
 
 .polloverlayer .marque-content span {
@@ -790,7 +795,7 @@
     }
 
     .home-overlayer {
-        top: 80px;
+        top: 50px;
         background-color: rgb(0 0 0 / 2%);
     }
 
@@ -814,34 +819,36 @@
     }
 
     .progress-fill::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    height: 6px;
-    width: 20px;
-    background: #2D1D0F;
-}
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        height: 6px;
+        width: 30px;
+        background: #2D1D0F;
+    }
 
-.volt-marq .box{
-    height: 72px;
-    width: 72px;
-    border-radius: 10px;
-}
+    .volt-marq .box {
+        height: 72px;
+        width: 72px;
+        border-radius: 10px;
+    }
 
-.marquee-track{
-    gap: 15px;
-}
+    .marquee-track {
+        gap: 15px;
+    }
 
     .home-banner .home-overlayer h1 {
         font-size: 45px;
+        line-height: 47px;
     }
 
     .home-banner::after {
         height: 250px;
         top: 750px;
     }
-    .mbl-progress{
+
+    .mbl-progress {
         display: block;
     }
 
@@ -857,21 +864,31 @@
     .volt-drink h1 {
         font-size: 32px;
         font-weight: 700;
+        margin-right: 15px;
     }
 
     .explore-button button {
         font-size: 12px;
         font-weight: 600;
         height: 36px;
+        border-radius: 10px;
+        padding: 12px;
 
+    }
+
+    .volt-marq {
+        border-radius: 0;
     }
 
     .volt-drink {
-        height: 771px;
+        padding-top: 28px;
+        height: 665px;
     }
 
     .ready {
-        height: 420px;
+        height: 380px;
+        margin: 2rem auto;
+        background-position: 947px 0px;
     }
 
     .ready-left {
@@ -910,7 +927,12 @@
         font-size: 14px;
         line-height: 19px;
         font-weight: 400;
+        padding-top: 6px;
         text-align: center;
+    }
+
+    .nearby-store {
+        padding-top: 30px;
     }
 
     .right-poll {
@@ -954,6 +976,7 @@
     .polloverlayer .marque-content span {
         font-size: 12px;
         font-weight: 500;
+        margin: 0 1rem !important;
     }
 
     .mbl-about {
@@ -1017,7 +1040,7 @@
     }
 
     .ready-right {
-        height: 210px;
+        height: 177px;
     }
 
     .our-product-mbl {
@@ -1123,7 +1146,7 @@
     }
 
     .our-recipes-mbl {
-        padding-bottom: 2rem;
+        padding-bottom: 0rem;
         display: block;
     }
 
@@ -1243,8 +1266,13 @@
         height: 83px;
     }
 
-    .mt-6{
-        margin-top: 33px;
+    .mt-6 {
+        margin-top: 29px;
+    }
+
+    .containers {
+        width: 100%;
+        padding-left: 22px;
     }
 
 
@@ -1253,6 +1281,22 @@
 
 @media (max-width:1650px) {
     .ready-right img {
-      object-position: 5px 25px;
+        object-position: 5px -8px;
+    }
+}
+
+
+@media (max-width:1400px) {
+    .aboutus::before {
+        width: 345px;
+        top: -11rem;
+    }
+}
+
+
+@media (max-width:1466px) {
+
+    .product-arrow-r {
+        right: 96px;
     }
 }

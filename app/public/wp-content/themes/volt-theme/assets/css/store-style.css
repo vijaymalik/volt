@@ -70,7 +70,7 @@ body {
 .marque-content {
     display: inline-block;
     white-space: nowrap;
-    animation: marquee 15s linear infinite;
+    animation: marquee 25s linear infinite;
 }
 
 .marque-content span {
@@ -624,9 +624,28 @@ body {
 
 
 .footer .first-row img {
-    width: 336px;
+    width: 250px;
     height: 190px;
 
+
+}
+
+.first-row {
+    position: relative;
+}
+
+.first-row::before {
+    content: "";
+    position: absolute;
+    top: -42px;
+    right: 157px;
+    height: 70px;
+    width: 108px;
+    background-image: url(../images/Chim.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(357deg);
 }
 
 .desktop-hr {
@@ -706,6 +725,7 @@ body {
     height: 20px;
 
 }
+
 .mbl-progress {
     display: none;
 }
@@ -794,9 +814,14 @@ body {
 
     .bird-sec {
         position: absolute;
-        right: -24px;
+        right: 0px;
         display: block;
 
+    }
+
+    .home-img {
+        width: 100% !important;
+        margin-top: 97px;
     }
 
     .bird-sec img {
@@ -1003,11 +1028,19 @@ body {
     .navbar {
         position: absolute !important;
         flex-direction: row;
+        border-radius: 10px;
     }
 
     .navbar .nav-container .talk-btn {
-        margin-right: -70px;
+        margin-right: -100px;
         text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+
+        height: 36px !important;
+        border-radius: 10px;
+        padding: 12px;
+
     }
 
     .menu-btn {
@@ -1021,15 +1054,15 @@ body {
         transition: 0.3s ease;
     }
 
-    .mbl-progress{
-        display: flex;
+    .mbl-progress {
+        display: flex !important;
         align-items: center;
         justify-content: center;
         width: 100%;
         margin-top: 20px;
     }
 
-    .mbl-progress .progress-bar{
+    .mbl-progress .progress-bar {
         width: 180px !important;
         margin-top: 20px;
     }
@@ -1038,8 +1071,8 @@ body {
         position: relative;
         display: block;
         width: 18px;
-        height: 1px;
-        left: -8px;
+        height: 8px;
+        left: -7px;
         border-radius: 1px;
         transition: 0.3s ease;
     }
@@ -1047,8 +1080,8 @@ body {
     .navbar-toggler {
         background-color: rgba(249, 249, 249, 1) !important;
         border: 0.69px solid rgba(240, 240, 240, 1) !important;
-        height: 45px !important;
-        width: 45px !important;
+        height: 36px !important;
+        width: 36px !important;
         border-radius: 10px !important;
         border-width: 0.69px !important;
         padding-top: 8.31px !important;
@@ -1058,6 +1091,19 @@ body {
         gap: 8.31px;
 
         backdrop-filter: blur(8.30769157409668px) !important;
+    }
+
+    .navbar .marques {
+        height: 20px;
+    }
+
+    .navbar .marques span {
+        font-size: 10px;
+        font-weight: 700;
+    }
+
+    .marque-content span {
+        margin-right: 9px;
     }
 
     .navbar-toggler:focus {
@@ -1076,7 +1122,7 @@ body {
     }
 
     .menu-btn span::before {
-        top: -6px;
+        top: -0px;
     }
 
     .menu-btn span::after {
@@ -1105,7 +1151,7 @@ body {
 
     .nav-container {
         background: rgba(255, 255, 255, 1);
-
+        height: 52px;
         padding: 0 10px !important;
 
 
@@ -1158,7 +1204,13 @@ body {
     }
 
     .navbar {
-        height: 100px;
+        height: 72px;
+    }
+
+    .navbar .nav-container img {
+        width: 48px;
+        height: 36px;
+        margin-left: 11px;
     }
 
     .hero .right-sec .form .submit-sec p {
@@ -1259,11 +1311,18 @@ body {
     }
 
     .footer .first-row img {
-        width: 231px;
-        height: 159px;
+        width: 148px;
+        height: 112px;
     }
-    
-    
+
+    .first-row::before {
+        top: -35px;
+        right: 100px;
+        height: 72px;
+        width: 108px;
+    }
+
+
 
 }
 

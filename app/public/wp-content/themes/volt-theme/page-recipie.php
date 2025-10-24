@@ -61,7 +61,7 @@
                         </div>
                         <h1><?php the_title(); ?></h1>
                         <p><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
-                        <a href="<?php the_permalink(); ?>" class="learn-morebtn" type="button">Learn More</a>
+                      <button class="learn-morebtn" type="button">Learn More</button>
                     </div>
                 </div>
                 <?php

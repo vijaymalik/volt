@@ -141,7 +141,7 @@
 
                     for ($i = 0; $i < $repeat; $i++) {
                         $current = $items[$i % $count];
-                        echo '<span class="text-black mx-5">' . esc_html($current) . '</span>';
+                        echo '<span class="text-black mx-5 px-5">' . esc_html($current) . '</span>';
                         echo $icon_img;
                     }
                     ?>
@@ -167,7 +167,7 @@
                 $count = count($default_items);
                 for ($i = 0; $i < $repeat; $i++) {
                     $current = $default_items[$i % $count];
-                    echo '<span class="text-black mx-5">' . esc_html($current) . '</span>';
+                    echo '<span class="text-black mx-5 px-5">' . esc_html($current) . '</span>';
                     echo $icon_img;
                 }
                 ?>
@@ -178,7 +178,7 @@
 
 
 
-    <div class="our-products position-relative mt-5">
+    <div class="our-products position-relative">
         <div class="swiper  our-products-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -363,7 +363,7 @@
                         <p>About Us</p>
                         <h6>Driving Fiji’s food industry <br> forward with quality, <br> innovation and trust.</h6>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-                        <div class="d-flex justify-content-end w-100">
+                        <div class="d-flex justify-content-end w-100 mt-5">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
                         </div>
                     </div>

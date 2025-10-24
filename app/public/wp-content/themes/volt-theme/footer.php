@@ -2,8 +2,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-5">
-                    <div class="first-row">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
+                    <div class="first-row ">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
                             alt="">
 
                         <h6>Driving Fiji’s food industry <br> forward with quality, innovation <br> and trust...</h6>
@@ -60,7 +60,7 @@
                     <div class="first-row">
                         <img class="d-none  d-sm-flex" src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png"
                             alt="">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/footer-logo.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
                             alt="">
                         <h6>Driving Fiji’s food industry forward with <br> quality, innovation and trust...</h6>
                     </div>
@@ -174,6 +174,7 @@
 
     <div class="end d-none d-sm-flex">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 140915.png" alt="">
+        
     </div>
 
     <div class="end  d-block d-sm-none">

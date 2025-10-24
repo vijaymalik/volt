@@ -39,7 +39,7 @@
 
         <div class="container-fluid nav-container mt-sm-2 px-sm-4">
             <a class="navbar-brand" href="/">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png"
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
                     alt="">
             </a>
             <a class="talk-btn phn-btn" href="/contact-us">Let's Talk</a>
