@@ -791,7 +791,7 @@
 @media (max-width: 768px) {
 
     .ready-right img {
-   bottom: 0;
+   bottom: 8px;
 }
 
     .pl-5 {
