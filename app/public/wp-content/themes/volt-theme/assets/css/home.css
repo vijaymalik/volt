@@ -1133,7 +1133,8 @@
     }
 
     .our-recipes-mbl .swiper-slide {
-        width: 100% !important;
+        width: 80% !important;
+        height: 80% !important;
         border-radius: 12px;
         overflow: hidden;
     }

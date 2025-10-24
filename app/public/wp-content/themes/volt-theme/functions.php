@@ -259,3 +259,71 @@ function mytheme_enquiry_custom_column($column, $post_id) {
             break;
     }
 }
+
+
+// ===========================
+// REGISTER 'FAQ' CUSTOM POST TYPE
+// ===========================
+function mytheme_register_faq_cpt() {
+    $labels = array(
+        'name'               => 'FAQs',
+        'singular_name'      => 'FAQ',
+        'add_new'            => 'Add New',
+        'add_new_item'       => 'Add New FAQ',
+        'edit_item'          => 'Edit FAQ',
+        'new_item'           => 'New FAQ',
+        'view_item'          => 'View FAQ',
+        'view_items'         => 'View FAQs',
+        'search_items'       => 'Search FAQs',
+        'not_found'          => 'No FAQs found',
+        'not_found_in_trash' => 'No FAQs found in Trash',
+        'all_items'          => 'All FAQs',
+        'archives'           => 'FAQ Archives',
+        'attributes'         => 'FAQ Attributes',
+        'menu_name'          => 'FAQs',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'menu_position'      => 20,
+        'menu_icon'          => 'dashicons-editor-help', // WordPress question mark icon
+        'supports'           => array('title', 'editor'),
+        'has_archive'        => false,
+        'rewrite'            => array('slug' => 'faqs'),
+        'show_in_rest'       => true, // Enables block editor + REST API
+    );
+
+    register_post_type('faq', $args);
+}
+add_action('init', 'mytheme_register_faq_cpt');
+
+
+// ===========================
+// REGISTER 'FAQ Category' TAXONOMY
+// ===========================
+function mytheme_register_faq_category_taxonomy() {
+    $labels = array(
+        'name'              => 'FAQ Categories',
+        'singular_name'     => 'FAQ Category',
+        'search_items'      => 'Search FAQ Categories',
+        'all_items'         => 'All FAQ Categories',
+        'edit_item'         => 'Edit FAQ Category',
+        'update_item'       => 'Update FAQ Category',
+        'add_new_item'      => 'Add New FAQ Category',
+        'new_item_name'     => 'New FAQ Category Name',
+        'menu_name'         => 'FAQ Categories',
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'rewrite'           => array('slug' => 'faq-category'),
+        'show_in_rest'      => true,
+    );
+
+    register_taxonomy('faq_category', array('faq'), $args);
+}
+add_action('init', 'mytheme_register_faq_category_taxonomy');

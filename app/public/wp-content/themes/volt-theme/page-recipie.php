@@ -18,936 +18,316 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="marques">
-            <div class="marque-content">
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <!-- duplicate again -->
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-                <span>20% Off on Punjas Biscuits</span>
-            </div>
-        </div>
-
-
-
-        <div class="container-fluid nav-container mt-sm-2 px-sm-4">
-            <a class="navbar-brand" href="/">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png" alt="">
-            </a>
-            <a class="talk-btn phn-btn" href="/contact-us">Let's Talk</a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedConten" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <div class="menu-btn" id="menu-btn">
-                    <span></span>
-
-                </div>
-
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Products </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/recipie">Recipes </a>
-                    </li>
-
-                </ul>
-
-                <a class="talk-btn" href="/contact-us">Let's Talk</a>
-            </div>
-        </div>
-    </nav>
+    <?php get_template_part('header', 'volt'); ?>
 
     <div class="our-recipe-hero">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/our-recipe-banner.jpg" alt="">
-        <div class="recipe-overlayer">
-            <div class="recipe-bottom">
-                <div class="d-flex  align-items-center gap-2">
-                    <button>Vegan</button>
-                    <button>Gluten Free</button>
+        <?php
+        // Fetch the latest recipe
+        $top_recipe = new WP_Query([
+            'post_type' => 'recipe',
+            'posts_per_page' => 1,
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ]);
+
+        if ($top_recipe->have_posts()):
+            while ($top_recipe->have_posts()):
+                $top_recipe->the_post();
+
+                // Get custom fields
+                $category = get_field('categories') ?: 'Vegan';
+                $extra_info = get_field('extrainfo') ?: 'Gluten Free';
+                $image = get_field('image');
+                $image_url = '';
+
+                if ($image) {
+                    if (is_array($image) && isset($image['url'])) {
+                        $image_url = $image['url'];
+                    } elseif (is_numeric($image)) {
+                        $image_url = wp_get_attachment_image_url($image, 'full');
+                    } else {
+                        $image_url = $image;
+                    }
+                } else {
+                    $image_url = get_template_directory_uri() . '/assets/images/our-recipe-banner.jpg';
+                }
+                ?>
+                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
+                <div class="recipe-overlayer">
+                    <div class="recipe-bottom">
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button"><?php echo esc_html($category); ?></button>
+                            <button type="button"><?php echo esc_html($extra_info); ?></button>
+                        </div>
+                        <h1><?php the_title(); ?></h1>
+                        <p><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
+                        <a href="<?php the_permalink(); ?>" class="learn-morebtn" type="button">Learn More</a>
+                    </div>
                 </div>
-                <h1>Chip Cookies Brownie </h1>
-                <p>Discover our flagship favorites trusted by generations,<br> loved by every Fijian home.</p>
-                <button class="learn-morebtn">Learn More</button>
+                <?php
+            endwhile;
+            wp_reset_postdata();
+        else:
+            ?>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/our-recipe-banner.jpg" alt="">
+            <div class="recipe-overlayer">
+                <div class="recipe-bottom">
+                    <div class="d-flex align-items-center gap-2">
+                        <button type="button">Vegan</button>
+                        <button type="button">Gluten Free</button>
+                    </div>
+                    <h1>Chip Cookies Brownie</h1>
+                    <p>Discover our flagship favorites trusted by generations,<br> loved by every Fijian home.</p>
+                    <button class="learn-morebtn" type="button">Learn More</button>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
+
 
     <div class="our-recipes-mbl px-4 mt-2 position-relative">
         <h2>Our Recipes</h2>
-        <p>Make snack time exciting! Discover quick, tasty <br> ways to enjoy from classic tea-time treats to fun, <br> family-friendly desserts.</p>
-        <div class="swiper mySwiper our-recipe-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                    <div class="overlay">
-                        <div class="top d-flex justify-content-between">
-                            <h4>Vegan Cracker <br>
-                                Breakfast</h4>
-
-                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
-                        </div>
-                        <div class="top d-flex align-items-center justify-content-between ">
-                            <div>
-                                <div>
-                                    <button>Vegan</button>
-                                </div>
-                                <div>
-                                    <button>Gluten-Free</button>
-                                </div>
-                            </div>
-                            <div class="learn-more">
-                                <button>Learn More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="swiper-slide">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                    <div class="overlay">
-                        <div class="top d-flex justify-content-between">
-                            <h4>Vegan Cracker <br>
-                                Breakfast</h4>
-
-                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
-                        </div>
-                        <div class="top d-flex align-items-center justify-content-between ">
-                            <div>
-                                <div>
-                                    <button>Vegan</button>
-                                </div>
-                                <div>
-                                    <button>Gluten-Free</button>
-                                </div>
-                            </div>
-                            <div class="learn-more">
-                                <button>Learn More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="swiper-slide">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                    <div class="overlay">
-                        <div class="top d-flex justify-content-between">
-                            <h4>Vegan Cracker <br>
-                                Breakfast</h4>
-
-                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
-                        </div>
-                        <div class="top d-flex align-items-center justify-content-between ">
-                            <div>
-                                <div>
-                                    <button>Vegan</button>
-                                </div>
-                                <div>
-                                    <button>Gluten-Free</button>
-                                </div>
-                            </div>
-                            <div class="learn-more">
-                                <button>Learn More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="swiper-slide">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                    <div class="overlay">
-                        <div class="top d-flex justify-content-between">
-                            <h4>Vegan Cracker <br>
-                                Breakfast</h4>
-
-                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
-                        </div>
-                        <div class="top d-flex align-items-center justify-content-between ">
-                            <div>
-                                <div>
-                                    <button>Vegan</button>
-                                </div>
-                                <div>
-                                    <button>Gluten-Free</button>
-                                </div>
-                            </div>
-                            <div class="learn-more">
-                                <button>Learn More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="swiper-slide">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                    <div class="overlay">
-                        <div class="top d-flex justify-content-between">
-                            <h4>Vegan Cracker <br>
-                                Breakfast</h4>
-
-                            <button class="d-flex gap-2"><i class="ri-history-line"></i> 1.2Hrs</button>
-                        </div>
-                        <div class="top d-flex align-items-center justify-content-between ">
-                            <div>
-                                <div>
-                                    <button>Vegan</button>
-                                </div>
-                                <div>
-                                    <button>Gluten-Free</button>
-                                </div>
-                            </div>
-                            <div class="learn-more">
-                                <button>Learn More</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-            </div>
-        </div>
-
+        <p>Make snack time exciting! Discover quick, tasty <br> ways to enjoy from classic tea-time treats to fun, <br>
+            family-friendly desserts.</p>
+        <?php get_template_part('template-parts/recipie-slider'); ?>
     </div>
 
-    <div class="other-recipe-container ">
+    <div class="other-recipe-container">
         <div class="other-recipe">
             <div class="d-lg-flex align-items-center justify-content-between">
                 <h2>Other Recipes</h2>
-                <div class="d-flex gap-3 top-section">
-                    <button class="active">All Recipes</button>
-                    <button>Vegan</button>
-                    <button>Plant-Based</button>
-                    <button>Non Veg</button>
-                </div>
+<div class="d-flex gap-3 top-section" role="tablist" aria-label="Recipe categories">
+    <?php
+    $taxonomy = 'recipe_category';
+    $terms = [];
+
+    if (taxonomy_exists($taxonomy)) {
+        $fetched = get_terms([
+            'taxonomy'   => $taxonomy,
+            'hide_empty' => false,
+        ]);
+        if (!is_wp_error($fetched) && !empty($fetched)) {
+            $terms = $fetched;
+        }
+    }
+
+    // Always show an "All" button first and make it active by default
+    echo '<button type="button" class="active" data-filter="all">All</button>';
+
+    if (empty($terms)) {
+        // Fallback categories if taxonomy doesn't exist / is empty
+        $fallback = ['Vegan', 'Vegeterian', 'Non Vegeterian'];
+        foreach ($fallback as $label) {
+            $filter = sanitize_title($label);
+            echo '<button type="button" data-filter="' . esc_attr($filter) . '">' . esc_html($label) . '</button>';
+        }
+    } else {
+        // Output real taxonomy terms
+        foreach ($terms as $term) {
+            $filter = esc_attr($term->slug);
+            $label  = esc_html($term->name);
+            echo '<button type="button" data-filter="' . $filter . '">' . $label . '</button>';
+        }
+    }
+    ?>
+</div>
+
             </div>
 
-            <div class="container-fluid ">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 ">
-                        <div class="cards">
-                            <div class="img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                            </div>
-                            <div class="details">
-                                <h3>Vegan Cracker <br> Breakfast</h3>
-                                <div class="details-bottom d-flex align-items-center gap-1">
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-history-line"></i> 25 Mins
-                                        </span>
-                                        <h6>Cooking Time</h6>
+                    <?php
+                    $recipes = new WP_Query([
+                        'post_type' => 'recipe',
+                        'posts_per_page' => 12,
+                    ]);
+                    $default_image = get_template_directory_uri() . '/assets/images/default-recipe.jpg';
+                    if ($recipes->have_posts()):
+                        while ($recipes->have_posts()):
+                            $recipes->the_post();
+                            $time = get_field('time') ?: '25 Mins';
+                            $extra_info = get_field('extrainfo') ?: 'GF';
+                            $category_slugs = [];
+
+                            if (taxonomy_exists($taxonomy)) {
+                                $post_terms = get_the_terms(get_the_ID(), $taxonomy);
+                                if (!is_wp_error($post_terms) && !empty($post_terms)) {
+                                    foreach ($post_terms as $t) {
+                                        $category_slugs[] = $t->slug;
+                                    }
+                                }
+                            }
+
+                            if (empty($category_slugs)) {
+                                $raw_cat = get_field('categories');
+                                if ($raw_cat) {
+                                    if (is_array($raw_cat)) {
+                                        foreach ($raw_cat as $c) {
+                                            if (is_object($c) && isset($c->slug)) {
+                                                $category_slugs[] = $c->slug;
+                                            } elseif (is_numeric($c)) {
+                                                $term = get_term($c);
+                                                if ($term && !is_wp_error($term))
+                                                    $category_slugs[] = $term->slug;
+                                            } else {
+                                                $category_slugs[] = sanitize_title($c);
+                                            }
+                                        }
+                                    } else {
+                                        if (is_object($raw_cat) && isset($raw_cat->slug)) {
+                                            $category_slugs[] = $raw_cat->slug;
+                                        } else {
+                                            $category_slugs[] = sanitize_title($raw_cat);
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (empty($category_slugs)) {
+                                $category_slugs[] = 'uncategorized';
+                            }
+
+                            $categories_data_attr = implode(',', array_unique($category_slugs));
+                            $image_field = get_field('image');
+                            if ($image_field) {
+                                if (is_array($image_field) && isset($image_field['url'])) {
+                                    $image_url = $image_field['sizes']['medium'] ?? $image_field['url'];
+                                } elseif (is_numeric($image_field)) {
+                                    $image_url = wp_get_attachment_image_url($image_field, 'medium');
+                                } else {
+                                    $image_url = $image_field;
+                                }
+                            } else {
+                                $image_url = $default_image;
+                            }
+                            ?>
+                            <div class="col-12 col-md-6 col-lg-4 col-xl-3 recipe-col"
+                                data-categories="<?php echo esc_attr($categories_data_attr); ?>">
+                                <div class="cards recipe-card">
+                                    <div class="img">
+                                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
                                     </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <div class="d-flex gap-2 mid">
-                                            <span>
-                                                V
-                                            </span>
-                                            <span>
-                                                GF
-                                            </span>
+                                    <div class="details">
+                                        <h3><?php the_title(); ?></h3>
+                                        <div class="details-bottom d-flex align-items-center gap-1">
+                                            <div class="text-center">
+                                                <span><i class="ri-history-line"></i> <?php echo esc_html($time); ?></span>
+                                                <h6>Cooking Time</h6>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="text-center">
+                                                <div class="d-flex gap-2 mid">
+                                                    <?php
+                                                    foreach ($category_slugs as $slug) {
+                                                        $label = ucwords(str_replace('-', ' ', $slug));
+                                                        $short = strtoupper(substr($label, 0, 2));
+                                                        echo '<span>' . esc_html($short) . '</span>';
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <h6>Category</h6>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="text-center">
+                                                <span><?php echo esc_html($extra_info); ?></span>
+                                                <h6>Extra Info</h6>
+                                            </div>
                                         </div>
-                                        <h6>Category</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-star-line"></i>Easy
-                                        </span>
-                                        <h6>Difficulty</h6>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                        <div class="cards">
-                            <div class="img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                            </div>
-                            <div class="details">
-                                <h3>Vegan Cracker <br> Breakfast</h3>
-                                <div class="details-bottom d-flex align-items-center gap-1">
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-history-line"></i> 25 Mins
-                                        </span>
-                                        <h6>Cooking Time</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <div class="d-flex gap-2 mid">
-                                            <span>
-                                                V
-                                            </span>
-                                            <span>
-                                                GF
-                                            </span>
-                                        </div>
-                                        <h6>Category</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-star-line"></i>Easy
-                                        </span>
-                                        <h6>Difficulty</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6  col-lg-4 col-xl-3">
-                        <div class="cards">
-                            <div class="img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                            </div>
-                            <div class="details">
-                                <h3>Vegan Cracker <br> Breakfast</h3>
-                                <div class="details-bottom d-flex align-items-center gap-1">
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-history-line"></i> 25 Mins
-                                        </span>
-                                        <h6>Cooking Time</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <div class="d-flex gap-2 mid">
-                                            <span>
-                                                V
-                                            </span>
-                                            <span>
-                                                GF
-                                            </span>
-                                        </div>
-                                        <h6>Category</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-star-line"></i>Easy
-                                        </span>
-                                        <h6>Difficulty</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6  col-lg-4 col-xl-3">
-                        <div class="cards">
-                            <div class="img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                            </div>
-                            <div class="details">
-                                <h3>Vegan Cracker <br> Breakfast</h3>
-                                <div class="details-bottom d-flex align-items-center gap-1">
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-history-line"></i> 25 Mins
-                                        </span>
-                                        <h6>Cooking Time</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <div class="d-flex gap-2 mid">
-                                            <span>
-                                                V
-                                            </span>
-                                            <span>
-                                                GF
-                                            </span>
-                                        </div>
-                                        <h6>Category</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-star-line"></i>Easy
-                                        </span>
-                                        <h6>Difficulty</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6  col-lg-4 col-xl-3">
-                        <div class="cards">
-                            <div class="img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                            </div>
-                            <div class="details">
-                                <h3>Vegan Cracker <br> Breakfast</h3>
-                                <div class="details-bottom d-flex align-items-center gap-1">
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-history-line"></i> 25 Mins
-                                        </span>
-                                        <h6>Cooking Time</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <div class="d-flex gap-2 mid">
-                                            <span>
-                                                V
-                                            </span>
-                                            <span>
-                                                GF
-                                            </span>
-                                        </div>
-                                        <h6>Category</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-star-line"></i>Easy
-                                        </span>
-                                        <h6>Difficulty</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6  col-lg-4 col-xl-3">
-                        <div class="cards">
-                            <div class="img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                            </div>
-                            <div class="details">
-                                <h3>Vegan Cracker <br> Breakfast</h3>
-                                <div class="details-bottom d-flex align-items-center gap-1">
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-history-line"></i> 25 Mins
-                                        </span>
-                                        <h6>Cooking Time</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <div class="d-flex gap-2 mid">
-                                            <span>
-                                                V
-                                            </span>
-                                            <span>
-                                                GF
-                                            </span>
-                                        </div>
-                                        <h6>Category</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-star-line"></i>Easy
-                                        </span>
-                                        <h6>Difficulty</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6  col-lg-4 col-xl-3">
-                        <div class="cards">
-                            <div class="img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                            </div>
-                            <div class="details">
-                                <h3>Vegan Cracker <br> Breakfast</h3>
-                                <div class="details-bottom d-flex align-items-center gap-1">
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-history-line"></i> 25 Mins
-                                        </span>
-                                        <h6>Cooking Time</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <div class="d-flex gap-2 mid">
-                                            <span>
-                                                V
-                                            </span>
-                                            <span>
-                                                GF
-                                            </span>
-                                        </div>
-                                        <h6>Category</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-star-line"></i>Easy
-                                        </span>
-                                        <h6>Difficulty</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6  col-lg-4 col-xl-3">
-                        <div class="cards">
-                            <div class="img">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-                            </div>
-                            <div class="details">
-                                <h3>Vegan Cracker <br> Breakfast</h3>
-                                <div class="details-bottom d-flex align-items-center gap-1">
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-history-line"></i> 25 Mins
-                                        </span>
-                                        <h6>Cooking Time</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <div class="d-flex gap-2 mid">
-                                            <span>
-                                                V
-                                            </span>
-                                            <span>
-                                                GF
-                                            </span>
-                                        </div>
-                                        <h6>Category</h6>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="text-center">
-                                        <span>
-                                            <i class="ri-star-line"></i>Easy
-                                        </span>
-                                        <h6>Difficulty</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    endif;
+                    ?>
                 </div>
 
-
-        <div class="navi">
-            <div class="arrow ">
-                <i class="ri-arrow-left-s-line left"></i>
-            </div>
-            <div class="arrow">
-                <i class="ri-arrow-right-s-line right"></i>
-            </div>
-        </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="nearby-store pb-5 pt-0">
-        <div class="containers ">
-            <div class="nearby-container">
-                <div class="d-sm-flex gap-2">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 111102.png" alt="">
-                    <h6>Grab yours at the <br>
-                        Nearby Stores</h6>
-                    <h5 class="mbl-sec">Buy Our Products in <br> Supermarket Near You</h5>
-
-                </div>
-                <div class="bird-sec">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird (2).png" alt="">
-                </div>
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/birds.png" class="birds" alt="">
-                <div class="select">
-                    <select name="" id="">
-                        <option value="">Fiji</option>
-                    </select>
-                    <i class="ri-arrow-down-s-line"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="swiper mySwiper nearby-slider mt-5">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        +679 338 7142
-                                    </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="navi">
+                    <div class="arrow">
+                        <i class="ri-arrow-left-s-line left"></i>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        +679 338 7142
-                                    </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        +679 338 7142
-                                    </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        +679 338 7142
-                                    </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/e0545d6f5819c7f36f6a7b032d1e97f4b3a9b104.png" alt="">
-                        <div class="slider-overlay">
-                            <div class="nearbytop">
-                                <h6>Extra <br> Supermarket </h6>
-                                <button><i class="ri-crosshair-2-line"></i>Directions</button>
-                            </div>
-
-                            <div class="nearbybottom">
-                                <span>1.2Km</span>
-                                <p>VC3M+WVV Flagstaff Plaza, Flagstaff, Bau St, Suva, Fiji</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="d-flex">
-                                        <i class="ri-phone-line"></i>
-                                        +679 338 7142
-                                    </span>
-                                    <p>Mon - Sun <br>
-                                        (10:00 AM - 09:00 PM)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="navi">
-            <div class="arrow ">
-                <i class="ri-arrow-left-s-line left"></i>
-            </div>
-            <div class="arrow">
-                <i class="ri-arrow-right-s-line right"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer desktop-footer pt-5 ">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-5">
-                    <div class="first-row">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png" alt="">
-                        <h6>Driving Fiji’s food industry <br> forward with quality, innovation <br> and trust...</h6>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg">
-                    <div class="second-row">
-                        <h6>Product</h6>
-                        <a href="">Milk Drink Powder</a>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg">
-                    <div class="second-row">
-                        <h6>Recipes</h6>
-                        <a href="">Rustic Bowl with <br> Sunny-Side-Up</a>
-                        <a href="">Pomegranate Ice <br> Cream Delight</a>
-                        <a href="">Non Vegan Elegant Seafood</a>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg">
-                    <div class="second-row">
-                        <h6>Get In Touch</h6>
-                        <a href="">9876543210,<br>
-                            Savusavu, Vanua Levu, Fiji</a>
-                        <div class="d-flex align-items-center gap-2 position-relative">
-                            <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
-                                    alt="facebook-new" />
-                            </div>
-                            <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
-                                    alt="instagram-new--v1" />
-
-                            </div>
-                            <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
-                                    alt="twitterx--v2" />
-                            </div>
-                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
-
-                        </div>
+                    <div class="arrow">
+                        <i class="ri-arrow-right-s-line right"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <?php get_template_part('template-parts/nearby-store'); ?>
 
-    <div class="footer mbl-footer pt-5 ">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-5">
-                    <div class="first-row">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 133558.png" alt="">
-                        <h6>Driving Fiji’s food industry forward with <br> quality, innovation and trust...</h6>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg">
-                    <div class="second-row">
-                        <h6>Get In Touch</h6>
-                        <a href="">9876543210,<br>
-                            Savusavu, Vanua Levu, Fiji</a>
-                        <div class="d-flex align-items-center gap-2 position-relative">
-                            <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/color/48/facebook-new.png"
-                                    alt="facebook-new" />
-                            </div>
-                            <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/color/48/instagram-new--v1.png"
-                                    alt="instagram-new--v1" />
+    <?php get_template_part('footer', 'volt'); ?>
 
-                            </div>
-                            <div class="icon">
-                                <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
-                                    alt="twitterx--v2" />
-                            </div>
-                            <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion mt-4">
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h6>Recipes</h6>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <a href="">Rustic Bowl with <br> Sunny-Side-Up</a>
-                            <a href="">Pomegranate Ice <br> Cream Delight</a>
-                            <a href="">Non Vegan Elegant Seafood</a>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h6>Product</h6>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <a href="">Milk Drink Powder</a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h6>Privacy Policy</h6>
-
-                        </div>
-
-                    </div>
-                    <hr>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h6>Terms & Conditions</h6>
-
-                        </div>
-
-                    </div>
-                    <hr>
-                    <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h6>FAQs</h6>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-
-
-    <hr class="desktop-hr">
-    <div class="copywrite mt-5 d-none  d-sm-flex align-items-center justify-content-between container">
-        <div class="d-sm-flex align-items-center gap-4">
-            <a href="">Privacy Policy</a>
-            <a href="">Terms & Conditions</a>
-            <a href="">FAQs</a>
-        </div>
-        <hr class="phone-hr">
-
-        <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
-        </div>
-    </div>
-
-    <div class="copywrite mbl-copy mt-5  align-items-center justify-content-between container">
-
-        <hr class="phone-hr">
-
-        <div class="text-center  text-sm-start">
-            <a href="#">Carefully Crafted By <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3minds.png" alt=""></a>
-        </div>
-    </div>
-
-    <div class="end d-none d-sm-flex">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Screenshot 2025-10-18 140915.png" alt="">
-    </div>
-
-    <div class="end  d-block d-sm-none">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mblf.png" alt="">
-    </div>
-
-    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Initialize Swiper -->
     <script>
-        var swiper = new Swiper(".nearby-slider", {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            navigation: {
-                nextEl: ".right",
-                prevEl: ".left",
-            },
-            breakpoints: {
-                // Extra small phones (up to 480px)
-                0: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
+        document.addEventListener('DOMContentLoaded', function () {
+            var swiper2 = new Swiper(".our-recipe-slider", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                loop: true,
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 200,
+                    modifier: 2,
+                    slideShadows: false,
                 },
-                // Small phones to tablets (481px to 768px)
-                481: {
-                    slidesPerView: 2,
-                    spaceBetween: 15,
-                },
-                // Tablets (769px to 1024px)
-                769: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                },
-                // Desktop (above 1024px)
-                1025: {
-                    slidesPerView: 4,
-                    spaceBetween: 30,
-                },
-            },
-        });
-
-
-        const swiper2 = new Swiper(".our-recipe-slider", {
-            slidesPerView: 1,
-            effect: "cards",
-            loop: true,
-            grabCursor: true,
-        });
-        const accordions = document.querySelectorAll(".accordion-header");
-
-        accordions.forEach(header => {
-            header.addEventListener("click", () => {
-                const parent = header.parentElement;
-
-                // Close all other accordions (optional)
-                document.querySelectorAll(".accordion-item").forEach(item => {
-                    if (item !== parent) item.classList.remove("active");
-                });
-
-                // Toggle current accordion
-                parent.classList.toggle("active");
             });
-        });
 
+            const accordions = document.querySelectorAll(".accordion-header");
+            accordions.forEach(header => {
+                header.addEventListener("click", () => {
+                    const parent = header.parentElement;
+                    document.querySelectorAll(".accordion-item").forEach(item => {
+                        if (item !== parent) item.classList.remove("active");
+                    });
+                    parent.classList.toggle("active");
+                });
+            });
+
+            const categoryButtons = document.querySelectorAll('.top-section button[data-filter]');
+            const recipeCols = document.querySelectorAll('.recipe-col');
+
+            function setActiveButton(clickedBtn) {
+                categoryButtons.forEach(b => b.classList.remove('active'));
+                clickedBtn.classList.add('active');
+            }
+
+            function filterRecipes(filter) {
+                recipeCols.forEach(col => {
+                    const cats = (col.getAttribute('data-categories') || '').split(',').map(s => s.trim()).filter(Boolean);
+                    if (filter === 'all') {
+                        col.style.display = '';
+                    } else {
+                        if (cats.indexOf(filter) !== -1) {
+                            col.style.display = '';
+                        } else {
+                            col.style.display = 'none';
+                        }
+                    }
+                });
+            }
+
+            categoryButtons.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const filter = btn.getAttribute('data-filter');
+                    setActiveButton(btn);
+                    filterRecipes(filter);
+                });
+            });
+
+            const activeBtn = document.querySelector('.top-section button.active');
+            if (activeBtn) {
+                filterRecipes(activeBtn.getAttribute('data-filter') || 'all');
+            } else {
+                filterRecipes('all');
+            }
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
