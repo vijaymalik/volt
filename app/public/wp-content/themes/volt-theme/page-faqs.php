@@ -38,10 +38,10 @@
 
 
         <div class="container-fluid nav-container mt-sm-2 px-sm-4">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aa4ec43efe01bdc08f3f6ae94dfcc7996195b2f3.png" alt="">
             </a>
-            <button class="talk-btn phn-btn">Let's Talk</button>
+            <a class="talk-btn phn-btn" href="/contact-us">Let's Talk</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedConten" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -61,12 +61,12 @@
                         <a class="nav-link active" aria-current="page" href="#">Products </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Recipes </a>
+                        <a class="nav-link" href="/recipie">Recipes </a>
                     </li>
 
                 </ul>
 
-                <button class="talk-btn">Let's Talk</button>
+                <a class="talk-btn" href="/contact-us">Let's Talk</a>
             </div>
         </div>
     </nav>
