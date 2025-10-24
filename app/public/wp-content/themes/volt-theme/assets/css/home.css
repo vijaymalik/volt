@@ -790,6 +790,10 @@
 
 @media (max-width: 768px) {
 
+    .ready-right img {
+   bottom: 0;
+}
+
     .pl-5 {
         padding-left: 0;
     }
