@@ -363,9 +363,10 @@
                         <p>About Us</p>
                         <h6>Driving Fiji’s food industry <br> forward with quality, <br> innovation and trust.</h6>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
-                        <div class="d-flex justify-content-end w-100 mt-5">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
-                        </div>
+
+                    </div>
+                    <div class="d-flex justify-content-end w-100 mt-3">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
                     </div>
                 </div>
             </div>
@@ -432,7 +433,10 @@
                     <div class="col-12 col-sm-7">
                         <div class="ready-left">
                             <h5>Ready to Join Us?</h5>
-                            <p>Where you belong, grows stronger with <br> you. Join our community.</p>
+                            <p class="d-none d-sm-block">Where you belong, grows stronger with <br> you. Join our
+                                community.</p>
+                            <p class="d-block d-sm-none">Where you belong, grows stronger <br>
+                                with you. Join our community.</p>
                             <div class="d-none d-sm-block">
                                 <a href="">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-removebg-preview.png"
@@ -507,7 +511,8 @@
                                         <span><?php echo esc_html($category); ?></span>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span><?php echo esc_html($extra_info); ?></span>
-                                            <button class="learnmore"><a href="/recipie-detail" style="text-decoration: none; color: inherit;">Learn More</a></button>
+                                            <button class="learnmore"><a href="/recipie-detail"
+                                                    style="text-decoration: none; color: inherit;">Learn More</a></button>
                                         </div>
                                     </div>
                                 </div>

@@ -12,11 +12,18 @@
             </div>
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/birds.png" class="birds" alt="">
             <div class="select">
-                <select name="" id="">
+                <select id="nearbySelect" class="custom-select">
                     <option value="">Fiji</option>
                 </select>
-                <i class="ri-arrow-down-s-line"></i>
             </div>
+            <script>
+                document.getElementById('arrow-line').addEventListener('click', function () {
+                    console.log('Arrow clicked');
+                    var selectElement = document.getElementById('nearbySelect');
+                    console.log(selectElement.value);
+                    selectElement.focus();
+                });
+            </script>
         </div>
     </div>
 
@@ -153,7 +160,7 @@
                     prevEl: ".navi .left-arrows",
                 },
                 breakpoints: {
-                    0: { slidesPerView: 1.5, spaceBetween: 10 },
+                    0: { slidesPerView: 1.2, spaceBetween: 10 },
                     641: { slidesPerView: 2, spaceBetween: 20 },
                     1025: { slidesPerView: 4, spaceBetween: 30 },
                 },
@@ -164,7 +171,7 @@
                 }
             });
 
-        
+
 
         });
     </script>
