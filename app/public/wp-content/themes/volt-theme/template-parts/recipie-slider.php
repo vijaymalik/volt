@@ -42,7 +42,7 @@
                                 <div><button><?php echo esc_html($extra_info); ?></button></div>
                             </div>
                             <div class="learn-more">
-                                <button>Learn More</button>
+                                <button><a href="/recipie-detail" style="text-decoration: none; color: inherit;">Learn More</a></button>
                             </div>
                         </div>
                     </div>
