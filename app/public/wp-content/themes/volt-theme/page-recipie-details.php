@@ -39,7 +39,7 @@
                 <span><i class="ri-history-line"></i>1.2Hrs</span>
                 <span class="mt-3"><i class="ri-star-line"></i>Easy</span>
                 <h2>Vegan Cracker Breakfast</h2>
-                <div class="mt-3 d-flex gap-2">
+                <div class="mt-3 d-flex gap-1">
                     <span>Vegan</span>
                     <span>Gluten-Free</span>
                     <span>Gluten-Free</span>

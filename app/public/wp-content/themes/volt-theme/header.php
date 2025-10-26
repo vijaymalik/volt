@@ -10,8 +10,8 @@
                 'order' => 'DESC',
             ]);
 
-            // Default text
             $default_text = '20% Off on Punjas Biscuits';
+            $image_path = get_template_directory_uri() . '/assets/images/Ellipse.png';
 
             if ($topbar->have_posts()):
                 while ($topbar->have_posts()):
@@ -19,20 +19,25 @@
                     $marque_text = get_field('marque_text');
                     $text_to_show = $marque_text ? $marque_text : $default_text;
 
-                    // Repeat it 12 times
                     for ($i = 0; $i < 12; $i++) {
-                        echo '<span>' . esc_html($text_to_show) . '</span>';
+                        echo '<span class="marque-text">' . esc_html($text_to_show) . '</span>';
+                        if ($i < 11) {
+                            echo '<img class="marque-divider" src="' . esc_url($image_path) . '" alt="divider" />';
+                        }
                     }
                 endwhile;
                 wp_reset_postdata();
-                // No posts found — show default message 12 times
             else:
                 for ($i = 0; $i < 12; $i++) {
-                    echo '<span>' . esc_html($default_text) . '</span>';
+                    echo '<span class="marque-text">' . esc_html($default_text) . '</span>';
+                    if ($i < 11) {
+                        echo '<img class="marque-divider" src="' . esc_url($image_path) . '" alt="divider" />';
+                    }
                 }
             endif;
             ?>
         </div>
+
     </div>
 
 

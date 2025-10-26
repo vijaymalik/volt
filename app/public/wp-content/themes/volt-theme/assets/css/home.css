@@ -24,13 +24,8 @@
 
 .home-overlayer {
     position: absolute;
-    padding-top: 3rem;
     top: 0px;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     width: 100%;
     text-align: center;
     height: 100%;
@@ -45,8 +40,12 @@
 }
 
 .home-img {
-    height: 465px;
-    width: 465px;
+    height: 603.04px;
+    width: 904px;
+    position: absolute;
+    left: 48%;
+    top: 268px;
+    transform: translateX(-50%);
     /* overflow: hidden; */
 }
 
@@ -62,7 +61,7 @@
     line-height: 39px;
     color: rgba(255, 255, 255, 1);
     margin-bottom: 11px;
-    margin-top: 9rem;
+    margin-top: 192px;
 }
 
 .home-banner .home-overlayer h1 {
@@ -75,7 +74,7 @@
 
 }
 
-.explore-button button {
+.home-banner .explore-button button {
     background-color: #0D122B;
     color: #fff;
     height: 55px;
@@ -83,7 +82,28 @@
     align-items: center;
     justify-content: center;
     width: auto;
-    position: relative;
+    position: absolute;
+    top: 787px;
+    left: 48%;
+    transform: translateX(-50%);
+    z-index: 99;
+    border: none;
+    border-radius: 15px;
+    padding: 18px;
+    font-family: 'Onest', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.our-products-slider .explore-button button {
+    background-color: #0D122B;
+    color: #fff;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
     z-index: 99;
     border: none;
     border-radius: 15px;
@@ -100,10 +120,19 @@
 
 .our-products-slider {
     border-radius: 12px;
-    height: 720px;
-    background: linear-gradient(159.88deg, #F5EECE 31.91%, #F0E6B7 98.37%);
+    height: 877px;
+    /* background: linear-gradient(159.88deg, #F5EECE 31.91%, #F0E6B7 98.37%); */
+    background-image: url('../images/mil-powder.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 95%;
     margin: 0 auto;
+}
+
+.our-products-slider .top-sec {
+    padding-top: 14px;
+    padding-left: 44px;
 }
 
 .our-products-slider .product {
@@ -114,35 +143,7 @@
     height: 100%;
 }
 
-.our-products-slider .product::after {
-    content: "";
-    position: absolute;
-    background: url('../images/cloud.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 67px;
-    right: 0;
-    transform: rotateY(185deg);
-    width: 34%;
-    height: 400px;
-    z-index: -1;
-}
 
-
-.our-products-slider .product::before {
-    content: "";
-    position: absolute;
-    background: url('../images/cloud.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 200px;
-    left: 0;
-    width: 34%;
-    height: 400px;
-    z-index: -1;
-}
 
 .our-products-slider .product img {
     width: 672px;
@@ -190,13 +191,15 @@
     line-height: 100%;
     letter-spacing: 0%;
     text-align: right;
+    padding-top: 0px;
+    padding-right: 44px;
 }
 
 .our-products-slider .product .overlayer .bottom-sec {
     width: 796px;
     height: 140px;
     border-radius: 196px;
-    bottom: 0%;
+    bottom: 7%;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -276,8 +279,8 @@
     justify-content: space-between;
     width: 150px;
     position: absolute;
-    right: 180px;
-    bottom: 70px;
+    right: 154px;
+    bottom: 141px;
     z-index: 99;
 
 }
@@ -294,14 +297,16 @@
     margin: 0;
 }
 
-
+.about-bird {
+    margin-top: -3rem;
+}
 
 .aboutus {
     height: 676px;
     display: flex;
     align-items: center;
     width: 96% !important;
-    margin: 80px auto;
+    margin: 0px auto;
     justify-content: center;
     position: relative;
 }
@@ -361,9 +366,26 @@
     color: rgba(45, 29, 15, 1);
     line-height: 130%;
     letter-spacing: -2%;
-
-
 }
+
+.volt-drink .explore-button button {
+    background-color: #0D122B;
+    color: #fff;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    z-index: 99;
+    border: none;
+    border-radius: 15px;
+    padding: 18px;
+    font-family: 'Onest', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
 
 .volt-drink h1 {
     font-weight: 500;
@@ -816,7 +838,7 @@
         height: 900px;
     }
 
-    .explore-button{
+    .explore-button {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1172,7 +1194,7 @@
 
     .our-recipes-mbl .swiper-slide {
         width: 80% !important;
-        height: 80% !important;
+        height: 367px !important;
         border-radius: 12px;
         overflow: hidden;
     }
@@ -1318,15 +1340,16 @@
 
 
 @media (max-width:1355px) {
-    .our-products-slider .product .overlayer .top-sec h6{
+    .our-products-slider .product .overlayer .top-sec h6 {
         font-size: 40px;
         line-height: 118%;
     }
-    .our-products-slider .product .overlayer .top-sec p{
+
+    .our-products-slider .product .overlayer .top-sec p {
         font-size: 15px;
     }
 
-    .aboutright h6{
+    .aboutright h6 {
         font-size: 43px;
     }
 }

@@ -39,7 +39,7 @@
 
             // Fallbacks
             $default_back_image = get_template_directory_uri() . '/assets/images/banner.jpg';
-            $default_product_image = get_template_directory_uri() . '/assets/images/banner-1.png';
+            $default_product_image = get_template_directory_uri() . '/assets/images/banner-backup.png';
             $default_heading_html = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
             ?>
 
@@ -71,7 +71,8 @@
                 <h6>Quality you trust.</h6>
                 <h1>Taste You Love.</h1>
                 <div class="home-img">
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-1.png'); ?>" alt="">
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-backup.png'); ?>"
+                        alt="">
                 </div>
                 <div class="explore-button">
                     <button>Explore Product</button>
@@ -183,7 +184,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="product">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product.png" alt="" />
+                        <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/desk-Product.png " alt="" /> -->
                         <div class="overlayer">
                             <div class="top-sec d-flex justify-content-between">
                                 <div class="w-100">
@@ -365,7 +366,7 @@
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
 
                     </div>
-                    <div class="d-flex justify-content-end w-100 mt-3">
+                    <div class="d-flex justify-content-end w-100 about-bird">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png" alt="">
                     </div>
                 </div>
@@ -505,7 +506,12 @@
                                 <div class="slider-overlay">
                                     <div class="nearbytop">
                                         <h6><?php the_title(); ?></h6>
-                                        <button><i class="ri-history-line"></i><?php echo esc_html($time); ?></button>
+                                        <button>
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/elements.png"
+                                                alt="time icon" style="width: 16px; height: 16px;  vertical-align: middle;">
+                                            <?php echo esc_html($time); ?>
+                                        </button>
+
                                     </div>
                                     <div class="nearbybottom bottom-div">
                                         <span><?php echo esc_html($category); ?></span>
@@ -697,31 +703,28 @@
 
 
         var swiper = new Swiper(".recipie-slider", {
-            slidesPerView: 5,
+    slidesPerView: 'auto',
+    spaceBetween: 30,
+    loop: true,
+    navigation: {
+        nextEl: ".right-arrows",
+        prevEl: ".left-arrows",
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+        },
+        641: {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+        },
+        1025: {
+            slidesPerView: 'auto',
             spaceBetween: 30,
-            loop: true,
-            navigation: {
-                nextEl: ".right-arrows",
-                prevEl: ".left-arrows",
-            },
-            breakpoints: {
-                // Mobile (up to 640px)
-                0: {
-                    slidesPerView: 1.5,
-                    spaceBetween: 10,
-                },
-                // Tablet (641px to 1024px)
-                641: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                // Desktop (above 1024px)
-                1025: {
-                    slidesPerView: 5,
-                    spaceBetween: 30,
-                },
-            },
-        });
+        },
+    },
+});
 
         const accordions = document.querySelectorAll(".accordion-header");
 

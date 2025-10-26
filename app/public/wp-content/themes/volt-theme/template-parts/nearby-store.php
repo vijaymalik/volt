@@ -1,4 +1,4 @@
-<div class="nearby-store home-near pb-5">
+<div class="nearby-store home-near nearby-sec pb-5">
     <div class="containers">
         <div class="nearby-container">
             <div class="d-sm-flex gap-2">
