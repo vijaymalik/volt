@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="swiper mySwiper nearby-slider mt-2 mt-sm-5">
+    <div class="swiper mySwiper nearby-slider sliding-nearby mt-2 mt-sm-5">
         <div class="swiper-wrapper">
             <?php
             $stores = new WP_Query(array(
@@ -145,12 +145,12 @@
 
             updateDisplay();
 
-            const swiperWrapper = document.querySelector('.nearby-slider .swiper-wrapper');
+            const swiperWrapper = document.querySelector('.sliding-nearby .swiper-wrapper');
             const slideCount = swiperWrapper ? swiperWrapper.querySelectorAll('.swiper-slide').length : 0;
             const maxSlidesPerView = 4;
             const enableLoop = slideCount > maxSlidesPerView;
 
-            var swiper = new Swiper(".nearby-slider", {
+            var swiper = new Swiper(".sliding-nearby", {
                 slidesPerView: 4,
                 spaceBetween: 30,
                 loop: enableLoop,

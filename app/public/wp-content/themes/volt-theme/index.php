@@ -176,157 +176,189 @@
         </div>
     <?php endif; ?>
 
+    <div class="our-products-slider swiper">
+        <div class="swiper-wrapper">
 
-
-
-    <div class="our-products position-relative">
-        <div class="swiper  our-products-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="product">
-                        <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/desk-Product.png " alt="" /> -->
+            <div class="swiper-slide">
+                <div class="our-product-parent">
+                    <div class="our-products">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/desk-Product.png" alt="" />
                         <div class="overlayer">
-                            <div class="top-sec d-flex justify-content-between">
-                                <div class="w-100">
-                                    <h6>Milk Drink Powder</h6>
-                                    <p>
-                                        Discover our flagship favorites <br> trusted by generations, loved
-                                        by <br> every Fijian home.
-                                    </p>
-                                    <div class="explore-button">
-                                        <button class="m-0">Explore Product</button>
+                            <div class="left-div">
+                                <h2>Milk Drink Powder</h2>
+                                <p>Discover our flagship favorites trusted by generations, loved by every Fijian home.
+                                </p>
+                                <button>Explore Product</button>
+                            </div>
+                            <div class="center-div">
+                                <img class="milk"
+                                    src="<?php echo get_template_directory_uri(); ?>/assets/images/Group.png" alt="" />
+                                <div class="bottom-sec">
+                                    <div class="text-center">
+                                        <p>Vitamin A <br />up to</p>
+                                        <h3>180mcg</h3>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="text-center">
+                                        <p>Potassium <br />up to</p>
+                                        <h3>250mg</h3>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="text-center">
+                                        <p>Protein<br />up to</p>
+                                        <h3>26g</h3>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="text-center">
+                                        <p>Calcium <br />up to</p>
+                                        <h3>912mg</h3>
                                     </div>
                                 </div>
-                                <h2>Our Products</h2>
                             </div>
-
-                            <div class="bottom-sec">
-                                <div class="text-center">
-                                    <p>Vitamin A <br />up to</p>
-                                    <h3>180mcg</h3>
-                                </div>
-                                <div class="line"></div>
-                                <div class="text-center">
-                                    <p>Potassium <br />up to</p>
-                                    <h3>250mg</h3>
-                                </div>
-                                <div class="line"></div>
-                                <div class="text-center">
-                                    <p>Protein<br />up to</p>
-                                    <h3>26g</h3>
-                                </div>
-                                <div class="line"></div>
-                                <div class="text-center">
-                                    <p>Calcium <br />up to</p>
-                                    <h3>912mg</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- 2nd Slide -->
-                <div class="swiper-slide">
-                    <div class="product">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product.png" alt="" />
-                        <div class="overlayer">
-                            <div class="top-sec d-flex justify-content-between">
-                                <div class="w-100">
-                                    <h6>Milk Drink Powder</h6>
-                                    <p>
-                                        Discover our flagship favorites <br> trusted by generations, loved <br>
-                                        by every Fijian home.
-                                    </p>
-                                    <div class="explore-button">
-                                        <button class="m-0">Explore Product</button>
+                            <div class="right-div">
+                                <div class="right-sec-div">
+                                    <h4>Our Products</h4>
+                                    <!-- arrows are placed outside swiper but kept inside markup for styling -->
+                                    <div class="product-arrow-r">
+                                        <div class="product-arrow left-arw">
+                                            <i class="ri-arrow-left-s-line"></i>
+                                        </div>
+                                        <p class="page-count"><span class="current">01</span> / <span
+                                                class="total">02</span></p>
+                                        <div class="product-arrow right-arw">
+                                            <i class="ri-arrow-right-s-line"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <h2>Our Products</h2>
-                            </div>
-
-                            <div class="bottom-sec">
-                                <div class="text-center">
-                                    <p>Vitamin A <br />up to</p>
-                                    <h3>180mcg</h3>
-                                </div>
-                                <div class="line"></div>
-                                <div class="text-center">
-                                    <p>Potassium <br />up to</p>
-                                    <h3>250mg</h3>
-                                </div>
-                                <div class="line"></div>
-                                <div class="text-center">
-                                    <p>Protein<br />up to</p>
-                                    <h3>26g</h3>
-                                </div>
-                                <div class="line"></div>
-                                <div class="text-center">
-                                    <p>Calcium <br />up to</p>
-                                    <h3>912mg</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div> <!-- end our-product-parent -->
+            </div>
+
+            <div class="swiper-slide">
+                <div class="our-product-parent">
+                    <div class="our-products">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/desk-Product.png" alt="" />
+                        <div class="overlayer">
+                            <div class="left-div">
+                                <h2>Milk Drink Powder</h2>
+                                <p>Discover our flagship favorites trusted by generations, loved by every Fijian home.
+                                </p>
+                                <button>Explore Product</button>
+                            </div>
+                            <div class="center-div">
+                                <img class="milk"
+                                    src="<?php echo get_template_directory_uri(); ?>/assets/images/Group.png" alt="" />
+                                <div class="bottom-sec">
+                                    <div class="text-center">
+                                        <p>Vitamin A <br />up to</p>
+                                        <h3>180mcg</h3>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="text-center">
+                                        <p>Potassium <br />up to</p>
+                                        <h3>250mg</h3>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="text-center">
+                                        <p>Protein<br />up to</p>
+                                        <h3>26g</h3>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="text-center">
+                                        <p>Calcium <br />up to</p>
+                                        <h3>912mg</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-div">
+                                <div class="right-sec-div">
+                                    <h4>Our Products</h4>
+                                    <!-- arrows are placed outside swiper but kept inside markup for styling -->
+                                    <div class="product-arrow-r">
+                                        <div class="product-arrow left-arw">
+                                            <i class="ri-arrow-left-s-line"></i>
+                                        </div>
+                                        <p class="page-count"><span class="current">01</span> / <span
+                                                class="total">02</span></p>
+                                        <div class="product-arrow right-arw">
+                                            <i class="ri-arrow-right-s-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
+    </div>
 
-        <!-- ✅ Move arrows OUTSIDE swiper container -->
-        <div class="product-arrow-r">
-            <div class="product-arrow left-arw">
-                <i class="ri-arrow-left-s-line "></i>
-            </div>
-            <p class="page-count">01 / <span>02</span></p>
-            <div class="product-arrow right-arw">
-                <i class="ri-arrow-right-s-line "></i>
-            </div>
-        </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const swiperEl = document.querySelector('.our-products-slider');
+            // count the actual number of unique slides (inside .swiper-wrapper)
+            const totalSlides = swiperEl.querySelectorAll('.swiper-wrapper .swiper-slide').length;
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const leftArrow = document.querySelector(".left-arw");
-                const rightArrow = document.querySelector(".right-arw");
-                const pageCount = document.querySelector(".page-count");
-                const total = parseInt(pageCount.querySelector("span").textContent);
-
-                let current = 1;
-
-                function updateDisplay() {
-                    pageCount.innerHTML = `${String(current).padStart(2, "0")} / <span>${String(total).padStart(2, "0")}</span>`;
+            const swiper = new Swiper(swiperEl, {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true, // for continuous cycle
+                navigation: {
+                    nextEl: '.right-arw',
+                    prevEl: '.left-arw',
+                },
+                keyboard: { enabled: true, onlyInViewport: true },
+                on: {
+                    init: function () {
+                        updatePageCount(this);
+                    },
+                    slideChange: function () {
+                        updatePageCount(this);
+                    }
                 }
-
-                rightArrow.addEventListener("click", () => {
-                    current = current < total ? current + 1 : 1;
-                    updateDisplay();
-                });
-
-                leftArrow.addEventListener("click", () => {
-                    current = current > 1 ? current - 1 : total;
-                    updateDisplay();
-                });
             });
-        </script>
 
+            function updatePageCount(swiperInstance) {
+                const current = swiperInstance.realIndex + 1;
 
-        <style>
-            .product-arrow-r p {
-                font-size: 18px;
-                font-weight: 500;
+                document.querySelectorAll('.page-count').forEach(pc => {
+                    const curEl = pc.querySelector('.current');
+                    const totEl = pc.querySelector('.total');
+                    if (curEl) curEl.textContent = String(current).padStart(2, "0");
+                    if (totEl) totEl.textContent = String(totalSlides).padStart(2, "0");
+                });
             }
+        });
+    </script>
 
-            .product-arrow-r p span {
-                /* color: #ff6600; */
-                font-weight: 700;
-            }
 
-            .product-arrow i {
-                cursor: pointer;
-                font-size: 24px;
-            }
-        </style>
+
+
+
+    <style>
+        .product-arrow-r p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .product-arrow-r p span {
+            /* color: #ff6600; */
+            font-weight: 700;
+        }
+
+        .product-arrow i {
+            cursor: pointer;
+            font-size: 24px;
+        }
+    </style>
 
     </div>
+    </div>
+
+
 
     <div class="our-product-mbl">
         <h2>Our Products</h2>
@@ -348,7 +380,9 @@
                 </div>
             </div>
         </div>
+
     </div>
+
 
     <div class="aboutus">
         <div class="container-fluid">
@@ -362,7 +396,7 @@
 
                     <div class="aboutright">
                         <p>About Us</p>
-                        <h6>Driving Fiji’s food industry  forward with quality, innovation and trust.</h6>
+                        <h6>Driving Fiji’s food industry forward with quality, innovation and trust.</h6>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
 
                     </div>
@@ -467,13 +501,13 @@
 
     <div class="our-recipes">
         <h1>Our Recipes</h1>
-        <div class="swiper mySwiper nearby-slider  recipie-slider">
+        <div class="swiper mySwiper nearby-slider nearby-slider-recipie recipie-slider">
             <div class="swiper-wrapper">
                 <?php
                 // WP Query for 5 latest recipes
                 $recipes = new WP_Query(array(
                     'post_type' => 'recipe',
-                    'posts_per_page' => 5,
+                    'posts_per_page' => 10,
                 ));
                 if ($recipes->have_posts()):
                     while ($recipes->have_posts()):
@@ -658,7 +692,7 @@
 
         // Updated Swiper initialization
         document.addEventListener('DOMContentLoaded', function () {
-            const swiperWrapper = document.querySelector('.nearby-slider .swiper-wrapper');
+            const swiperWrapper = document.querySelector('.nearby-slider-recipie .swiper-wrapper');
             const slideCount = swiperWrapper ? swiperWrapper.querySelectorAll('.swiper-slide').length : 0;
 
             // Maximum slides per view (desktop)
@@ -667,27 +701,23 @@
             // Enable loop only if there are more slides than slidesPerView
             const enableLoop = slideCount > maxSlidesPerView;
 
-            var swiper = new Swiper(".nearby-slider", {
+            var swiper = new Swiper(".nearby-slider-recipie", {
                 slidesPerView: 4,
                 spaceBetween: 30,
-                loop: enableLoop,
-                watchOverflow: true, // hides arrows if not enough slides
-                navigation: {
-                    nextEl: ".navi .right-arrows", // target inside .navi
-                    prevEl: ".navi .left-arrows",
-                },
+                loop: true, // Always loop
+                loopAdditionalSlides: 4, // Helps fill white space
+                watchOverflow: false,
+                centeredSlides: false,
+                grabCursor: true,
                 breakpoints: {
-                    // Mobile (up to 640px)
                     0: {
                         slidesPerView: 1.5,
                         spaceBetween: 10,
                     },
-                    // Tablet (641px to 1024px)
                     641: {
                         slidesPerView: 2,
                         spaceBetween: 20,
                     },
-                    // Desktop (above 1024px)
                     1025: {
                         slidesPerView: 4,
                         spaceBetween: 30,
@@ -695,36 +725,37 @@
                 },
                 on: {
                     init: function () {
-                        console.log(`Swiper initialized with ${slideCount} slides. Loop: ${enableLoop}`);
+                        console.log(`Swiper initialized with ${this.slides.length} total slides (including duplicates).`);
                     }
                 }
             });
+
         });
 
 
         var swiper = new Swiper(".recipie-slider", {
-    slidesPerView: 'auto',
-    spaceBetween: 30,
-    loop: true,
-    navigation: {
-        nextEl: ".right-arrows",
-        prevEl: ".left-arrows",
-    },
-    breakpoints: {
-        0: {
-            slidesPerView: 'auto',
-            spaceBetween: 10,
-        },
-        641: {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-        },
-        1025: {
             slidesPerView: 'auto',
             spaceBetween: 30,
-        },
-    },
-});
+            loop: true,
+            navigation: {
+                nextEl: ".right-arrows",
+                prevEl: ".left-arrows",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 'auto',
+                    spaceBetween: 10,
+                },
+                641: {
+                    slidesPerView: 'auto',
+                    spaceBetween: 20,
+                },
+                1025: {
+                    slidesPerView: 'auto',
+                    spaceBetween: 30,
+                },
+            },
+        });
 
         const accordions = document.querySelectorAll(".accordion-header");
 
