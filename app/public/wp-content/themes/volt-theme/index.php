@@ -592,6 +592,7 @@
                                     your pick!</p>
                             </div>
                         </div>
+                        <!-- Your existing HTML (unchanged) -->
                         <div class="col-12 col-sm-4">
                             <div class="right-poll">
                                 <h5>Let’s choose <br> between the two</h5>
@@ -602,9 +603,122 @@
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 45%;"></div>
                                 </div>
-
                             </div>
+
                         </div>
+
+                        <style>
+                            .progress-fill::before {
+                                width: 50%;
+                                transition: width 0.8s ease;
+                            }
+
+                            .progress-bar.step-2 .progress-fill::before {
+                                width: 100%;
+                            }
+
+                            .progress-bar.complete .progress-fill::before {
+                                width: 100%;
+                            }
+                        </style>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const pollWrap = document.querySelector('.right-poll');
+                                if (!pollWrap) return;
+
+                                const questionEl = pollWrap.querySelector('h5');
+                                const optionsWrap = pollWrap.querySelector('div.d-flex.flex-column');
+                                const progressBar = pollWrap.querySelector('.progress-bar');
+
+                                // Step state: 0 = step1, 1 = step2, 2 = finished
+                                let step = 0;
+                                const answers = {}; // store choices
+
+                                // Utility: clear and create buttons inside optionsWrap
+                                function setButtons(labels) {
+                                    optionsWrap.innerHTML = '';
+                                    labels.forEach(label => {
+                                        const btn = document.createElement('button');
+                                        btn.type = 'button';
+                                        btn.textContent = label;
+
+                                        // ✅ Apply margin classes to all EXCEPT "Vanilla"
+                                        if (label.toLowerCase() !== 'vanilla') {
+                                            btn.className = 'mt-6 mt-sm-5';
+                                        }
+
+                                        btn.addEventListener('click', onOptionClick);
+                                        optionsWrap.appendChild(btn);
+                                    });
+                                }
+
+                                // initial buttons already exist in markup — to ensure consistent listeners,
+                                // attach listeners to existing buttons if present, else recreate.
+                                const existingBtns = Array.from(optionsWrap.querySelectorAll('button'));
+                                if (existingBtns.length) {
+                                    existingBtns.forEach(b => b.addEventListener('click', onOptionClick));
+                                }
+
+                                // Handler for option clicks
+                                function onOptionClick(e) {
+                                    const chosen = e.currentTarget.textContent.trim();
+
+                                    if (step === 0) {
+                                        // Step 1 chosen
+                                        answers.q1 = chosen;
+
+                                        // move to step 2: change question and options
+                                        questionEl.innerHTML = 'Which flavor base <br> do you prefer?';
+                                        // add class to animate progress from 50% -> 100%
+                                        // we use a small timeout so the CSS transition is visible
+                                        setTimeout(() => progressBar.classList.add('step-2'), 30);
+
+                                        // set second step options
+                                        setButtons(['Chocolate', 'Vanilla']);
+                                        step = 1;
+                                        return;
+                                    }
+
+                                    if (step === 1) {
+                                        // Step 2 chosen
+                                        answers.q2 = chosen;
+
+                                        // finish: show thank you and summary
+                                        finishPoll();
+                                        return;
+                                    }
+
+                                    // if step >= 2, do nothing (already finished)
+                                }
+
+                                function finishPoll() {
+                                    // lock UI: remove buttons and show summary
+                                    optionsWrap.innerHTML = `
+                                    <p class="mt-6 mt-sm-5"></p>
+                                    <p style="text-align:center;margin:6px 0 0 0;font-size:.95rem;color:#333;">
+                                        You chose: <strong>${answers.q1}</strong> &amp; <strong>${answers.q2}</strong>
+                                    </p>
+                                    `;
+
+                                    // ensure progress shows full and mark complete
+                                    progressBar.classList.add('complete');
+                                    progressBar.classList.add('step-2'); // safe-guard: ensure 100%
+
+                                    // optional: visually dim the poll to prevent further interaction
+                                    pollWrap.style.pointerEvents = 'none';
+                                    pollWrap.style.opacity = '0.98';
+
+                                    step = 2;
+                                }
+
+                                // If you want to ensure initial buttons get proper spacing / event listeners if markup used,
+                                // you can re-render initial buttons using setButtons(['Sweet', 'Savoury']) here instead of relying on markup.
+                                // But to keep markup untouched, we used existing buttons above.
+
+                            });
+                        </script>
+
                     </div>
                 </div>
 

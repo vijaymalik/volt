@@ -1033,6 +1033,12 @@ body {
         width: 20px !important;
     }
 
+    .sliding-nearby .nearby-slides
+    {
+        min-width: 260px;
+        max-width: 260px;
+    }
+
     .nearby-slider .nearby-slides .slider-overlay .nearbytop h6 {
         font-size: 16px;
     }

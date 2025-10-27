@@ -160,7 +160,7 @@
                     prevEl: ".navi .left-arrows",
                 },
                 breakpoints: {
-                    0: { slidesPerView: 1.2, spaceBetween: 10 },
+                    0: { slidesPerView: 1.7, spaceBetween: 10 },
                     641: { slidesPerView: 2, spaceBetween: 20 },
                     1025: { slidesPerView: 4, spaceBetween: 30 },
                 },
