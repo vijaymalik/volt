@@ -133,7 +133,7 @@
                 $items = $default_items;
             }
             ?>
-            <div class="marques mt-sm-5 pt-sm-5">
+            <div class="marques home-marquee mt-sm-5 pt-sm-5">
                 <div class="marque-content text-black">
                     <?php
                     // Repeat outputs (at least 12). Change $repeat to alter number.

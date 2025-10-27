@@ -564,7 +564,7 @@
     width: 100%;
     position: absolute;
     bottom: -7px;
-    object-fit:contain;
+    object-fit: contain;
     left: 0;
 }
 
@@ -836,8 +836,26 @@
         margin: 0;
     }
 
+    .home-banner .explore-button button {
+        top: 606px;
+        height: 36px;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 12px;
+
+        border-radius: 10px;
+  
+
+
+    }
+
+    .home-marquee{
+        top: 33px;
+        position: relative;
+    }
+
     .home-banner {
-        height: 900px;
+        height: 705px;
     }
 
     .explore-button {
@@ -847,7 +865,7 @@
     }
 
     .home-overlayer img {
-        height: 491px;
+        height: 423px;
         width: 100%;
     }
 
@@ -882,7 +900,7 @@
 
     .home-banner::after {
         height: 250px;
-        top: 750px;
+        top: 597px;
     }
 
     .mbl-progress {
@@ -1355,7 +1373,7 @@
 
 
 @media (max-width:1580px) {
-    .ready-right img{
+    .ready-right img {
         object-fit: fill;
     }
 }
