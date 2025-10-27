@@ -147,7 +147,7 @@
 
 
 <hr class="desktop-hr">
-<div class="copywrite mt-5 d-none  d-sm-flex align-items-center justify-content-between container">
+<div class="copywrite mt-5 d-none  d-sm-flex align-items-center justify-content-between ">
     <div class="d-sm-flex align-items-center gap-4">
         <a href="">Privacy Policy</a>
         <a href="">Terms & Conditions</a>

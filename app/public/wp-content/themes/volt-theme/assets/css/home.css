@@ -303,10 +303,9 @@
 
 .aboutus {
     height: 676px;
-    display: flex;
-    align-items: center;
+    padding-top: 30px;
     width: 96% !important;
-    margin: 0px auto;
+    margin: 35px auto 35px auto;
     justify-content: center;
     position: relative;
 }
@@ -508,6 +507,7 @@
 .ready {
     width: 90%;
     margin: 3rem auto;
+    overflow: hidden;
     height: 316px;
     border-radius: 12px;
     background-image: url('../images/4a11b3e2172301c07e8c34ff3797a3a90929944c\ \(1\).jpg');
@@ -564,7 +564,7 @@
     width: 100%;
     position: absolute;
     bottom: -7px;
-    object-fit: cover;
+    object-fit:contain;
     left: 0;
 }
 
@@ -660,11 +660,12 @@
     font-size: 14px;
     line-height: 100%;
     letter-spacing: -1%;
+    border: none;
 
 }
 
 .bottom-div {
-    top: 80% !important;
+    top: 78% !important;
 }
 
 .poll {
@@ -688,7 +689,7 @@
 .poll::before {
     content: "";
     position: absolute;
-    height: 99%;
+    height: 100%;
     opacity: 1;
     top: -54%;
     left: 0;
@@ -815,6 +816,7 @@
 
     .ready-right img {
         bottom: 8px;
+        object-fit: contain !important;
     }
 
     .pl-5 {
@@ -917,7 +919,7 @@
 
     .volt-drink {
         padding-top: 28px;
-        height: 602px;
+        height: 635px;
     }
 
     .ready {
@@ -1077,7 +1079,7 @@
     }
 
     .ready-right {
-        height: 177px;
+        height: 144px;
     }
 
     .our-product-mbl {
@@ -1316,11 +1318,7 @@
 }
 
 
-@media (max-width:1650px) {
-    .ready-right img {
-        object-position: 5px -8px;
-    }
-}
+
 
 
 @media (max-width:1400px) {
@@ -1351,5 +1349,13 @@
 
     .aboutright h6 {
         font-size: 43px;
+    }
+}
+
+
+
+@media (max-width:1580px) {
+    .ready-right img{
+        object-fit: fill;
     }
 }

@@ -38,7 +38,7 @@ body {
 }
 
 .navbar .marques {
-    height: 37px;
+    height: 32px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -82,24 +82,23 @@ body {
     color: #d81b60;
     font-size: 16px;
     font-weight: 600;
-    
-}
-
-.nearby-sec .nearby-slider .nearby-slides{
-height: 445px;
 
 }
 
+.nearby-sec .nearby-slider .nearby-slides {
+    height: 445px;
 
-.poll
-.marque-content span {
+}
+
+
+.poll .marque-content span {
     display: inline-block;
     margin-right: 17px;
     margin-left: 17px;
 
     font-size: 16px;
     font-weight: 500;
-    
+
 }
 
 /* Animation */
@@ -146,7 +145,7 @@ height: 445px;
 
 .hero .left-sec {
     width: 50%;
-    height: 996px;
+    height: 1055px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -166,7 +165,7 @@ height: 445px;
 
 .hero .left-sec .overlay .overlay-container {
     position: absolute;
-    top: 789px;
+    top: 827px;
     left: 76px;
     color: #FFFFFF;
     width: 100%;
@@ -196,18 +195,20 @@ height: 445px;
 
 .hero .right-sec {
     width: 50%;
-    height: 996px;
+    height: 1055px;
     position: relative;
 }
 
 
 .hero .right-sec .form {
-    width: 80%;
+    width: 85%;
     height: 744px;
     left: 50px;
     position: absolute;
     top: 203px;
 }
+
+
 
 .hero .right-sec .form h2 {
     font-family: 'Onest', sans-serif;
@@ -216,6 +217,7 @@ height: 445px;
     font-style: medium !important;
     font-size: 52px;
     line-height: 100%;
+    margin-bottom: 11px;
     letter-spacing: -2% !important;
 
 }
@@ -230,7 +232,7 @@ height: 445px;
     line-height: 20px;
     letter-spacing: 0;
     margin-bottom: 0 !important;
-    margin-top: 11px !important;
+    margin-top: 0px !important;
 }
 
 .hero .right-sec .form .input {
@@ -243,7 +245,7 @@ height: 445px;
     font-weight: 400;
     line-height: 20px;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     color: #40360D;
     letter-spacing: 0;
     font-family: 'Onest', sans-serif;
@@ -255,7 +257,7 @@ height: 445px;
     border-radius: 4px;
     border: 1px solid #40360D33;
     padding: 16px;
-    margin-top: 8px;
+    margin-top: 0px;
     background-color: transparent;
     outline: none;
     font-family: 'Onest', sans-serif;
@@ -575,7 +577,7 @@ height: 445px;
 
 
 .nearby-slider .nearby-slides .slider-overlay .nearbytop h6 {
-
+    width: 63%;
     font-weight: 500;
     font-style: Medium;
     font-size: 22px;
@@ -639,6 +641,7 @@ height: 445px;
     gap: 20px;
 }
 
+
 .nearby-store .navi .arrow {
     height: 36px;
     display: flex;
@@ -648,6 +651,19 @@ height: 445px;
     border-radius: 3.6px;
     border: 1px solid #947E1E;
 }
+
+.navi p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.navi span {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+}
+
 
 .nearby-store .navi .arrow i {
     font-size: 1.5rem;
@@ -744,8 +760,15 @@ height: 445px;
 .nearby-slider .nearby-slides .slider-overlay .nearbytop button,
 .nearby-slider .nearby-slides .slider-overlay .nearbybottom span i {
     display: flex;
-    gap: 10px;
+    gap: 4px;
     align-items: center;
+    width: 90px;
+    justify-content: center;
+}
+
+.copywrite {
+    width: 89% !important;
+    margin: 0 auto !important;
 }
 
 
@@ -956,7 +979,7 @@ height: 445px;
         justify-content: center;
     }
 
-    .marque-divider{
+    .marque-divider {
         display: none;
     }
 
@@ -1331,7 +1354,7 @@ height: 445px;
         align-items: center;
     }
 
-    .nearby-sec .nearby-slider .nearby-slides{
+    .nearby-sec .nearby-slider .nearby-slides {
         height: 355px;
     }
 
@@ -1515,4 +1538,10 @@ height: 445px;
 .navi .arrow i.disabled {
     opacity: 0.3 !important;
     pointer-events: none !important;
+}
+
+@media (min-width:1400px) {
+    .hero .right-sec .form p {
+        width: 580px;
+    }
 }

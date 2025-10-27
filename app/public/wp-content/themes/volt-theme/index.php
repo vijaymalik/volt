@@ -362,7 +362,7 @@
 
                     <div class="aboutright">
                         <p>About Us</p>
-                        <h6>Driving Fiji’s food industry <br> forward with quality, <br> innovation and trust.</h6>
+                        <h6>Driving Fiji’s food industry  forward with quality, innovation and trust.</h6>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
 
                     </div>
