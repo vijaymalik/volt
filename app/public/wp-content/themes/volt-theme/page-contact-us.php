@@ -113,7 +113,7 @@
         <div class="right-sec">
             <div class="form">
                 <h2>Get in Touch</h2>
-                <p class="right-para">We’re ready to answer your questions and assist you promptly. Our friendly <br>
+                <p class="right-para">We’re ready to answer your questions and assist you promptly. Our friendly 
                     team is ready to
                     assist
                     you with any VOLT Milk Drink Powder queries.</p>

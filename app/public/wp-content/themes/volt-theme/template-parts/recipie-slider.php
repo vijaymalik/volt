@@ -34,7 +34,7 @@
                     <div class="overlay">
                         <div class="top d-flex justify-content-between">
                             <h4><?php the_title(); ?></h4>
-                            <button class="d-flex gap-2"><i class="ri-history-line"></i> <?php echo esc_html($time); ?></button>
+                            <button class="d-flex gap-1"><i class="ri-history-line"></i> <?php echo esc_html($time); ?></button>
                         </div>
                         <div class="top d-flex align-items-center justify-content-between">
                             <div>

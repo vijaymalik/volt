@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="swiper mySwiper nearby-slider mt-2 mt-sm-5">
+    <div class="swiper mySwiper nearby-slider sliding-nearby mt-2 mt-sm-5">
         <div class="swiper-wrapper">
             <?php
             $stores = new WP_Query(array(
@@ -53,8 +53,8 @@
                     $store_phone = get_field('phone') ?: $default_phone;
                     $store_hours = get_field('hours') ?: $default_hours;
                     ?>
-                    <div class="swiper-slide">
-                        <div class="nearby-slides">
+                    <div class="swiper-slide swiper-slide-store">
+                        <div class="nearby-slides sliding-nearby-store">
                             <img src="<?php echo esc_url($store_image); ?>" alt="<?php echo esc_attr($store_name); ?>">
                             <div class="slider-overlay">
                                 <div class="nearbytop">
@@ -80,8 +80,8 @@
                 wp_reset_postdata();
             else:
                 ?>
-                <div class="swiper-slide">
-                    <div class="nearby-slides">
+                <div class="swiper-slide swiper-slide-store">
+                    <div class="nearby-slides sliding-nearby-store">
                         <img src="<?php echo esc_url($default_image); ?>" alt="Default Store">
                         <div class="slider-overlay">
                             <div class="nearbytop">
@@ -145,22 +145,22 @@
 
             updateDisplay();
 
-            const swiperWrapper = document.querySelector('.nearby-slider .swiper-wrapper');
+            const swiperWrapper = document.querySelector('.sliding-nearby .swiper-wrapper');
             const slideCount = swiperWrapper ? swiperWrapper.querySelectorAll('.swiper-slide').length : 0;
             const maxSlidesPerView = 4;
             const enableLoop = slideCount > maxSlidesPerView;
 
-            var swiper = new Swiper(".nearby-slider", {
+            var swiper = new Swiper(".sliding-nearby", {
                 slidesPerView: 4,
                 spaceBetween: 30,
-                loop: enableLoop,
+                loop: true,
                 watchOverflow: true,
                 navigation: {
                     nextEl: ".navi .right-arrows",
                     prevEl: ".navi .left-arrows",
                 },
                 breakpoints: {
-                    0: { slidesPerView: 1.2, spaceBetween: 10 },
+                    0: { slidesPerView: 1.7, spaceBetween: 10 },
                     641: { slidesPerView: 2, spaceBetween: 20 },
                     1025: { slidesPerView: 4, spaceBetween: 30 },
                 },
