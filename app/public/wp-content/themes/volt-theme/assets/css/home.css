@@ -17,7 +17,7 @@
     top: 623px;
     left: 0;
     width: 100%;
-    backdrop-filter: blur(2px);
+    /* backdrop-filter: blur(2px); */
     height: 470px;
     background: linear-gradient(180deg, rgba(248, 242, 220, 0) 11.59%, #FBF6E0 43.92%);
 }
@@ -36,7 +36,6 @@
 .home-overlayer img {
     height: 600px;
     width: auto;
-
 }
 
 .home-img {
@@ -71,7 +70,6 @@
     letter-spacing: -2px;
     color: rgba(255, 255, 255, 1);
     text-align: center;
-
 }
 
 .home-banner .explore-button button {
@@ -124,7 +122,6 @@
 .our-products {
     height: 720px;
     width: 100%;
-
     border-radius: 12px;
     position: relative;
 }
@@ -154,19 +151,16 @@
     margin: 44px;
     position: relative;
     z-index: 99;
-
 }
 
 .our-product-parent .our-products .overlayer .left-div h2 {
     font-family: Onest;
     font-weight: 500;
-    font-style: Medium;
     font-size: 52px;
-    leading-trim: NONE;
     line-height: 130%;
-    letter-spacing: -2%;
+    letter-spacing: -0.16px;
     color: #2D1D0F;
-
+    margin-bottom: 0px;
 }
 
 .our-product-parent .our-products .overlayer p {
@@ -183,13 +177,12 @@
 .milk {
     position: absolute;
     top: 50%;
-    padding-top: 4rem;
+    padding-top: 6rem;
     height: 921px !important;
     width: 880px !important;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 
 .our-product-parent .our-products button {
     width: 200px;
@@ -208,24 +201,24 @@
     line-height: 100%;
     letter-spacing: -1%;
     color: #FFFFFF;
-
 }
 
-.sliding-nearby-store
-{
-    width: 364px!important;
-    height: 445px!important;
+.sliding-nearby-store {
+    /* width: 364px!important;
+    height: 445px!important; */
 }
+
 
 /* swiper-slide-store
 {
     margin-right: -50px!important;
 } */
+
 .our-product-parent .center-div .bottom-sec {
     width: 796px;
     height: 140px;
     border-radius: 196px;
-    top: 83.5%;
+    top: 85%;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -241,7 +234,6 @@
     border: 6px solid rgba(255, 247, 212, 1)
 }
 
-
 .our-product-parent .center-div .bottom-sec .text-center p {
     font-family: Onest;
     font-weight: 500;
@@ -251,7 +243,6 @@
     letter-spacing: -2%;
     text-align: center;
     color: rgba(99, 85, 66, 1);
-
 }
 
 .our-product-parent .center-div .bottom-sec .text-center h3 {
@@ -265,7 +256,6 @@
     text-transform: capitalize;
     color: rgba(64, 40, 8, 1);
     margin: 0;
-
 }
 
 .our-product-parent .center-div .bottom-sec .line {
@@ -301,7 +291,6 @@
     flex-direction: column;
 }
 
-
 .product-arrow {
     height: 36px;
     display: flex;
@@ -312,9 +301,7 @@
     border: 1px solid #947E1E;
     z-index: 99;
     cursor: pointer;
-
 }
-
 
 .product-arrow-r {
     height: 36px;
@@ -324,7 +311,6 @@
     justify-content: space-between;
     width: 150px;
     z-index: 99;
-
 }
 
 .our-product-parent .product-arrow-r p {
@@ -335,11 +321,9 @@
 }
 
 .our-product-parent .product-arrow-r span {
-    font-size: 12px !important;
     font-weight: 500;
     margin: 0;
 }
-
 
 .product-arrow-r p {
     font-size: 16px !important;
@@ -349,7 +333,7 @@
 }
 
 .product-arrow-r span {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     margin: 0;
 }
@@ -365,6 +349,7 @@
     margin: 35px auto 35px auto;
     justify-content: center;
     position: relative;
+    margin-bottom: 0px;
 }
 
 .aboutus .aboutleft {
@@ -372,7 +357,6 @@
     height: 503px;
     border-radius: 24px;
     overflow: hidden;
-
 }
 
 .aboutus .aboutleft img {
@@ -386,7 +370,7 @@
     height: 100%;
     align-items: start;
     flex-direction: column;
-    padding-left: 2rem;
+    padding-left: 2.5rem;
     justify-content: center;
     position: relative;
 }
@@ -415,33 +399,31 @@
 }
 
 .aboutright h6 {
-
     font-weight: 500;
     font-style: Medium;
-    font-size: 52px;
+    font-size: 48px;
     color: rgba(45, 29, 15, 1);
     line-height: 130%;
-    letter-spacing: -2%;
+    letter-spacing: -0.16px;
 }
 
 .volt-drink .explore-button button {
     background-color: #0D122B;
     color: #fff;
-    height: 55px;
+    height: 43px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: auto;
     z-index: 99;
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 18px;
     font-family: 'Onest', sans-serif;
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
 }
-
 
 .volt-drink h1 {
     font-weight: 500;
@@ -451,7 +433,6 @@
     line-height: 130%;
     letter-spacing: -2%;
     color: (45, 29, 15, 1);
-
 }
 
 .volt-drink {
@@ -461,14 +442,12 @@
     text-align: center;
 }
 
-
 .volt-marq .box {
     width: 224px;
     height: 200px;
     flex: 0 0 auto;
     overflow: hidden;
     border-radius: 24px;
-
 }
 
 .volt-marq .box img {
@@ -493,7 +472,6 @@
     animation: scroll 5s linear infinite;
     width: max-content;
     gap: 32px;
-
 }
 
 .progress-bar {
@@ -539,7 +517,6 @@
     from {
         width: 0;
     }
-
     to {
         width: 45%;
     }
@@ -549,13 +526,10 @@
     animation: fillProgress 1s ease forwards;
 }
 
-
-
 @keyframes scroll {
     from {
         transform: translateX(0);
     }
-
     to {
         transform: translateX(-50%);
     }
@@ -568,6 +542,7 @@
     height: 316px;
     border-radius: 12px;
     background-image: url('../images/4a11b3e2172301c07e8c34ff3797a3a90929944c\ \(1\).jpg');
+    background-position: top center;
 }
 
 .ready-left {
@@ -588,7 +563,6 @@
     line-height: 100%;
     letter-spacing: -2%;
     color: rgba(46, 85, 116, 1);
-
 }
 
 .ready-left p {
@@ -620,7 +594,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    bottom: -7px;
+    bottom: 0px;
     object-fit: contain;
     left: 0;
 }
@@ -629,9 +603,7 @@
     height: 748px;
     position: relative;
     background: linear-gradient(181.24deg, rgba(248, 242, 220, 0) 22.68%, #FBF6E0 44.63%);
-
 }
-
 
 .our-recipes::after {
     content: "";
@@ -645,9 +617,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url('../images/cloud.png');
-
 }
-
 
 .our-recipes::before {
     content: "";
@@ -660,7 +630,6 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url('../images/cloud.png');
-
 }
 
 .navi {
@@ -693,7 +662,6 @@
     height: 270px;
 }
 
-
 .our-recipes h1 {
     font-weight: 500;
     text-align: center;
@@ -718,7 +686,6 @@
     line-height: 100%;
     letter-spacing: -1%;
     border: none;
-
 }
 
 .bottom-div {
@@ -730,7 +697,6 @@
     overflow: hidden;
     width: 100%;
     position: relative;
-
 }
 
 .poll-img {
@@ -764,7 +730,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-
 }
 
 .right-poll {
@@ -777,7 +742,6 @@
     position: relative;
     overflow: hidden;
 }
-
 
 .right-poll h5 {
     font-weight: 500;
@@ -853,7 +817,6 @@
     margin: 0 5rem !important;
 }
 
-
 .polloverlayer img {
     filter: invert(100%);
 }
@@ -870,77 +833,58 @@
     display: none;
 }
 
-
-
 @media (max-width: 768px) {
-
-    .home-banner img{
+    .home-banner img {
         object-fit: cover;
     }
-
     .our-product-parent {
         display: none;
     }
-
     .ready-right img {
         bottom: 8px;
         object-fit: contain !important;
     }
-
     .pl-5 {
         padding-left: 0;
     }
-
     .home-overlayer {
         padding-top: 154px;
         display: block;
         top: 0;
         background-color: rgb(0 0 0 / 2%);
     }
-
     .home-banner .home-overlayer h6 {
         font-size: 26px;
         font-weight: 600;
         margin: 0;
     }
-
     .home-banner .explore-button button {
         top: 662px;
         height: 36px;
         font-size: 12px;
         font-weight: 500;
         padding: 12px;
-
         border-radius: 10px;
-
-
-
     }
-
     .home-marquee {
         top: 33px;
         position: relative;
     }
-
     .home-banner {
         height: 705px;
     }
-
     .explore-button {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
     .home-overlayer img {
         height: 513px;
         width: 100%;
     }
-
     .home-banner .home-overlayer h1 {
         font-size: 46px;
     }
-
     .progress-fill::before {
         position: absolute;
         content: "";
@@ -950,95 +894,76 @@
         width: 30px;
         background: #2D1D0F;
     }
-
     .volt-marq .box {
         height: 72px;
         width: 72px;
         border-radius: 10px;
     }
-
     .marquee-track {
         gap: 15px;
     }
-
     .home-banner .home-overlayer h1 {
         font-size: 46px;
         line-height: 47px;
     }
-
     .home-banner::after {
         height: 227px;
         top: 550px;
     }
-
     .mbl-progress {
         display: block;
     }
-
     .explore-button button {
         margin-top: 0rem;
     }
-
     .our-products,
     .aboutus {
         display: none;
     }
-
     .volt-drink h1 {
         font-size: 32px;
         font-weight: 700;
         margin-right: 15px;
     }
-
     .explore-button button {
         font-size: 12px;
         font-weight: 600;
         height: 36px;
         border-radius: 10px;
         padding: 12px;
-
     }
-
     .volt-marq {
         border-radius: 0;
     }
-
     .volt-drink {
         padding-top: 28px;
         height: 635px;
     }
-
     .ready {
         height: 328px;
         margin: 2rem auto;
         background-position: 947px 0px;
         overflow: hidden;
     }
-
     .ready-left {
         padding: 2rem 0;
         align-items: center;
         gap: 2px;
     }
-
     .ready-left h5 {
         text-align: center;
         font-size: 28px;
         font-weight: 600;
     }
-
     .ready-left p {
         font-size: 14px;
         text-align: center;
         line-height: 140%;
         font-weight: 400;
     }
-
-
     .poll-img {
         display: none;
     }
-
     .poll-container h2 {
         position: relative;
         z-index: 99;
@@ -1046,7 +971,6 @@
         font-weight: 500;
         text-align: center;
     }
-
     .poll-container p {
         width: 100%;
         font-size: 14px;
@@ -1055,55 +979,39 @@
         padding-top: 6px;
         text-align: center;
     }
-
     .nearby-store {
         padding-top: 30px;
     }
-
     .right-poll {
         width: 72%;
         margin: 120px auto;
         height: 250px;
     }
-
     .polloverlayer {
         top: 180px;
     }
-
     .poll-over {
         position: absolute;
         top: 0;
         width: 100%;
         inset: 0;
-        background: linear-gradient(to bottom,
-                rgba(0, 0, 0, 0.15) 0%,
-                /* top: very light black */
-                rgba(0, 0, 0, 0.05) 30%,
-                /* mid: almost gone */
-                rgba(0, 0, 0, 0) 100%
-                /* bottom: fully transparent */
-            );
-
-
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, /* top: very light black */
+        rgba(0, 0, 0, 0.05) 30%, /* mid: almost gone */
+        rgba(0, 0, 0, 0) 100%
+        /* bottom: fully transparent */
+        );
         height: 100%;
     }
-
     .polloverlayer .marques {
         border-width: 1px, 0px, 1px, 0px;
-
         border-style: solid;
-
         border-color: rgba(204, 204, 204, 0.2);
-
-
     }
-
     .polloverlayer .marque-content span {
         font-size: 12px;
         font-weight: 500;
         margin: 0 1rem !important;
     }
-
     .mbl-about {
         width: 100%;
         padding: 4rem 0;
@@ -1112,22 +1020,18 @@
         justify-content: center;
         gap: 25px;
         flex-direction: column;
-
     }
-
     .img-section {
         width: 155px;
         height: 76px;
         border-radius: 59.4px;
         overflow: hidden;
     }
-
     .img-section img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
-
     .mbl-about p {
         font-weight: 500;
         font-style: Medium;
@@ -1135,10 +1039,7 @@
         line-height: 100%;
         letter-spacing: -1%;
         color: rgba(67, 67, 67, 1);
-
-
     }
-
     .mbl-about h2 {
         font-weight: 500;
         font-style: Medium;
@@ -1147,9 +1048,7 @@
         letter-spacing: 0%;
         text-align: center;
         color: rgba(45, 29, 15, 1);
-
     }
-
     .join-btn {
         width: 130px;
         height: 36px;
@@ -1163,11 +1062,9 @@
         color: rgba(13, 18, 43, 1);
         border: none;
     }
-
     .ready-right {
         height: 144px;
     }
-
     .our-product-mbl {
         display: flex;
         text-align: center;
@@ -1177,7 +1074,6 @@
         gap: 20px;
         padding-top: 104px;
     }
-
     .our-product-mbl h2 {
         font-weight: 500;
         font-style: Medium;
@@ -1188,7 +1084,6 @@
         text-align: center;
         text-transform: capitalize;
     }
-
     .our-product-mbl p {
         font-weight: 400;
         font-size: 15px;
@@ -1197,14 +1092,12 @@
         letter-spacing: 0%;
         text-align: center;
     }
-
     .our-product-mid {
         width: 87%;
         height: 444px;
         border-radius: 12px;
         background: linear-gradient(165.47deg, #F5EECE 3.73%, #F0E6B7 85.42%);
     }
-
     .our-product-mid h2 {
         font-weight: 600;
         font-size: 20px;
@@ -1214,13 +1107,11 @@
         color: rgba(73, 42, 12, 1);
         padding-top: 2rem;
     }
-
     .our-product-mid img {
         height: 65%;
         width: 100%;
         object-fit: contain;
     }
-
     .our-product-mid .bottom-sec {
         width: 278px;
         height: 89px;
@@ -1235,7 +1126,6 @@
         background: rgba(230, 207, 142, 1);
         margin: 0 auto;
     }
-
     .our-product-mid .bottom-sec h6 {
         font-weight: 500;
         font-style: Medium;
@@ -1244,9 +1134,7 @@
         letter-spacing: -2%;
         text-align: center;
         color: rgba(99, 85, 66, 1);
-
     }
-
     .our-product-mid .bottom-sec h1 {
         font-weight: 600;
         font-size: 18px;
@@ -1257,36 +1145,29 @@
         color: rgba(64, 40, 8, 1);
         margin: 0;
     }
-
     .bottom-sec .line {
         width: 65px;
         height: 0px;
         transform: rotate(-90deg);
         border: 0.85px solid rgba(64, 40, 8, 0.1);
-
     }
-
     .our-recipes {
         display: none;
     }
-
     .our-recipes-mbl {
         padding-bottom: 0rem;
         display: block;
     }
-
     .our-recipes-mbl .swiper {
         width: 320px;
         height: 440px;
     }
-
     .our-recipes-mbl .swiper-slide {
         width: 80% !important;
         height: 367px !important;
         border-radius: 12px;
         overflow: hidden;
     }
-
     .our-recipes-mbl h2 {
         font-weight: 600;
         font-style: SemiBold;
@@ -1298,13 +1179,11 @@
         text-transform: capitalize;
         color: rgba(45, 29, 15, 1);
     }
-
     .our-recipe-slider img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
-
     .our-recipe-slider .overlay {
         height: 100%;
         width: 100%;
@@ -1313,13 +1192,10 @@
         position: absolute;
         top: 0;
         display: flex;
-
         justify-content: space-between;
         flex-direction: column;
     }
-
     .our-recipe-slider .overlay h4 {
-
         font-weight: 500;
         font-style: Medium;
         font-size: 14px;
@@ -1327,9 +1203,7 @@
         letter-spacing: 0%;
         color: rgba(255, 255, 255, 1);
     }
-
     .our-recipe-slider .overlay button {
-
         height: 19px;
         border-radius: 50px;
         padding-top: 2px;
@@ -1347,25 +1221,19 @@
         line-height: 150%;
         letter-spacing: 3%;
         vertical-align: middle;
-
     }
-
     .our-recipe-slider .overlay .learn-more button {
-
         height: 36px;
         border-radius: 10px;
         gap: 10px;
         padding: 12px;
         color: rgba(13, 18, 43, 1);
-
         font-weight: 600;
         font-size: 12px;
         line-height: 100%;
         letter-spacing: -1%;
-
         background-color: rgba(255, 255, 255, 1);
     }
-
     .pollmbl-img {
         height: 1014px;
         width: 100%;
@@ -1373,39 +1241,25 @@
         /* object-fit: unset; */
         object-fit: cover;
     }
-
-
-
-
     .right-poll h5 {
         font-size: 16px;
     }
-
     .right-poll button {
         font-size: 14px;
         height: 42px;
         width: 223px;
     }
-
     .right-poll::before {
         height: 83px;
     }
-
     .mt-6 {
         margin-top: 29px;
     }
-
     .containers {
         width: 100%;
         padding-left: 22px;
     }
-
-
 }
-
-
-
-
 
 @media (max-width:1400px) {
     .aboutus::before {
@@ -1414,31 +1268,24 @@
     }
 }
 
-
 @media (max-width:1466px) {
-
     .product-arrow-r {
         right: 96px;
     }
 }
-
 
 @media (max-width:1355px) {
     .our-products-slider .product .overlayer .top-sec h6 {
         font-size: 40px;
         line-height: 118%;
     }
-
     .our-products-slider .product .overlayer .top-sec p {
         font-size: 15px;
     }
-
     .aboutright h6 {
         font-size: 43px;
     }
 }
-
-
 
 @media (max-width:1580px) {
     .ready-right img {
@@ -1446,10 +1293,12 @@
     }
 }
 
-
 @media (min-width:1400px) {
-    .ready .ready-row{
-        justify-content: center;
+    .ready .ready-row {
+        justify-content: space-between;
         width: 100%;
+    }
+    .aboutright h6 {
+        font-size: 53px;
     }
 }

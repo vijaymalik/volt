@@ -16,7 +16,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <style>
 .page-count .current {
-    font-size: 17px!important;     
+    font-size: 16px!important;     
 }
 </style>
     </head>
@@ -402,7 +402,7 @@
                     <div class="aboutright">
                         <p>About Us</p>
                         <h6>Driving Fiji’s food industry forward with quality, innovation and trust.</h6>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/about-us-icon.svg" alt="">
 
                     </div>
                     <div class="d-flex justify-content-end w-100 about-bird">
@@ -494,7 +494,7 @@
                     </div>
                     <div class="col-12 col-md-5 ">
                         <div class="ready-right position-relative">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/a-removebg-preview.png"
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product-image.png"
                                 alt="">
                         </div>
                     </div>

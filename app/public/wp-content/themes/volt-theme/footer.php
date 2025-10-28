@@ -45,7 +45,7 @@
                             <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/twitterx--v2.png"
                                 alt="twitterx--v2" />
                         </div>
-                        <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird.png"
+                        <img class="bird" src="<?php echo get_template_directory_uri(); ?>/assets/images/bird2.png"
                             alt="">
 
                     </div>
