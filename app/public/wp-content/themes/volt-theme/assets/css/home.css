@@ -211,7 +211,16 @@
 
 }
 
+.sliding-nearby-store
+{
+    width: 364px!important;
+    height: 445px!important;
+}
 
+/* swiper-slide-store
+{
+    margin-right: -50px!important;
+} */
 .our-product-parent .center-div .bottom-sec {
     width: 796px;
     height: 140px;
