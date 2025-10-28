@@ -469,8 +469,8 @@
         </div>
         <div class="ready">
             <div class=" container-fluid h-100">
-                <div class="row h-100">
-                    <div class="col-12 col-sm-7">
+                <div class="row h-100  ready-row">
+                    <div class="col-12 col-md-6 col-lg-7 col-xxl-auto">
                         <div class="ready-left">
                             <h5>Ready to Join Us?</h5>
                             <p class="d-none d-sm-block">Where you belong, grows stronger with <br> you. Join our
@@ -492,7 +492,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-5">
+                    <div class="col-12 col-md-5 ">
                         <div class="ready-right position-relative">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/a-removebg-preview.png"
                                 alt="">
