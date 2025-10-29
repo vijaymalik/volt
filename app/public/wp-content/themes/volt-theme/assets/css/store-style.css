@@ -79,6 +79,10 @@ body {
     font-weight: 600;
 }
 
+.nearby-sec .nearby-slider .swiper-slide {
+    width: 364px !important;
+}
+
 .nearby-sec .nearby-slider .nearby-slides {
     height: 459px;
 }
@@ -1390,5 +1394,11 @@ body {
 @media (min-width:1400px) {
     .hero .right-sec .form p {
         width: 580px;
+    }
+}
+
+@media (min-width:1400px) {
+    .navbar {
+        width: 92% !important;
     }
 }
