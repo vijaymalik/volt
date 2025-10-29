@@ -147,11 +147,11 @@
 
             const swiperWrapper = document.querySelector('.sliding-nearby .swiper-wrapper');
             const slideCount = swiperWrapper ? swiperWrapper.querySelectorAll('.swiper-slide').length : 0;
-            const maxSlidesPerView = 4;
+            const maxSlidesPerView = 5;
             const enableLoop = slideCount > maxSlidesPerView;
 
             var swiper = new Swiper(".sliding-nearby", {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 32,
                 loop: true,
                 watchOverflow: true,
@@ -162,8 +162,8 @@
                 breakpoints: {
                     0: { slidesPerView: 1.7, spaceBetween: 10 },
                     641: { slidesPerView: 2, spaceBetween: 20 },
-                    1025: { slidesPerView: 4, spaceBetween: 30 },
-                    1440: { slidesPerView: 5, spaceBetween: 30 },
+                    1025: { slidesPerView: 3.6, spaceBetween: 30, width: 1388.4},
+                    1440: { slidesPerView: 5, spaceBetween: 30, width: 1940},
                 },
                 on: {
                     init: function () {
