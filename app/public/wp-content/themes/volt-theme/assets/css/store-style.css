@@ -502,7 +502,7 @@ body {
 }
 
 .our-recipes .nearby-slider .nearby-slides {
-    transform: translateX(23%);
+    transform: translateX(24%);
 }
 
 .nearby-slider .nearby-slides {
@@ -1413,9 +1413,9 @@ body {
         width: 92% !important;
     }
     .nearby-slider .nearby-slides {
-        transform: translateX(21%);
+        transform: translateX(22%);
     }
     .our-recipes .nearby-slider .nearby-slides {
-        transform: translateX(25%);
+        transform: translateX(26%);
     }
 }
