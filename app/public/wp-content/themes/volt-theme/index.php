@@ -494,7 +494,7 @@
                     </div>
                     <div class="col-12 col-md-5 ">
                         <div class="ready-right position-relative">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product-image.png"
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/a-removebg-preview.png"
                                 alt="">
                         </div>
                     </div>
