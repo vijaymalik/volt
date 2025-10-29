@@ -501,6 +501,10 @@ body {
     cursor: pointer;
 }
 
+.our-recipes .nearby-slider .nearby-slides {
+    transform: translateX(23%);
+}
+
 .nearby-slider .nearby-slides {
     height: 400px;
     border-radius: 16px;
@@ -557,7 +561,7 @@ body {
     gap: 8.4px;
     background: #1414144D;
     backdrop-filter: blur(5.599999904632568px);
-    height: 32px;
+    height: 26.6px;
     color: #fff;
     font-family: Onest;
     font-weight: 500;
@@ -567,14 +571,21 @@ body {
     line-height: 150%;
     letter-spacing: 3%;
     vertical-align: middle;
+    align-items: center;
+    display: inline-flex;
+}
+
+.nearbybottom .d-flex {
+    height: 42px !important;
+    align-items: center;
 }
 
 .nearby-slider .nearby-slides .slider-overlay .nearbybottom {
     width: 100%;
     height: auto;
     position: absolute;
-    top: 258px;
-    padding: 0px 15px;
+    top: 295px;
+    padding: 0px 21px;
     gap: 16.8px;
 }
 
@@ -1403,5 +1414,10 @@ body {
     }
     .ready {
         width: 92%;
+    .nearby-slider .nearby-slides {
+        transform: translateX(21%);
     }
-}
+    .our-recipes .nearby-slider .nearby-slides {
+        transform: translateX(25%);
+    }
+					}
