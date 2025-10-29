@@ -1408,16 +1408,14 @@ body {
     }
 }
 
-@media (min-width:1400px) {
+@media (min-width:1920px) {
     .navbar {
         width: 92% !important;
     }
-    .ready {
-        width: 92%;
     .nearby-slider .nearby-slides {
         transform: translateX(21%);
     }
     .our-recipes .nearby-slider .nearby-slides {
         transform: translateX(25%);
     }
-					}
+}
