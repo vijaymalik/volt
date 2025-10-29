@@ -1401,4 +1401,7 @@ body {
     .navbar {
         width: 92% !important;
     }
+    .ready {
+        width: 92%;
+    }
 }
