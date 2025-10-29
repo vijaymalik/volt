@@ -152,7 +152,7 @@
 
             var swiper = new Swiper(".sliding-nearby", {
                 slidesPerView: 4,
-                spaceBetween: 30,
+                spaceBetween: 32,
                 loop: true,
                 watchOverflow: true,
                 navigation: {
@@ -163,6 +163,7 @@
                     0: { slidesPerView: 1.7, spaceBetween: 10 },
                     641: { slidesPerView: 2, spaceBetween: 20 },
                     1025: { slidesPerView: 4, spaceBetween: 30 },
+                    1440: { slidesPerView: 5, spaceBetween: 30 },
                 },
                 on: {
                     init: function () {

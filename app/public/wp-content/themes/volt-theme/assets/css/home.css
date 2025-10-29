@@ -168,9 +168,9 @@
     font-weight: 400;
     font-style: Regular;
     font-size: 18px;
-    leading-trim: NONE;
-    line-height: 100%;
+    line-height: 24px;
     letter-spacing: 0%;
+    margin-bottom: 3px;
     color: #666666;
 }
 
@@ -770,7 +770,7 @@
     font-weight: 500;
     font-style: Medium;
     font-size: 52px;
-    line-height: 100%;
+    line-height: 65px;
     letter-spacing: -2%;
     color: rgba(255, 255, 255, 1);
 }
@@ -780,7 +780,7 @@
     font-style: Regular;
     font-size: 18px;
     color: rgba(255, 255, 255, 1);
-    line-height: 100%;
+    line-height: 23px;
     letter-spacing: 0%;
     width: 50%;
     padding-top: 20px;
@@ -830,6 +830,15 @@
 }
 
 .our-recipes-mbl {
+    display: none;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+    color: var(--bs-nav-link-color) !important;
+}
+
+.gradiant_blur {
     display: none;
 }
 
@@ -1299,6 +1308,17 @@
         width: 100%;
     }
     .aboutright h6 {
-        font-size: 53px;
+        font-size: 50px;
+    }
+    .gradiant_blur {
+        height: 403px;
+        background-image: url(../images/Background.png);
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: block;
     }
 }

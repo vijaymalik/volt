@@ -546,7 +546,7 @@
                                     <div class="nearbytop">
                                         <h6><?php the_title(); ?></h6>
                                         <button>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/elements.png"
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/elements.svg"
                                                 alt="time icon" style="width: 16px; height: 16px;  vertical-align: middle;">
                                             <?php echo esc_html($time); ?>
                                         </button>
@@ -577,7 +577,7 @@
         <?php get_template_part('template-parts/recipie-slider'); ?>
 
     </div>
-
+    <div class="gradiant_blur"></div>
 
     <div class="poll position-relative">
         <img class="poll-img d-none d-sm-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll.jpg"

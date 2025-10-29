@@ -566,11 +566,11 @@ body {
 }
 
 .nearby-slider .nearby-slides .slider-overlay .nearbybottom {
-    width: 90%;
+    width: 100%;
     height: auto;
     position: absolute;
-    top: 270px;
-    left: 12px;
+    top: 258px;
+    padding: 0px 15px;
     gap: 16.8px;
 }
 
