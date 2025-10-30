@@ -1328,6 +1328,12 @@
 
 @media (min-width:1400px) {
     .ready {
+        width: 90%;
+    }
+}
+
+@media (min-width:1920px) {
+    .ready {
         width: 92%;
     }
 }
