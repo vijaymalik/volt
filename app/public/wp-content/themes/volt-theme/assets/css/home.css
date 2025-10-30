@@ -1324,6 +1324,9 @@
     .our-recipes {
         height: 627px;
     }
+}
+
+@media (min-width:1400px) {
     .ready {
         width: 92%;
     }

@@ -1220,7 +1220,7 @@ body {
     .swiper-slide {
         width: auto !important;
         flex-shrink: 0;
-        max-width: 300px;
+        max-width: 262px;
     }
     .right-para {
         display: none;
@@ -1367,6 +1367,9 @@ body {
     .end-container-mbl .end::after {
         content: attr(data-duplicate);
     }
+    .swiper-3d {
+        perspective: 3400px !important;
+    }
     /* Animation */
     @keyframes marquee {
         0% {
@@ -1408,14 +1411,14 @@ body {
     }
 }
 
-@media (min-width:1400px) {
+@media (min-width:1920px) {
     .navbar {
         width: 92% !important;
     }
     .nearby-slider .nearby-slides {
-        transform: translateX(21%);
+        transform: translateX(22%);
     }
     .our-recipes .nearby-slider .nearby-slides {
-        transform: translateX(25%);
+        transform: translateX(26%);
     }
 }

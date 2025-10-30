@@ -363,8 +363,6 @@
     </div>
     </div>
 
-
-
     <div class="our-product-mbl">
         <h2>Our Products</h2>
         <p>Discover our flagship favorites trusted by <br> generations, loved by every Fijian home.</p>
@@ -385,9 +383,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 
     <div class="aboutus">
         <div class="container-fluid">
@@ -930,7 +926,6 @@
 
 
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
