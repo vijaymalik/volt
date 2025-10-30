@@ -1325,8 +1325,9 @@
         height: 627px;
     }
 }
-@media(min-width:1920px) {
-  .ready {
+
+@media (min-width:1400px) {
+    .ready {
         width: 92%;
     }
 }
