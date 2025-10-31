@@ -979,6 +979,7 @@
         font-size: 32px;
         font-weight: 500;
         text-align: center;
+        line-height: 41px;
     }
     .poll-container p {
         width: 100%;
@@ -1015,6 +1016,9 @@
         border-width: 1px, 0px, 1px, 0px;
         border-style: solid;
         border-color: rgba(204, 204, 204, 0.2);
+        height: 60px;
+        display: flex;
+        align-items: center;
     }
     .polloverlayer .marque-content span {
         font-size: 12px;
@@ -1029,6 +1033,7 @@
         justify-content: center;
         gap: 25px;
         flex-direction: column;
+        padding-top: 2rem;
     }
     .img-section {
         width: 155px;

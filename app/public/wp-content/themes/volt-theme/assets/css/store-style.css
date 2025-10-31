@@ -502,7 +502,7 @@ body {
 }
 
 .our-recipes .nearby-slider .nearby-slides {
-    transform: translateX(24%);
+    transform: translateX(23%);
 }
 
 .nearby-slider .nearby-slides {
@@ -1421,4 +1421,94 @@ body {
     .our-recipes .nearby-slider .nearby-slides {
         transform: translateX(26%);
     }
+}
+
+.our-product-mbl {
+    text-align: center;
+    padding: 30px 15px;
+    font-family: Arial, sans-serif;
+}
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 12px;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    background: #fdf5e6;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.slide img {
+    width: 100%;
+    margin: 3px auto;
+    display: block;
+}
+
+.bottom-sec {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.line {
+    width: 1px;
+    height: 40px;
+    background: #bfa26a;
+}
+
+.slider-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.slider-buttons button {
+    background-color: #bfa26a;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.slider-buttons button:hover {
+    background-color: #a38a58;
+}
+
+
+/* Progress Bar */
+
+.progress-bar {
+    width: 80%;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 10px;
+    margin: 15px auto;
+    margin-top: 50px !important;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #ccc;
+    /* default dark brown */
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
