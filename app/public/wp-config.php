@@ -8,6 +8,7 @@ define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
 define('WP_DEBUG_DISPLAY', true);
 
+
 /**
  * The base configuration for WordPress
  *
@@ -36,7 +37,7 @@ define( 'DB_NAME', 'volt' );
 define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'password' );
+define( 'DB_PASSWORD', '' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
@@ -67,9 +68,9 @@ define( 'SECURE_AUTH_SALT',  '87Bz0X+Nq2|9|`y,-4%TQzEh6zIKkE]b*R]pahEwg0%:ai**C8
 define( 'LOGGED_IN_SALT',    '=p(UwzD[PJdel6R >`BKfm_iI2Lt{|jlH{>J]:-r{}xRDLFZs[)CgFK$go@2cJ1B' );
 define( 'NONCE_SALT',        'ygPPb3C~3=}<uy)F1k Ie61X|FaCQG{LyF[INS{IH[PFYMLS.4&Tt(v%l3I>U]o4' );
 define( 'WP_CACHE_KEY_SALT', ' j$+#uLCb^bY%7,AZ6!Y51^`Twp;To~Dm/Li}RF?+wD-cLQ >ftfbkywwMX[_3pH' );
-define('WP_HOME','https://codevaani.com');
-define('WP_SITEURL','https://codevaani.com');
-
+define('WP_HOME','http://localhost/volt/app/public/');
+define('WP_SITEURL','http://localhost/volt/app/public/');
+define('WP_MEMORY_LIMIT', '256M');
 /**#@-*/
 
 /**

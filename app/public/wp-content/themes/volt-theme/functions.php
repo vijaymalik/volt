@@ -327,3 +327,101 @@ function mytheme_register_faq_category_taxonomy() {
     register_taxonomy('faq_category', array('faq'), $args);
 }
 add_action('init', 'mytheme_register_faq_category_taxonomy');
+
+//elementor
+// ✅ Ensure Elementor is supported
+function mytheme_elementor_support() {
+    add_theme_support('elementor');
+    add_post_type_support('page', 'elementor');
+}
+add_action('after_setup_theme', 'mytheme_elementor_support');
+
+
+// ✅ Enqueue assets for Elementor Recipe Template
+function volt_enqueue_elementor_recipe_assets() {
+    global $post;
+
+    // Check for Elementor editor or the specific template
+    $is_elementor_editor = isset($_GET['elementor-preview']) && intval($_GET['elementor-preview']) > 0;
+    $is_recipe_template = $post && get_page_template_slug($post->ID) === 'template-elementor-recipe.php';
+
+    if ($is_recipe_template || $is_elementor_editor) {
+echo "funstionc";die;
+        // ✅ CSS
+        wp_enqueue_style('volt-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css', [], null);
+        wp_enqueue_style('volt-swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], null);
+        wp_enqueue_style('volt-remixicon', 'https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css', [], null);
+        wp_enqueue_style('volt-google-fonts', 'https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap', [], null);
+        wp_enqueue_style('volt-store-style', get_template_directory_uri() . '/assets/css/store-style.css', [], filemtime(get_template_directory() . '/assets/css/store-style.css'));
+        wp_enqueue_style('volt-home', get_template_directory_uri() . '/assets/css/home.css', [], filemtime(get_template_directory() . '/assets/css/home.css'));
+        wp_enqueue_style('volt-recipe', get_template_directory_uri() . '/assets/css/our-recipe.css', [], filemtime(get_template_directory() . '/assets/css/our-recipe.css'));
+
+        // ✅ JS
+        wp_enqueue_script('volt-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', ['jquery'], null, true);
+        wp_enqueue_script('volt-swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], null, true);
+
+        // ✅ Inline JS (Swiper + Accordion + Filter)
+        $custom_js = "
+            document.addEventListener('DOMContentLoaded', function () {
+                var swiper2 = new Swiper('.our-recipe-slider', {
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    loop: true,
+                    coverflowEffect: {
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 200,
+                        modifier: 2,
+                        slideShadows: false,
+                    },
+                });
+
+                const accordions = document.querySelectorAll('.accordion-header');
+                accordions.forEach(header => {
+                    header.addEventListener('click', () => {
+                        const parent = header.parentElement;
+                        document.querySelectorAll('.accordion-item').forEach(item => {
+                            if (item !== parent) item.classList.remove('active');
+                        });
+                        parent.classList.toggle('active');
+                    });
+                });
+
+                const categoryButtons = document.querySelectorAll('.top-section button[data-filter]');
+                const recipeCols = document.querySelectorAll('.recipe-col');
+
+                function setActiveButton(clickedBtn) {
+                    categoryButtons.forEach(b => b.classList.remove('active'));
+                    clickedBtn.classList.add('active');
+                }
+
+                function filterRecipes(filter) {
+                    recipeCols.forEach(col => {
+                        const cats = (col.getAttribute('data-categories') || '').split(',').map(s => s.trim()).filter(Boolean);
+                        if (filter === 'all') {
+                            col.style.display = '';
+                        } else {
+                            col.style.display = cats.includes(filter) ? '' : 'none';
+                        }
+                    });
+                }
+
+                categoryButtons.forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const filter = btn.getAttribute('data-filter');
+                        setActiveButton(btn);
+                        filterRecipes(filter);
+                    });
+                });
+
+                const activeBtn = document.querySelector('.top-section button.active');
+                filterRecipes(activeBtn ? activeBtn.getAttribute('data-filter') : 'all');
+            });
+        ";
+        wp_add_inline_script('volt-swiper', $custom_js);
+    }
+}
+add_action('wp_enqueue_scripts', 'volt_enqueue_elementor_recipe_assets');
