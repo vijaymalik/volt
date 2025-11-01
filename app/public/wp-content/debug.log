@@ -4,3 +4,67 @@
 [01-Nov-2025 06:05:03 UTC] Automatic updates complete.
 [01-Nov-2025 06:23:57 UTC] PHP Warning:  plugins_api(): An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/forums/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in C:\xampp\htdocs\volt\app\public\wp-includes\functions.php on line 6121
 [01-Nov-2025 06:30:03 UTC] PHP Warning:  Undefined array key "payload" in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\modules\ai\module.php on line 617
+[01-Nov-2025 08:00:24 UTC] PHP Warning:  Undefined array key "widgetType" in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php on line 73
+[01-Nov-2025 08:00:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_default_args() on array in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php:83
+Stack trace:
+#0 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(200): Elementor\Elements_Manager->create_element_instance(Array)
+#1 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(209): Elementor\DB->render_element_plain_content(Array)
+#2 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(590): Elementor\DB->render_element_plain_content(Array)
+#3 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(571): Elementor\DB->get_plain_text_from_data(Array)
+#4 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(231): Elementor\DB->get_plain_text(120)
+#5 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\core\base\document.php(1366): Elementor\DB->save_plain_text(120)
+#6 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\core\base\document.php(856): Elementor\Core\Base\Document->save_elements(Array)
+#7 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\sources\local.php(537): Elementor\Core\Base\Document->save(Array)
+#8 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\sources\local.php(1480): Elementor\TemplateLibrary\Source_Local->save_item(Array)
+#9 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\sources\local.php(958): Elementor\TemplateLibrary\Source_Local->import_single_template('C:\\xampp\\tmp\\ph...')
+#10 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\manager.php(650): Elementor\TemplateLibrary\Source_Local->import_template('our-products-sl...', 'C:\\xampp\\tmp\\ph...')
+#11 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\manager.php(1034): Elementor\TemplateLibrary\Manager->direct_import_template(Array)
+#12 C:\xampp\htdocs\volt\app\public\wp-includes\class-wp-hook.php(324): Elementor\TemplateLibrary\Manager->handle_direct_actions('')
+#13 C:\xampp\htdocs\volt\app\public\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#14 C:\xampp\htdocs\volt\app\public\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#15 C:\xampp\htdocs\volt\app\public\wp-admin\admin-ajax.php(192): do_action('wp_ajax_element...')
+#16 {main}
+  thrown in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php on line 83
+[01-Nov-2025 08:19:13 UTC] PHP Warning:  Undefined array key "editor_post_id" in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\modules\history\revisions-manager.php on line 363
+[01-Nov-2025 08:22:07 UTC] PHP Warning:  Undefined array key "editor_post_id" in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\modules\history\revisions-manager.php on line 363
+[01-Nov-2025 09:44:53 UTC] PHP Warning:  Undefined array key "widgetType" in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php on line 73
+[01-Nov-2025 09:44:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_default_args() on array in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php:83
+Stack trace:
+#0 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\core\base\document.php(384): Elementor\Elements_Manager->create_element_instance(Array)
+#1 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\widgets.php(475): Elementor\Core\Base\Document->render_element(Array)
+#2 [internal function]: Elementor\Widgets_Manager->ajax_render_widget(Array, Object(Elementor\Core\Common\Modules\Ajax\Module))
+#3 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\core\common\modules\ajax\module.php(176): call_user_func(Array, Array, Object(Elementor\Core\Common\Modules\Ajax\Module))
+#4 C:\xampp\htdocs\volt\app\public\wp-includes\class-wp-hook.php(324): Elementor\Core\Common\Modules\Ajax\Module->handle_ajax_request('')
+#5 C:\xampp\htdocs\volt\app\public\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 C:\xampp\htdocs\volt\app\public\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\volt\app\public\wp-admin\admin-ajax.php(192): do_action('wp_ajax_element...')
+#8 {main}
+  thrown in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php on line 83
+[01-Nov-2025 09:45:24 UTC] PHP Warning:  Undefined array key "widgetType" in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php on line 73
+[01-Nov-2025 09:45:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_default_args() on array in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php:83
+Stack trace:
+#0 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\core\base\document.php(1626): Elementor\Elements_Manager->create_element_instance(Array)
+#1 [internal function]: Elementor\Core\Base\Document->Elementor\Core\Base\{closure}(Array, Array)
+#2 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(265): call_user_func(Object(Closure), Array, Array)
+#3 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(269): Elementor\DB->iterate_data(Array, Object(Closure), Array)
+#4 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(262): Elementor\DB->iterate_data(Array, Object(Closure), Array)
+#5 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\db.php(269): Elementor\DB->iterate_data(Array, Object(Closure), Array)
+#6 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\core\base\document.php(1621): Elementor\DB->iterate_data(Array, Object(Closure))
+#7 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\sources\local.php(1509): Elementor\Core\Base\Document->get_export_data()
+#8 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\sources\local.php(801): Elementor\TemplateLibrary\Source_Local->prepare_template_export('120')
+#9 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\manager.php(639): Elementor\TemplateLibrary\Source_Local->export_template('120')
+#10 C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\template-library\manager.php(1034): Elementor\TemplateLibrary\Manager->export_template(Array)
+#11 C:\xampp\htdocs\volt\app\public\wp-includes\class-wp-hook.php(324): Elementor\TemplateLibrary\Manager->handle_direct_actions('')
+#12 C:\xampp\htdocs\volt\app\public\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 C:\xampp\htdocs\volt\app\public\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#14 C:\xampp\htdocs\volt\app\public\wp-admin\admin-ajax.php(192): do_action('wp_ajax_element...')
+#15 {main}
+  thrown in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\elements.php on line 83
+[01-Nov-2025 09:58:17 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\image.php on line 113
+[01-Nov-2025 09:58:17 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\image.php on line 113
+[01-Nov-2025 09:58:17 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\image.php on line 113
+[01-Nov-2025 09:58:17 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\image.php on line 113
+[01-Nov-2025 09:58:17 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\image.php on line 113
+[01-Nov-2025 09:58:17 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\image.php on line 113
+[01-Nov-2025 09:58:17 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\image.php on line 113
+[01-Nov-2025 09:58:17 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-content\plugins\elementor\includes\managers\image.php on line 113

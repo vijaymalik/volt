@@ -11,9 +11,9 @@ get_header();
 
   <?php
   // 🔹 Load your banner + custom homepage sections
-  if ( locate_template('index-content.php') ) {
-      include locate_template('index-content.php');
-  }
+//   if ( locate_template('index-content.php') ) {
+//       include locate_template('index-content.php');
+//   }
 
   // 🔹 Required for Elementor to detect the editable area
   if ( have_posts() ) :
