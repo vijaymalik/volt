@@ -1337,3 +1337,17 @@
         width: 92%;
     }
 }
+        .product-arrow-r p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .product-arrow-r p span {
+            /* color: #ff6600; */
+            font-weight: 700;
+        }
+
+        .product-arrow i {
+            cursor: pointer;
+            font-size: 24px;
+        }

@@ -8,7 +8,11 @@
 <body <?php body_class(); ?>>
 <?php if ( function_exists( 'wp_body_open' ) ) { wp_body_open(); } ?>
 
-<!-- Top Bar (Marquee) -->
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <!-- Top Bar (Marquee) -->
 <div class="marques">
     <div class="marque-content">
         <?php
@@ -47,9 +51,6 @@
         ?>
     </div>
 </div>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container-fluid nav-container mt-sm-2 px-sm-4">
 
         <!-- Brand -->
