@@ -157,7 +157,7 @@
     <div class="d-sm-flex align-items-center gap-4">
         <a href="">Privacy Policy</a>
         <a href="">Terms & Conditions</a>
-        *Use home_url() *
+   
 
 <a href="<?php echo home_url('/faqs'); ?>">FAQs</a>
         <!--<a href="/faqs">FAQs</a>-->
