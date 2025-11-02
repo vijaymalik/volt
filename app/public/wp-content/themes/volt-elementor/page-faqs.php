@@ -1,7 +1,12 @@
+<?php
+/**
+ * Template Name:  FAQ Page (Volt)
+ * Description: Custom FAQ page template 
+ */
+?>
 <?php get_header(); ?>
 
-<?php get_template_part('header', 'volt'); ?>
-
+<div class="volt-template-container container">
 
     <div class="faq">
         <h1>FAQs</h1>
@@ -100,115 +105,16 @@
 
         </div>
     </div>
-    <?php get_template_part('footer', 'volt'); ?>
+    <?php
+    // 🔹 Required for Elementor to detect the editable area
+    if (have_posts()):
+        while (have_posts()):
+            the_post();
+            the_content(); // <-- Elementor hooks here
+        endwhile;
+    endif;
+    ?>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const buttons = document.querySelectorAll('.top-btns button');
-            const items = Array.from(document.querySelectorAll('.faq-item'));
-            const accordionId = '<?php echo esc_js($accordion_id); ?>';
-
-            // Prevent accidental anchor navigation & prevent default for any header anchors
-            document.querySelectorAll('.accordion-header a, .accordion-header [href="#"]').forEach(a => {
-                a.addEventListener('click', function (ev) {
-                    ev.preventDefault();
-                });
-            });
-
-            // Ensure accordion buttons are type="button" (defensive)
-            document.querySelectorAll('.accordion-button').forEach(b => {
-                if (!b.getAttribute('type')) b.setAttribute('type', 'button');
-            });
-
-            function renumberVisible() {
-                const visible = items.filter(i => i.offsetParent !== null);
-                visible.forEach((el, idx) => {
-                    const serialEl = el.querySelector('.faq-serial');
-                    if (serialEl) {
-                        const num = (idx + 1).toString().padStart(2, '0');
-                        serialEl.textContent = num;
-                    }
-                });
-            }
-
-            // Prevent Bootstrap collapse from forcing visible scroll by saving/restoring scroll position
-            function safeToggleCollapse(targetCollapseEl) {
-                const scrollTop = window.scrollY || window.pageYOffset;
-                // toggle using Bootstrap's Collapse API if available (keeps behaviour consistent)
-                try {
-                    let bs = bootstrap.Collapse.getInstance(targetCollapseEl);
-                    if (!bs) bs = new bootstrap.Collapse(targetCollapseEl, { toggle: false });
-                    // toggle manually
-                    if (targetCollapseEl.classList.contains('show')) bs.hide();
-                    else bs.show();
-                } catch (e) {
-                    // fallback: toggle class
-                    targetCollapseEl.classList.toggle('show');
-                }
-                // restore scroll after a tick (Bootstrap animation may change layout)
-                setTimeout(() => window.scrollTo({ top: scrollTop }), 10);
-            }
-
-            // Intercept click on accordion buttons to use safeToggleCollapse (prevents unexpected jumps)
-            document.querySelectorAll('.accordion-button').forEach(btn => {
-                btn.addEventListener('click', function (ev) {
-                    // If button is inside a real <button type="button">, let bootstrap handle it — but still guard scroll
-                    const targetSelector = btn.getAttribute('data-bs-target') || btn.getAttribute('data-target');
-                    if (targetSelector) {
-                        ev.preventDefault();
-                        const collapseEl = document.querySelector(targetSelector);
-                        if (collapseEl) safeToggleCollapse(collapseEl);
-                    }
-                });
-            });
-
-            // Existing category button filtering logic
-            renumberVisible();
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    buttons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
-                    const filter = btn.getAttribute('data-filter');
-
-                    if (filter === 'all') {
-                        items.forEach(i => i.style.display = '');
-                    } else if (filter === 'uncategorized') {
-                        items.forEach(i => {
-                            i.style.display = i.classList.contains('uncategorized') ? '' : 'none';
-                        });
-                    } else {
-                        const termId = filter.replace('cat-', '');
-                        items.forEach(i => {
-                            if (i.classList.contains('cat-' + termId)) i.style.display = '';
-                            else i.style.display = 'none';
-                        });
-                    }
-
-                    // close any open collapse (use bootstrap API if available)
-                    document.querySelectorAll('.accordion-collapse.show').forEach(c => {
-                        try {
-                            const bsCol = bootstrap.Collapse.getInstance(c);
-                            if (bsCol) bsCol.hide();
-                            else c.classList.remove('show');
-                        } catch (e) {
-                            c.classList.remove('show');
-                        }
-                    });
-
-                    renumberVisible();
-
-                    // Scroll to accordion top (optional) — keep this if you want the page to jump to accordion
-                    const acc = document.getElementById(care);
-                    if (acc) acc.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-            });
-        });
-    </script>
+</div>
 
 <?php get_footer(); ?>

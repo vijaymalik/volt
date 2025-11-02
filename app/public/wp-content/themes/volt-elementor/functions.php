@@ -94,8 +94,20 @@ function volt_enqueue_assets()
         'assets/css/store-style.css',
         'assets/css/responsive.css',
         'assets/css/custom.css',
-        'assets/css/home.css'
     );
+    if (is_front_page() || is_home()) {
+         $custom_css_files[] = 'assets/css/home.css';
+    }
+    if ( is_page('recipes') ) {
+        $custom_css_files[] = 'assets/css/our-recipe.css';
+    }
+    if ( is_page('recipe-details')||  is_page('recipe-detail')) {
+        $custom_css_files[] = 'assets/css/our-recipe-details.css';
+    }
+      if ( is_page('faqs')) {
+        $custom_css_files[] = 'assets/css/faq.css';
+    }
+
 
     foreach ($custom_css_files as $css_file) {
         $css_path = $theme_dir . '/' . $css_file;
@@ -138,26 +150,27 @@ function volt_enqueue_assets()
 
 
     // Additional JS files
-    $custom_js_files = array(
-        'assets/js/main.js',
-        'assets/js/script.js',
-        'assets/js/enquiry.js',
-        'assets/js/custom.js'
-    );
+    $custom_js_files = array();
 
-    foreach ($custom_js_files as $js_file) {
-        $js_path = $theme_dir . '/' . $js_file;
-        $js_uri = $theme_dir_uri . '/' . $js_file;
-        if (file_exists($js_path)) {
-            wp_enqueue_script(
-                'volt-' . sanitize_title(basename($js_file, '.js')),
-                $js_uri,
-                array('jquery'),
-                filemtime($js_path),
-                true
-            );
-        }
+    // Load only on homepage
+    if (is_front_page() || is_home()) {
+         $custom_js_files[] = 'assets/js/home.js';
     }
+        foreach ($custom_js_files as $js_file) {
+            $js_path = $theme_dir . '/' . $js_file;
+            $js_uri = $theme_dir_uri . '/' . $js_file;
+            if (file_exists($js_path)) {
+                wp_enqueue_script(
+                    'volt-' . sanitize_title(basename($js_file, '.js')),
+                    $js_uri,
+                    array('jquery'),
+                    filemtime($js_path),
+                    true
+                );
+            }
+        }
+
+    wp_enqueue_script('custom-js', get_template_directory_uri() . '/assets/js/custom.js', array('volt-swiper-js'), null, true);
 
 
 }
