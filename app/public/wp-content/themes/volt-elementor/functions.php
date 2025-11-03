@@ -66,11 +66,7 @@ function volt_enqueue_assets()
     $theme_dir = get_template_directory();
     $theme_dir_uri = get_template_directory_uri();
 
-    /* =========================================================
-     *  CSS ASSETS
-     * ========================================================= */
-
-    // Bootstrap CSS (CDN)
+    // CSS
     wp_enqueue_style(
         'volt-bootstrap',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
@@ -78,7 +74,6 @@ function volt_enqueue_assets()
         '5.0.2'
     );
 
-    // Theme main style.css
     $main_style_path = $theme_dir . '/style.css';
     wp_enqueue_style(
         'volt-style',
@@ -87,7 +82,6 @@ function volt_enqueue_assets()
         file_exists($main_style_path) ? filemtime($main_style_path) : null
     );
 
-    // Additional CSS files (load order controlled manually)
     $custom_css_files = array(
         'assets/css/animate.css',
         'assets/css/font-awesome.min.css',
@@ -104,10 +98,9 @@ function volt_enqueue_assets()
     if ( is_page('recipe-details')||  is_page('recipe-detail')) {
         $custom_css_files[] = 'assets/css/our-recipe-details.css';
     }
-      if ( is_page('faqs')) {
+    if ( is_page('faqs')) {
         $custom_css_files[] = 'assets/css/faq.css';
     }
-
 
     foreach ($custom_css_files as $css_file) {
         $css_path = $theme_dir . '/' . $css_file;
@@ -122,14 +115,8 @@ function volt_enqueue_assets()
         }
     }
 
-    /* =========================================================
-     *  JS ASSETS
-     * ========================================================= */
-
-    // jQuery (WordPress built-in)
+    // JS
     wp_enqueue_script('jquery');
-
-    // Bootstrap Bundle JS (includes Popper)
     wp_enqueue_script(
         'volt-bootstrap-bundle',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
@@ -137,41 +124,273 @@ function volt_enqueue_assets()
         '5.0.2',
         true
     );
-    // Swiper
     wp_enqueue_style('volt-swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), null);
     wp_enqueue_script('volt-swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
 
-    // AOS (Animate On Scroll)
     wp_enqueue_style('volt-aos', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), null);
     wp_enqueue_script('volt-aos-js', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array(), null, true);
 
-    // Remixicon (icon font)
     wp_enqueue_style('volt-remixicon', 'https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css', array(), null);
 
-
-    // Additional JS files
     $custom_js_files = array();
-
-    // Load only on homepage
     if (is_front_page() || is_home()) {
          $custom_js_files[] = 'assets/js/home.js';
     }
-        foreach ($custom_js_files as $js_file) {
-            $js_path = $theme_dir . '/' . $js_file;
-            $js_uri = $theme_dir_uri . '/' . $js_file;
-            if (file_exists($js_path)) {
-                wp_enqueue_script(
-                    'volt-' . sanitize_title(basename($js_file, '.js')),
-                    $js_uri,
-                    array('jquery'),
-                    filemtime($js_path),
-                    true
-                );
-            }
+    foreach ($custom_js_files as $js_file) {
+        $js_path = $theme_dir . '/' . $js_file;
+        $js_uri = $theme_dir_uri . '/' . $js_file;
+        if (file_exists($js_path)) {
+            wp_enqueue_script(
+                'volt-' . sanitize_title(basename($js_file, '.js')),
+                $js_uri,
+                array('jquery'),
+                filemtime($js_path),
+                true
+            );
         }
+    }
 
     wp_enqueue_script('custom-js', get_template_directory_uri() . '/assets/js/custom.js', array('volt-swiper-js'), null, true);
-
-
 }
 add_action('wp_enqueue_scripts', 'volt_enqueue_assets');
+
+/* --------------------------------------------
+ * CUSTOM POST TYPES
+ * -------------------------------------------- */
+function mytheme_register_store_cpt() {
+    $labels = array(
+        'name'               => 'Stores',
+        'singular_name'      => 'Store',
+        'add_new_item'       => 'Add New Store',
+        'edit_item'          => 'Edit Store',
+        'new_item'           => 'New Store',
+        'view_item'          => 'View Store',
+        'all_items'          => 'All Stores',
+        'search_items'       => 'Search Stores',
+        'not_found'          => 'No stores found',
+    );
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'has_archive'        => false,
+        'show_in_rest'       => true,
+        'supports'           => array('title','editor','thumbnail','excerpt'),
+        'menu_position'      => 20,
+        'menu_icon'          => 'dashicons-store',
+    );
+    register_post_type('store', $args);
+}
+add_action('init', 'mytheme_register_store_cpt');
+
+function mytheme_register_recipe_cpt() {
+    $labels = array(
+        'name'               => 'Recipes',
+        'singular_name'      => 'Recipe',
+        'add_new_item'       => 'Add New Recipe',
+        'edit_item'          => 'Edit Recipe',
+        'new_item'           => 'New Recipe',
+        'view_item'          => 'View Recipe',
+        'all_items'          => 'All Recipes',
+        'search_items'       => 'Search Recipes',
+        'not_found'          => 'No recipes found',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'has_archive'        => false,
+        'show_in_rest'       => true,
+        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'menu_position'      => 21,
+        'menu_icon'          => 'dashicons-carrot',
+        'rewrite'            => array('slug' => 'recipie-detail', 'with_front' => false),
+    );
+
+    register_post_type('recipe', $args);
+}
+add_action('init', 'mytheme_register_recipe_cpt');
+
+// ✅ Additional CPTs from old theme
+function mytheme_register_topbar_cpt() {
+    $labels = array(
+        'name' => 'Topbar Details',
+        'singular_name' => 'Topbar Detail',
+        'add_new_item' => 'Add New Topbar Detail',
+        'edit_item' => 'Edit Topbar Detail',
+        'new_item' => 'New Topbar Detail',
+        'view_item' => 'View Topbar Detail',
+        'all_items' => 'All Topbar Details',
+        'search_items' => 'Search Topbar Details',
+        'not_found' => 'No topbar details found',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => false,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'supports' => array('title', 'editor'),
+        'menu_position' => 22,
+        'menu_icon' => 'dashicons-admin-generic',
+    );
+
+    register_post_type('topbar_detail', $args);
+}
+add_action('init', 'mytheme_register_topbar_cpt');
+
+function mytheme_register_enquiries_cpt() {
+    $labels = array(
+        'name' => 'Enquiries',
+        'singular_name' => 'Enquiry',
+        'add_new_item' => 'Add New Enquiry',
+        'edit_item' => 'Edit Enquiry',
+        'new_item' => 'New Enquiry',
+        'view_item' => 'View Enquiry',
+        'all_items' => 'All Enquiries',
+        'search_items' => 'Search Enquiries',
+        'not_found' => 'No enquiries found',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => false,
+        'show_ui' => true,
+        'supports' => array('title', 'editor', 'custom-fields'),
+        'menu_position' => 23,
+        'menu_icon' => 'dashicons-email',
+    );
+
+    register_post_type('enquiry', $args);
+}
+add_action('init', 'mytheme_register_enquiries_cpt');
+
+// FAQ CPT + Taxonomy
+function mytheme_register_faq_cpt() {
+    $labels = array(
+        'name' => 'FAQs',
+        'singular_name' => 'FAQ',
+        'add_new_item' => 'Add New FAQ',
+        'edit_item' => 'Edit FAQ',
+        'new_item' => 'New FAQ',
+        'view_item' => 'View FAQ',
+        'all_items' => 'All FAQs',
+        'search_items' => 'Search FAQs',
+        'not_found' => 'No FAQs found',
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'menu_position' => 24,
+        'menu_icon' => 'dashicons-editor-help',
+        'supports' => array('title', 'editor'),
+        'has_archive' => false,
+        'rewrite' => array('slug' => 'faqs'),
+        'show_in_rest' => true,
+    );
+
+    register_post_type('faq', $args);
+}
+add_action('init', 'mytheme_register_faq_cpt');
+
+function mytheme_register_faq_category_taxonomy() {
+    $labels = array(
+        'name' => 'FAQ Categories',
+        'singular_name' => 'FAQ Category',
+        'search_items' => 'Search FAQ Categories',
+        'all_items' => 'All FAQ Categories',
+        'edit_item' => 'Edit FAQ Category',
+        'update_item' => 'Update FAQ Category',
+        'add_new_item' => 'Add New FAQ Category',
+        'new_item_name' => 'New FAQ Category Name',
+        'menu_name' => 'FAQ Categories',
+    );
+
+    $args = array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'rewrite' => array('slug' => 'faq-category'),
+        'show_in_rest' => true,
+    );
+
+    register_taxonomy('faq_category', array('faq'), $args);
+}
+add_action('init', 'mytheme_register_faq_category_taxonomy');
+
+/* --------------------------------------------
+ * ENQUIRY AJAX HANDLER
+ * -------------------------------------------- */
+function mytheme_handle_enquiry_submission() {
+    $name       = sanitize_text_field($_POST['name'] ?? '');
+    $email      = sanitize_email($_POST['email'] ?? '');
+    $phone      = sanitize_text_field($_POST['phone'] ?? '');
+    $location   = sanitize_text_field($_POST['location'] ?? '');
+    $query_type = sanitize_text_field($_POST['query_type'] ?? '');
+    $message    = sanitize_textarea_field($_POST['message'] ?? '');
+
+    $post_id = wp_insert_post(array(
+        'post_title'   => $name,
+        'post_content' => $message,
+        'post_type'    => 'enquiry',
+        'post_status'  => 'publish',
+        'meta_input'   => array(
+            'email'      => $email,
+            'phone'      => $phone,
+            'location'   => $location,
+            'query_type' => $query_type,
+        ),
+    ));
+
+    if ($post_id) {
+        wp_send_json_success('Thank you! Your enquiry has been submitted.');
+    } else {
+        wp_send_json_error('Something went wrong. Please try again.');
+    }
+}
+add_action('wp_ajax_submit_enquiry', 'mytheme_handle_enquiry_submission');
+add_action('wp_ajax_nopriv_submit_enquiry', 'mytheme_handle_enquiry_submission');
+
+/* --------------------------------------------
+ * ELEMENTOR RECIPE ASSET LOADER
+ * -------------------------------------------- */
+function volt_enqueue_elementor_recipe_assets() {
+    global $post;
+    $is_elementor_editor = isset($_GET['elementor-preview']) && intval($_GET['elementor-preview']) > 0;
+    $is_recipe_template = $post && get_page_template_slug($post->ID) === 'template-elementor-recipe.php';
+
+    if ($is_recipe_template || $is_elementor_editor) {
+        wp_enqueue_style('volt-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css', [], null);
+        wp_enqueue_style('volt-swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], null);
+        wp_enqueue_style('volt-remixicon', 'https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css', [], null);
+        wp_enqueue_style('volt-google-fonts', 'https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap', [], null);
+        wp_enqueue_style('volt-store-style', get_template_directory_uri() . '/assets/css/store-style.css', [], filemtime(get_template_directory() . '/assets/css/store-style.css'));
+        wp_enqueue_style('volt-home', get_template_directory_uri() . '/assets/css/home.css', [], filemtime(get_template_directory() . '/assets/css/home.css'));
+        wp_enqueue_style('volt-recipe', get_template_directory_uri() . '/assets/css/our-recipe.css', [], filemtime(get_template_directory() . '/assets/css/our-recipe.css'));
+
+        wp_enqueue_script('volt-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', ['jquery'], null, true);
+        wp_enqueue_script('volt-swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], null, true);
+
+        $custom_js = "
+            document.addEventListener('DOMContentLoaded', function () {
+                var swiper2 = new Swiper('.our-recipe-slider', {
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    loop: true,
+                    coverflowEffect: {
+                        rotate: 0,
+                        stretch: 0,
+                        depth: 200,
+                        modifier: 2,
+                        slideShadows: false,
+                    },
+                });
+            });
+        ";
+        wp_add_inline_script('volt-swiper', $custom_js);
+    }
+}
+add_action('wp_enqueue_scripts', 'volt_enqueue_elementor_recipe_assets');

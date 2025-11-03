@@ -346,7 +346,7 @@ function volt_enqueue_elementor_recipe_assets() {
     $is_recipe_template = $post && get_page_template_slug($post->ID) === 'template-elementor-recipe.php';
 
     if ($is_recipe_template || $is_elementor_editor) {
-echo "funstionc";die;
+;
         // ✅ CSS
         wp_enqueue_style('volt-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css', [], null);
         wp_enqueue_style('volt-swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], null);
