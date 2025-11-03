@@ -604,7 +604,7 @@
                                         <span><?php echo esc_html($category); ?></span>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span><?php echo esc_html($extra_info); ?></span>
-                                            <button class="learnmore"><a href="/recipie-detail"
+                                            <button class="learnmore"><a href="<?php echo home_url('/recipie-detail'); ?>"
                                                     style="text-decoration: none; color: inherit;">Learn More</a></button>
                                         </div>
                                     </div>

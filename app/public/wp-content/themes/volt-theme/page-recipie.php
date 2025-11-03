@@ -112,17 +112,21 @@
     </div>
   </div>
 
-  <div class="navigation">
+  <!-- <div class="navigation">
     <span class="prev">&#10094;</span>
     <span class="next">&#10095;</span>
-  </div>
+  </div> -->
 
   <!-- Thumbnails -->
+  <div class="thumbnail-container">
+  <span class="thumb-nav prev"><i class="ri-arrow-left-s-line left"></i></span>
   <div class="thumbnails_new">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new active-thumb" data-index="0" alt="thumb1" />
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new" data-index="1" alt="thumb2" />
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new" data-index="2" alt="thumb3" />
   </div>
+  <!-- <span class="thumb-nav next"><i class="ri-arrow-right-s-line right"></i></span> -->
+ </div>
 </div>
 
   </div>
@@ -260,46 +264,58 @@
     </script>
 <script>
 const slides = document.querySelectorAll(".slide_new");
-const next = document.querySelector(".next");
-const prev = document.querySelector(".prev");
 const thumbs = document.querySelectorAll(".thumb_new");
+const thumbContainer = document.querySelector(".thumbnails_new");
+const nextBtn = document.querySelector(".thumb-nav.prev");
 let index = 0;
+let thumbScroll = 0;
 
+// Show large image when thumbnail is clicked
 function showSlide(i) {
-  slides.forEach((s) => s.classList.remove("active"));
-  thumbs.forEach((t) => t.classList.remove("active-thumb"));
+  slides.forEach(s => s.classList.remove("active"));
+  thumbs.forEach(t => t.classList.remove("active-thumb"));
   slides[i].classList.add("active");
   thumbs[i].classList.add("active-thumb");
   index = i;
 }
 
-function nextSlide() {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-}
-
-function prevSlideFunc() {
-  index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
-}
-
-next.addEventListener("click", nextSlide);
-prev.addEventListener("click", prevSlideFunc);
-
-thumbs.forEach((thumb) => {
-  thumb.addEventListener("click", () => {
+// Thumbnail click → change large image
+thumbs.forEach(thumb => {
+  thumb.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const i = parseInt(thumb.getAttribute("data-index"));
     showSlide(i);
   });
 });
 
-// Auto Slide
-setInterval(nextSlide, 5000);
+// Next button → scroll thumbnails only
+nextBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // prevent page scroll
+    e.stopPropagation();
 
-// Initialize
-showSlide(index);
+    const thumbWidth = thumbs[0].offsetWidth + 10; // width + gap
+    const visibleWidth = thumbContainer.offsetWidth; // 212px container
+    const totalWidth = thumbs.length * thumbWidth;
+    const maxScroll = totalWidth - visibleWidth + 20; // last thumb fully visible + right gap
 
+    thumbScroll += thumbWidth; // move one thumbnail
+    if (thumbScroll > maxScroll) {
+        thumbScroll = 0; // loop back
+    }
+
+    thumbContainer.scrollTo({
+        left: thumbScroll,
+        behavior: "smooth"
+    });
+});
+
+// Initialize first image
+window.addEventListener("DOMContentLoaded", () => {
+  showSlide(0);
+});
 </script>
+
 <script>
         /* Updated product data with category filter support */
         const allProducts = [
@@ -311,6 +327,10 @@ showSlide(index);
             { image: "https://codevaani.com/wp-content/uploads/2025/10/Traditional-English-breakfast.jpg", name: "Delectable Flan Dessert", time: "45min", categories: ["DE", "FL"], extra: "Cold", filter: "vegan" },
             { image: "https://codevaani.com/wp-content/uploads/2025/10/savory-morning-delight-box-300x300.webp", name: "Pomegranate Ice Cream Bangers", time: "15min", categories: ["PO", "IC"], extra: "Frozen", filter: "plant" },
             { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Non Vegan Elegant Seafood", time: "22min", categories: ["NO", "OA"], extra: "Hot", filter: "nonveg" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Green Buddha Bowl", time: "18min", categories: ["GB", "BO"], extra: "Fresh", filter: "vegan" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/Crunchy-Granola-Bites-1-300x300.jpg", name: "Spiced Lentil Curry", time: "38min", categories: ["SL", "CU"], extra: "Warm", filter: "plant" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/Traditional-English-breakfast.jpg", name: "Grilled Fish Delight", time: "28min", categories: ["GF", "DE"], extra: "Savory", filter: "nonveg" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Tofu Stir Fry", time: "20min", categories: ["TS", "FR"], extra: "Quick", filter: "vegan" },
             { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Green Buddha Bowl", time: "18min", categories: ["GB", "BO"], extra: "Fresh", filter: "vegan" },
             { image: "https://codevaani.com/wp-content/uploads/2025/10/Crunchy-Granola-Bites-1-300x300.jpg", name: "Spiced Lentil Curry", time: "38min", categories: ["SL", "CU"], extra: "Warm", filter: "plant" },
             { image: "https://codevaani.com/wp-content/uploads/2025/10/Traditional-English-breakfast.jpg", name: "Grilled Fish Delight", time: "28min", categories: ["GF", "DE"], extra: "Savory", filter: "nonveg" },
@@ -377,7 +397,7 @@ showSlide(index);
                     </div>
                     <div class="details">
                         <h3>${product.name}</h3>
-                        <div class="details-bottom d-flex align-items-center gap-1">
+                        <div class="details-bottom d-flex align-items-center">
                             <div class="detail-item">
                                 <span><i class="ri-history-line"></i> ${product.time}</span>
                                 <h6>Cooking Time</h6>
