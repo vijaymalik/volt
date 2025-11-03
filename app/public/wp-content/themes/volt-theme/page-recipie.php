@@ -82,7 +82,7 @@
     </div>
 
     <div class="slide_new">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" alt="">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3rd.png" alt="">
       <div class="recipe-overlayer">
         <div class="recipe-bottom">
           <div class="d-flex align-items-center gap-2">
@@ -122,7 +122,7 @@
   <span class="thumb-nav prev"><i class="ri-arrow-left-s-line left"></i></span>
   <div class="thumbnails_new">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new active-thumb" data-index="0" alt="thumb1" />
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new" data-index="1" alt="thumb2" />
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/3rd.png" class="thumb_new" data-index="1" alt="thumb2" />
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new" data-index="2" alt="thumb3" />
   </div>
   <!-- <span class="thumb-nav next"><i class="ri-arrow-right-s-line right"></i></span> -->
