@@ -151,13 +151,13 @@
 .other-recipe .details h3 {
     font-family: Onest;
     font-weight: 500;
-    font-style: Medium;
     font-size: 18px;
-    line-height: 120%;
+    line-height: 23px;
     letter-spacing: 0%;
     text-transform: capitalize;
     margin-top: 15px;
     margin-bottom: 12px;
+    width: 163px;
 }
 
 .other-recipe .details-bottom span {
@@ -167,14 +167,15 @@
     color: rgba(255, 255, 255, 1);
     font-size: 12px;
     font-weight: 500;
+    height: 24px;
 }
 
 .other-recipe .details-bottom h6 {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 9px;
     line-height: 15.17px;
     letter-spacing: 0px;
-    margin-top: 10px;
+    margin-top: 5px;
     color: rgba(10, 10, 10, 1);
 }
 
@@ -401,7 +402,8 @@ h1 {
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    column-gap: 20px;
+    row-gap: 28px;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -495,8 +497,9 @@ h1 {
     color: rgba(255, 255, 255, 1);
     font-size: 12px;
     font-weight: 500;
-    padding: 5px 7px;
+    padding: 6px 7px;
     line-height: 20.23px;
+    height: 24px;
 }
 
 .product-tags {
@@ -665,5 +668,11 @@ h1 {
     }
     .navi {
         display: none;
+    }
+}
+
+@media (min-width:1920px) {
+    .other-recipe .details-bottom h6 {
+        font-size: 12px;
     }
 }

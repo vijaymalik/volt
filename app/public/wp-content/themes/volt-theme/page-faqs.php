@@ -37,7 +37,7 @@
 
             // Build buttons: if no categories found, we'll still show an "All" button
             ?>
-            <div class="d-flex align-items-center gap-3 top-btns mt-4">
+            <div class="d-flex align-items-center gap-s top-btns mt-4">
                 <button type="button" class="active" data-filter="all">All</button>
                 <?php if (!empty($terms) && !is_wp_error($terms)): ?>
                     <?php foreach ($terms as $term): ?>
@@ -95,7 +95,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#<?php echo esc_attr($collapse_id); ?>" aria-expanded="false"
                                         aria-controls="<?php echo esc_attr($collapse_id); ?>">
-                                        <span class="faq-serial"><?php echo sprintf('%02d', $global_index); ?></span> &nbsp;
+                                        <span class="faq-serial"><?php echo sprintf('%02d', $global_index); ?></span>
                                         <?php echo esc_html($question); ?>
                                     </button>
                                 </h6>

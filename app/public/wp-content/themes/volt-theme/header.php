@@ -43,37 +43,39 @@
 
 
     <div class="container-fluid nav-container mt-sm-2 px-sm-4">
-        <a class="navbar-brand" href="/">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="">
-        </a>
-        <div class="d-flex gap-2">
-            <a class="talk-btn phn-btn" href="/contact-us">Let's Talk</a>
+  <a class="navbar-brand" href="/">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="">
+  </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedConten" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <div class="menu-btn" id="menu-btn">
-                    <span></span>
+  <div class="d-flex gap-2 align-items-center">
+    <a class="talk-btn phn-btn" href="/contact-us">Let's Talk</a>
 
-                </div>
+    <!-- ✅ Correct Bootstrap toggler button -->
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <div class="menu-btn" id="menu-btn">
+        <span></span>
+      </div>
+    </button>
+  </div>
 
-        </div>
-        </button>
+  <!-- ✅ Collapsible menu -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="recipie">Recipes</a>
+      </li>
+    </ul>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <a class="talk-btn hidemobile" href="/contact-us">Let's Talk</a>
+  </div>
+</div>
 
-
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Products </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="recipie">Recipes </a>
-                </li>
-
-            </ul>
-
-            <a class="talk-btn" href="/contact-us">Let's Talk</a>
-        </div>
-    </div>
 </nav>
