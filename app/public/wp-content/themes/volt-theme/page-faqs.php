@@ -22,8 +22,10 @@
 
 
     <div class="faq">
+        <div class="container-faq">
         <h1>FAQs</h1>
-        <div class="container px-4 px-lg-5" id="care">
+        </div>
+        <div class="container-faq" id="care">
             <h2>Hi, how can we help?</h2>
 
             <?php
@@ -58,7 +60,7 @@
             $accordion_id = 'accordionExample';
             ?>
 
-            <div class="accordion my-5" id="<?php echo esc_attr($accordion_id); ?>">
+            <div class="accordion my-55" id="<?php echo esc_attr($accordion_id); ?>">
 
                 <?php
                 if ($faqs->have_posts()):

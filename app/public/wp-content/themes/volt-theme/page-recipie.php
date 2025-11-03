@@ -52,8 +52,8 @@
                     $image_url = get_template_directory_uri() . '/assets/images/our-recipe-banner.jpg';
                 }
                 ?>
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
-                <div class="recipe-overlayer">
+                <!-- <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>"> -->
+                <!-- <div class="recipe-overlayer">
                     <div class="recipe-bottom">
                         <div class="d-flex align-items-center gap-2">
                             <button type="button"><?php echo esc_html($category); ?></button>
@@ -63,7 +63,70 @@
                         <p><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
                       <button class="learn-morebtn" type="button">Learn More</button>
                     </div>
-                </div>
+                </div> -->
+                <div class="slider_new">
+  <div class="slides_new">
+    <div class="slide_new active">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" alt="">
+      <div class="recipe-overlayer">
+        <div class="recipe-bottom">
+          <div class="d-flex align-items-center gap-2">
+            <button type="button"><?php echo esc_html($category); ?></button>
+            <button type="button"><?php echo esc_html($extra_info); ?></button>
+          </div>
+          <h1><?php the_title(); ?></h1>
+          <p>Discover our flagship favorites trusted by generations,<br> loved by every Fijian home.</p>
+          <button class="learn-morebtn" type="button">Learn More</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide_new">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" alt="">
+      <div class="recipe-overlayer">
+        <div class="recipe-bottom">
+          <div class="d-flex align-items-center gap-2">
+            <button type="button"><?php echo esc_html($category); ?></button>
+            <button type="button"><?php echo esc_html($extra_info); ?></button>
+          </div>
+          <h1><?php the_title(); ?></h1>
+          <p>Discover our flagship favorites trusted by generations,<br> loved by every Fijian home.</p>
+          <button class="learn-morebtn" type="button">Learn More</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide_new">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" alt="">
+      <div class="recipe-overlayer">
+        <div class="recipe-bottom">
+          <div class="d-flex align-items-center gap-2">
+            <button type="button"><?php echo esc_html($category); ?></button>
+            <button type="button"><?php echo esc_html($extra_info); ?></button>
+          </div>
+          <h1><?php the_title(); ?></h1>
+          <p>Discover our flagship favorites trusted by generations,<br> loved by every Fijian home.</p>
+          <button class="learn-morebtn" type="button">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navigation">
+    <span class="prev">&#10094;</span>
+    <span class="next">&#10095;</span>
+  </div>
+
+  <!-- Thumbnails -->
+  <div class="thumbnails_new">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new active-thumb" data-index="0" alt="thumb1" />
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new" data-index="1" alt="thumb2" />
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/browine.jpg" class="thumb_new" data-index="2" alt="thumb3" />
+  </div>
+</div>
+
+  </div>
+  </div>
                 <?php
             endwhile;
             wp_reset_postdata();
@@ -92,168 +155,34 @@
         <?php get_template_part('template-parts/recipie-slider'); ?>
     </div>
 
-    <div class="other-recipe-container">
-        <div class="other-recipe">
-            <div class="d-lg-flex align-items-center justify-content-between">
-                <h2>Other Recipes</h2>
-<div class="d-flex gap-3 top-section" role="tablist" aria-label="Recipe categories">
-    <?php
-    $taxonomy = 'recipe_category';
-    $terms = [];
-
-    if (taxonomy_exists($taxonomy)) {
-        $fetched = get_terms([
-            'taxonomy'   => $taxonomy,
-            'hide_empty' => false,
-        ]);
-        if (!is_wp_error($fetched) && !empty($fetched)) {
-            $terms = $fetched;
-        }
-    }
-
-    // Always show an "All" button first and make it active by default
-    echo '<button type="button" class="active" data-filter="all">All</button>';
-
-    if (empty($terms)) {
-        // Fallback categories if taxonomy doesn't exist / is empty
-        $fallback = ['Vegan', 'Vegeterian', 'Non Vegeterian'];
-        foreach ($fallback as $label) {
-            $filter = sanitize_title($label);
-            echo '<button type="button" data-filter="' . esc_attr($filter) . '">' . esc_html($label) . '</button>';
-        }
-    } else {
-        // Output real taxonomy terms
-        foreach ($terms as $term) {
-            $filter = esc_attr($term->slug);
-            $label  = esc_html($term->name);
-            echo '<button type="button" data-filter="' . $filter . '">' . $label . '</button>';
-        }
-    }
-    ?>
-</div>
-
-            </div>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <?php
-                    $recipes = new WP_Query([
-                        'post_type' => 'recipe',
-                        'posts_per_page' => 12,
-                    ]);
-                    $default_image = get_template_directory_uri() . '/assets/images/default-recipe.jpg';
-                    if ($recipes->have_posts()):
-                        while ($recipes->have_posts()):
-                            $recipes->the_post();
-                            $time = get_field('time') ?: '25 Mins';
-                            $extra_info = get_field('extrainfo') ?: 'GF';
-                            $category_slugs = [];
-
-                            if (taxonomy_exists($taxonomy)) {
-                                $post_terms = get_the_terms(get_the_ID(), $taxonomy);
-                                if (!is_wp_error($post_terms) && !empty($post_terms)) {
-                                    foreach ($post_terms as $t) {
-                                        $category_slugs[] = $t->slug;
-                                    }
-                                }
-                            }
-
-                            if (empty($category_slugs)) {
-                                $raw_cat = get_field('categories');
-                                if ($raw_cat) {
-                                    if (is_array($raw_cat)) {
-                                        foreach ($raw_cat as $c) {
-                                            if (is_object($c) && isset($c->slug)) {
-                                                $category_slugs[] = $c->slug;
-                                            } elseif (is_numeric($c)) {
-                                                $term = get_term($c);
-                                                if ($term && !is_wp_error($term))
-                                                    $category_slugs[] = $term->slug;
-                                            } else {
-                                                $category_slugs[] = sanitize_title($c);
-                                            }
-                                        }
-                                    } else {
-                                        if (is_object($raw_cat) && isset($raw_cat->slug)) {
-                                            $category_slugs[] = $raw_cat->slug;
-                                        } else {
-                                            $category_slugs[] = sanitize_title($raw_cat);
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (empty($category_slugs)) {
-                                $category_slugs[] = 'uncategorized';
-                            }
-
-                            $categories_data_attr = implode(',', array_unique($category_slugs));
-                            $image_field = get_field('image');
-                            if ($image_field) {
-                                if (is_array($image_field) && isset($image_field['url'])) {
-                                    $image_url = $image_field['sizes']['medium'] ?? $image_field['url'];
-                                } elseif (is_numeric($image_field)) {
-                                    $image_url = wp_get_attachment_image_url($image_field, 'medium');
-                                } else {
-                                    $image_url = $image_field;
-                                }
-                            } else {
-                                $image_url = $default_image;
-                            }
-                            ?>
-                            <div class="col-12 col-md-6 col-lg-4 col-xl-3 recipe-col"
-                                data-categories="<?php echo esc_attr($categories_data_attr); ?>">
-                                <div class="cards recipe-card">
-                                    <div class="img">
-                                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
-                                    </div>
-                                    <div class="details">
-                                        <h3><?php the_title(); ?></h3>
-                                        <div class="details-bottom d-flex align-items-center gap-1">
-                                            <div class="text-center">
-                                                <span><i class="ri-history-line"></i> <?php echo esc_html($time); ?></span>
-                                                <h6>Cooking Time</h6>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="text-center">
-                                                <div class="d-flex gap-2 mid">
-                                                    <?php
-                                                    foreach ($category_slugs as $slug) {
-                                                        $label = ucwords(str_replace('-', ' ', $slug));
-                                                        $short = strtoupper(substr($label, 0, 2));
-                                                        echo '<span>' . esc_html($short) . '</span>';
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <h6>Category</h6>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="text-center">
-                                                <span><?php echo esc_html($extra_info); ?></span>
-                                                <h6>Extra Info</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        endwhile;
-                        wp_reset_postdata();
-                    endif;
-                    ?>
-                </div>
-
-                <div class="navi">
-                    <div class="arrow">
-                        <i class="ri-arrow-left-s-line left"></i>
-                    </div>
-                    <div class="arrow">
-                        <i class="ri-arrow-right-s-line right"></i>
-                    </div>
-                </div>
+<div class="other-recipe-container">
+    <div class="other-recipe">
+        <!-- Added header with title and tab filters -->
+        <div class="header-section">
+            <h2>Other Recipes</h2>
+            <div class="tabs-container top-section">
+                <button class="tab-button active" data-filter="all">All Recipes</button>
+                <button class="tab-button" data-filter="vegan">Vegan</button>
+                <button class="tab-button" data-filter="plant">Plant-Based</button>
+                <button class="tab-button" data-filter="nonveg">Non Veg</button>
             </div>
         </div>
-    </div>
+        
+        <div class="slider-wrapper">
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="pagination-section">
+            <button class="nav-button" id="prevBtn" onclick="prevSlide()"><i class="ri-arrow-left-s-line left"></i></button>
+            <div class="pagination-info">
+                <span id="currentPage">01</span>/<span id="totalPages">06</span>
+            </div>
+            <button class="nav-button" id="nextBtn" onclick="nextSlide()"><i class="ri-arrow-right-s-line right"></i></button>
+        </div>
+     </div>
+ </div>
 
     <?php get_template_part('template-parts/nearby-store'); ?>
 
@@ -328,6 +257,170 @@
                 filterRecipes('all');
             }
         });
+    </script>
+<script>
+const slides = document.querySelectorAll(".slide_new");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
+const thumbs = document.querySelectorAll(".thumb_new");
+let index = 0;
+
+function showSlide(i) {
+  slides.forEach((s) => s.classList.remove("active"));
+  thumbs.forEach((t) => t.classList.remove("active-thumb"));
+  slides[i].classList.add("active");
+  thumbs[i].classList.add("active-thumb");
+  index = i;
+}
+
+function nextSlide() {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+
+function prevSlideFunc() {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+}
+
+next.addEventListener("click", nextSlide);
+prev.addEventListener("click", prevSlideFunc);
+
+thumbs.forEach((thumb) => {
+  thumb.addEventListener("click", () => {
+    const i = parseInt(thumb.getAttribute("data-index"));
+    showSlide(i);
+  });
+});
+
+// Auto Slide
+setInterval(nextSlide, 5000);
+
+// Initialize
+showSlide(index);
+
+</script>
+<script>
+        /* Updated product data with category filter support */
+        const allProducts = [
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Vegan Cracker Breakfast", time: "30min", categories: ["VG", "CR"], extra: "Cold", filter: "vegan" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Rustic Bowl With Spicy Side-Up", time: "25min", categories: ["RU", "SP"], extra: "Hot", filter: "plant" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Chocolate Chip Cookies & Cream", time: "35min", categories: ["CH", "CO"], extra: "Sweet", filter: "nonveg" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Gourmet Crepes With Toppings", time: "20min", categories: ["GO", "CR"], extra: "Warm", filter: "plant" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/Crunchy-Granola-Bites-1-300x300.jpg", name: "Custard Cake With Blueberries", time: "40min", categories: ["CU", "CA"], extra: "Chilled", filter: "nonveg" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/Traditional-English-breakfast.jpg", name: "Delectable Flan Dessert", time: "45min", categories: ["DE", "FL"], extra: "Cold", filter: "vegan" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/savory-morning-delight-box-300x300.webp", name: "Pomegranate Ice Cream Bangers", time: "15min", categories: ["PO", "IC"], extra: "Frozen", filter: "plant" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Non Vegan Elegant Seafood", time: "22min", categories: ["NO", "OA"], extra: "Hot", filter: "nonveg" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Green Buddha Bowl", time: "18min", categories: ["GB", "BO"], extra: "Fresh", filter: "vegan" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/Crunchy-Granola-Bites-1-300x300.jpg", name: "Spiced Lentil Curry", time: "38min", categories: ["SL", "CU"], extra: "Warm", filter: "plant" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/Traditional-English-breakfast.jpg", name: "Grilled Fish Delight", time: "28min", categories: ["GF", "DE"], extra: "Savory", filter: "nonveg" },
+            { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Tofu Stir Fry", time: "20min", categories: ["TS", "FR"], extra: "Quick", filter: "vegan" },
+        ];
+
+
+        let products = [...allProducts];
+        let currentPage = 0;
+        let currentFilter = 'all';
+        /* Changed itemsPerPage from 4 to 8 (4 columns x 2 rows) */
+        const itemsPerPage = 8;
+        let totalPages = 0;
+
+        /* Added tab filter functionality */
+        function setupTabFilters() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Update filter and reset pagination
+                    currentFilter = this.getAttribute('data-filter');
+                    filterProducts();
+                    currentPage = 0;
+                    renderProducts();
+                });
+            });
+        }
+
+        /* Added filterProducts function to filter by selected category */
+        function filterProducts() {
+            if (currentFilter === 'all') {
+                products = [...allProducts];
+            } else {
+                products = allProducts.filter(p => p.filter === currentFilter);
+            }
+            totalPages = Math.ceil(products.length / itemsPerPage);
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            const start = currentPage * itemsPerPage;
+            const end = start + itemsPerPage;
+            const visibleProducts = products.slice(start, end);
+
+            visibleProducts.forEach((product) => {
+                const card = document.createElement('div');
+                card.className = 'cards recipe-card';
+                
+                let categoriesHTML = '';
+                product.categories.forEach((cat) => {
+                    categoriesHTML += `<div class="category-tag">${cat}</div>`;
+                });
+
+                card.innerHTML = `
+                   <div class="img">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    </div>
+                    <div class="details">
+                        <h3>${product.name}</h3>
+                        <div class="details-bottom d-flex align-items-center gap-1">
+                            <div class="detail-item">
+                                <span><i class="ri-history-line"></i> ${product.time}</span>
+                                <h6>Cooking Time</h6>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="detail-item">
+                                <div class="category-tags">${categoriesHTML}</div>
+                                <h6>Category</h6>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="detail-item">
+                                <span><i class="ri-star-line"></i> ${product.extra}</span>
+                                <h6>Extra Info</h6>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            updatePaginationButtons();
+        }
+
+        function updatePaginationButtons() {
+            const pageNum = currentPage + 1;
+            document.getElementById('currentPage').textContent = String(pageNum).padStart(2, '0');
+            document.getElementById('totalPages').textContent = String(totalPages).padStart(2, '0');
+        }
+
+        function nextSlide() {
+            currentPage = (currentPage + 1) % totalPages;
+            renderProducts();
+        }
+
+        function prevSlide() {
+            currentPage = (currentPage - 1 + totalPages) % totalPages;
+            renderProducts();
+        }
+
+        // Initialize slider and tabs
+        filterProducts();
+        renderProducts();
+        setupTabFilters();
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
