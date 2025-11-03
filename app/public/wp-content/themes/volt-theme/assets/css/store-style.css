@@ -1512,3 +1512,6 @@ body {
     border-radius: 10px;
     transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
+.navbar-nav .nav-link.active{
+    font-weight:bold !important;
+}
