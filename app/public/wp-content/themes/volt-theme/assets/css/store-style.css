@@ -1499,7 +1499,6 @@ body {
     background-color: #ccc;
     border-radius: 10px;
     margin: 15px auto;
-    margin-top: 50px !important;
     overflow: hidden;
     cursor: pointer;
     position: relative;
