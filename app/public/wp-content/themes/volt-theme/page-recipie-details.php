@@ -125,13 +125,13 @@
                             <div class="accordion my-3" id="accordionExample">
                                 <div class="accordion-item">
                                     <h5 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button"
+                                        <button class="accordion-button" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                            aria-expanded="false" aria-controls="collapseOne">
+                                            aria-expanded="true" aria-controls="collapseOne">
                                             Step 1
                                         </button>
                                     </h5>
-                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
                                         data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <strong>Prepare the Filling</strong>
@@ -215,10 +215,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="progress-bar">
-                                <div class="progress"></div>
-                            </div>
-
                         </div>
 
 

@@ -278,26 +278,45 @@
 }
 
 
+/* Thumbnail container */
+
+.thumbnail-container {
+    position: absolute;
+    bottom: 20px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    max-width: 500px;
+}
+
+
 /* Thumbnails */
 
 .thumbnails_new {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
     display: flex;
-    flex-direction: row;
     gap: 10px;
-    z-index: 99;
+    overflow: hidden;
+    width: 326px;
+    scroll-behavior: smooth;
+    padding-right: 0px;
+}
+
+.thumbnails_new::-webkit-scrollbar {
+    display: none;
 }
 
 .thumb_new {
-    width: 100px !important;
-    height: 70px !important;
-    object-fit: cover !important;
+    width: 151px !important;
+    height: 108px !important;
+    object-fit: cover;
     border-radius: 8px;
     cursor: pointer;
-    transition: opacity 0.3s, transform 0.3s, border 0.3s;
-    border: 2px solid transparent !important;
+    opacity: 0.8;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+    /* important to prevent shrinking */
 }
 
 .thumb_new:hover {
@@ -305,9 +324,34 @@
     transform: scale(1.05);
 }
 
+.thumb_new:last-child {
+    margin-right: 20px;
+}
+
 .active-thumb {
     border: 2px solid #fff;
     opacity: 1;
+}
+
+
+/* Thumbnail arrows */
+
+.thumb-nav {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.thumb-nav i {
+    font-size: 30px;
+}
+
+.thumb-nav:hover {
+    /* background: rgba(0, 0, 0, 0.7); */
 }
 
 .recipe-col {
