@@ -1422,3 +1422,6 @@ body {
         transform: translateX(26%);
     }
 }
+.navbar-nav .nav-link.active{
+    font-weight:bold !important;
+}
