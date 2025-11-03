@@ -7,7 +7,7 @@
 get_header();
 ?>
 
-<div class="volt-template-container container">
+<div class="volt-template-container">
     <?php get_template_part('template-parts/recipe_banner'); ?>
     <?php
     // 🔹 Required for Elementor to detect the editable area

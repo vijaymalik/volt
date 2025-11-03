@@ -38,8 +38,8 @@
                         <button type="button"><?php echo esc_html($extra_info); ?></button>
                     </div>
                     <h1><?php the_title(); ?></h1>
-                    <p><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
-                    <button class="learn-morebtn" type="button">Learn More</button>
+                    <p><?php get_field('description') ?: ''; ?></p><a href="<?php echo esc_url( site_url( '/recipe-detail/' . $post->post_name ) ); ?>">
+                    <button class="learn-morebtn" type="button">Learn More</button></a>
                 </div>
             </div>
             <?php

@@ -88,3 +88,109 @@ Stack trace:
 [03-Nov-2025 06:08:21 UTC]   Automatic plugin updates starting...
 [03-Nov-2025 06:08:21 UTC]   Automatic plugin updates complete.
 [03-Nov-2025 06:08:23 UTC] Automatic updates complete.
+[03-Nov-2025 07:15:25 UTC] PHP Warning:  Attempt to read property "name" on array in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 48
+[03-Nov-2025 07:15:25 UTC] PHP Warning:  Attempt to read property "name" on array in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 48
+[03-Nov-2025 07:15:25 UTC] PHP Warning:  Attempt to read property "name" on array in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 86
+[03-Nov-2025 07:15:25 UTC] PHP Warning:  Attempt to read property "name" on array in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 86
+[03-Nov-2025 07:16:44 UTC] PHP Warning:  Attempt to read property "name" on array in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 48
+[03-Nov-2025 07:16:44 UTC] PHP Warning:  Attempt to read property "name" on array in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 48
+[03-Nov-2025 07:17:18 UTC] PHP Warning:  Attempt to read property "name" on array in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 48
+[03-Nov-2025 07:17:18 UTC] PHP Warning:  Attempt to read property "name" on array in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 48
+[03-Nov-2025 07:50:58 UTC] PHP Parse error:  syntax error, unexpected token "/", expecting end of file in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\functions.php on line 185
+[03-Nov-2025 07:50:58 UTC] PHP Notice:  Function _load_textdomain_just_in_time was called <strong>incorrectly</strong>. Translation loading for the <code>Volt Elementor</code> domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the <code>init</code> action or later. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 6.7.0.) in C:\xampp\htdocs\volt\app\public\wp-includes\functions.php on line 6121
+[03-Nov-2025 07:50:59 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 367
+[03-Nov-2025 07:50:59 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\xampp\htdocs\volt\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 368
+[03-Nov-2025 07:50:59 UTC] PHP Parse error:  syntax error, unexpected token "/", expecting end of file in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\functions.php on line 185
+[03-Nov-2025 07:50:59 UTC] PHP Parse error:  syntax error, unexpected token "/", expecting end of file in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\functions.php on line 185
+[03-Nov-2025 08:08:07 UTC] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 46
+[03-Nov-2025 08:09:03 UTC] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 46
+[03-Nov-2025 09:10:22 UTC] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 59
+[03-Nov-2025 09:10:22 UTC] PHP Warning:  Undefined variable $description in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 69
+[03-Nov-2025 09:10:22 UTC] PHP Warning:  Undefined variable $difficulty in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 84
+[03-Nov-2025 09:13:24 UTC] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 59
+[03-Nov-2025 09:13:24 UTC] PHP Warning:  Undefined variable $description in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 69
+[03-Nov-2025 09:13:24 UTC] PHP Warning:  Undefined variable $difficulty in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 84
+[03-Nov-2025 09:15:35 UTC] PHP Warning:  Undefined variable $description in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 69
+[03-Nov-2025 09:15:35 UTC] PHP Warning:  Undefined variable $difficulty in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 84
+[03-Nov-2025 09:15:58 UTC] PHP Warning:  Undefined variable $description in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 68
+[03-Nov-2025 09:15:58 UTC] PHP Warning:  Undefined variable $difficulty in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 83
+[03-Nov-2025 09:16:25 UTC] PHP Warning:  Undefined variable $description in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 68
+[03-Nov-2025 09:16:25 UTC] PHP Warning:  Undefined variable $difficulty in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-details.php on line 83
+[03-Nov-2025 09:28:20 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:28:20 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:28:20 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:28:20 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:28:20 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:27 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:27 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:27 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:27 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:27 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:27 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:43 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:43 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:43 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:43 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:43 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:33:43 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:45:00 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:45:00 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:45:00 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:45:00 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:45:00 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:46:42 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:46:42 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:46:42 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:46:42 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:46:42 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:24 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:25 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:25 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:25 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:25 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:25 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:30 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:30 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:30 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:30 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:30 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:47:30 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:19 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:19 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:19 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:19 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:19 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:19 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:50:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:06 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:06 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:06 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:06 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:06 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:06 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 09:59:59 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:16 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:16 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:16 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:16 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:16 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:16 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:38 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:38 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:38 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:38 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:38 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:00:38 UTC] PHP Warning:  Array to string conversion in C:\xampp\htdocs\volt\app\public\wp-includes\formatting.php on line 1096
+[03-Nov-2025 10:14:39 UTC] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-detail.php on line 59
+[03-Nov-2025 10:18:22 UTC] PHP Warning:  Undefined variable $category in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-detail.php on line 59
+[03-Nov-2025 10:18:22 UTC] PHP Warning:  Undefined variable $extrainfo in C:\xampp\htdocs\volt\app\public\wp-content\themes\volt-elementor\page-recipe-detail.php on line 61

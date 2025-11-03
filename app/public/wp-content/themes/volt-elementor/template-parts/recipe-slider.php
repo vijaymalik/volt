@@ -42,7 +42,7 @@
                                 <div><button><?php echo esc_html($extra_info); ?></button></div>
                             </div>
                             <div class="learn-more">
-                                <button><a href="/recipie-detail" style="text-decoration: none; color: inherit;">Learn More</a></button>
+                                <button><a href="<?php echo esc_url( site_url( '/recipe-detail/' . $post->post_name ) ); ?>" style="text-decoration: none; color: inherit;">Learn More</a></button>
                             </div>
                         </div>
                     </div>

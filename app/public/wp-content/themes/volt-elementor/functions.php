@@ -95,7 +95,10 @@ function volt_enqueue_assets()
     if ( is_page('recipes') ) {
         $custom_css_files[] = 'assets/css/our-recipe.css';
     }
-    if ( is_page('recipe-details')||  is_page('recipe-detail')) {
+     if ( is_singular('recipe') ) {
+        $custom_css_files[] = 'assets/css/our-recipe-details.css';
+    }
+    if ( is_page('recipe-detail')) {
         $custom_css_files[] = 'assets/css/our-recipe-details.css';
     }
     if ( is_page('faqs')) {
@@ -182,6 +185,9 @@ function mytheme_register_store_cpt() {
 }
 add_action('init', 'mytheme_register_store_cpt');
 
+// -----------------------------
+// Register 'recipe' post type
+// -----------------------------
 function mytheme_register_recipe_cpt() {
     $labels = array(
         'name'               => 'Recipes',
@@ -198,17 +204,66 @@ function mytheme_register_recipe_cpt() {
     $args = array(
         'labels'             => $labels,
         'public'             => true,
-        'has_archive'        => false,
-        'show_in_rest'       => true,
-        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
-        'menu_position'      => 21,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_rest'       => false, // disable Gutenberg
         'menu_icon'          => 'dashicons-carrot',
-        'rewrite'            => array('slug' => 'recipie-detail', 'with_front' => false),
+        'rewrite'            => array('slug' => 'recipe-detail', 'with_front' => false),
+        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'revisions'),
+        'has_archive'        => true,
     );
 
     register_post_type('recipe', $args);
 }
 add_action('init', 'mytheme_register_recipe_cpt');
+
+
+// -----------------------------
+// Force Classic Editor (no Gutenberg)
+// -----------------------------
+add_filter('use_block_editor_for_post_type', function($use_block_editor, $post_type) {
+    if ($post_type === 'recipe') {
+        return false;
+    }
+    return $use_block_editor;
+}, 10, 2);
+
+
+// -----------------------------
+// Enable Elementor for Recipe CPT
+// -----------------------------
+add_filter('elementor/cpt_support', function($post_types) {
+    if (!in_array('recipe', $post_types)) {
+        $post_types[] = 'recipe';
+    }
+    return $post_types;
+});
+
+
+// -----------------------------
+// Make sure Classic Editor always loads
+// -----------------------------
+add_action('admin_init', function() {
+    // Force load classic editor for 'recipe'
+    remove_action('edit_form_after_title', '_block_editor_meta_box_post_form_hidden_fields'); 
+    add_post_type_support('recipe', 'editor');
+});
+
+
+// -----------------------------
+// Load custom single template (if needed)
+// -----------------------------
+add_filter('single_template', function($single) {
+    global $post;
+    if ($post->post_type == 'recipe') {
+        $custom_template = locate_template('page-recipe-detail.php');
+        if ($custom_template) {
+            return $custom_template;
+        }
+    }
+    return $single;
+});
+
 
 // ✅ Additional CPTs from old theme
 function mytheme_register_topbar_cpt() {

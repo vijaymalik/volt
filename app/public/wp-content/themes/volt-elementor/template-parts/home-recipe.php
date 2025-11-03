@@ -50,7 +50,7 @@
                                     <span><?php echo esc_html($category); ?></span>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span><?php echo esc_html($extra_info); ?></span>
-                                        <button class="learnmore"><a href="/recipie-detail"
+                                        <button class="learnmore"><a href="<?php echo esc_url( site_url( '/recipe-detail/' . $post->post_name ) ); ?>"
                                                 style="text-decoration: none; color: inherit;">Learn More</a></button>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
 
 <div class="our-recipes-mbl px-4 position-relative">
     <h2>Our Recipes</h2>
-    <?php get_template_part('template-parts/recipie-slider'); ?>
+    <?php get_template_part('template-parts/recipe-slider'); ?>
 
 </div>
 <div class="gradiant_blur"></div>

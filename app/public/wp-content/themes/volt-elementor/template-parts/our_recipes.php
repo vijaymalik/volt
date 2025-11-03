@@ -2,7 +2,7 @@
     <h2>Our Recipes</h2>
     <p>Make snack time exciting! Discover quick, tasty <br> ways to enjoy from classic tea-time treats to fun, <br>
         family-friendly desserts.</p>
-    <?php get_template_part('template-parts/recipie-slider'); ?>
+    <?php get_template_part('template-parts/recipe-slider'); ?>
 </div>
 
 <div class="other-recipe-container">
@@ -116,12 +116,13 @@
                         ?>
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 recipe-col"
                             data-categories="<?php echo esc_attr($categories_data_attr); ?>">
+                            
                             <div class="cards recipe-card">
                                 <div class="img">
                                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
                                 </div>
                                 <div class="details">
-                                    <h3><?php the_title(); ?></h3>
+                                   <h3> <a href="<?php echo esc_url( site_url( '/recipe-detail/' . $post->post_name ) ); ?>"><?php the_title(); ?></a></h3>
                                     <div class="details-bottom d-flex align-items-center gap-1">
                                         <div class="text-center">
                                             <span><i class="ri-history-line"></i> <?php echo esc_html($time); ?></span>
