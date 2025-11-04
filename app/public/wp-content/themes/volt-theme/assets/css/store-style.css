@@ -1511,8 +1511,33 @@ body {
     transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
+.nav-container {
+    margin-bottom: .5rem !important;
+}
+
 @media (max-width: 768px) {
     .slider-container {
         max-width: 100%;
+    }
+    .hidemobile {
+        display: none !important;
+    }
+    .navbar-nav a {
+        padding: 3px 19px !important;
+    }
+    .navbar-nav {
+        display: flex;
+        margin-top: 12px;
+        align-items: center;
+        justify-content: center;
+    }
+    .navbar-nav a {
+        line-height: 25px;
+    }
+    .nav-container {
+        margin-bottom: 0rem !important;
+    }
+    .nearbybottom .d-flex {
+        gap: 10px;
     }
 }

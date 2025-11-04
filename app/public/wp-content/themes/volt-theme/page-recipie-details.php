@@ -28,13 +28,11 @@
         <a href="" class="active">Recipe Detail</a>
     </div>
     <div class="hero-recipe-mbl">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
-        <div class="overlayer">
-            <div class="top">
-                <div class="arrow">
-                    <i class="ri-arrow-left-s-line"></i>
-                </div>
-            </div>
+        <div class="slider_mobile">
+    <div class="slide_mobile active">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+    <div class="overlayer">
+           
             <div class="bottom">
                 <span><i class="ri-history-line"></i>1.2Hrs</span>
                 <span class="mt-3"><i class="ri-star-line"></i>Easy</span>
@@ -48,10 +46,50 @@
         </div>
     </div>
 
+    <div class="slide_mobile">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/biscuit.png" alt="">
+    <div class="overlayer">
+            
+            <div class="bottom">
+                <span><i class="ri-history-line"></i>1.2Hrs</span>
+                <span class="mt-3"><i class="ri-star-line"></i>Easy</span>
+                <h2>Vegan Cracker Breakfast</h2>
+                <div class="mt-3 d-flex gap-1">
+                    <span>Vegan</span>
+                    <span>Gluten-Free</span>
+                    <span>Gluten-Free</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide_mobile">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+    <div class="overlayer">
+            
+            <div class="bottom">
+                <span><i class="ri-history-line"></i>1.2Hrs</span>
+                <span class="mt-3"><i class="ri-star-line"></i>Easy</span>
+                <h2>Vegan Cracker Breakfast</h2>
+                <div class="mt-3 d-flex gap-1">
+                    <span>Vegan</span>
+                    <span>Gluten-Free</span>
+                    <span>Gluten-Free</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="button_arrow">
+    <button class="prev arrow" onclick="prevSlide()"> <i class="ri-arrow-left-s-line"></i></button>
+    <!-- <button class="next" onclick="nextSlide()">❯</button> -->
+</div>
+  </div>
+    </div>
+
     <div class="hero-recipe-details pb-5 mb-5 mt-4">
         <div class="container-fluid p-0">
             <div class="row">
-                <div class="col-4 d-none d-sm-block">
+                <div class="col-5 d-none d-sm-block">
                     <div class="left-side">
                         <div class="imgs">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
@@ -64,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-8">
+                <div class="col-12 col-sm-7">
                     <div class="right-side">
                         <h1 class="d-none d-sm-block">Vegan Cracker Breakfast</h1>
                         <h1 class="d-block d-sm-none">Description</h1>
@@ -193,7 +231,7 @@
                             </div>
                         </div>
 
-                        <div class="made-with position-relative ">
+                        <div class="made-with make-extra position-relative ">
                             <h2>Made with</h2>
                             <div class="made-with-container mt-4 mt-sm-0">
                                 <div class="container-fluid p-0">
@@ -216,15 +254,71 @@
                                 </div>
                             </div>
                         </div>
+<!-----------slider-code------>
+<div class="made-with position-relative slider_madewith">
+<h2>Made with</h2>
+<div class="card-slider">
+    <div class="slide_card active">
+      <div class="card">
+        <div class="card-image">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/biscuit.png" alt="">
+        </div>
+        <div class="card-content">
+          <h3>Cracker Breakfast</h3>
+          <p>Light, flaky and full of flavor, our biscuit crackers bring a
+                                                    satisfying crunch to every bite. Perfect for tea-time or gourmet
+                                                    pairings.</p>
+          <button>Learn More</button>
+        </div>
+      </div>
+    </div>
 
+    <div class="slide_card">
+      <div class="card">
+        <div class="card-image">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/biscuit.png" alt="">
+        </div>
+        <div class="card-content">
+          <h3>Oat Cookies</h3>
+          <p>Light, flaky and full of flavor, our biscuit crackers bring a
+                                                    satisfying crunch to every bite. Perfect for tea-time or gourmet
+                                                    pairings.</p>
+          <button>Learn More</button>
+        </div>
+      </div>
+    </div>
 
+    <div class="slide_card">
+      <div class="card">
+        <div class="card-image">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/biscuit.png" alt="">
+        </div>
+        <div class="card-content">
+          <h3>Nutty Delight</h3>
+          <p>Light, flaky and full of flavor, our biscuit crackers bring a
+                                                    satisfying crunch to every bite. Perfect for tea-time or gourmet
+                                                    pairings.</p>
+          <button>Learn More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress bar (dots) -->
+    <div class="card-dots">
+      <span class="dot_card active"></span>
+      <span class="dot_card"></span>
+      <span class="dot_card"></span>
+    </div>
+  </div>
+</div>
+<!-------slider-code end------>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="gradiant_blur"></div>
     <div class="did-you">
         <img class="d-none d-sm-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/did-you.jpg" alt="">
         <img class="d-block d-sm-none" src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
@@ -323,6 +417,74 @@
         });
 
     </script>
+    <script>
+        let currentSlide = 0;
+const slides = document.querySelectorAll('.slide_mobile');
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+// Auto slide every 5 seconds
+setInterval(nextSlide, 5000);
+
+    </script>
+
+<script>
+let cardCurrentIndex = 0;
+const cardSlides = document.querySelectorAll('.slide_card');
+const cardDots = document.querySelectorAll('.dot_card');
+let cardInterval;
+
+// Show specific slide
+function showCardSlide(index) {
+  cardSlides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+    cardDots[i].classList.toggle('active', i === index);
+  });
+}
+
+// Go to next slide
+function nextCardSlide() {
+  cardCurrentIndex = (cardCurrentIndex + 1) % cardSlides.length;
+  showCardSlide(cardCurrentIndex);
+}
+
+// Go to previous slide
+function prevCardSlide() {
+  cardCurrentIndex = (cardCurrentIndex - 1 + cardSlides.length) % cardSlides.length;
+  showCardSlide(cardCurrentIndex);
+}
+
+// Auto-slide every 4 seconds
+function startCardAutoSlide() {
+  cardInterval = setInterval(nextCardSlide, 4000);
+}
+startCardAutoSlide();
+
+// Allow clicking on dots to change slides
+cardDots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    clearInterval(cardInterval); // stop auto when user clicks
+    cardCurrentIndex = index;
+    showCardSlide(cardCurrentIndex);
+    startCardAutoSlide(); // restart auto-slide
+  });
+});
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

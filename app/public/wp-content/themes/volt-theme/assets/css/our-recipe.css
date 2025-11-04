@@ -132,7 +132,7 @@
     padding-left: 10px;
     border-width: 1px;
     background-color: rgba(251, 246, 224, 1);
-    border: 1px solid rgba(255, 255, 255, 0.4)
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .other-recipe .cards .img {
@@ -157,7 +157,9 @@
     text-transform: capitalize;
     margin-top: 15px;
     margin-bottom: 12px;
-    width: 163px;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
 }
 
 .other-recipe .details-bottom span {
@@ -602,6 +604,7 @@ h1 {
     .header-section {
         flex-direction: column;
         align-items: flex-start;
+        gap: 8px;
     }
 }
 
@@ -642,7 +645,7 @@ h1 {
         font-size: 28px;
     }
     .other-recipe .top-section button {
-        font-size: 10px;
+        font-size: 12px;
         height: 36px;
         padding: 12px;
         display: flex;
@@ -651,6 +654,7 @@ h1 {
     }
     .other-recipe-container {
         padding: 30px 0;
+        padding-top: 0px;
     }
     .our-recipes-mbl h2 {
         padding: 0 !important;
@@ -669,6 +673,25 @@ h1 {
     .navi {
         display: none;
     }
+    .other-recipe .details-bottom h6 {
+        font-size: 12px;
+    }
+    .detail-item {
+        align-items: start;
+    }
+    .details-bottom {
+        gap: 7px;
+    }
+    .our-recipes-mbl .swiper {
+        width: 341px;
+        height: 412px;
+    }
+}
+
+@media (min-width:1440px) {
+    .other-recipe .details-bottom h6 {
+        font-size: 12px;
+    }
 }
 
 @media (min-width:1920px) {
@@ -676,3 +699,5 @@ h1 {
         font-size: 12px;
     }
 }
+
+@media screen and (min-device-width: 1441px) and (max-device-width: 1920px) {}

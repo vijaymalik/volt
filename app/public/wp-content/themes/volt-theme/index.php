@@ -425,12 +425,6 @@
       </div>
     </div>
 
-    <!-- <div class="slider-buttons">
-      <button id="prev">&#10094;</button>
-      <button id="next">&#10095;</button>
-    </div> -->
-        <!-- Progress Dots -->
-    <!-- Progress Bar -->
     <div class="progress-bar">
       <div class="progress-fill"></div>
     </div>
@@ -989,7 +983,7 @@ let index = 0;
 let autoSlide;
 
 // Define colors per slide
-const progressColors = ['#3a2815', '#ccc']; 
+const progressColors = ['#ccc', '#3a2815']; 
 // You can add more if you add more slides
 
 // Show slide and update progress fill + color
@@ -1002,7 +996,7 @@ function showSlide(n) {
   progressFill.style.width = `${progressWidth}%`;
 
   // Change color for each slide
-  progressFill.style.backgroundColor = progressColors[index] || '#3a2815';
+  progressFill.style.backgroundColor = progressColors[index] || '#ccc';
 }
 
 // Handle click on progress bar
