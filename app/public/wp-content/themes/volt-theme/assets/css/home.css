@@ -474,6 +474,37 @@
     gap: 32px;
 }
 
+.progress-bar {
+    width: 112px;
+    height: 6px;
+    background-color: #d3d3d3;
+    border-radius: 50px;
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.progress-fill {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    width: 0;
+    background-color: #CCCCCC;
+    border-radius: 50px;
+    transition: width 0.4s ease;
+}
+
+.progress-fill::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 50px;
+    background: #2D1D0F;
+}
+
 
 /* Progress Bar */
 
