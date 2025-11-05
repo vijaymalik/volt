@@ -474,43 +474,30 @@
     gap: 32px;
 }
 
-.progress-bar {
-    width: 112px;
-    /* adjust width as needed */
-    height: 6px;
-    /* thickness of bar */
-    background-color: #d3d3d3;
-    /* light gray background */
+
+/* Progress Bar */
+
+.progress-bar-new {
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    margin: 20px auto 0;
+    gap: 0px;
+    background: #ccc;
     border-radius: 50px;
-    /* rounded edges */
-    overflow: hidden;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-    /* ensure fill stays inside rounded corners */
 }
 
-.progress-fill {
-    overflow: hidden;
-    height: 100%;
-    position: relative;
-    width: 0;
-    /* set via inline style or JS */
-    background-color: #CCCCCC;
-    /* dark brown (like your sample) */
+.progress-segment {
+    flex: 1;
+    height: 5px;
+    background-color: #ccc;
     border-radius: 50px;
-    transition: width 0.4s ease;
-    /* smooth animation */
+    transition: background-color 0.4s ease;
 }
 
-.progress-fill::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    height: 6px;
-    width: 50px;
-    background: #2D1D0F;
+.progress-segment.active {
+    background-color: #2D1D0F;
+    width: 100px;
 }
 
 @keyframes fillProgress {
@@ -901,7 +888,7 @@
         left: 0;
         height: 6px;
         width: 30px;
-        background: #2D1D0F;
+        background: #3a2815;
     }
     .volt-marq .box {
         height: 72px;
@@ -1272,6 +1259,9 @@
     .containers {
         width: 100%;
         padding-left: 22px;
+    }
+    .slider-container .progress-bar-new {
+        margin-top: 40px;
     }
 }
 

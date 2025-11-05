@@ -689,6 +689,9 @@ h1 {
     .tabs-container {
         gap: 5px;
     }
+    .pagination-section {
+        display: none;
+    }
 }
 
 @media (min-width:1440px) {

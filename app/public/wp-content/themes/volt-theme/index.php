@@ -425,9 +425,14 @@
       </div>
     </div>
 
-    <div class="progress-bar">
+    <!-- <div class="progress-bar">
       <div class="progress-fill"></div>
-    </div>
+    </div> -->
+    <div class="progress-bar-new">
+    <div class="progress-segment"></div>
+    <div class="progress-segment"></div>
+  </div>
+
   </div>
 </div>
 
@@ -973,48 +978,24 @@
 
     </script>
     
-<script>
+    <script>
 const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
-const progressBar = document.querySelector('.progress-bar');
-const progressFill = document.querySelector('.progress-fill');
+const segments = document.querySelectorAll('.progress-segment');
 
 let index = 0;
 let autoSlide;
 
-// Define colors per slide
-const progressColors = ['#ccc', '#3a2815']; 
-// You can add more if you add more slides
-
-// Show slide and update progress fill + color
 function showSlide(n) {
   index = (n + slides.length) % slides.length;
   slider.style.transform = `translateX(-${index * 100}%)`;
 
-  // Update fill width
-  const progressWidth = ((index + 1) / slides.length) * 100;
-  progressFill.style.width = `${progressWidth}%`;
-
-  // Change color for each slide
-  progressFill.style.backgroundColor = progressColors[index] || '#ccc';
+  // Update progress bar colors
+  segments.forEach((seg, i) => {
+    seg.classList.toggle('active', i === index);
+  });
 }
 
-// Handle click on progress bar
-progressBar.addEventListener('click', (e) => {
-  const rect = progressBar.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-  const width = rect.width;
-  const clickedRatio = clickX / width;
-
-  // Find corresponding slide
-  const newIndex = Math.floor(clickedRatio * slides.length);
-  showSlide(newIndex);
-
-  // Restart auto-slide after manual click
-  resetAutoSlide();
-});
-
-// Auto-slide every 4 seconds
 function startAutoSlide() {
   autoSlide = setInterval(() => {
     showSlide(index + 1);
@@ -1025,6 +1006,14 @@ function resetAutoSlide() {
   clearInterval(autoSlide);
   startAutoSlide();
 }
+
+// Click on progress segment to jump to that slide
+segments.forEach((seg, i) => {
+  seg.addEventListener('click', () => {
+    showSlide(i);
+    resetAutoSlide();
+  });
+});
 
 // Initialize
 showSlide(0);
