@@ -171,6 +171,9 @@
         font-weight: 400;
         gap: 17px;
     }
+    .accordion-body p {
+        font-size: 14px;
+    }
     .faq .accordion-body {
         font-size: 14px;
         line-height: 20px;
