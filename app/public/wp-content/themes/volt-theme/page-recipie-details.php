@@ -114,7 +114,7 @@
                         <h6>Turn your everyday Volt Biscuits into a delightful, no-fuss dessert. These easy sandwich
                             bites layer fresh cream and strawberries between crisp biscuits perfect for tea parties,
                             kids’ treats, or a quick sweet fix.</h6>
-                        <div class="dets-btn d-sm-flex align-item-center gap-1 mt-3">
+                        <div class="dets-btn d-sm-flex align-item-center mt-3">
                             <button><i class="ri-history-line"></i>1.2Hrs (Time)</button>
                             <button><img height="18" width="18" src="<?php echo get_template_directory_uri(); ?>/assets/images/chef-hat.png" alt="">Easy (Cooking
                                 Type)</button>
@@ -438,7 +438,7 @@ function prevSlide() {
 }
 
 // Auto slide every 5 seconds
-setInterval(nextSlide, 5000);
+// setInterval(nextSlide, 5000);
 
     </script>
 

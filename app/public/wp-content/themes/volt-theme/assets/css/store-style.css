@@ -971,11 +971,12 @@ body {
         font-size: 10px;
     }
     .nearby-slider .nearby-slides .slider-overlay .nearbybottom p {
-        font-size: 12px;
+        font-size: 10px;
         line-height: 130%;
     }
     .nearby-slider .nearby-slides .slider-overlay .nearbybottom {
         top: 177px;
+        padding: 0px 15px;
     }
     .nearby-store .navi {
         display: none;
@@ -1538,6 +1539,6 @@ body {
         margin-bottom: 0rem !important;
     }
     .nearbybottom .d-flex {
-        gap: 10px;
+        gap: 12px;
     }
 }

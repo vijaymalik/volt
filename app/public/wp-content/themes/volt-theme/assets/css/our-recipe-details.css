@@ -58,7 +58,7 @@
 .hero-recipe-details .right-side .vegans-btn {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     margin-top: 16px;
     margin-bottom: 16px;
 }
@@ -160,7 +160,7 @@
     border-radius: 16px !important;
     border-radius: 16px !important;
     padding: 20px 16px;
-    margin-bottom: 24px;
+    margin-bottom: 26px;
 }
 
 .recipe h5 {
@@ -433,7 +433,8 @@
 
 .accordion-button:not(.collapsed) {
     box-shadow: none !important;
-    height: 45px;
+    margin-bottom: 12px;
+    /* height: 45px; */
 }
 
 .hero-recipe-mbl {
@@ -658,6 +659,10 @@ button.next {
 
 .slider_madewith {
     display: none;
+}
+
+.dets-btn {
+    gap: 12px !important;
 }
 
 

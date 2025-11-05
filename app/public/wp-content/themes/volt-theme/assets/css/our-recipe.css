@@ -456,7 +456,7 @@ h1 {
 .detail-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     text-align: center;
     gap: 2px;
 }
@@ -685,6 +685,9 @@ h1 {
     .our-recipes-mbl .swiper {
         width: 341px;
         height: 412px;
+    }
+    .tabs-container {
+        gap: 5px;
     }
 }
 
