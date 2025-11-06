@@ -1,0 +1,9 @@
+.home-img {
+    height: 492px;
+    width: 354px;
+    position: absolute;
+    left: 46%;
+    top: 345px;
+    transform: translateX(-50%);
+    /* overflow: hidden; */
+}

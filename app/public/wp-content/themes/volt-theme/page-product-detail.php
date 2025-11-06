@@ -7,6 +7,7 @@
     <title>VOLT</title>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/store-style.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/home.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/product-details.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
@@ -43,8 +44,8 @@
             $heading_html = get_field('heading');
 
             // Fallbacks
-            $default_back_image = get_template_directory_uri() . '/assets/images/banner.jpg';
-            $default_product_image = get_template_directory_uri() . '/assets/images/banner-backup.png';
+            $default_back_image = get_template_directory_uri() . '/assets/images/BG.png';
+            $default_product_image = get_template_directory_uri() . '/assets/images/product-volt.png';
             $default_heading_html = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
             ?>
 
@@ -193,7 +194,7 @@
                                 <h2>Milk Drink Powder</h2>
                                 <p>Discover our flagship favorites trusted by generations, loved by every Fijian home.
                                 </p>
-                                <button href="<?php echo home_url('/product'); ?>">Explore Product</button>
+                                <button>Explore Product</button>
                             </div>
                             <div class="center-div">
                                 <img class="milk"
@@ -250,7 +251,7 @@
                                 <h2>Milk Drink Powder</h2>
                                 <p>Discover our flagship favorites trusted by generations, loved by every Fijian home.
                                 </p>
-                                <button href="<?php echo home_url('/product'); ?>">Explore Product</button>
+                                <button>Explore Product</button>
                             </div>
                             <div class="center-div">
                                 <img class="milk"
