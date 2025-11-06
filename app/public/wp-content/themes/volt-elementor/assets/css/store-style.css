@@ -385,10 +385,10 @@ body {
 
 .map-sec {
     background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
     padding-top: 95px;
 }
 
@@ -1406,9 +1406,9 @@ body {
 }
 
 @media (min-width:1400px) {
-    .hero .right-sec .form p {
+    /* .hero .right-sec .form p {
         width: 580px;
-    }
+    } */
 }
 
 @media (min-width:1920px) {
@@ -1421,4 +1421,13 @@ body {
     .our-recipes .nearby-slider .nearby-slides {
         transform: translateX(26%);
     }
+}
+.input-error {
+    border-color: red !important;
+}
+.error {
+    display: block;
+    font-size: 13px;
+    color: red;
+    margin-top: 4px;
 }

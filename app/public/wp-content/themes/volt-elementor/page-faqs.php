@@ -6,7 +6,7 @@
 ?>
 <?php get_header(); ?>
 
-<div class="volt-template-container container">
+<div class="volt-template-container">
 
     <div class="faq">
         <h1>FAQs</h1>
