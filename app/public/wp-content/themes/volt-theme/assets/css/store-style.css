@@ -73,8 +73,6 @@ body {
     display: inline-block;
     margin-right: 17px;
     margin-left: 17px;
-    /* spacing between texts */
-    color: #d81b60;
     font-size: 16px;
     font-weight: 600;
 }
@@ -1512,6 +1510,7 @@ body {
     border-radius: 10px;
     transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
-.navbar-nav .nav-link.active{
-    font-weight:bold !important;
+
+.navbar-nav .nav-link.active {
+    font-weight: bold !important;
 }
