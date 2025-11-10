@@ -48,20 +48,29 @@
             $default_product_image = get_template_directory_uri() . '/assets/images/product-volt.png';
             $default_heading_html = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
             ?>
-
+              
             <div class="home-banner">
                 <img src="<?php echo esc_url($banner_back_image['url'] ?? $default_back_image); ?>" alt="">
                 <div class="home-overlayer">
-                    <?php
-                    // Show custom or fallback heading
-                    echo !empty($heading_html) ? $heading_html : $default_heading_html;
-                    ?>
+              <div class="intro_volt">
+                <div>
+                    <h6>Introducing</h6>
+                    <h1>Volt Milk Powder</h1>
+                     <div class="explore-button">
+                        <button>Find In Nearby Stores</button>
+                     </div>
+                </div>
+                <div>
+                    <div class="crunchy_div">
+                    <h5>Crunchy, light, and perfectly sweet. Volt are your anytime pick-me-up.</h5>
+                    <p>Volt Milk Powder brings rich, creamy nourishment to every moment—just mix and enjoy wherever </p>
+                  </div>
+                </div>
+            </div>
                     <div class="home-img">
                         <img src="<?php echo esc_url($banner_product_image['url'] ?? $default_product_image); ?>" alt="">
                     </div>
-                    <div class="explore-button">
-                        <button>Explore Product</button>
-                    </div>
+                   
                 </div>
             </div>
 
@@ -87,100 +96,75 @@
         </div>
     <?php endif; ?>
 
-    <?php
-    // Fetch latest Topbar Detail post
-    $topbar_query = new WP_Query(array(
-        'post_type' => 'topbar_detail',
-        'posts_per_page' => 1,
-    ));
+ <div class="rotate-div">
+        <!-- Header -->
+        <div class="header">
+            <h1>The Volt Promise</h1>
+            <p>Volt Milk Powder brings rich, creamy nourishment to every moment—just mix and enjoy wherever</p>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/light (2).png" alt="">
+        </div>
 
-    if ($topbar_query->have_posts()):
-        while ($topbar_query->have_posts()):
-            $topbar_query->the_post();
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <!-- Landscape Elements -->
+            <div class="landscape-left"></div>
+            <div class="landscape-right"></div>
 
-            // Get custom field (ACF) - can be string or array
-            $marque_detail = get_field('marque_detail'); // ACF field name
-    
-            // Icon source (escaped)
-            $icon_src = trailingslashit(get_template_directory_uri()) . 'assets/images/light (2).png';
-            $icon_img = '<img height="25" width="25" src="' . esc_url($icon_src) . '" alt="">';
+            <!-- Decorative Birds -->
+            <div class="bird bird-left">🕊️</div>
+            <div class="bird bird-right">🕊️</div>
 
-            // Prepare items array:
-            $items = array();
+            <!-- Product Center -->
+            <div class="product-center"></div>
 
-            if (!empty($marque_detail)) {
-                if (is_array($marque_detail)) {
-                    // ACF returned an array (checkboxes, repeater, select multiple)
-                    $items = array_map('trim', $marque_detail);
-                } else {
-                    // ACF returned a string — allow comma separated values
-                    $marque_detail = trim($marque_detail);
-                    if (strpos($marque_detail, ',') !== false) {
-                        $items = array_map('trim', explode(',', $marque_detail));
-                    } else {
-                        $items = array($marque_detail);
-                    }
-                }
+            <!-- Cards Grid -->
+            <div class="cards-grid">
+                <div class="card card-navy">
+                    <h3>Perfect Tea-Time Partner</h3>
+                    <p>Experience the perfect blend of flavor and smoothness with our premium tea-time milk powder</p>
+                </div>
 
-                // Remove empty items
-                $items = array_filter($items, function ($v) {
-                    return $v !== '';
-                });
-            }
+                <div class="card card-purple">
+                    <h3>100% <br>Vegetarian</h3>
+                    <p>Made for all, loved by vegetarians—wholesome and delicious!</p>
+                </div>
 
-            // Default fallback items if ACF provided nothing usable
-            $default_items = array(
-                'NO ADDITIONAL PRESERVATIVES',
-                'LOW CALORIE',
-                'NATURAL INGREDIENTS',
-            );
+                <div class="card card-blue">
+                    <h3>Light & <br>Crunchy</h3>
+                    <p>Enjoy the perfect crunch with a light taste—zero compromise on flavor</p>
+                </div>
 
-            if (empty($items)) {
-                $items = $default_items;
-            }
-            ?>
-            <div class="marques home-marquee mt-sm-5 pt-sm-5">
-                <div class="marque-content text-black">
-                    <?php
-                    // Repeat outputs (at least 12). Change $repeat to alter number.
-                    $repeat = 12;
-                    $count = count($items);
-
-                    for ($i = 0; $i < $repeat; $i++) {
-                        $current = $items[$i % $count];
-                        echo '<span class="text-black mx-5 px-5">' . esc_html($current) . '</span>';
-                        echo $icon_img;
-                    }
-                    ?>
+                <div class="card card-light-purple">
+                    <h3>No Artificial <br>Flavours</h3>
+                    <p>Flavor that's real—pure ingredients you can trust</p>
                 </div>
             </div>
-            <?php
-        endwhile;
-        wp_reset_postdata();
-    else:
-        // If no topbar_detail post exists — show default repeating block
-        $icon_src = trailingslashit(get_template_directory_uri()) . 'assets/images/light (2).png';
-        $icon_img = '<img height="25" width="25" src="' . esc_url($icon_src) . '" alt="">';
-        $default_items = array(
-            'NO ADDITIONAL PRESERVATIVES',
-            'LOW CALORIE',
-            'NATURAL INGREDIENTS',
-        );
-        ?>
-        <div class="marques mt-sm-5 pt-sm-5">
-            <div class="marque-content text-black">
-                <?php
-                $repeat = 12;
-                $count = count($default_items);
-                for ($i = 0; $i < $repeat; $i++) {
-                    $current = $default_items[$i % $count];
-                    echo '<span class="text-black mx-5 px-5">' . esc_html($current) . '</span>';
-                    echo $icon_img;
-                }
-                ?>
-            </div>
         </div>
-    <?php endif; ?>
+</div>
+<div class="ingredients-section-desktop">
+<div class="row">
+    <div class="col-5">
+        <div class="content-ing">
+            <h2>Ingredients & Nutrients</h2>
+            <p>
+            Volt Milk Powder delivers pure milk solids, proteins, calcium, vitamins, and minerals. Rich in protein and calcium, Volt Milk Powder delivers creamy, pure nourishment.
+            </p>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Ingredients-container.png" alt="">
+        </div>
+    </div>
+    <div class="col-7">
+    <div class="content-img">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird2.png" alt="">
+    <div class="image-collabe">
+       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Poll.png" alt="">
+       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/milk-new.png" alt="">
+
+    </div>
+
+    </div>
+    </div>
+</div>
+</div>
 
     <div class="our-products-slider swiper">
         <div class="swiper-wrapper">
