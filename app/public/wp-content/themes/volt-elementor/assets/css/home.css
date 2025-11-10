@@ -892,6 +892,10 @@
     display: none;
 }
 
+.col-lg {
+    flex: 1 0 0% !important;
+}
+
 @media (max-width: 768px) {
     .home-banner img {
         object-fit: cover;

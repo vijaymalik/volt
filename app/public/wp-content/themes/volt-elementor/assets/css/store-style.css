@@ -17,7 +17,6 @@ body {
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    height: 112px;
     padding: 0 !important;
     display: flex;
     flex-direction: column;
@@ -32,6 +31,7 @@ body {
     font-family: 'Onest', sans-serif;
     font-size: 16px;
     line-height: 27px;
+    padding: 0px 19px !important;
 }
 
 .navbar .marques {
@@ -969,11 +969,12 @@ body {
         font-size: 10px;
     }
     .nearby-slider .nearby-slides .slider-overlay .nearbybottom p {
-        font-size: 12px;
+        font-size: 10px;
         line-height: 130%;
     }
     .nearby-slider .nearby-slides .slider-overlay .nearbybottom {
         top: 177px;
+        padding: 0px 15px;
     }
     .nearby-store .navi {
         display: none;
@@ -1188,8 +1189,7 @@ body {
     }
     .nav-container {
         background: rgba(255, 255, 255, 1);
-        height: 52px;
-        padding: 0 10px !important;
+        padding: 3px 10px !important;
     }
     .phn-btn {
         height: 43px !important;
@@ -1228,7 +1228,7 @@ body {
         text-align: center;
     }
     .navbar {
-        height: 72px;
+        height: auto;
     }
     .navbar .nav-container img {
         width: 48px;
@@ -1496,7 +1496,6 @@ body {
     background-color: #ccc;
     border-radius: 10px;
     margin: 15px auto;
-    margin-top: 50px !important;
     overflow: hidden;
     cursor: pointer;
     position: relative;
@@ -1511,6 +1510,33 @@ body {
     transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
-.navbar-nav .nav-link.active {
-    font-weight: bold !important;
+.nav-container {
+    margin-bottom: .5rem !important;
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        max-width: 100%;
+    }
+    .hidemobile {
+        display: none !important;
+    }
+    .navbar-nav a {
+        padding: 3px 19px !important;
+    }
+    .navbar-nav {
+        display: flex;
+        margin-top: 12px;
+        align-items: center;
+        justify-content: center;
+    }
+    .navbar-nav a {
+        line-height: 25px;
+    }
+    .nav-container {
+        margin-bottom: 0rem !important;
+    }
+    .nearbybottom .d-flex {
+        gap: 12px;
+    }
 }

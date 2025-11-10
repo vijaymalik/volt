@@ -1,6 +1,6 @@
 <div class="did-you">
-        <img class="d-none d-sm-block" src="http://localhost/volt/app/public/wp-content/uploads/2025/11/did-you.jpg" alt="">
-        <img class="d-block d-sm-none" src="hhttp://localhost/volt/app/public/wp-content/uploads/2025/11/brownie.jpg" alt="">
+        <img class="d-none d-sm-block" src="https://codevaani.com/wp-content/themes/volt-theme/assets/images/did-you.jpg" alt="">
+        <img class="d-block d-sm-none" src="https://codevaani.com/wp-content/themes/volt-theme/assets/images/brownie.jpg" alt="">
 
         <div class="overlayer">
             <div class="container-fluid did-you-container ">
