@@ -417,14 +417,12 @@ function updateArrows(swiper) {
 //     });
 // });
 
-
 document.querySelector('.arrow-select').addEventListener('click', function() {
     const select = document.querySelector('.fiji-select');
     select.focus();
     const e = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true });
     select.dispatchEvent(e);
 });
-
 
 jQuery(function($) {
 
@@ -671,3 +669,245 @@ segments.forEach((seg, i) => {
 // Initialize
 showSlide(0);
 startAutoSlide();
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var swiper2 = new Swiper(".our-recipe-slider", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        loop: true,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 200,
+            modifier: 2,
+            slideShadows: false,
+        },
+    });
+
+    const accordions = document.querySelectorAll(".accordion-header");
+    accordions.forEach(header => {
+        header.addEventListener("click", () => {
+            const parent = header.parentElement;
+            document.querySelectorAll(".accordion-item").forEach(item => {
+                if (item !== parent) item.classList.remove("active");
+            });
+            parent.classList.toggle("active");
+        });
+    });
+
+    const categoryButtons = document.querySelectorAll('.top-section button[data-filter]');
+    const recipeCols = document.querySelectorAll('.recipe-col');
+
+    function setActiveButton(clickedBtn) {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        clickedBtn.classList.add('active');
+    }
+
+    function filterRecipes(filter) {
+        recipeCols.forEach(col => {
+            const cats = (col.getAttribute('data-categories') || '').split(',').map(s => s.trim()).filter(Boolean);
+            if (filter === 'all') {
+                col.style.display = '';
+            } else {
+                if (cats.indexOf(filter) !== -1) {
+                    col.style.display = '';
+                } else {
+                    col.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    categoryButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const filter = btn.getAttribute('data-filter');
+            setActiveButton(btn);
+            filterRecipes(filter);
+        });
+    });
+
+    const activeBtn = document.querySelector('.top-section button.active');
+    if (activeBtn) {
+        filterRecipes(activeBtn.getAttribute('data-filter') || 'all');
+    } else {
+        filterRecipes('all');
+    }
+});
+
+$(document).ready(function() {
+
+    const $slides = $(".slide_new");
+    const $thumbs = $(".thumb_new");
+    const $thumbContainer = $(".thumbnails_new");
+    const $nextBtn = $(".thumb-nav.prev");
+    let index = 0;
+    let thumbScroll = 0;
+
+    // Show large image when thumbnail is clicked
+    function showSlide(i) {
+        $slides.removeClass("active").eq(i).addClass("active");
+        $thumbs.removeClass("active-thumb").eq(i).addClass("active-thumb");
+        index = i;
+    }
+
+    // Thumbnail click → change large image
+    $thumbs.on("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const i = parseInt($(this).data("index"));
+        showSlide(i);
+    });
+
+    // Next button → scroll thumbnails only
+    $nextBtn.on("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const thumbWidth = $thumbs.first().outerWidth(true); // width + margin
+        const visibleWidth = $thumbContainer.outerWidth();
+        const totalWidth = $thumbs.length * thumbWidth;
+        const maxScroll = totalWidth - visibleWidth + 20;
+
+        thumbScroll += thumbWidth;
+        if (thumbScroll > maxScroll) {
+            thumbScroll = 0; // loop back
+        }
+
+        $thumbContainer.animate({ scrollLeft: thumbScroll }, 400);
+    });
+
+    // Initialize first image when DOM is ready
+    $(document).ready(function() {
+        showSlide(0);
+    });
+
+});
+
+$(document).ready(function() {
+    const allProducts = [
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Vegan Cracker Breakfast", time: "30min", categories: ["VG", "CR"], extra: "Cold", filter: "vegan" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Rustic Bowl With Spicy Side-Up", time: "25min", categories: ["RU", "SP"], extra: "Hot", filter: "plant" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Chocolate Chip Cookies & Cream", time: "35min", categories: ["CH", "CO"], extra: "Sweet", filter: "nonveg" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Gourmet Crepes With Toppings", time: "20min", categories: ["GO", "CR"], extra: "Warm", filter: "plant" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/Crunchy-Granola-Bites-1-300x300.jpg", name: "Custard Cake With Blueberries", time: "40min", categories: ["CU", "CA"], extra: "Chilled", filter: "nonveg" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/Traditional-English-breakfast.jpg", name: "Delectable Flan Dessert", time: "45min", categories: ["DE", "FL"], extra: "Cold", filter: "vegan" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/savory-morning-delight-box-300x300.webp", name: "Pomegranate Ice Cream Bangers", time: "15min", categories: ["PO", "IC"], extra: "Frozen", filter: "plant" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Non Vegan Elegant Seafood", time: "22min", categories: ["NO", "OA"], extra: "Hot", filter: "nonveg" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Green Buddha Bowl", time: "18min", categories: ["GB", "BO"], extra: "Fresh", filter: "vegan" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/Crunchy-Granola-Bites-1-300x300.jpg", name: "Spiced Lentil Curry", time: "38min", categories: ["SL", "CU"], extra: "Warm", filter: "plant" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/Traditional-English-breakfast.jpg", name: "Grilled Fish Delight", time: "28min", categories: ["GF", "DE"], extra: "Savory", filter: "nonveg" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Tofu Stir Fry", time: "20min", categories: ["TS", "FR"], extra: "Quick", filter: "vegan" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/veganroll.jpeg", name: "Green Buddha Bowl", time: "18min", categories: ["GB", "BO"], extra: "Fresh", filter: "vegan" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/Crunchy-Granola-Bites-1-300x300.jpg", name: "Spiced Lentil Curry", time: "38min", categories: ["SL", "CU"], extra: "Warm", filter: "plant" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/Traditional-English-breakfast.jpg", name: "Grilled Fish Delight", time: "28min", categories: ["GF", "DE"], extra: "Savory", filter: "nonveg" },
+        { image: "https://codevaani.com/wp-content/uploads/2025/10/brownie-200x300.webp", name: "Tofu Stir Fry", time: "20min", categories: ["TS", "FR"], extra: "Quick", filter: "vegan" },
+    ];
+
+    let products = [...allProducts];
+    let currentPage = 0;
+    let currentFilter = 'all';
+    const itemsPerPage = 8;
+    let totalPages = 0;
+
+    // ---- Filter Tabs ----
+    function setupTabFilters() {
+        const $tabButtons = $(".tab-button");
+
+        $tabButtons.on("click", function() {
+            $tabButtons.removeClass("active");
+            $(this).addClass("active");
+
+            currentFilter = $(this).data("filter");
+            filterProducts();
+            currentPage = 0;
+            renderProducts();
+        });
+    }
+
+    // ---- Filter Logic ----
+    function filterProducts() {
+        if (currentFilter === "all") {
+            products = [...allProducts];
+        } else {
+            products = allProducts.filter(p => p.filter === currentFilter);
+        }
+        totalPages = Math.ceil(products.length / itemsPerPage);
+    }
+
+    // ---- Render Products ----
+    function renderProducts() {
+        const $grid = $("#productsGrid");
+        $grid.empty();
+
+        const start = currentPage * itemsPerPage;
+        const end = start + itemsPerPage;
+        const visibleProducts = products.slice(start, end);
+
+        $.each(visibleProducts, function(_, product) {
+            let categoriesHTML = "";
+            $.each(product.categories, function(_, cat) {
+                categoriesHTML += `<div class="category-tag">${cat}</div>`;
+            });
+
+            const cardHTML = `
+          <div class="cards recipe-card">
+            <div class="img">
+              <img src="${product.image}" alt="${product.name}" class="product-image">
+            </div>
+            <div class="details">
+              <h3>${product.name}</h3>
+              <div class="details-bottom d-flex align-items-center">
+                <div class="detail-item">
+                  <span><i class="ri-history-line"></i> ${product.time}</span>
+                  <h6>Cooking Time</h6>
+                </div>
+                <div class="divider"></div>
+                <div class="detail-item">
+                  <div class="category-tags">${categoriesHTML}</div>
+                  <h6>Category</h6>
+                </div>
+                <div class="divider"></div>
+                <div class="detail-item">
+                  <span><i class="ri-star-line"></i> ${product.extra}</span>
+                  <h6>Extra Info</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+            $grid.append(cardHTML);
+        });
+
+        updatePaginationButtons();
+    }
+
+    // ---- Pagination Buttons ----
+    function updatePaginationButtons() {
+        const pageNum = currentPage + 1;
+        $("#currentPage").text(String(pageNum).padStart(2, "0"));
+        $("#totalPages").text(String(totalPages).padStart(2, "0"));
+    }
+
+    function nextSlide() {
+        currentPage = (currentPage + 1) % totalPages;
+        renderProducts();
+    }
+
+    function prevSlide() {
+        currentPage = (currentPage - 1 + totalPages) % totalPages;
+        renderProducts();
+    }
+
+    // ---- Initialization ----
+    $(document).ready(function() {
+        filterProducts();
+        renderProducts();
+        setupTabFilters();
+    });
+});

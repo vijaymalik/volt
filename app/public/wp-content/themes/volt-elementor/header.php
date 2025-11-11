@@ -33,7 +33,7 @@
                 $marque_text = get_field('marque_text');
                 $text_to_show = $marque_text ? $marque_text : $default_text;
 
-                for ($i = 0; $i < 12; $i++):
+                for ($i = 0; $i < 22; $i++):
                     echo '<span class="marque-text">' . esc_html($text_to_show) . '</span>';
                     if ($i < 11):
                         echo '<img class="marque-divider" src="' . esc_url($image_path) . '" alt="divider" />';
