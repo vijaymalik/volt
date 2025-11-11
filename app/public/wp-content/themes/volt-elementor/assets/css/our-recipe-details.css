@@ -51,14 +51,16 @@
     line-height: 100%;
     letter-spacing: 0px;
     color: #0A0A0A;
-    padding-top: 10px;
+    padding-top: 0px;
+    margin-bottom: 24px;
 }
 
 .hero-recipe-details .right-side .vegans-btn {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .hero-recipe-details .right-side .vegans-btn button {
@@ -82,7 +84,6 @@
     letter-spacing: 3%;
     vertical-align: middle;
     color: #FFFFFF;
-
 }
 
 .hero-recipe-details .right-side h6 {
@@ -90,7 +91,7 @@
     font-size: 20px;
     line-height: 25px;
     letter-spacing: 0%;
-    margin-top: 15px;
+    margin-top: 0px;
     color: #777777;
 }
 
@@ -118,11 +119,10 @@
     width: 100%;
     height: 227px;
     border-radius: 16px;
-    padding: 19px 28px;
+    padding: 28px 19px;
     margin-top: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.4);
     background-color: rgba(245, 238, 206, 1);
-
 }
 
 .hero-recipe-details .ingredients h1 {
@@ -150,17 +150,22 @@
     font-size: 24px;
     color: rgba(45, 29, 15, 1);
     margin: 2rem 0;
-
+    margin-top: 36px;
+    margin-bottom: 24px;
 }
-
 
 .recipe .accordion-item {
     border: none;
     background-color: rgba(245, 238, 206, 1) !important;
     border-radius: 16px !important;
-
+    border-radius: 16px !important;
+    padding: 20px 16px;
+    margin-bottom: 26px;
 }
 
+.recipe .accordion-item:last-child {
+    margin-bottom: 0px;
+}
 
 .recipe h5 {
     border-radius: 16px !important;
@@ -170,18 +175,15 @@
 .recipe .accordion-button {
     border: none;
     background-color: rgba(245, 238, 206, 1) !important;
-    height: 64px;
     padding: 20px 16px;
     border-radius: 16px !important;
-
-
 }
 
 .recipe .accordion-header .accordion-button {
     font-weight: 600;
     font-size: 18px;
     line-height: 20px;
-    padding: 20px 16px !important;
+    padding: 0px !important;
     letter-spacing: 0px;
     color: rgba(37, 37, 37, 1);
 }
@@ -198,7 +200,6 @@
     line-height: 20px;
     letter-spacing: 0px;
     color: rgba(37, 37, 37, 1);
-
 }
 
 .recipe .accordion-body {
@@ -213,13 +214,14 @@
     padding-top: 0;
     letter-spacing: 0%;
     color: rgba(92, 92, 92, 1);
+    padding: 0px;
 }
 
 .recipe .accordion-button::after {
     content: '';
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background-image: url('https://img.icons8.com/ios/50/plus-math--v1.png') !important;
     background-size: contain;
     background-repeat: no-repeat;
@@ -232,8 +234,6 @@
     transform: rotate(180deg);
 }
 
-
-
 .made-with h2 {
     font-weight: 500;
     font-style: Medium;
@@ -244,7 +244,6 @@
     color: rgba(45, 29, 15, 1);
     margin: 2rem 0;
 }
-
 
 .made-with .made-with-container {
     width: 100%;
@@ -259,9 +258,7 @@
     height: 136px;
     border-radius: 12px;
     overflow: hidden;
-
 }
-
 
 .made-with .made-with-container .left-made img {
     height: 100%;
@@ -277,7 +274,6 @@
     text-transform: capitalize;
     color: rgba(37, 37, 37, 1);
     margin: 0;
-
 }
 
 .made-with .made-with-container .right-made p {
@@ -291,7 +287,6 @@
     margin: 16px 0;
 }
 
-
 .made-with .right-made button {
     height: 39px;
     display: flex;
@@ -304,7 +299,6 @@
     font-size: 14px;
     color: rgba(255, 255, 255, 1);
     letter-spacing: -1%;
-
 }
 
 .did-you {
@@ -352,11 +346,10 @@
     color: rgba(255, 255, 255, 1);
 }
 
-
 .did-you .overlayer .leftsec p {
     font-weight: 400;
     font-size: 18px;
-    line-height: 100%;
+    line-height: 23px;
     letter-spacing: 0%;
     color: rgba(249, 244, 240, 1);
 }
@@ -381,7 +374,6 @@
     padding-right: 28px;
     padding-bottom: 19.6px;
     padding-left: 28px;
-
 }
 
 .did-you .overlayer .rightsec .top h6 {
@@ -425,7 +417,7 @@
 
 .did-you .progress-bar {
     position: absolute;
-    bottom: 20px;
+    bottom: 4px;
     left: 50%;
     transform: translate(-50%);
     width: 112px;
@@ -445,34 +437,280 @@
 
 .accordion-button:not(.collapsed) {
     box-shadow: none !important;
+    margin-bottom: 12px;
+    /* height: 45px; */
 }
 
 .hero-recipe-mbl {
     display: none;
 }
 
+.slider_mobile {
+    position: relative;
+    width: 100%;
+    height: 620px;
+    overflow: hidden;
+    border-radius: 1px;
+}
+
+.slide_mobile {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.slide_mobile.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+.slide_mobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.info div {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+h2 {
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+.tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tags span {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+button.prev,
+button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    font-size: 22px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 99;
+}
+
+button.prev:hover,
+button.next:hover {
+    /* background: rgba(255, 255, 255, 0.6); */
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+
+/*slider start*/
+
+.card-slider {
+    width: 280px;
+    position: relative;
+    border-radius: 16px;
+}
+
+.slide_card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.slide_card.active {
+    opacity: 1;
+    position: relative;
+}
+
+.slide_card .card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+    border: none;
+}
+
+.card-image {
+    width: 260px;
+    height: 170px;
+    border-radius: 12px
+}
+
+.card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px
+}
+
+.card-content h3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-content p {
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 16.19px;
+    letter-spacing: 0%;
+    text-align: center;
+    margin: 7px 0;
+    vertical-align: middle;
+    width: 80%;
+    color: rgba(92, 92, 92, 1);
+}
+
+.card-content button {
+    background-color: rgba(13, 18, 43, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 1);
+    height: 29px;
+    border-radius: 8.1px;
+    padding: 9px;
+    font-weight: 600;
+    font-size: 9.71px;
+    line-height: 100%;
+    letter-spacing: -1%;
+}
+
+.card-content button:hover {
+    background: #002060;
+}
+
+.card-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 56px;
+}
+
+.dot_card {
+    width: 30px;
+    height: 5px;
+    border-radius: 5px;
+    background: #ccc;
+    transition: background 0.4s, width 0.4s;
+}
+
+.dot_card.active {
+    background: #00113f;
+    width: 50px;
+}
+
+.slider_madewith {
+    display: none;
+}
+
+.dets-btn {
+    gap: 12px !important;
+}
+
+.e-con {
+    --container-max-width: 100%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.e-con-inner {
+    padding-top: 0px !important;
+    gap: 0px !important;
+}
+
+.margin_prepare {
+    margin-bottom: 0px !important;
+}
+
+.mb-0 {
+    margin-bottom: 0px !important;
+}
+
+
+/*slider end*/
 
 @media (max-width:768px) {
-
+    .slider_madewith {
+        display: block;
+    }
     .breadcrumb,
     .dets-btn,
     .vegans-btn {
         display: none !important;
     }
-
     .hero-recipe-details .ingredients {
         height: auto;
         padding: 19px 24px;
         margin-top: 1.5rem;
     }
-
     .hero-recipe-details .right-side h1 {
         font-weight: 500;
         font-size: 20px;
         line-height: 130%;
         letter-spacing: 0%;
     }
-
     .hero-recipe-details .right-side h6 {
         font-weight: 400;
         font-size: 15px;
@@ -480,7 +718,6 @@
         letter-spacing: 0%;
         color: rgba(92, 92, 92, 1);
     }
-
     .recipe h2 {
         font-weight: 500;
         font-size: 20px;
@@ -488,28 +725,24 @@
         letter-spacing: 0%;
         color: rgba(45, 29, 15, 1);
     }
-
     .recipe .accordion-header .accordion-button {
         font-weight: 600;
         font-size: 16px;
         line-height: 20px;
         letter-spacing: 0px;
     }
-
     .recipe strong {
         font-weight: 600;
         font-size: 14px;
         line-height: 20px;
         letter-spacing: 0px;
     }
-
     .recipe .accordion-body {
         font-weight: 400;
         font-size: 14px;
         line-height: 18px;
         letter-spacing: 0%;
     }
-
     .made-with h2 {
         text-align: center;
         font-weight: 500;
@@ -519,8 +752,8 @@
         letter-spacing: 0%;
         text-align: center;
         text-transform: capitalize;
+        margin-bottom: 3rem;
     }
-
     .made-with .made-with-container {
         width: 280px;
         position: relative;
@@ -531,9 +764,14 @@
         padding-bottom: 16px;
         padding-left: 10px;
         box-shadow: 0px 4.05px 25.42px 0px rgba(0, 0, 0, 0.09);
-
+        display: none;
     }
-
+    .make-extra {
+        display: none !important;
+    }
+    .make-extra::before {
+        display: none;
+    }
     .made-with {
         display: flex;
         align-items: center;
@@ -541,20 +779,17 @@
         flex-direction: column;
         z-index: 99;
     }
-
     .made-with .made-with-container .left-made {
         width: 260px;
         height: 170px;
         border-radius: 12px;
     }
-
     .made-with .right-made {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-
     .made-with .made-with-container .right-made h5 {
         font-weight: 600;
         font-size: 20px;
@@ -563,7 +798,6 @@
         text-align: center;
         margin-top: 10px;
     }
-
     .made-with .made-with-container .right-made p {
         font-weight: 400;
         font-style: Regular;
@@ -575,7 +809,6 @@
         vertical-align: middle;
         width: 80%;
     }
-
     .made-with .right-made button {
         height: 29px;
         border-radius: 8.1px;
@@ -585,7 +818,6 @@
         line-height: 100%;
         letter-spacing: -1%;
     }
-
     .made-with::before {
         content: "";
         position: absolute;
@@ -594,12 +826,8 @@
         border-radius: 18.92px;
         top: 117px;
         transform: rotate(-11.2deg);
-        background: linear-gradient(0deg, var(--Colors-Primary-200---BG-2, #F4ECC9), var(--Colors-Primary-200---BG-2, #F4ECC9)),
-            linear-gradient(165.47deg, #F5EECE 3.73%, #F0E6B7 85.42%);
-
-
+        background: linear-gradient(0deg, var(--Colors-Primary-200---BG-2, #F4ECC9), var(--Colors-Primary-200---BG-2, #F4ECC9)), linear-gradient(165.47deg, #F5EECE 3.73%, #F0E6B7 85.42%);
     }
-
     .made-with .progress-bar {
         position: absolute;
         bottom: -70px;
@@ -611,7 +839,6 @@
         border-radius: 28px;
         overflow: hidden;
     }
-
     .made-with .progress {
         width: 25%;
         height: 100%;
@@ -619,14 +846,10 @@
         border-radius: 10px 0 0 10px;
         transition: width 0.4s ease;
     }
-
     .did-you .overlayer {
         padding: 0;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-            linear-gradient(180.03deg, rgba(0, 0, 0, 0.4) 9.72%, rgba(0, 0, 0, 0) 99.98%);
-
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(180.03deg, rgba(0, 0, 0, 0.4) 9.72%, rgba(0, 0, 0, 0) 99.98%);
     }
-
     .did-you .overlayer .rightsec {
         position: relative;
         top: 0;
@@ -636,7 +859,6 @@
         height: 210px;
         border-radius: 12px;
     }
-
     .did-you .overlayer .leftsec h1 {
         font-weight: 500;
         font-style: Medium;
@@ -647,7 +869,6 @@
         color: rgba(255, 255, 255, 1);
         width: 100%;
     }
-
     .did-you .overlayer .leftsec p {
         font-weight: 400;
         font-style: Regular;
@@ -658,29 +879,24 @@
         width: 100%;
         color: rgba(249, 244, 240, 1);
     }
-
     .did-you .overlayer .leftsec {
         gap: 5px;
         height: 125%;
     }
-
     .did-you .overlayer .rightsec .top {
         height: 68px;
         padding: 14px 20px;
     }
-
     .did-you .overlayer .rightsec .top h6 {
         font-size: 16px;
         line-height: 23px;
     }
-
     .did-you .overlayer .rightsec .bottom {
         width: 193px;
         height: 98px;
         top: 80px;
         left: 20px;
     }
-
     .did-you .overlayer .rightsec .bottom button {
         width: 193px;
         height: 42px;
@@ -689,13 +905,11 @@
         padding: 10px;
         font-size: 14px;
     }
-
     .did-you .progress-bar {
         width: 80px;
         height: 4px;
-        bottom: 14ox;
+        bottom: -1px;
     }
-
     .did-you::before {
         width: 100%;
         height: 241px;
@@ -705,20 +919,17 @@
         background: linear-gradient(-180deg, rgba(248, 242, 220, 0) 0%, #FBF6E0 71.23%);
         top: -20px;
     }
-
     .hero-recipe-mbl {
         display: block;
         width: 100%;
         height: 620px;
         position: relative;
     }
-
     .hero-recipe-mbl img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
-
     .hero-recipe-mbl .overlayer {
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.64) 5.61%, rgba(0, 0, 0, 0) 29.44%, rgba(0, 0, 0, 0.8) 100%);
         height: 100%;
@@ -726,14 +937,29 @@
         position: absolute;
         top: 0;
     }
-
     .hero-recipe-mbl .overlayer .top {
         position: absolute;
         top: 170px;
         left: 24px;
-
     }
-
+    .button_arrow {
+        position: absolute;
+        top: 193px;
+        left: 14px;
+    }
+    .button_arrow .arrow {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: #23232333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button_arrow .arrow i {
+        color: #fff;
+        font-size: 25px;
+    }
     .hero-recipe-mbl .overlayer .top .arrow {
         width: 48px;
         height: 48px;
@@ -742,22 +968,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
     }
-
-
     .hero-recipe-mbl .overlayer .top .arrow i {
         color: #fff;
         font-size: 25px;
     }
-
     .hero-recipe-mbl .overlayer .bottom {
         position: absolute;
         bottom: 40px;
         padding-left: 24px;
         width: 100%;
     }
-
     .hero-recipe-mbl .overlayer .bottom span {
         height: 36px;
         border-radius: 50px;
@@ -777,14 +998,41 @@
         color: #FFFFFF;
         letter-spacing: 3%;
         vertical-align: middle;
-
     }
-    .hero-recipe-mbl .overlayer .bottom h2{
+    .hero-recipe-mbl .overlayer .bottom h2 {
         font-size: 25px;
-        font-weight:600;
+        font-weight: 600;
         color: #fff;
         margin-top: 30px;
     }
+    .accordion-header {
+        padding: 0px 0px;
+    }
+}
 
+@media (min-width:1440px) {
+    .recipe .accordion-item {
+        padding: 20px 16px;
+    }
+}
 
+@media (min-width:1920px) {
+    .recipe .accordion-button {
+        height: 57px;
+    }
+    .hero-recipe-details {
+        width: 92%;
+    }
+}
+
+@media screen and (min-device-width: 1441px) and (max-device-width: 1920px) {
+    .recipe .accordion-item {
+        padding: 12px 16px;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg {
+        flex: 1 0 0% !important;
+    }
 }

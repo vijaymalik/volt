@@ -4,6 +4,10 @@
     width: 100%;
 }
 
+.page-count .current {
+    font-size: 16px !important;
+}
+
 .home-banner img {
     width: 100%;
     height: 100%;
@@ -112,6 +116,14 @@
     cursor: pointer;
 }
 
+.e-con {
+    padding: 0px !important;
+}
+
+.e-con>.e-con-inner {
+    max-width: 100% !important;
+}
+
 .our-product-parent {
     height: 877px;
     padding: 40px;
@@ -124,6 +136,13 @@
     width: 100%;
     border-radius: 12px;
     position: relative;
+}
+
+.our-products-img {
+    height: 100% !important;
+    width: 100%;
+    object-fit: cover !important;
+    border-radius: 12px !important;
 }
 
 .our-products img {
@@ -301,6 +320,7 @@
     border: 1px solid #947E1E;
     z-index: 99;
     cursor: pointer;
+    color: #40360D;
 }
 
 .product-arrow-r {
@@ -476,18 +496,22 @@
 
 .progress-bar {
     width: 112px;
-    /* adjust width as needed */
     height: 6px;
-    /* thickness of bar */
     background-color: #d3d3d3;
-    /* light gray background */
     border-radius: 50px;
-    /* rounded edges */
     overflow: hidden;
     align-items: center;
     width: 100%;
     margin-top: 20px;
-    /* ensure fill stays inside rounded corners */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--bs-progress-bar-color);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--bs-progress-bar-bg);
+    transition: var(--bs-progress-bar-transition);
 }
 
 .progress-fill {
@@ -513,11 +537,36 @@
     background: #2D1D0F;
 }
 
+
+/* Progress Bar */
+
+.progress-bar-new {
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    margin: 20px auto 0;
+    gap: 0px;
+    background: #ccc;
+    border-radius: 50px;
+}
+
+.progress-segment {
+    flex: 1;
+    height: 5px;
+    background-color: #ccc;
+    border-radius: 50px;
+    transition: background-color 0.4s ease;
+}
+
+.progress-segment.active {
+    background-color: #2D1D0F;
+    width: 100px;
+}
+
 @keyframes fillProgress {
     from {
         width: 0;
     }
-
     to {
         width: 45%;
     }
@@ -531,7 +580,6 @@
     from {
         transform: translateX(0);
     }
-
     to {
         transform: translateX(-50%);
     }
@@ -579,7 +627,7 @@
 }
 
 .ready-left img {
-    height: 50px;
+    height: 50px !important;
     width: max-content;
 }
 
@@ -593,7 +641,7 @@
 }
 
 .ready-right img {
-    height: 100%;
+    height: 100% !important;
     width: 100%;
     position: absolute;
     bottom: 0px;
@@ -844,37 +892,35 @@
     display: none;
 }
 
+.col-lg {
+    flex: 1 0 0% !important;
+}
+
 @media (max-width: 768px) {
     .home-banner img {
         object-fit: cover;
     }
-
     .our-product-parent {
         display: none;
     }
-
     .ready-right img {
         bottom: 8px;
         object-fit: contain !important;
     }
-
     .pl-5 {
         padding-left: 0;
     }
-
     .home-overlayer {
         padding-top: 154px;
         display: block;
         top: 0;
         background-color: rgb(0 0 0 / 2%);
     }
-
     .home-banner .home-overlayer h6 {
         font-size: 26px;
         font-weight: 600;
         margin: 0;
     }
-
     .home-banner .explore-button button {
         top: 662px;
         height: 36px;
@@ -883,31 +929,25 @@
         padding: 12px;
         border-radius: 10px;
     }
-
     .home-marquee {
         top: 33px;
         position: relative;
     }
-
     .home-banner {
         height: 705px;
     }
-
     .explore-button {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
     .home-overlayer img {
         height: 513px;
         width: 100%;
     }
-
     .home-banner .home-overlayer h1 {
         font-size: 46px;
     }
-
     .progress-fill::before {
         position: absolute;
         content: "";
@@ -917,46 +957,37 @@
         width: 30px;
         background: #2D1D0F;
     }
-
     .volt-marq .box {
         height: 72px;
         width: 72px;
         border-radius: 10px;
     }
-
     .marquee-track {
         gap: 15px;
     }
-
     .home-banner .home-overlayer h1 {
         font-size: 46px;
         line-height: 47px;
     }
-
     .home-banner::after {
         height: 227px;
         top: 550px;
     }
-
     .mbl-progress {
         display: block;
     }
-
     .explore-button button {
         margin-top: 0rem;
     }
-
     .our-products,
     .aboutus {
         display: none;
     }
-
     .volt-drink h1 {
         font-size: 32px;
         font-weight: 700;
         margin-right: 15px;
     }
-
     .explore-button button {
         font-size: 12px;
         font-weight: 600;
@@ -964,46 +995,38 @@
         border-radius: 10px;
         padding: 12px;
     }
-
     .volt-marq {
         border-radius: 0;
     }
-
     .volt-drink {
         padding-top: 28px;
         height: 635px;
     }
-
     .ready {
         height: 328px;
         margin: 2rem auto;
         background-position: 947px 0px;
         overflow: hidden;
     }
-
     .ready-left {
         padding: 2rem 0;
         align-items: center;
         gap: 2px;
     }
-
     .ready-left h5 {
         text-align: center;
         font-size: 28px;
         font-weight: 600;
     }
-
     .ready-left p {
         font-size: 14px;
         text-align: center;
         line-height: 140%;
         font-weight: 400;
     }
-
     .poll-img {
         display: none;
     }
-
     .poll-container h2 {
         position: relative;
         z-index: 99;
@@ -1011,7 +1034,6 @@
         font-weight: 500;
         text-align: center;
     }
-
     .poll-container p {
         width: 100%;
         font-size: 14px;
@@ -1020,71 +1042,59 @@
         padding-top: 6px;
         text-align: center;
     }
-
     .nearby-store {
         padding-top: 30px;
     }
-
     .right-poll {
         width: 72%;
         margin: 120px auto;
         height: 250px;
     }
-
     .polloverlayer {
         top: 180px;
     }
-
     .poll-over {
         position: absolute;
         top: 0;
         width: 100%;
         inset: 0;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%,
-                /* top: very light black */
-                rgba(0, 0, 0, 0.05) 30%,
-                /* mid: almost gone */
-                rgba(0, 0, 0, 0) 100%
-                /* bottom: fully transparent */
-            );
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, /* top: very light black */
+        rgba(0, 0, 0, 0.05) 30%, /* mid: almost gone */
+        rgba(0, 0, 0, 0) 100%
+        /* bottom: fully transparent */
+        );
         height: 100%;
     }
-
     .polloverlayer .marques {
         border-width: 1px, 0px, 1px, 0px;
         border-style: solid;
         border-color: rgba(204, 204, 204, 0.2);
     }
-
     .polloverlayer .marque-content span {
         font-size: 12px;
         font-weight: 500;
         margin: 0 1rem !important;
     }
-
     .mbl-about {
         width: 100%;
-        padding: 4rem 0;
+        padding: 2rem 0;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 25px;
         flex-direction: column;
     }
-
     .img-section {
         width: 155px;
         height: 76px;
         border-radius: 59.4px;
         overflow: hidden;
     }
-
     .img-section img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
-
     .mbl-about p {
         font-weight: 500;
         font-style: Medium;
@@ -1093,7 +1103,6 @@
         letter-spacing: -1%;
         color: rgba(67, 67, 67, 1);
     }
-
     .mbl-about h2 {
         font-weight: 500;
         font-style: Medium;
@@ -1103,7 +1112,6 @@
         text-align: center;
         color: rgba(45, 29, 15, 1);
     }
-
     .join-btn {
         width: 130px;
         height: 36px;
@@ -1117,11 +1125,9 @@
         color: rgba(13, 18, 43, 1);
         border: none;
     }
-
     .ready-right {
         height: 144px;
     }
-
     .our-product-mbl {
         display: flex;
         text-align: center;
@@ -1131,7 +1137,6 @@
         gap: 20px;
         padding-top: 104px;
     }
-
     .our-product-mbl h2 {
         font-weight: 500;
         font-style: Medium;
@@ -1142,7 +1147,6 @@
         text-align: center;
         text-transform: capitalize;
     }
-
     .our-product-mbl p {
         font-weight: 400;
         font-size: 15px;
@@ -1151,14 +1155,12 @@
         letter-spacing: 0%;
         text-align: center;
     }
-
     .our-product-mid {
         width: 87%;
         height: 444px;
         border-radius: 12px;
         background: linear-gradient(165.47deg, #F5EECE 3.73%, #F0E6B7 85.42%);
     }
-
     .our-product-mid h2 {
         font-weight: 600;
         font-size: 20px;
@@ -1168,13 +1170,11 @@
         color: rgba(73, 42, 12, 1);
         padding-top: 2rem;
     }
-
     .our-product-mid img {
-        height: 65%;
+        height: 65% !important;
         width: 100%;
         object-fit: contain;
     }
-
     .our-product-mid .bottom-sec {
         width: 278px;
         height: 89px;
@@ -1189,7 +1189,6 @@
         background: rgba(230, 207, 142, 1);
         margin: 0 auto;
     }
-
     .our-product-mid .bottom-sec h6 {
         font-weight: 500;
         font-style: Medium;
@@ -1199,7 +1198,6 @@
         text-align: center;
         color: rgba(99, 85, 66, 1);
     }
-
     .our-product-mid .bottom-sec h1 {
         font-weight: 600;
         font-size: 18px;
@@ -1210,35 +1208,29 @@
         color: rgba(64, 40, 8, 1);
         margin: 0;
     }
-
     .bottom-sec .line {
         width: 65px;
         height: 0px;
         transform: rotate(-90deg);
         border: 0.85px solid rgba(64, 40, 8, 0.1);
     }
-
     .our-recipes {
         display: none;
     }
-
     .our-recipes-mbl {
         padding-bottom: 0rem;
         display: block;
     }
-
     .our-recipes-mbl .swiper {
         width: 320px;
         height: 440px;
     }
-
     .our-recipes-mbl .swiper-slide {
         width: 80% !important;
         height: 367px !important;
         border-radius: 12px;
         overflow: hidden;
     }
-
     .our-recipes-mbl h2 {
         font-weight: 600;
         font-style: SemiBold;
@@ -1250,13 +1242,11 @@
         text-transform: capitalize;
         color: rgba(45, 29, 15, 1);
     }
-
     .our-recipe-slider img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
-
     .our-recipe-slider .overlay {
         height: 100%;
         width: 100%;
@@ -1268,7 +1258,6 @@
         justify-content: space-between;
         flex-direction: column;
     }
-
     .our-recipe-slider .overlay h4 {
         font-weight: 500;
         font-style: Medium;
@@ -1277,7 +1266,6 @@
         letter-spacing: 0%;
         color: rgba(255, 255, 255, 1);
     }
-
     .our-recipe-slider .overlay button {
         height: 19px;
         border-radius: 50px;
@@ -1297,7 +1285,6 @@
         letter-spacing: 3%;
         vertical-align: middle;
     }
-
     .our-recipe-slider .overlay .learn-more button {
         height: 36px;
         border-radius: 10px;
@@ -1310,7 +1297,9 @@
         letter-spacing: -1%;
         background-color: rgba(255, 255, 255, 1);
     }
-
+    .slider-container .progress-bar-new {
+        margin-top: 40px;
+    }
     .pollmbl-img {
         height: 1014px;
         width: 100%;
@@ -1318,25 +1307,20 @@
         /* object-fit: unset; */
         object-fit: cover;
     }
-
     .right-poll h5 {
         font-size: 16px;
     }
-
     .right-poll button {
         font-size: 14px;
         height: 42px;
         width: 223px;
     }
-
     .right-poll::before {
         height: 83px;
     }
-
     .mt-6 {
         margin-top: 29px;
     }
-
     .containers {
         width: 100%;
         padding-left: 22px;
@@ -1361,11 +1345,9 @@
         font-size: 40px;
         line-height: 118%;
     }
-
     .our-products-slider .product .overlayer .top-sec p {
         font-size: 15px;
     }
-
     .aboutright h6 {
         font-size: 43px;
     }
@@ -1382,11 +1364,9 @@
         justify-content: space-between;
         width: 100%;
     }
-
     .aboutright h6 {
         font-size: 50px;
     }
-
     .gradiant_blur {
         height: 403px;
         background-image: url(../images/Background.png);
@@ -1398,7 +1378,6 @@
         background-position: center;
         display: block;
     }
-
     .our-recipes {
         height: 627px;
     }
@@ -1442,4 +1421,10 @@
 
 .progress-bar.complete .progress-fill::before {
     width: 100%;
+}
+
+@media (min-width: 992px) {
+    .col-lg {
+        flex: 1 0 0% !important;
+    }
 }

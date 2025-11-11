@@ -9,8 +9,10 @@
 <div class="volt-template-container">
 
     <div class="faq">
+    <div class="container-faq">
         <h1>FAQs</h1>
-        <div class="container px-4 px-lg-5" id="care">
+   </div>
+        <div class="container-faq" id="care">
             <h2>Hi, how can we help?</h2>
 
             <?php
@@ -80,7 +82,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#<?php echo esc_attr($collapse_id); ?>" aria-expanded="false"
                                         aria-controls="<?php echo esc_attr($collapse_id); ?>">
-                                        <span class="faq-serial"><?php echo sprintf('%02d', $global_index); ?></span> &nbsp;
+                                        <span class="faq-serial"><?php echo sprintf('%02d', $global_index); ?></span>
                                         <?php echo esc_html($question); ?>
                                     </button>
                                 </h6>
