@@ -33,3 +33,42 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
+const segments = document.querySelectorAll('.progress-segment');
+
+let index = 0;
+let autoSlide;
+
+function showSlide(n) {
+  index = (n + slides.length) % slides.length;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+
+  // Update progress bar colors
+  segments.forEach((seg, i) => {
+    seg.classList.toggle('active', i === index);
+  });
+}
+
+function startAutoSlide() {
+  autoSlide = setInterval(() => {
+    showSlide(index + 1);
+  }, 4000);
+}
+
+function resetAutoSlide() {
+  clearInterval(autoSlide);
+  startAutoSlide();
+}
+
+// Click on progress segment to jump to that slide
+segments.forEach((seg, i) => {
+  seg.addEventListener('click', () => {
+    showSlide(i);
+    resetAutoSlide();
+  });
+});
+
+// Initialize
+showSlide(0);
+startAutoSlide();
