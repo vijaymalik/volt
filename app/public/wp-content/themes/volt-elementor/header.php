@@ -58,7 +58,7 @@
   </a>
 
   <div class="d-flex gap-2 align-items-center">
-    <a class="talk-btn phn-btn" href="/contact-us">Let's Talk</a>
+    <a class="talk-btn phn-btn" href="<?php echo esc_url(home_url('/contact-us')); ?>">Let's Talk</a>
 
     <!-- ✅ Correct Bootstrap toggler button -->
     <button class="navbar-toggler" type="button"
@@ -77,14 +77,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Products</a>
+        <a class="nav-link active" aria-current="page" href="<?php echo esc_url(home_url(path: '/products')); ?>">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="recipie">Recipes</a>
+        <a class="nav-link" href="<?php echo esc_url(home_url(path: '/recipe')); ?>">Recipes</a>
       </li>
     </ul>
 
-    <a class="talk-btn hidemobile" href="/contact-us">Let's Talk</a>
+    <a class="talk-btn hidemobile" href="<?php echo esc_url(home_url('/contact-us')); ?>">Let's Talk</a>
   </div>
 </div>
 </nav>

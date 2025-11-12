@@ -5,9 +5,7 @@
  */
 ?>
 <?php get_header(); ?>
-
 <div class="volt-template-container">
-
     <?php
     // 🔹 Required for Elementor to detect the editable area
     if (have_posts()):
@@ -18,9 +16,5 @@
     endif;
     ?>
 </div>
-
-
-
 <?php get_template_part('template-parts/nearby-store'); ?>
-
 <?php get_footer(); ?>
