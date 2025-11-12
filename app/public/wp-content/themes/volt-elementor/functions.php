@@ -139,6 +139,9 @@ function volt_enqueue_assets()
     if (is_front_page() || is_home()) {
         $custom_js_files[] = 'assets/js/home.js';
     }
+    if (is_page('recipes')) {
+        $custom_js_files[] = 'assets/js/recipe.js';
+    }
     foreach ($custom_js_files as $js_file) {
         $js_path = $theme_dir . '/' . $js_file;
         $js_uri = $theme_dir_uri . '/' . $js_file;

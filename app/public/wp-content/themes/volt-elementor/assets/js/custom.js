@@ -740,54 +740,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-$(document).ready(function() {
 
-    const $slides = $(".slide_new");
-    const $thumbs = $(".thumb_new");
-    const $thumbContainer = $(".thumbnails_new");
-    const $nextBtn = $(".thumb-nav.prev");
-    let index = 0;
-    let thumbScroll = 0;
-
-    // Show large image when thumbnail is clicked
-    function showSlide(i) {
-        $slides.removeClass("active").eq(i).addClass("active");
-        $thumbs.removeClass("active-thumb").eq(i).addClass("active-thumb");
-        index = i;
-    }
-
-    // Thumbnail click → change large image
-    $thumbs.on("click", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const i = parseInt($(this).data("index"));
-        showSlide(i);
-    });
-
-    // Next button → scroll thumbnails only
-    $nextBtn.on("click", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const thumbWidth = $thumbs.first().outerWidth(true); // width + margin
-        const visibleWidth = $thumbContainer.outerWidth();
-        const totalWidth = $thumbs.length * thumbWidth;
-        const maxScroll = totalWidth - visibleWidth + 20;
-
-        thumbScroll += thumbWidth;
-        if (thumbScroll > maxScroll) {
-            thumbScroll = 0; // loop back
-        }
-
-        $thumbContainer.animate({ scrollLeft: thumbScroll }, 400);
-    });
-
-    // Initialize first image when DOM is ready
-    $(document).ready(function() {
-        showSlide(0);
-    });
-
-});
 
 $(document).ready(function() {
     const allProducts = [

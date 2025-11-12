@@ -25,11 +25,11 @@
            </div>
 
           <div class="pagination-section">
-            <button class="nav-button" id="prevBtn" onclick="prevSlide()"><i class="ri-arrow-left-s-line left"></i></button>
+            <button class="nav-button" id="prevBtn"><i class="ri-arrow-left-s-line left"></i></button>
             <div class="pagination-info">
                 <span id="currentPage">01</span>/<span id="totalPages">06</span>
             </div>
-            <button class="nav-button" id="nextBtn" onclick="nextSlide()"><i class="ri-arrow-right-s-line right"></i></button>
+            <button class="nav-button" id="nextBtn" ><i class="ri-arrow-right-s-line right"></i></button>
           </div>
      </div>
 </div>

@@ -5,6 +5,7 @@
  */
 ?>
 <?php get_header(); ?>
+
 <div class="volt-template-container">
     <?php
     // 🔹 Required for Elementor to detect the editable area
