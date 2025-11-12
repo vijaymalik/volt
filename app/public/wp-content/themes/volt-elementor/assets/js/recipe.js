@@ -1,4 +1,4 @@
- (function($){
+(function($){
 const slides = document.querySelectorAll(".slide_new");
 const thumbs = document.querySelectorAll(".thumb_new");
 const thumbContainer = document.querySelector(".thumbnails_new");

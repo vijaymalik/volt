@@ -67,8 +67,8 @@ get_header();
         </div>
     </div>
 <div class="button_arrow">
-    <button class="prev arrow" onclick="prevSlide()"> <i class="ri-arrow-left-s-line"></i></button>
-    <!-- <button class="next" onclick="nextSlide()">❯</button> -->
+    <button class="prev arrow" id="prevSlide"> <i class="ri-arrow-left-s-line"></i></button>
+    <!-- <button class="next" id="nextSlide">❯</button> -->
 </div>
   </div>
     </div>

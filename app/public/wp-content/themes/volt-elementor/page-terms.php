@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Privacy Policy (Volt)
- * Description: Custom privacy policy template 
+ * Template Name: Terms & Conditions (Volt)
+ * Description: Custom Terms & Conditions template
  */
 ?>
 
