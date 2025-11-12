@@ -591,6 +591,10 @@ h1 {
     text-align: center;
 }
 
+.recipe-bottom a {
+    text-decoration: none;
+}
+
 @media (max-width: 1024px) {
     .products-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -706,4 +710,18 @@ h1 {
     }
 }
 
-@media screen and (min-device-width: 1441px) and (max-device-width: 1920px) {}
+@media screen and (min-device-width: 1441px) and (max-device-width: 1920px) {
+    .other-recipe {
+        width: 92%;
+        margin: 0 auto;
+    }
+    .our-recipe-hero .recipe-bottom {
+        width: 92%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg {
+        flex: 1 0 0% !important;
+    }
+}
