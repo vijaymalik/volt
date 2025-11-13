@@ -17,7 +17,7 @@ get_header();
 <div class="hero-recipe-mbl">
         <div class="slider_mobile">
     <div class="slide_mobile active">
-    <img src="https://codevaani.com/wp-content/themes/volt-theme/assets/images/brownie.jpg" alt="">
+    <img src="https://codevaani.com/wp-content/uploads/2025/11/brownie.jpg" alt="">
     <div class="overlayer">
            
             <div class="bottom">
@@ -34,7 +34,7 @@ get_header();
     </div>
 
     <div class="slide_mobile">
-    <img src="https://codevaani.com/wp-content/themes/volt-theme/assets/images/biscuit.png" alt="">
+    <img src="https://codevaani.com/wp-content/uploads/2025/11/biscuit.png" alt="">
     <div class="overlayer">
             
             <div class="bottom">
@@ -51,7 +51,7 @@ get_header();
     </div>
 
     <div class="slide_mobile">
-    <img src="https://codevaani.com/wp-content/themes/volt-theme/assets/images/brownie.jpg" alt="">
+    <img src="https://codevaani.com/wp-content/uploads/2025/11/brownie.jpg" alt="">
     <div class="overlayer">
             
             <div class="bottom">
@@ -141,7 +141,7 @@ get_header();
                         $difficulty = get_field('difficulty');
                         if ($difficulty): ?>
                             <button><img height="18" width="18"
-                                    src="https://codevaani.com/wp-content/themes/volt-theme/assets/images/chef-hat.png"
+                                    src="https://codevaani.com/wp-content/uploads/2025/11/chef-hat.png"
                                     alt=""><?php echo esc_html($difficulty); ?> (Cooking
                                 Type)</button>
                         <?php endif; ?>
