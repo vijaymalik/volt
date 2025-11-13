@@ -68,7 +68,7 @@
                     <a class="nav-link" aria-current="page" href="#">Products </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo (is_page('recipes') || is_singular('recipe')) ? 'active' : ''; ?>" href="<?php echo esc_url(home_url('/recipes')); ?>">Recipes </a>
+                    <a class="nav-link" href="recipie">Recipes </a>
                 </li>
 
             </ul>

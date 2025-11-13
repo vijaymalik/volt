@@ -363,7 +363,7 @@
     </div>
     </div>
 
-    <!-- <div class="our-product-mbl">
+    <div class="our-product-mbl">
         <h2>Our Products</h2>
         <p>Discover our flagship favorites trusted by <br> generations, loved by every Fijian home.</p>
 
@@ -383,59 +383,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
-    <div class="our-product-mbl">
-  <h2>Our Products</h2>
-  <p>Discover our flagship favorites trusted by <br> generations, loved by every Fijian home.</p>
-
-  <div class="slider-container">
-    <div class="slider">
-      <!-- Slide 1 -->
-      <div class="slide our-product-mid">
-        <h2>Milk Drink Powder</h2>
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product-sec.png" alt="">
-        <div class="bottom-sec">
-          <div>
-            <h6>Vitamin A <br> up to</h6>
-            <h1>180mcg</h1>
-          </div>
-          <div class="line"></div>
-          <div>
-            <h6>Potassium <br> up to</h6>
-            <h1>250mg</h1>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="slide our-product-mid">
-        <h2>Milk Drink Powder</h2>
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product-sec.png" alt="">
-        <div class="bottom-sec">
-          <div>
-            <h6>Vitamin D <br> up to</h6>
-            <h1>180mcg</h1>
-          </div>
-          <div class="line"></div>
-          <div>
-            <h6>Calcium <br> up to</h6>
-            <h1>250mg</h1>
-          </div>
-        </div>
-      </div>
     </div>
-
-    <!-- <div class="slider-buttons">
-      <button id="prev">&#10094;</button>
-      <button id="next">&#10095;</button>
-    </div> -->
-        <!-- Progress Dots -->
-    <!-- Progress Bar -->
-    <div class="progress-bar">
-      <div class="progress-fill"></div>
-    </div>
-  </div>
-</div>
 
     <div class="aboutus">
         <div class="container-fluid">
@@ -460,11 +408,11 @@
             </div>
         </div>
     </div>
-    <!-- <div class=" mbl-progress">
+    <div class=" mbl-progress">
         <div class="progress-bar ">
             <div class="progress-fill" style="width: 45%;"></div>
         </div>
-    </div> -->
+    </div>
     <div class="mbl-about">
         <div class="img-section">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mbl-about.png" alt="">
@@ -978,66 +926,6 @@
 
 
     </script>
-    
-<script>
-const slider = document.querySelector('.slider');
-const slides = document.querySelectorAll('.slide');
-const progressBar = document.querySelector('.progress-bar');
-const progressFill = document.querySelector('.progress-fill');
-
-let index = 0;
-let autoSlide;
-
-// Define colors per slide
-const progressColors = ['#3a2815', '#ccc']; 
-// You can add more if you add more slides
-
-// Show slide and update progress fill + color
-function showSlide(n) {
-  index = (n + slides.length) % slides.length;
-  slider.style.transform = `translateX(-${index * 100}%)`;
-
-  // Update fill width
-  const progressWidth = ((index + 1) / slides.length) * 100;
-  progressFill.style.width = `${progressWidth}%`;
-
-  // Change color for each slide
-  progressFill.style.backgroundColor = progressColors[index] || '#3a2815';
-}
-
-// Handle click on progress bar
-progressBar.addEventListener('click', (e) => {
-  const rect = progressBar.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-  const width = rect.width;
-  const clickedRatio = clickX / width;
-
-  // Find corresponding slide
-  const newIndex = Math.floor(clickedRatio * slides.length);
-  showSlide(newIndex);
-
-  // Restart auto-slide after manual click
-  resetAutoSlide();
-});
-
-// Auto-slide every 4 seconds
-function startAutoSlide() {
-  autoSlide = setInterval(() => {
-    showSlide(index + 1);
-  }, 4000);
-}
-
-function resetAutoSlide() {
-  clearInterval(autoSlide);
-  startAutoSlide();
-}
-
-// Initialize
-showSlide(0);
-startAutoSlide();
-</script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
