@@ -1652,6 +1652,12 @@ body {
     }
 }
 
+@media (max-width: 1440px) {
+    .our-recipes .nearby-slider .nearby-slides {
+        transform: translateX(24%);
+    }
+}
+
 @media screen and (min-device-width: 1441px) and (max-device-width: 1920px) {
     .desktop-footer {
         width: 93%;

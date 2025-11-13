@@ -702,6 +702,13 @@ h1 {
     .other-recipe .details-bottom h6 {
         font-size: 12px;
     }
+    .other-recipe {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .our-recipe-hero .recipe-bottom {
+        width: 90%;
+    }
 }
 
 @media (min-width:1920px) {
