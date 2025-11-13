@@ -88,10 +88,11 @@ function volt_enqueue_assets()
         'assets/css/store-style.css',
         'assets/css/responsive.css',
         'assets/css/custom.css',
+        'assets/css/home.css'
     );
-    if (is_front_page() || is_home()) {
-        $custom_css_files[] = 'assets/css/home.css';
-    }
+    // if (is_front_page() || is_home()) {
+    //     $custom_css_files[] = 'assets/css/home.css';
+    // }
     if (is_page('recipes')) {
         $custom_css_files[] = 'assets/css/our-recipe.css';
     }
