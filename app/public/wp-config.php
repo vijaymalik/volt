@@ -77,9 +77,6 @@ if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
 }
 define('WP_MEMORY_LIMIT', '512M');
 
-define('WP_HOME','https://codevaani.com/');
-define('WP_SITEURL','https://codevaani.com/');
-define('WP_MEMORY_LIMIT', '512M');
 /**#@-*/
 
 /**
