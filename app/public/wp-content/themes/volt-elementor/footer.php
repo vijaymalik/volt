@@ -156,7 +156,7 @@
 <div class="copywrite mt-5 d-none  d-sm-flex align-items-center justify-content-between ">
     <div class="d-sm-flex align-items-center gap-4">
         <a href="<?php echo esc_url(home_url('/privacy-policy')); ?>">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
+        <a href="<?php echo esc_url(home_url('/terms-conditions')); ?>">Terms & Conditions</a>
         <a href="<?php echo esc_url(home_url('/faqs')); ?>">FAQs</a>
     </div>
     <hr class="phone-hr">
