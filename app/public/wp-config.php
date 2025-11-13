@@ -31,13 +31,13 @@ define('WP_DEBUG_DISPLAY', true);
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'volt-ele' );
+define( 'DB_NAME', 'volt' );
 
 /** Database username */
-define( 'DB_USER', 'vijay' );
+define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'Vijay#@$9818' );
+define( 'DB_PASSWORD', '' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
