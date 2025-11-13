@@ -7,7 +7,7 @@
 
 <?php get_header(); ?>
 <div class="volt-template-container">
-
+  <div class="privacy-policy-container">
     <?php
     // 🔹 Required for Elementor to detect the editable area
     if (have_posts()):
@@ -17,6 +17,6 @@
         endwhile;
     endif;
     ?>
-
+  </div>
 </div>
 <?php get_footer(); ?>
