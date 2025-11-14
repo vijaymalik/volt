@@ -67,7 +67,10 @@ get_header();
         </div>
     </div>
 <div class="button_arrow">
-    <button class="prev arrow" id="prevSlide"> <i class="ri-arrow-left-s-line"></i></button>
+    
+    <button class="prev arrow" id="prevSlide"> 
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Back-Button-2.png" alt="">
+    </button>
     <!-- <button class="next" id="nextSlide">❯</button> -->
 </div>
   </div>
