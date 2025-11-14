@@ -14,67 +14,97 @@ get_header();
     <span>/</span>
     <span class="active"><?php the_title(); ?></span>
 </div>
+<?php
+// 2️⃣ Custom Fields (ACF)
+$second_image = get_field('image');
+$second_image_alt = '';
+if ($second_image) {
+    // Works for both Image ID and URL return types
+    if (is_array($second_image) && isset($second_image['url'])) {
+        $second_image_url = $second_image['url'];
+        $second_image_alt = $second_image['alt'] ?: get_the_title();
+    } else {
+        $second_image_url = $second_image;
+        $second_image_alt = get_the_title();
+    }
+}
+$time = get_field('time');
+$category = get_field('categories');
+$extrainfo = get_field('extrainfo');
+$description = get_field('description');
+$difficulty = get_field('difficulty');
+?>
 <div class="hero-recipe-mbl">
-        <div class="slider_mobile">
-    <div class="slide_mobile active">
-    <img src="https://codevaani.com/wp-content/uploads/2025/11/brownie.jpg" alt="">
-    <div class="overlayer">
-           
-            <div class="bottom">
-                <span><i class="ri-history-line"></i>1.2Hrs</span>
-                <span class="mt-3"><i class="ri-star-line"></i>Easy</span>
-                <h2>Vegan Cracker Breakfast</h2>
-                <div class="mt-3 d-flex gap-1">
-                    <span>Vegan</span>
-                    <span>Gluten-Free</span>
-                    <span>Gluten-Free</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="slider_mobile">
 
-    <div class="slide_mobile">
-    <img src="https://codevaani.com/wp-content/uploads/2025/11/biscuit.png" alt="">
-    <div class="overlayer">
-            
-            <div class="bottom">
-                <span><i class="ri-history-line"></i>1.2Hrs</span>
-                <span class="mt-3"><i class="ri-star-line"></i>Easy</span>
-                <h2>Vegan Cracker Breakfast</h2>
-                <div class="mt-3 d-flex gap-1">
-                    <span>Vegan</span>
-                    <span>Gluten-Free</span>
-                    <span>Gluten-Free</span>
-                </div>
-            </div>
-        </div>
-    </div>
+        <?php
+        // Query 3 related recipes
+        $related_recipes = new WP_Query([
+            'post_type' => 'recipe',
+            'posts_per_page' => 3,
+            'post__not_in' => [get_the_ID()],
+        ]);
 
-    <div class="slide_mobile">
-    <img src="https://codevaani.com/wp-content/uploads/2025/11/brownie.jpg" alt="">
-    <div class="overlayer">
-            
-            <div class="bottom">
-                <span><i class="ri-history-line"></i>1.2Hrs</span>
-                <span class="mt-3"><i class="ri-star-line"></i>Easy</span>
-                <h2>Vegan Cracker Breakfast</h2>
-                <div class="mt-3 d-flex gap-1">
-                    <span>Vegan</span>
-                    <span>Gluten-Free</span>
-                    <span>Gluten-Free</span>
-                </div>
-            </div>
+        if ($related_recipes->have_posts()):
+            $s_index = 0;
+
+            while ($related_recipes->have_posts()):
+                $related_recipes->the_post();
+
+                // ACF fields for slider data
+                $r_time = get_field('time');
+                $r_difficulty = get_field('difficulty');
+                $r_category = get_field('categories');
+                $r_img = get_field('image');
+
+                // get image
+                if ($r_img) {
+                    $r_img_url = is_array($r_img) ? $r_img['url'] : $r_img;
+                } else {
+                    $r_img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                }
+                ?>
+
+                <a href="<?php the_permalink(); ?>" class="slide_mobile <?php echo $s_index === 0 ? 'active' : ''; ?>">
+                    <img src="<?php echo esc_url($r_img_url); ?>" alt="<?php the_title(); ?>">
+                    <div class="overlayer">
+                        <div class="bottom">
+
+                            <?php if ($r_time): ?>
+                                <span><i class="ri-history-line"></i><?php echo esc_html($r_time); ?></span>
+                            <?php endif; ?>
+
+                            <?php if ($r_difficulty): ?>
+                                <span class="mt-3"><i class="ri-star-line"></i><?php echo esc_html($r_difficulty); ?></span>
+                            <?php endif; ?>
+
+                            <h2><?php the_title(); ?></h2>
+
+                            <div class="mt-3 d-flex gap-1">
+                                <?php if ($r_category): ?>
+                                    <span><?php echo esc_html($r_category); ?></span>
+                                <?php endif; ?>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+
+                <?php
+                $s_index++;
+            endwhile;
+        endif;
+        wp_reset_postdata();
+        ?>
+
+        <div class="button_arrow">
+            <button class="prev arrow" id="prevSlide">
+                <i class="ri-arrow-left-s-line"></i>
+            </button>
         </div>
     </div>
-<div class="button_arrow">
-    
-    <button class="prev arrow" id="prevSlide"> 
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Back-Button-2.png" alt="">
-    </button>
-    <!-- <button class="next" id="nextSlide">❯</button> -->
 </div>
-  </div>
-    </div>
+
 <div class="hero-recipe-details pb-5 mb-5 mt-4">
     <div class="container-fluid p-0">
         <div class="row">
@@ -90,16 +120,7 @@ get_header();
 
                     <?php
                     // 2️⃣ Custom Field Image (ACF)
-                    $second_image = get_field('image');
-                    if ($second_image):
-                        // Works for both Image ID and URL return types
-                        if (is_array($second_image) && isset($second_image['url'])) {
-                            $second_image_url = $second_image['url'];
-                            $second_image_alt = $second_image['alt'] ?: get_the_title();
-                        } else {
-                            $second_image_url = $second_image;
-                            $second_image_alt = get_the_title();
-                        }
+                    if ($second_image_url):
                         ?>
                         <div class="imgs">
                             <img src="<?php echo esc_url($second_image_url); ?>"
@@ -114,33 +135,25 @@ get_header();
                     <h1 class="d-block d-sm-none">Description</h1>
                     <div class="vegans-btn">
                         <?php
-                        $category = get_field('categories');
                         if ($category): ?>
                             <button><?php echo esc_html($category); ?></span>
-                        <?php endif;
-                         $extrainfo = get_field('extrainfo');
+                            <?php endif;
                         if ($extrainfo): ?>
-                            <button><?php echo esc_html($extrainfo); ?></span>
-                        <?php endif; ?>
+                                <button><?php echo esc_html($extrainfo); ?></span>
+                                <?php endif; ?>
                     </div>
-                    <h6>Turn your everyday Volt Biscuits into a delightful, no-fuss dessert. These easy sandwich
-                            bites layer fresh cream and strawberries between crisp biscuits perfect for tea parties,
-                            kids’ treats, or a quick sweet fix.</h6>
                     <?php
-                    // Time (ACF field: 'time')
                     $description = get_field('description');
                     if ($description): ?>
                         <h6><?php echo esc_html($description); ?></h6>
                     <?php endif; ?>
                     <div class="dets-btn d-sm-flex align-item-center gap-1 mt-3">
                         <?php
-                        // Time (ACF field: 'time')
                         $time = get_field('time');
                         if ($time): ?>
                             <button><i class="ri-history-line"></i><?php echo esc_html($time); ?></button>
                         <?php endif; ?>
                         <?php
-                        // Time (ACF field: 'difficulty')
                         $difficulty = get_field('difficulty');
                         if ($difficulty): ?>
                             <button><img height="18" width="18"
@@ -153,63 +166,70 @@ get_header();
                     </div>
                     <?php the_content(); ?>
                     <!-----------slider-code------>
-<div class="made-with position-relative slider_madewith">
-<h2>Made with</h2>
-<div class="card-slider">
-    <div class="slide_card active">
-      <div class="card">
-        <div class="card-image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/biscuit.png" alt="">
-        </div>
-        <div class="card-content">
-          <h3>Cracker Breakfast</h3>
-          <p>Light, flaky and full of flavor, our biscuit crackers bring a
-                                                    satisfying crunch to every bite. Perfect for tea-time or gourmet
-                                                    pairings.</p>
-          <button>Learn More</button>
-        </div>
-      </div>
-    </div>
+                    <div class="made-with position-relative slider_madewith">
+                        <h2>Made with</h2>
 
-    <div class="slide_card">
-      <div class="card">
-        <div class="card-image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/biscuit.png" alt="">
-        </div>
-        <div class="card-content">
-          <h3>Oat Cookies</h3>
-          <p>Light, flaky and full of flavor, our biscuit crackers bring a
-                                                    satisfying crunch to every bite. Perfect for tea-time or gourmet
-                                                    pairings.</p>
-          <button>Learn More</button>
-        </div>
-      </div>
-    </div>
+                        <div class="card-slider">
 
-    <div class="slide_card">
-      <div class="card">
-        <div class="card-image">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/biscuit.png" alt="">
-        </div>
-        <div class="card-content">
-          <h3>Nutty Delight</h3>
-          <p>Light, flaky and full of flavor, our biscuit crackers bring a
-                                                    satisfying crunch to every bite. Perfect for tea-time or gourmet
-                                                    pairings.</p>
-          <button>Learn More</button>
-        </div>
-      </div>
-    </div>
+                            <?php
+                            // Query 3 more recipes
+                            $madewith = new WP_Query([
+                                'post_type' => 'recipe',
+                                'posts_per_page' => 3,
+                                'post__not_in' => [get_the_ID()],
+                            ]);
 
-    <!-- Progress bar (dots) -->
-    <div class="card-dots">
-      <span class="dot_card active"></span>
-      <span class="dot_card"></span>
-      <span class="dot_card"></span>
-    </div>
-  </div>
-</div>
-<!-------slider-code end------>
+                            if ($madewith->have_posts()):
+                                $m_index = 0;
+
+                                while ($madewith->have_posts()):
+                                    $madewith->the_post();
+
+                                    $mw_img = get_field('image');
+                                    $mw_img_url = '';
+
+                                    if ($mw_img) {
+                                        $mw_img_url = is_array($mw_img) ? $mw_img['url'] : $mw_img;
+                                    } else {
+                                        $mw_img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                                    }
+                                    ?>
+
+                                    <a href="<?php the_permalink(); ?>"
+                                        class="slide_card <?php echo $m_index === 0 ? 'active' : ''; ?>">
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <img src="<?php echo esc_url($mw_img_url); ?>" alt="<?php the_title(); ?>">
+                                            </div>
+
+                                            <div class="card-content">
+                                                <h3><?php the_title(); ?></h3>
+
+                                                <p><?php echo wp_trim_words(get_field('description'), 20); ?></p>
+
+                                                <button>Learn More</button>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <?php
+                                    $m_index++;
+                                endwhile;
+                            endif;
+                            wp_reset_postdata();
+                            ?>
+
+                            <!-- dots -->
+                            <div class="card-dots">
+                                <span class="dot_card active"></span>
+                                <span class="dot_card"></span>
+                                <span class="dot_card"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-------slider-code end------>
                 </div>
             </div>
         </div>
