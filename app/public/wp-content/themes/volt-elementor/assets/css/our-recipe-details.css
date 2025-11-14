@@ -944,7 +944,7 @@ button.next {
     }
     .button_arrow {
         position: absolute;
-        top: 193px;
+        top: 109px;
         left: 14px;
     }
     .button_arrow .arrow {
@@ -976,7 +976,7 @@ button.next {
     .hero-recipe-mbl .overlayer .bottom {
         position: absolute;
         bottom: 40px;
-        padding-left: 24px;
+        padding-left: 21px;
         width: 100%;
     }
     .hero-recipe-mbl .overlayer .bottom span {
@@ -998,6 +998,8 @@ button.next {
         color: #FFFFFF;
         letter-spacing: 3%;
         vertical-align: middle;
+        justify-content: center;
+        align-items: center;
     }
     .hero-recipe-mbl .overlayer .bottom h2 {
         font-size: 25px;
