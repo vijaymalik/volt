@@ -717,7 +717,17 @@ h1 {
     }
 }
 
-@media screen and (min-device-width: 1441px) and (max-device-width: 1920px) {
+@media screen and (min-device-width: 1441px) and (max-device-width: 1620px) {
+    .other-recipe {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .our-recipe-hero .recipe-bottom {
+        width: 90%;
+    }
+}
+
+@media screen and (min-device-width: 1621px) and (max-device-width: 1920px) {
     .other-recipe {
         width: 92%;
         margin: 0 auto;
