@@ -90,9 +90,7 @@ function volt_enqueue_assets()
         'assets/css/custom.css',
         'assets/css/home.css'
     );
-    // if (is_front_page() || is_home()) {
-    //     $custom_css_files[] = 'assets/css/home.css';
-    // }
+
     if (is_page('recipes')) {
         $custom_css_files[] = 'assets/css/our-recipe.css';
     }
@@ -100,6 +98,15 @@ function volt_enqueue_assets()
         $custom_css_files[] = 'assets/css/our-recipe-details.css';
     }
     if (is_page('recipe-detail')) {
+        $custom_css_files[] = 'assets/css/our-recipe-details.css';
+    }
+    if (is_page('products')) {
+        $custom_css_files[] = 'assets/css/our-recipe.css';
+    }
+    if (is_singular('product')) {
+        $custom_css_files[] = 'assets/css/our-recipe-details.css';
+    }
+    if (is_page('product-detail')) {
         $custom_css_files[] = 'assets/css/our-recipe-details.css';
     }
     if (is_page('faqs')) {
@@ -143,9 +150,10 @@ function volt_enqueue_assets()
     if (is_page('recipes')) {
         $custom_js_files[] = 'assets/js/recipe.js';
     }
-     if (is_singular('recipe')) {
+    if (is_singular('recipe')) {
         $custom_js_files[] = 'assets/js/recipe-detail.js';
     }
+
     foreach ($custom_js_files as $js_file) {
         $js_path = $theme_dir . '/' . $js_file;
         $js_uri = $theme_dir_uri . '/' . $js_file;
@@ -177,6 +185,8 @@ add_action('wp_enqueue_scripts', 'volt_enqueue_assets');
 /* --------------------------------------------
  * CUSTOM POST TYPES
  * -------------------------------------------- */
+
+// ✅ STORE
 function mytheme_register_store_cpt()
 {
     $labels = array(
@@ -203,9 +213,7 @@ function mytheme_register_store_cpt()
 }
 add_action('init', 'mytheme_register_store_cpt');
 
-// -----------------------------
-// Register 'recipe' post type
-// -----------------------------
+// ✅ RECIPE
 function mytheme_register_recipe_cpt()
 {
     $labels = array(
@@ -236,55 +244,86 @@ function mytheme_register_recipe_cpt()
 }
 add_action('init', 'mytheme_register_recipe_cpt');
 
+// ✅ PRODUCTS (Duplicate of Recipes)
+function mytheme_register_product_cpt()
+{
+    $labels = array(
+        'name' => 'Products',
+        'singular_name' => 'Product',
+        'add_new_item' => 'Add New Product',
+        'edit_item' => 'Edit Product',
+        'new_item' => 'New Product',
+        'view_item' => 'View Product',
+        'all_items' => 'All Products',
+        'search_items' => 'Search Products',
+        'not_found' => 'No products found',
+    );
 
-// -----------------------------
-// Force Classic Editor (no Gutenberg)
-// -----------------------------
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_rest' => true, // ✅ IMPORTANT: Enable REST API for Elementor
+        'menu_icon' => 'dashicons-products',
+        'rewrite' => array('slug' => 'product-detail', 'with_front' => false),
+        'supports' => array(
+            'title',
+            'editor',
+            'thumbnail',
+            'excerpt',
+            'custom-fields',
+            'revisions',
+            'elementor' // ✅ Allow Elementor editing
+        ),
+        'has_archive' => true,
+    );
+
+    register_post_type('product', $args);
+}
+add_action('init', 'mytheme_register_product_cpt');
+
+
+// ✅ Disable Gutenberg for Recipe & Product
 add_filter('use_block_editor_for_post_type', function ($use_block_editor, $post_type) {
-    if ($post_type === 'recipe') {
+    if (in_array($post_type, ['recipe', 'product'])) {
         return false;
     }
     return $use_block_editor;
 }, 10, 2);
 
-
-// -----------------------------
-// Enable Elementor for Recipe CPT
-// -----------------------------
+// ✅ Elementor Support for Recipe & Product
 add_filter('elementor/cpt_support', function ($post_types) {
-    if (!in_array('recipe', $post_types)) {
-        $post_types[] = 'recipe';
+    foreach (['recipe', 'product'] as $type) {
+        if (!in_array($type, $post_types)) {
+            $post_types[] = $type;
+        }
     }
     return $post_types;
 });
 
-
-// -----------------------------
-// Make sure Classic Editor always loads
-// -----------------------------
+// ✅ Force Classic Editor
 add_action('admin_init', function () {
-    // Force load classic editor for 'recipe'
     remove_action('edit_form_after_title', '_block_editor_meta_box_post_form_hidden_fields');
     add_post_type_support('recipe', 'editor');
+    add_post_type_support('product', 'editor');
 });
 
-
-// -----------------------------
-// Load custom single template (if needed)
-// -----------------------------
+// ✅ Custom Single Templates
 add_filter('single_template', function ($single) {
     global $post;
     if ($post->post_type == 'recipe') {
         $custom_template = locate_template('page-recipe-detail.php');
-        if ($custom_template) {
-            return $custom_template;
-        }
+        if ($custom_template) return $custom_template;
+    }
+    if ($post->post_type == 'product') {
+        $custom_template = locate_template('page-product-detail.php');
+        if ($custom_template) return $custom_template;
     }
     return $single;
 });
 
-
-// ✅ Additional CPTs from old theme
+// ✅ TOPBAR CPT
 function mytheme_register_topbar_cpt()
 {
     $labels = array(
@@ -313,6 +352,7 @@ function mytheme_register_topbar_cpt()
 }
 add_action('init', 'mytheme_register_topbar_cpt');
 
+// ✅ ENQUIRY CPT
 function mytheme_register_enquiries_cpt()
 {
     $labels = array(
@@ -340,7 +380,7 @@ function mytheme_register_enquiries_cpt()
 }
 add_action('init', 'mytheme_register_enquiries_cpt');
 
-// FAQ CPT + Taxonomy
+// ✅ FAQ CPT + Taxonomy
 function mytheme_register_faq_cpt()
 {
     $labels = array(
@@ -400,43 +440,31 @@ add_action('init', 'mytheme_register_faq_category_taxonomy');
 /* --------------------------------------------
  * ENQUIRY AJAX HANDLER
  * -------------------------------------------- */
-function mytheme_handle_enquiry_submission() {
-
-    $name       = sanitize_text_field($_POST['name'] ?? '');
-    $email      = sanitize_email($_POST['email'] ?? '');
-    $phone      = sanitize_text_field($_POST['phone'] ?? '');
-    $location   = sanitize_text_field($_POST['location'] ?? '');
+function mytheme_handle_enquiry_submission()
+{
+    $name = sanitize_text_field($_POST['name'] ?? '');
+    $email = sanitize_email($_POST['email'] ?? '');
+    $phone = sanitize_text_field($_POST['phone'] ?? '');
+    $location = sanitize_text_field($_POST['location'] ?? '');
     $query_type = sanitize_text_field($_POST['query_type'] ?? '');
-    $message    = sanitize_textarea_field($_POST['message'] ?? '');
+    $message = sanitize_textarea_field($_POST['message'] ?? '');
 
-    // 🚨 Required: Name, Email, Message
-    if (empty($name)) {
-        wp_send_json_error('Please enter your name.');
-    }
-
-    if (empty($email) || !is_email($email)) {
-        wp_send_json_error('Please enter a valid email.');
-    }
-
-    if (empty($message)) {
-        wp_send_json_error('Please write your message.');
-    }
-
-    // ✅ Optional but recommended phone check
+    if (empty($name)) wp_send_json_error('Please enter your name.');
+    if (empty($email) || !is_email($email)) wp_send_json_error('Please enter a valid email.');
+    if (empty($message)) wp_send_json_error('Please write your message.');
     if (!empty($phone) && !preg_match('/^[0-9+\s()-]+$/', $phone)) {
         wp_send_json_error('Please enter a valid phone number.');
     }
 
-    // ✅ If validation passes → Insert Post
     $post_id = wp_insert_post(array(
-        'post_title'   => $name,
+        'post_title' => $name,
         'post_content' => $message,
-        'post_type'    => 'enquiry',
-        'post_status'  => 'publish',
-        'meta_input'   => array(
-            'email'      => $email,
-            'phone'      => $phone,
-            'location'   => $location,
+        'post_type' => 'enquiry',
+        'post_status' => 'publish',
+        'meta_input' => array(
+            'email' => $email,
+            'phone' => $phone,
+            'location' => $location,
             'query_type' => $query_type,
         ),
     ));
@@ -449,7 +477,6 @@ function mytheme_handle_enquiry_submission() {
 }
 add_action('wp_ajax_submit_enquiry', 'mytheme_handle_enquiry_submission');
 add_action('wp_ajax_nopriv_submit_enquiry', 'mytheme_handle_enquiry_submission');
-
 
 /* --------------------------------------------
  * ELEMENTOR RECIPE ASSET LOADER
@@ -494,12 +521,20 @@ function volt_enqueue_elementor_recipe_assets()
     }
 }
 add_action('wp_enqueue_scripts', 'volt_enqueue_elementor_recipe_assets');
+
+/* --------------------------------------------
+ * CONTACT FORM SHORTCODE
+ * -------------------------------------------- */
 function my_custom_form_shortcode()
 {
-    ob_start(); // Start capture
-
+    ob_start();
     get_template_part('template-parts/contact-form');
-
     return ob_get_clean();
 }
 add_shortcode('contactform', 'my_custom_form_shortcode');
+// ✅ Force-enable Elementor editor for custom post types
+function volt_force_elementor_support() {
+    add_post_type_support('product', 'elementor');
+    add_post_type_support('recipe', 'elementor');
+}
+add_action('init', 'volt_force_elementor_support', 100);
