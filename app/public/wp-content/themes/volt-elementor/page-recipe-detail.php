@@ -99,7 +99,8 @@ $difficulty = get_field('difficulty');
 
         <div class="button_arrow">
             <button class="prev arrow" id="prevSlide">
-            <img src="https://codevaani.com/wp-content/themes/volt-elementor/assets/images/Back-Button-2.png" alt="">
+                <img src="https://codevaani.com/wp-content/themes/volt-elementor/assets/images/Back-Button-2.png"
+                    alt="">
             </button>
         </div>
     </div>
@@ -143,7 +144,6 @@ $difficulty = get_field('difficulty');
                                 <?php endif; ?>
                     </div>
                     <?php
-                    $description = get_field('description');
                     if ($description): ?>
                         <h6><?php echo esc_html($description); ?></h6>
                     <?php endif; ?>
@@ -167,7 +167,7 @@ $difficulty = get_field('difficulty');
                     <?php the_content(); ?>
                     <!-----------slider-code------>
                     <div class="made-with position-relative slider_madewith">
-
+                        <h2>Made with</h2>
                         <div class="card-slider">
 
                             <?php
@@ -192,10 +192,11 @@ $difficulty = get_field('difficulty');
                                     } else {
                                         $mw_img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                                     }
+                                    $description = get_field('description');
                                     ?>
 
-                                    
-                                       <div class="slide_card <?php echo $m_index === 0 ? 'active' : ''; ?>">
+
+                                    <div class="slide_card <?php echo $m_index === 0 ? 'active' : ''; ?>">
                                         <div class="card">
                                             <div class="card-image">
                                                 <img src="<?php echo esc_url($mw_img_url); ?>" alt="<?php the_title(); ?>">
@@ -204,12 +205,12 @@ $difficulty = get_field('difficulty');
                                             <div class="card-content">
                                                 <h3><?php the_title(); ?></h3>
 
-                                                <p><?php echo wp_trim_words(esc_html($description),20); ?></p>
+                                                <p><?php echo wp_trim_words(esc_html($description), 20); ?></p>
 
                                                 <a href="<?php the_permalink(); ?>"> <button>Learn More</button></a>
                                             </div>
                                         </div>
-                                </div>
+                                    </div>
 
                                     <?php
                                     $m_index++;
