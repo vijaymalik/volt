@@ -946,7 +946,7 @@ button.next {
     .button_arrow {
         position: absolute;
         top: 149px;
-        left: 20px;
+        left: 0px;
     }
     .button_arrow .arrow {
         background: inherit;
@@ -979,7 +979,7 @@ button.next {
     .hero-recipe-mbl .overlayer .bottom {
         position: absolute;
         bottom: 40px;
-        padding-left: 27px;
+        padding-left: 16px;
         width: 100%;
     }
     .hero-recipe-mbl .overlayer .bottom span {
