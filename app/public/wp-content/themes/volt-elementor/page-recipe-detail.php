@@ -167,7 +167,6 @@ $difficulty = get_field('difficulty');
                     <?php the_content(); ?>
                     <!-----------slider-code------>
                     <div class="made-with position-relative slider_madewith">
-                        <h2>Made with</h2>
 
                         <div class="card-slider">
 
