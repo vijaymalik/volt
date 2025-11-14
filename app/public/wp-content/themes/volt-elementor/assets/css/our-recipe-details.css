@@ -688,6 +688,10 @@ button.next {
     margin-bottom: 0px !important;
 }
 
+.card-content a {
+    text-decoration: none;
+}
+
 
 /*slider end*/
 
