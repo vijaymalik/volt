@@ -936,6 +936,7 @@ button.next {
         width: 100%;
         position: absolute;
         top: 0;
+        box-shadow: 0px 4.88px 161.5px 6.1px #FFFFFF40;
     }
     .hero-recipe-mbl .overlayer .top {
         position: absolute;
@@ -948,13 +949,15 @@ button.next {
         left: 20px;
     }
     .button_arrow .arrow {
-        width: 48px;
-        height: 48px;
-        border-radius: 10px;
-        background: #23232333;
+        background: inherit;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .button_arrow .arrow img {
+        width: 48px;
+        height: 48px;
+        object-fit: scale-down;
     }
     .button_arrow .arrow i {
         color: #fff;
@@ -1003,7 +1006,7 @@ button.next {
     }
     .hero-recipe-mbl .overlayer .bottom h2 {
         font-size: 25px;
-        font-weight: 600;
+        font-weight: 700;
         color: #fff;
         margin-top: 30px;
     }
