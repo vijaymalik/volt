@@ -19,4 +19,6 @@
     ?>
 
 </div>
+
+<?php get_template_part('template-parts/nearby-store'); ?>
 <?php get_footer(); ?>
