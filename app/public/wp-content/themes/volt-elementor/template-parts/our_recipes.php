@@ -12,13 +12,10 @@
 <?php
 function get_initials($string)
 {
-    if (empty($string))
-        return '';
+    if (empty($string)) return '';
 
-    // Split into words
     $words = preg_split('/\s+/', trim($string));
 
-    // Take first letter of each word
     $initials = '';
     foreach ($words as $w) {
         $initials .= strtoupper($w[0]);
@@ -26,8 +23,8 @@ function get_initials($string)
 
     return $initials;
 }
-
 ?>
+
 <div class="other-recipe-container">
     <div class="other-recipe">
 
@@ -36,25 +33,27 @@ function get_initials($string)
             <h2>Other Recipes</h2>
 
             <div class="tabs-container top-section">
-                <button class="tab-button <?= (!isset($_GET['type']) || $_GET['type'] == 'all') ? 'active' : '' ?>"
-                    onclick="window.location='?type=all'">
+
+                <button class="tab-button <?= (!isset($_GET['cat']) || $_GET['cat'] == 'all') ? 'active' : '' ?>"
+                    onclick="window.location='?cat=all'">
                     All Recipes
                 </button>
 
-                <button class="tab-button <?= (isset($_GET['type']) && $_GET['type'] == 'vegan') ? 'active' : '' ?>"
-                    onclick="window.location='?type=vegan'">
+                <button class="tab-button <?= (isset($_GET['cat']) && $_GET['cat'] == 'Vegan') ? 'active' : '' ?>"
+                    onclick="window.location='?cat=Vegan'">
                     Vegan
                 </button>
 
-                <button class="tab-button <?= (isset($_GET['type']) && $_GET['type'] == 'plant') ? 'active' : '' ?>"
-                    onclick="window.location='?type=plant'">
+                <button class="tab-button <?= (isset($_GET['cat']) && $_GET['cat'] == 'Vegeterian') ? 'active' : '' ?>"
+                    onclick="window.location='?cat=Vegeterian'">
                     Plant-Based
                 </button>
 
-                <button class="tab-button <?= (isset($_GET['type']) && $_GET['type'] == 'nonveg') ? 'active' : '' ?>"
-                    onclick="window.location='?type=nonveg'">
-                    Non Veg
+                <button class="tab-button <?= (isset($_GET['cat']) && $_GET['cat'] == 'Non Vegeterian') ? 'active' : '' ?>"
+                    onclick="window.location='?cat=Non Vegeterian'">
+                    Non Vegeterian
                 </button>
+
             </div>
         </div>
 
@@ -62,23 +61,23 @@ function get_initials($string)
         <div class="slider-wrapper">
 
             <?php
-            // Get filter
-            $filter = isset($_GET['type']) ? sanitize_text_field($_GET['type']) : 'all';
+            // Get selected filter
+            $selected_cat = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : 'all';
 
             // WP Query Args
             $args = [
-                "post_type" => "recipe",
+                "post_type"      => "recipe",
                 "posts_per_page" => -1,
-                "orderby" => "date",
-                "order" => "DESC",
+                "orderby"        => "date",
+                "order"          => "DESC",
             ];
 
-            // Apply filter
-            if ($filter !== "all") {
+            // Apply ACF category filter
+            if ($selected_cat !== "all") {
                 $args['meta_query'] = [
                     [
-                        "key" => "filter",
-                        "value" => $filter,
+                        "key"     => "categories",
+                        "value"   => $selected_cat,
                         "compare" => "=",
                     ]
                 ];
@@ -92,8 +91,7 @@ function get_initials($string)
             $total_pages = ceil($total_items / $items_per_page);
 
             $page = isset($_GET['pg']) ? intval($_GET['pg']) : 1;
-            if ($page < 1)
-                $page = 1;
+            if ($page < 1) $page = 1;
 
             $start = ($page - 1) * $items_per_page;
             ?>
@@ -121,15 +119,14 @@ function get_initials($string)
                         } else {
                             $img_url = get_the_post_thumbnail_url($post->ID, "medium");
                         }
-
                         ?>
 
                         <div class="cards recipe-card">
                             <a href="<?php the_permalink(); ?>">
                                 <div class="img">
-
-                                    <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
-                                        class="product-image">
+                                    <img src="<?php echo esc_url($img_url); ?>" 
+                                         alt="<?php echo esc_attr(get_the_title()); ?>" 
+                                         class="product-image">
                                 </div>
 
                                 <div class="details">
@@ -147,8 +144,10 @@ function get_initials($string)
                                         <div class="detail-item">
                                             <div class="category-tags">
                                                 <div class="category-tag">
-                                                    <?php echo esc_html(get_initials($category) ?: "V"); ?></div>
-                                                <div class="category-tag"><?php echo esc_html(get_initials($extra) ?: "GF"); ?>
+                                                    <?= esc_html(get_initials($category) ?: "V"); ?>
+                                                </div>
+                                                <div class="category-tag">
+                                                    <?= esc_html(get_initials($extra) ?: "GF"); ?>
                                                 </div>
                                             </div>
                                             <h6>Category</h6>
@@ -182,7 +181,8 @@ function get_initials($string)
             <!-- Pagination Section -->
             <div class="pagination-section">
 
-                <a class="nav-button" href="?pg=<?= max(1, $page - 1); ?>&type=<?= $filter; ?>">
+                <a class="nav-button" 
+                   href="?pg=<?= max(1, $page - 1); ?>&cat=<?= urlencode($selected_cat); ?>">
                     <i class="ri-arrow-left-s-line left"></i>
                 </a>
 
@@ -191,7 +191,8 @@ function get_initials($string)
                     <span id="totalPages"><?= str_pad($total_pages, 2, "0", STR_PAD_LEFT); ?></span>
                 </div>
 
-                <a class="nav-button" href="?pg=<?= min($total_pages, $page + 1); ?>&type=<?= $filter; ?>">
+                <a class="nav-button" 
+                   href="?pg=<?= min($total_pages, $page + 1); ?>&cat=<?= urlencode($selected_cat); ?>">
                     <i class="ri-arrow-right-s-line right"></i>
                 </a>
 
