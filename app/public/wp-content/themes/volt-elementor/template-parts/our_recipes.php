@@ -9,7 +9,25 @@
     <?php get_template_part('template-parts/recipe-slider'); ?>
 </div>
 
+<?php
+function get_initials($string)
+{
+    if (empty($string))
+        return '';
 
+    // Split into words
+    $words = preg_split('/\s+/', trim($string));
+
+    // Take first letter of each word
+    $initials = '';
+    foreach ($words as $w) {
+        $initials .= strtoupper($w[0]);
+    }
+
+    return $initials;
+}
+
+?>
 <div class="other-recipe-container">
     <div class="other-recipe">
 
@@ -92,8 +110,9 @@
                         setup_postdata($post);
 
                         $image = get_field("image", $post->ID);
-                        $categories = get_field("categories", $post->ID);
+                        $category = get_field("categories", $post->ID);
                         $extra = get_field("extrainfo", $post->ID);
+                        $difficulty = get_field("difficulty", $post->ID);
                         $time = get_field("time", $post->ID);
 
                         // Image logic
@@ -103,11 +122,6 @@
                             $img_url = get_the_post_thumbnail_url($post->ID, "medium");
                         }
 
-                        // Categories Array
-                        $cat_tags = [];
-                        if ($categories) {
-                            $cat_tags = is_array($categories) ? $categories : explode(",", $categories);
-                        }
                         ?>
 
                         <div class="cards recipe-card">
@@ -132,9 +146,10 @@
 
                                         <div class="detail-item">
                                             <div class="category-tags">
-                                                <?php foreach ($cat_tags as $tag): ?>
-                                                    <div class="category-tag"><?= esc_html($tag); ?></div>
-                                                <?php endforeach; ?>
+                                                <div class="category-tag">
+                                                    <?php echo esc_html(get_initials($category) ?: "V"); ?></div>
+                                                <div class="category-tag"><?php echo esc_html(get_initials($extra) ?: "GF"); ?>
+                                                </div>
                                             </div>
                                             <h6>Category</h6>
                                         </div>
@@ -142,8 +157,8 @@
                                         <div class="divider"></div>
 
                                         <div class="detail-item">
-                                            <span><i class="ri-star-line"></i> <?= esc_html($extra ?: "Fresh"); ?></span>
-                                            <h6>Extra Info</h6>
+                                            <span><i class="ri-star-line"></i> <?= esc_html($difficulty ?: "Easy"); ?></span>
+                                            <h6>Difficulty</h6>
                                         </div>
 
                                     </div>
