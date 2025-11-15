@@ -18,10 +18,9 @@
     text-decoration: none;
 }
 
-.breadcrumb a.active {
+.breadcrumb a.active, .breadcrumb span.active{
     color: #0A0A0A;
 }
-
 .hero-recipe-details {
     width: 90%;
     margin: 0 auto;
