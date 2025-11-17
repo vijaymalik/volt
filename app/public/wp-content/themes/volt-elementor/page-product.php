@@ -7,7 +7,7 @@
 
 <?php get_header(); ?>
 <div class="volt-template-container">
-
+    <?php get_template_part('template-parts/product-slider'); ?>
     <?php
     // 🔹 Required for Elementor to detect the editable area
     if (have_posts()):

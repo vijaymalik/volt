@@ -13,9 +13,9 @@
                     $recipes->the_post();
 
                     // ACF fields
-                    $time = get_field('recipe_time') ?: '1.2Hrs';
-                    $category = get_field('recipe_category') ?: 'Vegan';
-                    $extra_info = get_field('recipe_extra_info') ?: 'Gluten Free';
+                    $time = get_field('time') ?: '20 mins';
+                    $category = get_field('categories') ?: 'Vegan';
+                    $extra_info = get_field('extra_info') ?: 'Gluten Free';
 
                     // ACF Image field
                     $image_field = get_field('image'); // field name is 'image'

@@ -12,9 +12,9 @@
                 while ($recipes->have_posts()):
                     $recipes->the_post();
 
-                    $time = get_field('time') ?: '1.2Hrs';
+                    $time = get_field('time') ?: '25 mins';
                     $category = get_field('categories') ?: 'Vegan';
-                    $extra_info = get_field('extrainfo') ?: 'Gluten-Free';
+                    $extra_info = get_field('extrainfo') ?: 'Gluten Free';
 
                     $image_field = get_field('image');
                     if ($image_field) {

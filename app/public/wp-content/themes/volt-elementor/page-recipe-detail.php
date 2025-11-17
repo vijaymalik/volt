@@ -15,9 +15,19 @@ get_header();
     <span class="active"><?php the_title(); ?></span>
 </div>
 <?php
-// 2️⃣ Custom Fields (ACF)
-$second_image = get_field('image');
-$second_image_alt = '';
+//  Custom Fields (ACF)
+$first_image = get_field('image');
+if ($first_image) {
+    // Works for both Image ID and URL return types
+    if (is_array($first_image) && isset($first_image['url'])) {
+        $first_image_url = $first_image['url'];
+        $first_image_alt = $first_image['alt'] ?: get_the_title();
+    } else {
+        $first_image_url = $first_image;
+        $first_image_alt = get_the_title();
+    }
+}
+$second_image = get_field('image_1');
 if ($second_image) {
     // Works for both Image ID and URL return types
     if (is_array($second_image) && isset($second_image['url'])) {
@@ -26,6 +36,17 @@ if ($second_image) {
     } else {
         $second_image_url = $second_image;
         $second_image_alt = get_the_title();
+    }
+}
+$third_image = get_field('image_2');
+if ($third_image) {
+    // Works for both Image ID and URL return types
+    if (is_array($third_image) && isset($third_image['url'])) {
+        $third_image_url = $third_image['url'];
+        $third_image_alt = $third_image['alt'] ?: get_the_title();
+    } else {
+        $third_image_url = $third_image;
+        $third_image_alt = get_the_title();
     }
 }
 $time = get_field('time');
@@ -37,64 +58,63 @@ $difficulty = get_field('difficulty');
 <div class="hero-recipe-mbl">
     <div class="slider_mobile">
 
-        <?php
-        // Query 3 related recipes
-        $related_recipes = new WP_Query([
-            'post_type' => 'recipe',
-            'posts_per_page' => 3,
-            'post__not_in' => [get_the_ID()],
-        ]);
+        <?php  
+        // Build an array of images from ACF fields  
+        $slides = [];
 
-        if ($related_recipes->have_posts()):
-            $s_index = 0;
+        if (!empty($first_image_url)) {
+            $slides[] = [
+                'url' => $first_image_url,
+                'alt' => $first_image_alt,
+            ];
+        }
+        if (!empty($second_image_url)) {
+            $slides[] = [
+                'url' => $second_image_url,
+                'alt' => $second_image_alt,
+            ];
+        }
+        if (!empty($third_image_url)) {
+            $slides[] = [
+                'url' => $third_image_url,
+                'alt' => $third_image_alt,
+            ];
+        }
 
-            while ($related_recipes->have_posts()):
-                $related_recipes->the_post();
+        // Loop through ACF images and display them as slides
+        $s_index = 0;
+        foreach ($slides as $slide):
+        ?>
 
-                // ACF fields for slider data
-                $r_time = get_field('time');
-                $r_difficulty = get_field('difficulty');
-                $r_category = get_field('categories');
-                $r_img = get_field('image');
+            <div class="slide_mobile <?php echo $s_index === 0 ? 'active' : ''; ?>">
+                <img src="<?php echo esc_url($slide['url']); ?>" alt="<?php echo esc_attr($slide['alt']); ?>">
 
-                // get image
-                if ($r_img) {
-                    $r_img_url = is_array($r_img) ? $r_img['url'] : $r_img;
-                } else {
-                    $r_img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
-                }
-                ?>
+                <div class="overlayer">
+                    <div class="bottom">
 
-                <a href="<?php the_permalink(); ?>" class="slide_mobile <?php echo $s_index === 0 ? 'active' : ''; ?>">
-                    <img src="<?php echo esc_url($r_img_url); ?>" alt="<?php the_title(); ?>">
-                    <div class="overlayer">
-                        <div class="bottom">
+                        <?php if ($time): ?>
+                            <span><i class="ri-history-line"></i><?php echo esc_html($time); ?></span>
+                        <?php endif; ?>
 
-                            <?php if ($r_time): ?>
-                                <span><i class="ri-history-line"></i><?php echo esc_html($r_time); ?></span>
+                        <?php if ($difficulty): ?>
+                            <span class="mt-3"><i class="ri-star-line"></i><?php echo esc_html($difficulty); ?></span>
+                        <?php endif; ?>
+
+                        <h2><?php the_title(); ?></h2>
+
+                        <div class="mt-3 d-flex gap-1">
+                            <?php if ($category): ?>
+                                <span><?php echo esc_html($category); ?></span>
                             <?php endif; ?>
-
-                            <?php if ($r_difficulty): ?>
-                                <span class="mt-3"><i class="ri-star-line"></i><?php echo esc_html($r_difficulty); ?></span>
-                            <?php endif; ?>
-
-                            <h2><?php the_title(); ?></h2>
-
-                            <div class="mt-3 d-flex gap-1">
-                                <?php if ($r_category): ?>
-                                    <span><?php echo esc_html($r_category); ?></span>
-                                <?php endif; ?>
-                            </div>
-
                         </div>
-                    </div>
-                </a>
 
-                <?php
-                $s_index++;
-            endwhile;
-        endif;
-        wp_reset_postdata();
+                    </div>
+                </div>
+            </div>
+
+        <?php  
+        $s_index++;
+        endforeach;
         ?>
 
         <div class="button_arrow">
@@ -106,26 +126,34 @@ $difficulty = get_field('difficulty');
     </div>
 </div>
 
+
 <div class="hero-recipe-details pb-5 mb-5 mt-4">
     <div class="container-fluid p-0">
         <div class="row">
             <div class="col-5 d-none d-sm-block">
                 <div class="left-side">
                     <?php
-                    // 1️⃣ Featured Image (Post Thumbnail)
-                    if (has_post_thumbnail()): ?>
+                    if (! empty( $first_image_url ) ):
+                        ?>
                         <div class="imgs">
-                            <?php the_post_thumbnail('large', ['alt' => get_the_title(), 'class' => 'img-fluid']); ?>
+                            <img src="<?php echo esc_url($first_image_url); ?>"
+                                alt="<?php echo esc_attr($first_image_alt); ?>" class="img-fluid">
                         </div>
                     <?php endif; ?>
-
-                    <?php
-                    // 2️⃣ Custom Field Image (ACF)
-                    if ($second_image_url):
+                      <?php
+                    if (! empty( $second_image_url ) ):
                         ?>
                         <div class="imgs">
                             <img src="<?php echo esc_url($second_image_url); ?>"
                                 alt="<?php echo esc_attr($second_image_alt); ?>" class="img-fluid">
+                        </div>
+                    <?php endif; ?>
+                      <?php
+                    if (! empty( $third_image_url ) ):
+                        ?>
+                        <div class="imgs">
+                            <img src="<?php echo esc_url($third_image_url); ?>"
+                                alt="<?php echo esc_attr($third_image_alt); ?>" class="img-fluid">
                         </div>
                     <?php endif; ?>
                 </div>

@@ -8,10 +8,11 @@
     /* overflow: hidden; */
 }
 
-.home-banner::after {
+
+/* .home-banner::after {
     background: linear-gradient(180.43deg, rgba(252, 246, 224, 0) 11.59%, #FCF6E0 43.92%);
     top: 534px;
-}
+} */
 
 .intro_volt {
     display: flex;
