@@ -1,5 +1,5 @@
 .our-product-parent {
-    margin-top: 80px !important;
+    margin-top: 175px !important;
     height: 100% !important;
     padding-bottom: 100px;
 }
@@ -15,4 +15,8 @@
 
 .our-product-mbl p {
     margin-bottom: 0px;
+}
+
+.left-div a {
+    text-decoration: none;
 }

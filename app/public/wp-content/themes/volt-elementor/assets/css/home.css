@@ -1423,6 +1423,10 @@
     width: 100%;
 }
 
+.left-div a {
+    text-decoration: none;
+}
+
 @media (min-width: 992px) {
     .col-lg {
         flex: 1 0 0% !important;
