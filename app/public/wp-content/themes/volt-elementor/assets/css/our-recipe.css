@@ -15,6 +15,7 @@
     width: 100%;
     position: absolute;
     top: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.64) 5.61%, rgba(0, 0, 0, 0) 29.44%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .our-recipe-hero .recipe-bottom {

@@ -107,7 +107,7 @@ function volt_enqueue_assets()
         $custom_css_files[] = 'assets/css/our-recipe-details.css';
     }
     if (is_page('product-detail')) {
-        $custom_css_files[] = 'assets/css/our-recipe-details.css';
+        $custom_css_files[] = 'assets/css/product-details.css';
     }
     if (is_page('faqs')) {
         $custom_css_files[] = 'assets/css/faq.css';

@@ -1,0 +1,499 @@
+.home-img {
+    height: 492px;
+    width: 354px;
+    position: absolute;
+    left: 46%;
+    top: 345px;
+    transform: translateX(-50%);
+    /* overflow: hidden; */
+}
+
+.home-banner::after {
+    background: linear-gradient(180.43deg, rgba(252, 246, 224, 0) 11.59%, #FCF6E0 43.92%);
+    top: 534px;
+}
+
+.intro_volt {
+    display: flex;
+    justify-content: space-between;
+}
+
+.intro_volt {
+    margin: 0 auto;
+    margin-top: 167px;
+    width: 90%;
+}
+
+.home-banner .home-overlayer h6 {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 11px;
+    text-align: left;
+    margin-top: 16px;
+}
+
+.home-banner .home-overlayer h1 {
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 84px;
+    text-shadow: 0px 0px 12px #FFFFFF80;
+}
+
+.crunchy_div {
+    width: 465px;
+    text-align: left;
+}
+
+.crunchy_div h5 {
+    font-size: 26px;
+    line-height: 39px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.crunchy_div p {
+    color: #FFFFFF;
+    font-size: 19px;
+    line-height: 27px;
+    font-weight: 500;
+}
+
+.home-banner .explore-button button {
+    text-align: left !important;
+    position: relative;
+    top: auto;
+    display: flex;
+    transform: translateX(0%);
+    left: auto;
+}
+
+.rotate-div {
+    margin: 0 auto;
+    /* background-color: #FCF6E0; */
+    background: linear-gradient(rgba(252, 246, 224, 0), rgba(252, 246, 224, 1));
+    /* background-image: url(../images/promise-bg.png); */
+    /* background-color: #FCF6E0;
+    background-blend-mode: multiply; */
+    /* options: overlay, screen, soft-light */
+    height: 1136px;
+    /* Fallback color */
+}
+
+.rotate_bg {
+    height: 1136px;
+    background-size: cover;
+    background-image: url(../images/product-detail.png);
+    background-position: center;
+}
+
+
+/* Header Section */
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.header h1 {
+    font-size: 52px;
+    color: #2D1D0F;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.header p {
+    font-size: 20px;
+    color: #666;
+    max-width: 727px;
+    margin: 0 auto;
+    line-height: 27px;
+    color: #666666;
+}
+
+.rotate-div .header img {
+    width: 32px;
+    height: 32px;
+    margin-top: 6px;
+}
+
+
+/* Decorative Elements */
+
+.bird {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.6;
+}
+
+.bird-left {
+    left: 40px;
+    top: 80px;
+}
+
+.bird-right {
+    right: 40px;
+    top: 80px;
+}
+
+
+/* Main Content */
+
+.content-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 645.571533203125px;
+    margin-bottom: 40px;
+}
+
+
+/* Cards Grid */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 67px 75px;
+    max-width: 878px;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    top: 0px;
+}
+
+.card {
+    padding: 14px 25px !important;
+    border-radius: 20px !important;
+    color: white !important;
+    font-weight: 600;
+    width: 324px;
+    min-height: 228px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* transition: transform 0.3s ease;
+    transform: rotate(0deg); */
+    /* add rotations to each card */
+    /* default hidden state */
+    /* Your rotation stays as it is */
+    transform: rotate(var(--rot, 0deg)) translateX(0) translateY(40px);
+    opacity: 0;
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+
+/* Slide-in positions while KEEPING rotation */
+
+.card.left-effect {
+    --x: -80px;
+    /* left side */
+}
+
+.card.right-effect {
+    --x: 80px;
+    /* right side */
+}
+
+
+/* Apply translation without touching rotation */
+
+.card.left-effect,
+.card.right-effect {
+    transform: rotate(var(--rot, 0deg)) translateX(var(--x)) translateY(40px);
+}
+
+
+/* When visible in viewport */
+
+.card.show {
+    opacity: 1;
+    transform: rotate(var(--rot, 0deg)) translateX(0) translateY(0);
+}
+
+.card h3 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    line-height: 48px;
+    font-weight: 700;
+}
+
+.card p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+
+/* Card Colors */
+
+.card-navy {
+    background-color: #0D122B !important;
+    transform: rotate(5.39deg);
+    /* add rotation */
+}
+
+.card-purple {
+    background-color: #7B89D7 !important;
+    margin-left: 104px;
+    float: left;
+    top: 21px;
+}
+
+.card-blue {
+    background-color: #3B4FC1 !important;
+    transform: rotate(355deg);
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    /* allow gradient outside */
+    /* add rotation */
+}
+
+.card-blue::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -40px;
+    transform: translateX(-50%) rotate(355deg);
+    width: 100%;
+    height: 22px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, /* softer shadow center */
+    rgba(0, 0, 0, 0.15) 30%, /* smooth fade */
+    rgba(0, 0, 0, 0) 100%/* full fade out */
+    );
+    filter: blur(12px);
+    opacity: 0.85;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(51.52% 51.52% at 50% 50%, #000000 36.69%, rgba(255, 255, 255, 0) 100%)/* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+    ;
+    rotate: 365deg;
+}
+
+.card-light-purple {
+    background-color: #BDC4EB !important;
+    transform: rotate(-355deg);
+    color: #252525 !important;
+    margin-left: 95px;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    /* add rotation */
+}
+
+.card-light-purple::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -38px;
+    transform: translateX(-50%) rotate(355deg);
+    width: 100%;
+    height: 25px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, /* softer shadow center */
+    rgba(0, 0, 0, 0.15) 30%, /* smooth fade */
+    rgba(0, 0, 0, 0) 100%/* full fade out */
+    );
+    filter: blur(12px);
+    opacity: 0.85;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(51.52% 51.52% at 50% 50%, #000000 36.69%, rgba(255, 255, 255, 0) 100%)/* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+    ;
+    rotate: 365deg;
+}
+
+
+/* Center Product Area */
+
+.product-center {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle at 30% 30%, #a8d985 0%, #6ba656 100%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0.7;
+    box-shadow: 0 20px 60px rgba(107, 166, 86, 0.2);
+    border: 3px solid rgba(107, 166, 86, 0.5);
+    /* add circular border */
+}
+
+
+/* Landscape Elements */
+
+.landscape-left,
+.landscape-right {
+    position: absolute;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.landscape-left {
+    left: 0;
+    bottom: -50px;
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(to right, #8b8b8b 0%, #b8b8b8 50%, transparent 100%);
+    clip-path: polygon(0 50%, 100% 100%, 0 100%);
+}
+
+.landscape-right {
+    right: 0;
+    bottom: -50px;
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(to left, #8b8b8b 0%, #b8b8b8 50%, transparent 100%);
+    clip-path: polygon(100% 50%, 0 100%, 100% 100%);
+}
+
+.ingredients-section-desktop {
+    background-color: #FCF6E0;
+    width: 92%;
+    padding: 64px 80px;
+}
+
+.content-ing h2 {
+    font-size: 52px;
+    line-height: 65px;
+    color: #2D1D0F;
+}
+
+.content-ing p {
+    color: #666666;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.content-ing img {
+    margin-top: 34px;
+}
+
+.image-collabe {
+    display: flex;
+    flex-direction: row;
+}
+
+.image-collabe img {
+    width: 100%;
+    height: 100%;
+}
+
+.introduction_img {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.introduction_img h6 {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    margin-right: 13px;
+}
+
+.introduction_img img {
+    width: 149.0838623046875px;
+    height: 3px;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    .header p {
+        font-size: 0.9rem;
+    }
+    .content-wrapper {
+        min-height: 400px;
+        margin-bottom: 30px;
+    }
+    .cards-grid {
+        gap: 20px;
+        max-width: 100%;
+    }
+    .card {
+        padding: 20px;
+        min-height: 120px;
+        transform: rotate(0deg);
+        /* maintain rotation on smaller screens */
+    }
+    .card h3 {
+        font-size: 1.1rem;
+    }
+    .card p {
+        font-size: 0.8rem;
+    }
+    .product-center {
+        width: 220px;
+        height: 220px;
+    }
+    .bird {
+        font-size: 1.2rem;
+    }
+    .bird-left {
+        left: 20px;
+        top: 60px;
+    }
+    .bird-right {
+        right: 20px;
+        top: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    .header {
+        margin-bottom: 40px;
+    }
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    .header p {
+        font-size: 0.85rem;
+    }
+    .cards-grid {
+        gap: 15px;
+        grid-template-columns: 1fr;
+    }
+    .card {
+        padding: 20px;
+        min-height: 110px;
+        transform: rotate(0deg);
+        /* maintain rotation on smallest screens */
+    }
+    .card h3 {
+        font-size: 1rem;
+    }
+    .content-wrapper {
+        min-height: 300px;
+    }
+    .product-center {
+        width: 180px;
+        height: 180px;
+    }
+    .landscape-left,
+    .landscape-right {
+        display: none;
+    }
+}
+
+@media screen and (min-device-width: 1621px) and (max-device-width: 1920px) {
+    .rotate_bg {
+        height: 1137px;
+        background-size: cover;
+        background-image: url(../images/product-detail.png);
+        background-position: center;
+    }
+}
