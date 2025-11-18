@@ -21,7 +21,7 @@
 
 .intro_volt {
     margin: 0 auto;
-    margin-top: 167px;
+    margin-top: 200px;
     width: 90%;
 }
 
@@ -97,6 +97,7 @@
     margin-bottom: 60px;
     position: relative;
     z-index: 10;
+    margin-top: 36px;
 }
 
 .header h1 {
@@ -166,7 +167,7 @@
     top: 0px;
 }
 
-.card {
+.card_desk {
     padding: 14px 25px !important;
     border-radius: 20px !important;
     color: white !important;
@@ -189,12 +190,12 @@
 
 /* Slide-in positions while KEEPING rotation */
 
-.card.left-effect {
+.card_desk.left-effect {
     --x: -80px;
     /* left side */
 }
 
-.card.right-effect {
+.card_desk.right-effect {
     --x: 80px;
     /* right side */
 }
@@ -202,27 +203,27 @@
 
 /* Apply translation without touching rotation */
 
-.card.left-effect,
-.card.right-effect {
+.card_desk.left-effect,
+.card_desk.right-effect {
     transform: rotate(var(--rot, 0deg)) translateX(var(--x)) translateY(40px);
 }
 
 
 /* When visible in viewport */
 
-.card.show {
+.card_desk.show {
     opacity: 1;
     transform: rotate(var(--rot, 0deg)) translateX(0) translateY(0);
 }
 
-.card h3 {
+.card_desk h3 {
     font-size: 32px;
     margin-bottom: 12px;
     line-height: 48px;
     font-weight: 700;
 }
 
-.card p {
+.card_desk p {
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
@@ -356,8 +357,11 @@
 
 .ingredients-section-desktop {
     background-color: #FCF6E0;
-    width: 92%;
-    padding: 64px 80px;
+    width: 100%;
+    padding: 131px 80px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
 }
 
 .content-ing h2 {
@@ -384,6 +388,7 @@
 .image-collabe img {
     width: 100%;
     height: 100%;
+    z-index: 2;
 }
 
 .introduction_img {
@@ -402,6 +407,291 @@
 .introduction_img img {
     width: 149.0838623046875px;
     height: 3px;
+}
+
+.bird_pos {
+    position: absolute;
+    margin-top: -10%;
+    margin-left: 20%;
+    width: 153.98868186053684px;
+    height: 103.85281633881006px;
+    rotate: 1.93deg;
+}
+
+.bird_pos_bas {
+    position: absolute;
+    margin-top: -7%;
+    margin-left: 10%;
+}
+
+.home_banner_block {
+    display: none;
+}
+
+.image-collabe::before {
+    content: '';
+    background: url(../images/cloud_a.png);
+    width: 573px;
+    position: absolute;
+    height: 168px;
+    z-index: 1;
+    background-repeat: no-repeat;
+    top: 394%;
+    left: 55%;
+    display: none;
+}
+
+
+/* .rotate-div-mbl {
+    margin-top: 54px; 
+} */
+
+
+/* Mobile card Start*/
+
+.containr_new {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    padding: 40px 0;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: gray;
+    margin-bottom: 30px;
+}
+
+.card_wrp {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card_wrp .card {
+    width: 90%;
+    padding: 18px 25px;
+    border-radius: 18px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%) translateY(80px) rotate(0deg) scale(0.9);
+    transition: all 0.9s ease-out;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_wrp .card h3 {
+    font-size: 32px;
+    line-height: 48px;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+}
+
+.card_wrp .card p {
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(251, 246, 224, 1) !important;
+}
+
+
+/* Card Colors and Rotation Angles */
+
+.c1 {
+    background: rgba(123, 137, 215, 1);
+    top: 0px;
+    --angle: 4deg;
+}
+
+.c2 {
+    background: rgba(59, 79, 193, 1);
+    top: 104px;
+    --angle: -2deg;
+}
+
+.c3 h3 {
+    color: rgba(46, 61, 150, 1) !important;
+}
+
+.c3 {
+    background: rgba(189, 196, 235, 1);
+    top: 244px;
+    --angle: 6deg;
+    color: black;
+}
+
+.c4 {
+    background: rgba(13, 18, 43, 1);
+    top: 359px;
+    --angle: -4deg;
+}
+
+.card_wrp .card.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) rotate(var(--angle)) scale(1);
+}
+
+.last-text {
+    margin-top: 220px;
+    font-size: 13px;
+    color: #333;
+    display: none;
+}
+
+.containr_new {
+    display: none;
+}
+
+
+/* Mobile card End*/
+
+.ingredients-section-mobile {
+    width: 100%;
+    padding: 20px 0px;
+    margin: 0 auto;
+}
+
+.content-ing {
+    /* text-align: center; */
+}
+
+.ingredients-section-mobile h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    line-height: 47px;
+    display: flex;
+    justify-content: center;
+    margin-left: -52px;
+}
+
+.ingredients-section-mobile h2 img {
+    width: 40px;
+    height: 41px;
+    margin-top: -1px;
+    rotate: 15deg;
+    margin-left: -10px;
+    margin-right: 11px;
+}
+
+.ingredients-section-mobile p {
+    font-size: 15px;
+    margin-bottom: 0px;
+    line-height: 24px;
+    width: 324px;
+    margin: 0 auto;
+}
+
+.content-ing img {
+    width: 72%;
+}
+
+.ingredient_btn {
+    border: 1px solid rgba(13, 18, 43, 1);
+    width: 125px;
+    height: 36px;
+    padding: 12px;
+    font-size: 12px;
+    color: rgba(13, 18, 43, 1);
+    border-radius: 10px;
+    background: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto !important;
+    margin-top: 33px !important;
+    font-weight: 500;
+}
+
+.nutrients-section-mobile {
+    display: none;
+    width: 100%;
+    padding: 20px 0px;
+    margin: 0 auto;
+    background-image: url(../images/nutrients.jpg);
+    padding-top: 0px;
+    background-size: 993px 1065px;
+    background-position: bottom;
+    height: 837px;
+}
+
+.nutrients-section-mobile::before {
+    width: 100%;
+    height: 288px;
+    /* backdrop-filter: blur(2px); */
+    content: "";
+    position: absolute;
+    rotate: -180deg;
+    background: linear-gradient(180deg, rgba(248, 242, 220, 0) 0%, #FBF6E0 71.23%);
+}
+
+.brid_s {
+    width: 159.18px;
+    height: 107.3520077112036px;
+    z-index: 11;
+    position: absolute;
+    right: 0px;
+    rotate: -353deg;
+    right: 21px;
+}
+
+.brid_s img {
+    width: 100%;
+}
+
+.nutrients-content-mobile {
+    height: 837px;
+    width: 83%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 171px;
+}
+
+.nutrients-content-mobile h2 {
+    font-size: 32px;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 500;
+}
+
+.nutrients-content-mobile p {
+    font-size: 15px;
+    color: rgba(249, 244, 240, 1);
+    font-weight: 500;
+}
+
+.nutrients-image-mobile {
+    width: 100;
+    margin: 0 auto;
+}
+
+.nutrients-image-mobile img {
+    width: 100%;
+}
+
+.ingredients-section-mobile {
+    display: none;
+}
+
+.home-banner-dsk {
+    display: block;
+}
+
+.home-banner-mbl {
+    display: none;
 }
 
 
@@ -449,6 +739,136 @@
         right: 20px;
         top: 60px;
     }
+    .rotate-div {
+        display: none;
+    }
+    .ingredients-section-desktop {
+        display: none;
+    }
+    .home-overlayer {
+        padding-top: 94px;
+    }
+    .intro_volt {
+        margin-top: 6px;
+    }
+    .home-banner .home-overlayer h6 {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .home-banner .home-overlayer h1 {
+        text-align: left;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 45px;
+        text-shadow: 0px 0px 12px #FFFFFF80;
+    }
+    .explore-button {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+    .intro_volt {
+        margin: 0 auto;
+        margin-top: 6px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+    .crunchy_div h5 {
+        font-size: 16px;
+        line-height: 20px;
+        color: #fff;
+        font-weight: bold;
+        margin-top: 21px;
+        width: 295px;
+    }
+    .crunchy_div p {
+        color: #FFFFFF;
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 500;
+        margin-top: 13px;
+        width: 249px;
+    }
+    .home-banner {
+        height: 745px;
+    }
+    .crunchy_div {
+        width: 100%;
+        text-align: left;
+    }
+    .home-banner::after {
+        height: 227px;
+        top: 648px;
+    }
+    .containr_new {
+        display: block;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .containr_new .header h1 {
+        font-size: 28px;
+        line-height: 25px;
+        color: rgba(45, 29, 15, 1);
+        font-weight: 500;
+        font-family: Onest;
+    }
+    .containr_new .header p {
+        font-size: 15px;
+        color: rgba(102, 102, 102, 1);
+        line-height: 23px;
+        font-family: Onest;
+    }
+    .card_wrp {
+        margin-top: 72px;
+    }
+    .header {
+        margin-top: 57px;
+    }
+    .nutrients-section-mobile {
+        display: block;
+    }
+    .our-recipes-mbl {
+        padding-top: 20px;
+    }
+    .poll {
+        display: none;
+    }
+    .content-ing {
+        text-align: center;
+        margin-bottom: 16px;
+        background-image: url(../images/cloud_a.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: -146px -43px;
+        padding-top: 68px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 282px;
+    }
+    .ingredients-section-mobile {
+        display: block;
+    }
+    .home-banner-dsk {
+        display: none;
+    }
+    .home-banner-mbl {
+        display: block;
+    }
+    .home-banner-mbl .home-img {
+        width: 63% !important;
+        left: 40% !important;
+        margin-top: 73px;
+        top: 343px !important;
+    }
+    .home-banner-mbl .home-img img {
+        height: 243px;
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -490,11 +910,37 @@
     }
 }
 
-@media screen and (min-device-width: 1621px) and (max-device-width: 1920px) {
+@media (max-width: 1440px) {
+    .rotate-div {
+        height: 1185px;
+    }
     .rotate_bg {
-        height: 1137px;
-        background-size: cover;
+        height: 1185px;
+    }
+    .cards-grid {
+        gap: 92px 75px;
+    }
+    .content-wrapper {
+        min-height: 692.571533px;
+    }
+}
+
+@media screen and (min-device-width: 1621px) and (max-device-width: 1920px) {
+    .rotate-div {
+        height: 1471px;
+    }
+    .rotate_bg {
+        height: 1417px;
+        background-size: contain;
         background-image: url(../images/product-detail.png);
         background-position: center;
+    }
+    .content-wrapper {
+        position: relative;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        min-height: 749.571533px;
+        margin-bottom: 40px;
     }
 }

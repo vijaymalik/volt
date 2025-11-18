@@ -7,77 +7,8 @@
 get_header();
 ?>
 
-<?php
-    // Fetch the latest Topbar Detail post
-    $topbar_query = new WP_Query(array(
-        'post_type' => 'topbar_detail',
-        'posts_per_page' => 1,
-    ));
 
-    if ($topbar_query->have_posts()):
-        while ($topbar_query->have_posts()):
-            $topbar_query->the_post();
-
-            // Get ACF fields
-            $banner_back_image = get_field('banner_back_image');
-            $banner_product_image = get_field('banner_product_image');
-            $heading_html = get_field('heading');
-
-            // Fallbacks
-            $default_back_image = get_template_directory_uri() . '/assets/images/BG.png';
-            $default_product_image = get_template_directory_uri() . '/assets/images/product-volt.png';
-            $default_heading_html = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
-            ?>
-              
-            <div class="home-banner">
-                <img src="<?php echo esc_url($banner_back_image['url'] ?? $default_back_image); ?>" alt="">
-                <div class="home-overlayer">
-              <div class="intro_volt">
-                <div>
-                    <div class="introduction_img">
-                    <h6>Introducing</h6>
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/Line-border.png'); ?>" alt="">
-                 </div>
-                    <h1>Volt Milk Powder</h1>
-                     <div class="explore-button">
-                        <button>Find In Nearby Stores</button>
-                     </div>
-                </div>
-                <div>
-                    <div class="crunchy_div">
-                    <h5>Crunchy, light, and perfectly sweet. Volt are your anytime pick-me-up.</h5>
-                    <p>Volt Milk Powder brings rich, creamy nourishment to every moment—just mix and enjoy wherever </p>
-                  </div>
-                </div>
-            </div>
-                    <div class="home-img">
-                        <img src="<?php echo esc_url($banner_product_image['url'] ?? $default_product_image); ?>" alt="">
-                    </div>
-                   
-                </div>
-            </div>
-
-            <?php
-        endwhile;
-        wp_reset_postdata();
-    else:
-        // No Topbar Detail found → Show full default
-        ?>
-        <div class="home-banner">
-            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner.jpg'); ?>" alt="">
-            <div class="home-overlayer">
-                <h6>Quality you trust.</h6>
-                <h1>Taste You Love.</h1>
-                <div class="home-img">
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-backup.png'); ?>"
-                        alt="">
-                </div>
-                <div class="explore-button">
-                    <button>Explore Product</button>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
+<?php get_template_part('template-parts/product-detail-slider'); ?>
 
  <div class="rotate-div">
     <div class="rotate_bg">
@@ -90,35 +21,24 @@ get_header();
 
         <!-- Main Content -->
         <div class="content-wrapper">
-            <!-- Landscape Elements -->
-            <!-- <div class="landscape-left"></div>
-            <div class="landscape-right"></div> -->
-
-            <!-- Decorative Birds -->
-            <!-- <div class="bird bird-left">🕊️</div>
-            <div class="bird bird-right">🕊️</div> -->
-
-            <!-- Product Center -->
-            <!-- <div class="product-center"></div> -->
-
             <!-- Cards Grid -->
             <div class="cards-grid">
-                <div class="card card-navy">
+                <div class="card card_desk card-navy">
                     <h3>Perfect Tea-Time Partner</h3>
                     <p>Experience the perfect blend of flavor and smoothness with our premium tea-time milk powder</p>
                 </div>
 
-                <div class="card card-purple">
+                <div class="card card_desk card-purple">
                     <h3>100% <br>Vegetarian</h3>
                     <p>Made for all, loved by vegetarians—wholesome and delicious!</p>
                 </div>
 
-                <div class="card card-blue">
+                <div class="card card_desk card-blue">
                     <h3>Light & <br>Crunchy</h3>
                     <p>Enjoy the perfect crunch with a light taste—zero compromise on flavor</p>
                 </div>
 
-                <div class="card card-light-purple">
+                <div class="card card_desk card-light-purple">
                     <h3>No Artificial <br>Flavours</h3>
                     <p>Flavor that's real—pure ingredients you can trust</p>
                 </div>
@@ -126,8 +46,43 @@ get_header();
         </div>
     </div>
 </div>
+
+<div class="container containr_new">
+   <div class="header">
+  <h1>The Volt Promise</h1>
+  <p>
+  Volt Milk Powder brings rich, creamy nourishment to every moment—just mix and enjoy wherever
+  </p>
+    </di>
+  <div class="cards-wrapper card_wrp">
+    <div class="card card-mobile c1">
+    <h3>Perfect Tea-Time Partner</h3>
+     <p>Experience the perfect blend of flavor and smoothness with Perfect Tea-Time Partner milk powder.</p>
+    </div>
+    <div class="card card-mobile c2">
+    <h3>100% <br>Vegetarian</h3>
+     <p>Made for all, loved by vegetarians – wholesome and delicious!</p>
+    </div>
+    <div class="card card-mobile c3">
+    <h3>Light & <br>Crunchy</h3>
+    <p>Enjoy the perfect crunch with a feather-light feel – snack time just got better.</p>
+    </div>
+    <div class="card card-mobile c4">
+    <h3>No Artificial <br>Flavours</h3>
+    <p>Flavour that’s real, ingredients you can trust – no artificial anything.</p>
+    </div>
+  </div>
+
+  <p class="last-text">
+    Experience the perfect blend of flavor and smoothness with Perfect Tea-Time Partner milk powder.
+  </p>
+</div>
+
+
+</div>
+
 <div class="ingredients-section-desktop">
-<div class="row">
+  <div class="row">
     <div class="col-5">
         <div class="content-ing">
             <h2>Ingredients & Nutrients</h2>
@@ -138,24 +93,44 @@ get_header();
         </div>
     </div>
     <div class="col-7">
-    <div class="content-img">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird2.png" alt="">
-    <div class="image-collabe">
-       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Poll.png" alt="">
-       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/milk-new.png" alt="">
+        <div class="content-img">
+        <div class="bird_pos">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bird_c.png" alt="">
+      </div>
+         <div class="image-collabe">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Features-container.png" alt="">
+      </div>
 
     </div>
+    </div>
+ </div>
+</div>
+
 
     </div>
     </div>
+    <div class="ingredients-section-mobile">
+       <div class="content-ing">
+            <h2><img src="<?php echo get_template_directory_uri(); ?>/assets/images/Chim.png" alt=""> Ingredients</h2>
+              <p> Volt Milk Powder delivers pure milk solids, proteins, calcium, vitamins, and minerals.
+               </p>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Ingredients-container.png" alt="">
+            <button class="ingredient_btn m-0">Full Ingredients</button>
+      </div>
+
+    </div>
+    <!-- <div class="recipe-section-blur"></div> -->
+<div class="nutrients-section-mobile">
+    <div class="brid_s"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nutrision-brd.png" alt=""></div>
+
+    <div class="nutrients-content-mobile">
+        <h2>Nutrients</h2>
+        <p>Rich in protein and calcium, Volt Milk Powder delivers creamy, pure nourishment.</p>
+        <div class="nutrients-image-mobile">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Container.png" alt="">
+        </div>
 </div>
 </div>
-
-
-    </div>
-    </div>
-
-
 
 
 <div class="our-recipes">
@@ -224,13 +199,12 @@ get_header();
                 ?>
             </div>
         </div>
-    </div>
+</div>
 
-    <div class="our-recipes-mbl px-4 position-relative">
-        <h2>Our Recipes</h2>
-        <?php get_template_part('template-parts/recipie-slider'); ?>
+<div class="our-recipes-mbl position-relative">
+        <?php get_template_part('template-parts/home-recipe'); ?>
 
-    </div>
+</div>
 
 
     <div class="volt-drink">
@@ -307,12 +281,11 @@ get_header();
 
     </div>
 
-
-<script>
-const cards = document.querySelectorAll('.card');
+    <script>
+const cards_new = document.querySelectorAll('.card_desk');
 
 // Assign left/right & keep rotation untouched
-cards.forEach((card, index) => {
+cards_new.forEach((card, index) => {
   // Store original rotation angle
   const style = getComputedStyle(card);
   const matrix = new WebKitCSSMatrix(style.transform);
@@ -337,8 +310,44 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.2 });
 
-cards.forEach(card => observer.observe(card));
+cards_new.forEach(card => observer.observe(card));
 </script>
+<script>
+const cards = document.querySelectorAll('.card-mobile');
+let currentIndex = 1; // Start from second card (0 = first card - always visible)
+let lastScroll = 0;
+let scrollCooldown = false;
+
+// First card always shown
+cards[0].classList.add("show");
+
+window.addEventListener("scroll", () => {
+  if (scrollCooldown) return;
+
+  let newScroll = window.scrollY;
+
+  // Scrolling DOWN → Show next cards (but not hide first)
+  if (newScroll > lastScroll) {
+    if (currentIndex < cards.length) {
+      cards[currentIndex].classList.add("show");
+      currentIndex++;
+    }
+  } 
+  
+  // Scrolling UP → Hide cards except first one
+  else {
+    if (currentIndex > 1) { // must be >1 so card[0] NEVER hides
+      currentIndex--;
+      cards[currentIndex].classList.remove("show");
+    }
+  }
+
+  scrollCooldown = true;
+  setTimeout(() => scrollCooldown = false, 500);
+
+  lastScroll = newScroll;
+});
+    </script>
 <?php the_content(); ?>
 <?php get_template_part('template-parts/nearby-store'); ?>
 <?php get_footer(); ?>
