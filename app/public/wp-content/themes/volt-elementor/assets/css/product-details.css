@@ -21,7 +21,7 @@
 
 .intro_volt {
     margin: 0 auto;
-    margin-top: 200px;
+    margin-top: 194px;
     width: 90%;
 }
 
@@ -97,7 +97,7 @@
     margin-bottom: 60px;
     position: relative;
     z-index: 10;
-    margin-top: 36px;
+    margin-top: 55px;
 }
 
 .header h1 {
@@ -259,7 +259,7 @@
     content: "";
     position: absolute;
     left: 50%;
-    bottom: -40px;
+    bottom: -42px;
     transform: translateX(-50%) rotate(355deg);
     width: 100%;
     height: 22px;
@@ -291,7 +291,7 @@
     content: "";
     position: absolute;
     left: 50%;
-    bottom: -38px;
+    bottom: -47px;
     transform: translateX(-50%) rotate(355deg);
     width: 100%;
     height: 25px;
@@ -358,7 +358,7 @@
 .ingredients-section-desktop {
     background-color: #FCF6E0;
     width: 100%;
-    padding: 131px 80px;
+    padding: 162px 80px;
     display: flex;
     align-items: center;
     padding-bottom: 15px;
@@ -373,7 +373,7 @@
 .content-ing p {
     color: #666666;
     font-size: 18px;
-    line-height: 28px;
+    line-height: 23px;
 }
 
 .content-ing img {
@@ -395,7 +395,7 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 29px;
 }
 
 .introduction_img h6 {
@@ -411,7 +411,7 @@
 
 .bird_pos {
     position: absolute;
-    margin-top: -10%;
+    margin-top: -12%;
     margin-left: 20%;
     width: 153.98868186053684px;
     height: 103.85281633881006px;
@@ -505,7 +505,7 @@
 .card_wrp .card p {
     font-size: 14px;
     line-height: 21px;
-    color: rgba(251, 246, 224, 1) !important;
+    color: rgba(251, 246, 224, 1);
 }
 
 
@@ -527,11 +527,14 @@
     color: rgba(46, 61, 150, 1) !important;
 }
 
+.c3 p {
+    color: rgba(46, 61, 150, 1) !important;
+}
+
 .c3 {
     background: rgba(189, 196, 235, 1);
     top: 244px;
     --angle: 6deg;
-    color: black;
 }
 
 .c4 {
@@ -780,7 +783,7 @@
         line-height: 20px;
         color: #fff;
         font-weight: bold;
-        margin-top: 21px;
+        margin-top: 17px;
         width: 295px;
     }
     .crunchy_div p {
@@ -816,7 +819,6 @@
     }
     .containr_new .header p {
         font-size: 15px;
-        color: rgba(102, 102, 102, 1);
         line-height: 23px;
         font-family: Onest;
     }
@@ -863,10 +865,10 @@
         width: 63% !important;
         left: 40% !important;
         margin-top: 73px;
-        top: 343px !important;
+        top: 337px !important;
     }
     .home-banner-mbl .home-img img {
-        height: 243px;
+        height: 261px;
         width: 100%;
     }
 }
