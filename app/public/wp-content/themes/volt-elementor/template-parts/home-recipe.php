@@ -71,4 +71,3 @@
     <?php get_template_part('template-parts/recipe-slider'); ?>
 
 </div>
-<div class="gradiant_blur"></div>

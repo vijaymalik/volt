@@ -1,4 +1,4 @@
-
+<div class="gradiant_blur"></div>
 <div class="poll position-relative">
     <img class="poll-img d-none d-sm-block" src="<?php echo get_template_directory_uri(); ?>/assets/images/poll.jpg"
         alt="">
