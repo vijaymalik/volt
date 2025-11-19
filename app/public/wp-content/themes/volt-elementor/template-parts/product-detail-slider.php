@@ -79,10 +79,9 @@ if ($query->have_posts()):
             <div>
                 <div class="crunchy_div">
                     <?php if ($tagline): ?>
-                        <h5><?php echo esc_html($tagline); ?></h5>
+                        <h5><?php echo wp_kses_post($tagline); ?></h5>
                     <?php endif; ?>
 
-                    <p><?php echo esc_html($excerpt); ?></p>
                 </div>
             </div>
         </div>
