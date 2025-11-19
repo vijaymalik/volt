@@ -106,6 +106,9 @@ function volt_enqueue_assets()
     if (is_singular('product')) {
         $custom_css_files[] = 'assets/css/our-recipe-details.css';
     }
+    if (is_singular('product')) {
+        $custom_css_files[] =  'assets/css/product-details.css';
+    }
     if (is_page('product-detail')) {
         $custom_css_files[] = 'assets/css/product-details.css';
     }
@@ -159,7 +162,9 @@ function volt_enqueue_assets()
     if (is_page('product-detail')) {
         $custom_js_files[] = 'assets/js/product-details.js';
     }
-
+     if (is_singular('product')) {
+        $custom_js_files[] = 'assets/js/product-details.js';
+    }
     foreach ($custom_js_files as $js_file) {
         $js_path = $theme_dir . '/' . $js_file;
         $js_uri = $theme_dir_uri . '/' . $js_file;
