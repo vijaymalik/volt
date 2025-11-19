@@ -639,7 +639,7 @@
     content: "";
     position: absolute;
     rotate: -180deg;
-    background: linear-gradient(180deg, rgba(248, 242, 220, 0) 0%, #FBF6E0 71.23%);
+    background: linear-gradient(180deg, rgba(248, 242, 220, 0) 0%, #FBF6E0 91.23%);
 }
 
 .brid_s {

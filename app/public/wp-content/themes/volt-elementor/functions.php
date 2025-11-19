@@ -156,6 +156,9 @@ function volt_enqueue_assets()
     if (is_page('products')) {
         $custom_js_files[] = 'assets/js/home.js';
     }
+    if (is_page('product-detail')) {
+        $custom_js_files[] = 'assets/js/product-details.js';
+    }
 
     foreach ($custom_js_files as $js_file) {
         $js_path = $theme_dir . '/' . $js_file;
