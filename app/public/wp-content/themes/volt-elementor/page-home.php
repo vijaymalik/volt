@@ -23,5 +23,6 @@ get_header();
 
 </div>
 <?php get_template_part('template-parts/home-recipe'); ?>
+<?php get_template_part('template-parts/poll-future'); ?>
 <?php get_template_part('template-parts/nearby-store'); ?>
 <?php get_footer(); ?>

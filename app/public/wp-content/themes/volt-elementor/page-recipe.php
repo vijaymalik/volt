@@ -18,7 +18,7 @@ get_header();
         endwhile;
     endif;
     ?>
-    <?php get_template_part('template-parts/our_recipes'); ?>
+    <?php get_template_part('template-parts/our-recipes'); ?>
 </div>
 <?php get_template_part('template-parts/nearby-store'); ?>
 <?php get_footer(); ?>

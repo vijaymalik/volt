@@ -1362,7 +1362,7 @@
 @media (min-width:1400px) {
     .ready .ready-row {
         justify-content: space-between;
-        width: 100%;
+        /* width: 100%; */
     }
     .aboutright h6 {
         font-size: 50px;
