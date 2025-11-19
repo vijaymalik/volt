@@ -4,6 +4,11 @@ $topbar_query = new WP_Query(array(
     'post_type' => 'topbar_detail',
     'posts_per_page' => 1,
 ));
+        // Fallbacks
+        $default_back_image = get_template_directory_uri() . '/assets/images/banner.jpg';
+        $default_product_image = get_template_directory_uri() . '/assets/images/banner-backup.png';
+        $default_heading_html = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
+        $default_button_link = home_url(path: '/products');
 
 if ($topbar_query->have_posts()):
     while ($topbar_query->have_posts()):
@@ -13,11 +18,9 @@ if ($topbar_query->have_posts()):
         $banner_back_image = get_field('banner_back_image');
         $banner_product_image = get_field('banner_product_image');
         $heading_html = get_field('heading');
+        $button_link = get_field('button_link');
 
-        // Fallbacks
-        $default_back_image = get_template_directory_uri() . '/assets/images/banner.jpg';
-        $default_product_image = get_template_directory_uri() . '/assets/images/banner-backup.png';
-        $default_heading_html = '<h6>Quality you trust.</h6><h1>Taste You Love.</h1>';
+
         ?>
 
         <div class="home-banner">
@@ -31,7 +34,7 @@ if ($topbar_query->have_posts()):
                     <img src="<?php echo esc_url($banner_product_image['url'] ?? $default_product_image); ?>" alt="">
                 </div>
                 <div class="explore-button">
-                    <button>Explore Product</button>
+                   <a href="<?php echo esc_url($button_link ?? $default_button_link); ?>"> <button>Explore Product</button></a>
                 </div>
             </div>
         </div>
@@ -43,15 +46,14 @@ else:
     // No Topbar Detail found → Show full default
     ?>
     <div class="home-banner">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner.jpg'); ?>" alt="">
+        <img src="<?php echo esc_url( $default_back_image); ?>" alt="">
         <div class="home-overlayer">
-            <h6>Quality you trust.</h6>
-            <h1>Taste You Love.</h1>
+             echo $default_heading_html;
             <div class="home-img">
-                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/banner-backup.png'); ?>" alt="">
+                <img src="<?php echo esc_url($default_product_image); ?>" alt="">
             </div>
             <div class="explore-button">
-                <button>Explore Product</button>
+                 <a href="<?php echo esc_url($default_button_link); ?>"> <button>Explore Product</button></a>
             </div>
         </div>
     </div>
