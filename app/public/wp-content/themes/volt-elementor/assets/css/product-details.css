@@ -946,3 +946,27 @@
         margin-bottom: 40px;
     }
 }
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 140px); /* 3 icons per row */
+    gap: 45px 70px; /* vertical | horizontal spacing */
+    margin-top: 40px;
+}
+
+.ingredient-item {
+    text-align: center;
+}
+
+.ingredient-item img {
+    width: 80px;         /* Figma icon size */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.ingredient-item p {
+    margin-top: 12px;
+    font-size: 20px;
+    color: #3a2e1f;      /* matches the heading/body color in your design */
+    font-weight: 600;
+}
