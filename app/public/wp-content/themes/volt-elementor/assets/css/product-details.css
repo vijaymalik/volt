@@ -946,11 +946,16 @@
         margin-bottom: 40px;
     }
 }
+
 .ingredients-grid {
     display: grid;
-    grid-template-columns: repeat(3, 140px); /* 3 icons per row */
-    gap: 45px 70px; /* vertical | horizontal spacing */
-    margin-top: 40px;
+    grid-template-columns: repeat(3, 106px);
+    gap: 31px 51px;
+    margin-top: 32px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    line-height: 26.77px;
 }
 
 .ingredient-item {
@@ -958,15 +963,17 @@
 }
 
 .ingredient-item img {
-    width: 80px;         /* Figma icon size */
-    height: auto;
+    width: 100px !important;
+    height: 100px !important;
     display: block;
     margin: 0 auto;
+    margin-bottom: 10px;
 }
 
 .ingredient-item p {
     margin-top: 12px;
     font-size: 20px;
-    color: #3a2e1f;      /* matches the heading/body color in your design */
+    color: #3a2e1f;
+    /* matches the heading/body color in your design */
     font-weight: 600;
 }
