@@ -70,7 +70,7 @@ if ($query->have_posts()):
                 </div>
 
                 <h1><?php echo esc_html($title); ?></h1>
-
+            
                 <div class="explore-button">
                     <button><?php echo esc_html($buttonText); ?></button>
                 </div>

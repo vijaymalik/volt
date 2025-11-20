@@ -697,6 +697,37 @@
     display: none;
 }
 
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 106px);
+    gap: 31px 51px;
+    margin-top: 32px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    line-height: 26.77px;
+}
+
+.ingredient-item {
+    text-align: center;
+}
+
+.ingredient-item img {
+    width: 100px !important;
+    height: 100px !important;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.ingredient-item p {
+    margin-top: 12px;
+    font-size: 20px;
+    color: #3a2e1f;
+    /* matches the heading/body color in your design */
+    font-weight: 600;
+}
+
 
 /* Responsive Design */
 
@@ -843,7 +874,7 @@
         background-image: url(../images/cloud_a.png);
         background-repeat: no-repeat;
         background-size: contain;
-        background-position: -146px -43px;
+        background-position: -107px 151px;
         padding-top: 68px;
         height: 100vh;
         display: flex;
@@ -870,6 +901,20 @@
     .home-banner-mbl .home-img img {
         height: 261px;
         width: 100%;
+    }
+    .ingredients-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 85px);
+        gap: 10px 21px;
+        margin-top: 32px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #000;
+        line-height: 20px;
+    }
+    .ingredient-item img {
+        width: 84px !important;
+        height: 85px !important;
     }
 }
 
@@ -945,35 +990,4 @@
         min-height: 749.571533px;
         margin-bottom: 40px;
     }
-}
-
-.ingredients-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 106px);
-    gap: 31px 51px;
-    margin-top: 32px;
-    font-size: 20px;
-    font-weight: 600;
-    color: #000;
-    line-height: 26.77px;
-}
-
-.ingredient-item {
-    text-align: center;
-}
-
-.ingredient-item img {
-    width: 100px !important;
-    height: 100px !important;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 10px;
-}
-
-.ingredient-item p {
-    margin-top: 12px;
-    font-size: 20px;
-    color: #3a2e1f;
-    /* matches the heading/body color in your design */
-    font-weight: 600;
 }
