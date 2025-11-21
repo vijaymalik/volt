@@ -885,7 +885,7 @@
 
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
-    color: var(--bs-nav-link-color) !important;
+    /* color: var(--bs-nav-link-color) !important; */
 }
 
 .gradiant_blur {
