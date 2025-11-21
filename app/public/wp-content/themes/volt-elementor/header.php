@@ -12,7 +12,7 @@
 
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
     <!-- Top Bar (Marquee) -->
 <div class="marques">
     <div class="marque-content">
@@ -52,14 +52,14 @@
         ?>
     </div>
 </div>
-<div class="container-fluid nav-container mt-sm-2 px-sm-4">
+<div class="container-fluid nav-container px-sm-4 bg-white shadow-sm">
   <a class="navbar-brand" href="<?php echo esc_url(home_url()); ?>">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="">
   </a>
 
+  <div class="hide_desk">
   <div class="d-flex gap-2 align-items-center">
     <a class="talk-btn phn-btn" href="<?php echo esc_url(home_url('/contact-us')); ?>">Let's Talk</a>
-
     <!-- ✅ Correct Bootstrap toggler button -->
     <button class="navbar-toggler" type="button"
       data-bs-toggle="collapse"
@@ -72,10 +72,9 @@
       </div>
     </button>
   </div>
-
-  <!-- ✅ Collapsible menu -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+</div>
+  <div class="desktop-menu-new">
+  <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
       <li class="nav-item">
         <a class="nav-link <?php echo (is_page('products')) ? 'active' : ''; ?>"  href="<?php echo esc_url(home_url(path: '/products')); ?>">Products</a>
       </li>
@@ -83,8 +82,39 @@
         <a class="nav-link <?php echo (is_page('recipes')) ? 'active' : ''; ?>"  href="<?php echo esc_url(home_url(path: '/recipe')); ?>">Recipes</a>
       </li>
     </ul>
+      </div>
+  <!-- ✅ Collapsible menu -->
+  <a class="talk-btn hidemobile" href="<?php echo esc_url(home_url('/contact-us')); ?>">Let's Talk</a>
 
-    <a class="talk-btn hidemobile" href="<?php echo esc_url(home_url('/contact-us')); ?>">Let's Talk</a>
-  </div>
+
 </div>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 mobile-menu-new">
+      <li class="nav-item">
+        
+        <a class="nav-link <?php echo (is_page('products')) ? 'active' : ''; ?>"  href="<?php echo esc_url(home_url(path: '/products')); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+        Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <?php echo (is_page('recipes')) ? 'active' : ''; ?>"  href="<?php echo esc_url(home_url(path: '/recipe')); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+        Recipes</a>
+      </li>
+    </ul>
+
+  </div>
 </nav>
+
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+const navbar = document.getElementById("navbarSupportedContent");
+
+navbar.addEventListener('show.bs.collapse', function () {
+  menuBtn.classList.add('open');
+});
+
+navbar.addEventListener('hide.bs.collapse', function () {
+  menuBtn.classList.remove('open');
+});
+</script>

@@ -852,6 +852,7 @@
         font-size: 15px;
         line-height: 23px;
         font-family: Onest;
+        font-weight: 400
     }
     .card_wrp {
         margin-top: 72px;
@@ -969,6 +970,10 @@
     }
     .content-wrapper {
         min-height: 692.571533px;
+    }
+    .content-ing p {
+        width: 488px;
+        margin-top: 12px;
     }
 }
 
