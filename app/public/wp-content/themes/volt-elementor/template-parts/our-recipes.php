@@ -1,10 +1,26 @@
 <div class="our-recipes-mbl px-4 mt-2 position-relative">
     <h2>Our Recipes</h2>
-    <p>
-        Make snack time exciting! Discover quick, tasty <br>
-        ways to enjoy from classic tea-time treats to fun, <br>
-        family-friendly desserts.
-    </p>
+    <?php
+    $page = get_page_by_path('recipes'); // page slug
+    
+    if ($page) {
+        $mobile_desc = get_field('mobile_description', $page->ID);
+        if ($mobile_desc) {
+            ?>
+            <p><?php echo wp_kses_post($mobile_desc); ?></p>
+            <?php
+        }
+    } else {
+        ?>
+        <p>
+            Make snack time exciting! Discover quick, tasty <br>
+            ways to enjoy from classic tea-time treats to fun, <br>
+            family-friendly desserts.
+        </p>
+        <?php
+    }
+    ?>
+
 
     <?php get_template_part('template-parts/recipe-slider'); ?>
 </div>
@@ -12,7 +28,8 @@
 <?php
 function get_initials($string)
 {
-    if (empty($string)) return '';
+    if (empty($string))
+        return '';
 
     $words = preg_split('/\s+/', trim($string));
 
@@ -49,7 +66,8 @@ function get_initials($string)
                     Plant-Based
                 </button>
 
-                <button class="tab-button <?= (isset($_GET['cat']) && $_GET['cat'] == 'Non Vegeterian') ? 'active' : '' ?>"
+                <button
+                    class="tab-button <?= (isset($_GET['cat']) && $_GET['cat'] == 'Non Vegeterian') ? 'active' : '' ?>"
                     onclick="window.location='?cat=Non Vegeterian'">
                     Non Vegeterian
                 </button>
@@ -66,18 +84,18 @@ function get_initials($string)
 
             // WP Query Args
             $args = [
-                "post_type"      => "recipe",
+                "post_type" => "recipe",
                 "posts_per_page" => -1,
-                "orderby"        => "date",
-                "order"          => "DESC",
+                "orderby" => "date",
+                "order" => "DESC",
             ];
 
             // Apply ACF category filter
             if ($selected_cat !== "all") {
                 $args['meta_query'] = [
                     [
-                        "key"     => "categories",
-                        "value"   => $selected_cat,
+                        "key" => "categories",
+                        "value" => $selected_cat,
                         "compare" => "=",
                     ]
                 ];
@@ -91,7 +109,8 @@ function get_initials($string)
             $total_pages = ceil($total_items / $items_per_page);
 
             $page = isset($_GET['pg']) ? intval($_GET['pg']) : 1;
-            if ($page < 1) $page = 1;
+            if ($page < 1)
+                $page = 1;
 
             $start = ($page - 1) * $items_per_page;
             ?>
@@ -124,9 +143,8 @@ function get_initials($string)
                         <div class="cards recipe-card">
                             <a href="<?php the_permalink(); ?>">
                                 <div class="img">
-                                    <img src="<?php echo esc_url($img_url); ?>" 
-                                         alt="<?php echo esc_attr(get_the_title()); ?>" 
-                                         class="product-image">
+                                    <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
+                                        class="product-image">
                                 </div>
 
                                 <div class="details">
@@ -181,8 +199,7 @@ function get_initials($string)
             <!-- Pagination Section -->
             <div class="pagination-section">
 
-                <a class="nav-button" 
-                   href="?pg=<?= max(1, $page - 1); ?>&cat=<?= urlencode($selected_cat); ?>">
+                <a class="nav-button" href="?pg=<?= max(1, $page - 1); ?>&cat=<?= urlencode($selected_cat); ?>">
                     <i class="ri-arrow-left-s-line left"></i>
                 </a>
 
@@ -191,8 +208,8 @@ function get_initials($string)
                     <span id="totalPages"><?= str_pad($total_pages, 2, "0", STR_PAD_LEFT); ?></span>
                 </div>
 
-                <a class="nav-button" 
-                   href="?pg=<?= min($total_pages, $page + 1); ?>&cat=<?= urlencode($selected_cat); ?>">
+                <a class="nav-button"
+                    href="?pg=<?= min($total_pages, $page + 1); ?>&cat=<?= urlencode($selected_cat); ?>">
                     <i class="ri-arrow-right-s-line right"></i>
                 </a>
 
