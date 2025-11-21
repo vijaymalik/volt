@@ -93,7 +93,7 @@
       <li class="nav-item">
         
         <a class="nav-link <?php echo (is_page('products')) ? 'active' : ''; ?>"  href="<?php echo esc_url(home_url(path: '/products')); ?>">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brownie.jpg" alt="">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/product-sec.png" alt="">
         Products</a>
       </li>
       <li class="nav-item">
