@@ -918,7 +918,7 @@
         height: 85px !important;
     }
     .content-ing p {
-        width: 324px;
+        width: 324px !important;
         margin-top: 12px;
     }
 }
