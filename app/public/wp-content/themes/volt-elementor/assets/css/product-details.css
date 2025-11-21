@@ -917,6 +917,10 @@
         width: 84px !important;
         height: 85px !important;
     }
+    .content-ing p {
+        width: 324px;
+        margin-top: 12px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1016,5 +1020,29 @@
     }
     .our-recipes {
         height: 687px;
+    }
+    .ingredient-item img {
+        width: 143px !important;
+        height: 143px !important;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    .ingredients-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 182px);
+        gap: 44px 51px;
+        margin-top: 32px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #000;
+        line-height: 26.77px;
+    }
+    .content-ing p {
+        color: #666666;
+        font-size: 18px;
+        line-height: 23px;
+        width: 577px;
+        margin-top: 15px;
     }
 }
