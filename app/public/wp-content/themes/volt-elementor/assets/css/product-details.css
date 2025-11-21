@@ -21,7 +21,7 @@
 
 .intro_volt {
     margin: 0 auto;
-    margin-top: 164px;
+    margin-top: 196px;
     width: 90%;
 }
 
@@ -852,6 +852,7 @@
         font-size: 15px;
         line-height: 23px;
         font-family: Onest;
+        font-weight: 400
     }
     .card_wrp {
         margin-top: 72px;
@@ -916,6 +917,10 @@
         width: 84px !important;
         height: 85px !important;
     }
+    .content-ing p {
+        width: 324px !important;
+        margin-top: 12px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -970,6 +975,16 @@
     .content-wrapper {
         min-height: 692.571533px;
     }
+    .content-ing p {
+        width: 488px;
+        margin-top: 12px;
+    }
+    .bird_pos {
+        margin-top: -10%;
+    }
+    .our-recipes {
+        height: 687px;
+    }
 }
 
 @media screen and (min-device-width: 1621px) and (max-device-width: 1920px) {
@@ -978,7 +993,7 @@
     }
     .rotate_bg {
         height: 1417px;
-        background-size: contain;
+        background-size: cover;
         background-image: url(../images/product-detail.png);
         background-position: center;
     }
@@ -987,7 +1002,47 @@
         display: flex;
         align-items: end;
         justify-content: center;
-        min-height: 749.571533px;
+        min-height: 800.571533px;
         margin-bottom: 40px;
+    }
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 224px 268px;
+        max-width: 976px;
+        width: 100%;
+        z-index: 1;
+        position: relative;
+        top: 0px;
+    }
+    .bird_pos {
+        margin-top: -8%;
+    }
+    .our-recipes {
+        height: 687px;
+    }
+    .ingredient-item img {
+        width: 143px !important;
+        height: 143px !important;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    .ingredients-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 182px);
+        gap: 44px 51px;
+        margin-top: 32px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #000;
+        line-height: 26.77px;
+    }
+    .content-ing p {
+        color: #666666;
+        font-size: 18px;
+        line-height: 23px;
+        width: 577px;
+        margin-top: 15px;
     }
 }
