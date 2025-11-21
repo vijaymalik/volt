@@ -627,14 +627,14 @@
     margin: 0 auto;
     background-image: url(../images/nutrients.jpg);
     padding-top: 0px;
-    background-size: 993px 1065px;
+    background-size: 975px 1212px;
     background-position: bottom;
-    height: 837px;
+    height: 913px;
 }
 
 .nutrients-section-mobile::before {
     width: 100%;
-    height: 288px;
+    height: 194px;
     /* backdrop-filter: blur(2px); */
     content: "";
     position: absolute;
@@ -731,7 +731,7 @@
 
 /* Responsive Design */
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .header h1 {
         font-size: 2rem;
     }
@@ -875,14 +875,14 @@
         background-image: url(../images/cloud_a.png);
         background-repeat: no-repeat;
         background-size: contain;
-        background-position: -107px 151px;
-        padding-top: 68px;
-        height: 100vh;
+        background-position: -133px -54px;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-top: 282px;
+        padding-top: 40px;
+        margin-top: 230px;
     }
     .ingredients-section-mobile {
         display: block;
@@ -920,6 +920,87 @@
     .content-ing p {
         width: 324px !important;
         margin-top: 12px;
+    }
+}
+
+@media (max-width: 430px) {
+    .content-ing {
+        text-align: center;
+        margin-bottom: 16px;
+        background-image: url(../images/cloud_a.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: -107px -28px;
+        height: 494px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .nutrients-section-mobile::before {
+        height: 209px;
+    }
+    .nutrients-section-mobile {
+        height: 911px;
+    }
+    .nutrients-section-mobile {
+        background-size: 975px 1127px !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .content-ing {
+        text-align: center;
+        margin-bottom: 16px;
+        background-image: url(../images/cloud_a.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: -51px 24px;
+        height: 559px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .nutrients-section-mobile::before {
+        height: 209px;
+    }
+    .nutrients-section-mobile {
+        height: 851px;
+    }
+    .nutrients-section-mobile {
+        background-size: 975px 1127px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .content-ing {
+        text-align: center;
+        margin-bottom: 16px;
+        background-image: url(../images/cloud_a.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: -51px 223px;
+        height: 765px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .nutrients-section-mobile::before {
+        height: 209px;
+    }
+    .nutrients-section-mobile {
+        height: 851px;
+    }
+    .nutrients-section-mobile {
+        background-size: 975px 1127px !important;
     }
 }
 
