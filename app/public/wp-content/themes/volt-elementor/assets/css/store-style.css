@@ -32,6 +32,13 @@ body {
     font-size: 16px;
     line-height: 27px;
     padding: 0px 19px !important;
+    color: #40360D !important;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+    color: #40360D !important;
+    font-weight: 700;
 }
 
 .navbar .marques {
