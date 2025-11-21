@@ -975,6 +975,12 @@
         width: 488px;
         margin-top: 12px;
     }
+    .bird_pos {
+        margin-top: -10%;
+    }
+    .our-recipes {
+        height: 687px;
+    }
 }
 
 @media screen and (min-device-width: 1621px) and (max-device-width: 1920px) {
@@ -983,7 +989,7 @@
     }
     .rotate_bg {
         height: 1417px;
-        background-size: contain;
+        background-size: cover;
         background-image: url(../images/product-detail.png);
         background-position: center;
     }
@@ -992,7 +998,23 @@
         display: flex;
         align-items: end;
         justify-content: center;
-        min-height: 749.571533px;
+        min-height: 800.571533px;
         margin-bottom: 40px;
+    }
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 224px 268px;
+        max-width: 976px;
+        width: 100%;
+        z-index: 1;
+        position: relative;
+        top: 0px;
+    }
+    .bird_pos {
+        margin-top: -8%;
+    }
+    .our-recipes {
+        height: 687px;
     }
 }
