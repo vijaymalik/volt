@@ -1618,6 +1618,10 @@ body {
     display: none !important;
 }
 
+.pt-7 {
+    padding-top: 7rem !important;
+}
+
 @media (max-width: 768px) {
     .hide_desk {
         display: block !important;
